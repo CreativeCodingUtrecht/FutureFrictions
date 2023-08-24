@@ -1,0 +1,64 @@
+{
+	"friction" : {
+		"description": "Drone Scenario",
+		"avatar": "filename.png",
+		"content": {
+			"before": "A new guardian angel drone has been introduced. What should the drone do with the images it records? Choose one of the 3 options:"				
+		},
+		"options": {
+			"a": {
+				"avatar": "filename.png",
+				"content": "The images are directly uploaded to your device so you know exactly what happens to them at all times."
+			},
+			"b": {
+				"avatar": "filename.png",
+				"content": "The images are directly uploaded to a database that belongs to the neighbourhood so that everyone is equally informed."
+			},
+			"c": {
+				"avatar": "filename.png",
+				"content":  "The images are directly uploaded to a government database so that public authorities can improve their services."
+			}
+		}	
+	},
+	"actors": {
+		"teenager": {
+			"description": "Person 1 (teenager looking at phone- with a dog)",
+			"sprite": "filename.png",
+			"avatar": "filename.png",
+			"content": {
+				"before": "Hi, my name is Tina. Nice to meet you! After school, I usually meet up with some of my friends in this square. I'm going to meet them there later, but I need to do my homework first.",
+				"after": {
+					"a": "I was trying to work on my maths homework, but then I got distracted because my phone notified me that my best friend Lola was in the area, shopping! Should I go out and meet her? Hmm...",
+					"b": "Can you believe it? The new drone posts pictures of everything we do, and shows it to everybody in the neighbourhood. This makes it hard to secretly meet my friends to hang out and smoke without my parents knowing our whereabouts. Just check out that old woman over there. I bet ya she'll tell my parents that I haven't done my homework!",
+					"c": "This makes me feel safe. I feel it is like my guardian angel drone. We don't need to ask each other 'are you home safe?' after a night out anymore, because the police know about our whereabouts at all times."
+				}
+			}
+		},
+		"artist": {
+			"description": "Person 2 (Street artist)",
+			"sprite": "filename.png",
+			"avatar": "filename.png",
+			"content": {
+				"before": "Hello! I often come to this square to observe people passing by, think about life, and paint.",
+				"after": {
+					"a": "This drone seems very convenient to get customers for my work. But I don't have time to check all of the images so I've lost control over which ones are uploaded: it even puts the failed paintings online!",
+					"b": "Since this drone is here, I don't need to be in well-known public places to get viewers for my art work anymore. This is very useful, but I miss travelling to art shows so much and getting in touch with my customers and fellow artists. Besides, I feel watched. Have you seen those people over there? What if they steal my ideas for the next painting?",
+					"c": "It is nice that thanks to the new drone I don't need to worry about protecting my paintings anymore. However, I am a bit worried as sometimes I make activist art. I hope the government won't monitor me for that!"
+				}
+			}
+		},
+		"old_woman": {
+			"description": "Person 3a (old woman on a bench)",
+			"sprite": "filename.png",
+			"avatar": "filename.png",
+			"content": {
+				"before": "Hello dear, how nice to see you! I've always liked sitting here, in the square, and seeing if any of my neighbours want to stop for a chat.",
+				"after": {
+					"a": "It's been a while since the last time I met my grandchild. Thanks to this new drone, I am constantly receiving pictures of her. It makes me so happy! However, I'm still a bit sad because my son doesn't call me anymore. He receives the pictures from the drone so he thinks everything is just fine...",
+					"b": "Everyday I receive a message from the neighbourhood dashboard with the latest news of the street. Apparently, this new drone is sending the information. Weird! It is convenient because there is no need to go down by the fountain anymore. However, I miss simply chatting to people...",
+					"c": "I'm old and living by myself, so I am now part of a programme that helps people in need. The government has enrolled me there based on the information they get from this drone. The thing is: I don't really feel I need help. I am doing great!"
+				}
+			}
+		}
+	}
+}
