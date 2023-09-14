@@ -13,7 +13,16 @@ export const load: PageServerLoad = ({ params }) => {
 };
 
 export const actions = {
-    default: async (event) => {
-        console.log("Save!")
+    save: async ({params, request}) => {
+        // JSON
+        console.log("Saving JSON")
+        const scenario = params.scenario;
+        const data = await request.formData();
+        const json = data.get('json');
+        console.log("json", json);
+        const obj = JSON.parse(json);
+        console.log("json obj", obj);
+
+        scenarios.save(scenario, obj);
     },
 } satisfies Actions;

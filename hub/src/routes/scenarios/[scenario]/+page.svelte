@@ -17,9 +17,9 @@
 
 <h1>Scenario | {title}</h1>
 
-<a href="{url}" target="ff_app" class="btn btn-primary">Start</a>
+<a href="{url}" target="ff_app" class="btn">Start</a>
 
-<a href="/scenarios/{scenario}/edit" class="btn btn-primary">Edit</a>
+<a href="/scenarios/{scenario}/edit" class="btn">Edit</a>
 
 <img src="{background_url}" />
 

@@ -27,7 +27,21 @@ const json = (scenario : String) => {
     return JSON.parse(data);
 }
 
+const save = (scenario: String, json: any) => {
+    const filename = `${DATAROOT}/${scenario}/scenario.json`;
+
+    if (!fs.existsSync(filename)) {
+        console.log("File does not exist")
+        throw error(404, {
+            message: 'Requested scenario JSON does not exist',
+        });
+    }
+
+    fs.writeFileSync(filename, JSON.stringify(json,null, 4));
+}
+
 export default {
     list,
-    json
+    json,
+    save
 }
