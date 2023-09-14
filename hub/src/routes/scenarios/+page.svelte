@@ -1,13 +1,24 @@
 <script lang="ts">
     import type { PageData } from './$types';
+    import { goto } from '$app/navigation';
     
     export let data: PageData;
 </script>
 
-<h1>Scenarios</h1>
+<div class="prose">
+    <h1>Scenarios</h1>
 
-<ul>
+    <div class="columns-2">
     {#each data.scenarios as scenario}
-    <li><a href="scenarios/{scenario}">{scenario}</a></li>
+    <div class="card w-96 bg-base-100 shadow-xl">
+        <div class="card-body">
+            <h2 class="card-title">{scenario}</h2>
+            <p>If a dog chews shoes whose shoes does he choose?</p>
+            <div class="card-actions justify-end">
+                <a href="/scenarios/{scenario}" class="btn btn-primary">Open</a>
+            </div>
+        </div>
+    </div>
     {/each}
-</ul>
+    </div>
+</div>

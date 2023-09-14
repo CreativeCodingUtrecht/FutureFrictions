@@ -11,21 +11,17 @@
     const background = json.scene.background;
 
     const background_url = `/api/scenarios/${scenario}/${background}`;
-    const start = () => {
-        const url = `${FF_APP}?scenario=${scenario}`
-        console.log("Start Unity app: " )
-
-        window.open(url, "ff_app");
-    }
+    const url = `${FF_APP}?scenario=${scenario}`
 
     let raw = JSON.stringify(data.json);
 </script>
 
-<h1>Edit: {title}</h1>
-<button on:click={start}>Start</button>
+<h1>Scenario | Edit | {title}</h1>
+<a href="{url}" target="ff_app" class="btn btn-primary">Start</a>
+
 
 <form method="POST">
-    <textarea bind:value={raw}></textarea>
+    <textarea class="textarea textarea-bordered textarea-lg w-full max-w-xs" bind:value={raw}></textarea>
     <button>Save</button>
 </form>
 

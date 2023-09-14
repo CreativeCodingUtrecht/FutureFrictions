@@ -12,23 +12,14 @@
     const background = json.scene.background;
 
     const background_url = `/api/scenarios/${scenario}/${background}`;
-    const start = () => {
-        const url = `${FF_APP}?scenario=${scenario}`
-        console.log("Start Unity app: " )
-
-        window.open(url, "ff_app");
-    }
-
-    const edit = () => {        
-        goto(`/scenarios/${scenario}/edit`);
-    }
+    const url = `${FF_APP}?scenario=${scenario}`
 </script>
 
-<h1>{title}</h1>
+<h1>Scenario | {title}</h1>
 
-<button on:click={start}>Start</button>
+<a href="{url}" target="ff_app" class="btn btn-primary">Start</a>
 
-<button on:click={edit}>Edit</button>
+<a href="/scenarios/{scenario}/edit" class="btn btn-primary">Edit</a>
 
 <img src="{background_url}" />
 
