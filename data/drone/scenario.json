@@ -78,8 +78,8 @@
 			}
 		}	
 	},
-	"actors": {
-		"teenager": {
+	"actors": [ 
+		{
 			"description": "Person 1 (teenager looking at phone- with a dog)",
 			"sprite": "telefoon.png",
 			"avatar": "tina_avatar.png",
@@ -92,7 +92,7 @@
 				}
 			}
 		},
-		"artist": {
+		{
 			"description": "Person 2 (Street artist)",
 			"sprite": "artist_17_5_2021_21_50.png",
 			"avatar": "streetartist_avatar.png",
@@ -105,7 +105,7 @@
 				}
 			}
 		},
-		"old_woman": {
+		{
 			"description": "Person 3a (old woman on a bench)",
 			"sprite": "elderly_on_bench_17_5_2021_21_14.png",
 			"avatar": "lady_avatar.png",
@@ -118,5 +118,5 @@
 				}
 			}
 		}
-	}
+	]
 }
