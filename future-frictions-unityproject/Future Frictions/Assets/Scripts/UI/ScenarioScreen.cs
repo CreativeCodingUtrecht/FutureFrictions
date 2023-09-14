@@ -16,7 +16,7 @@ public class ScenarioScreen : BaseScreen
             
             downloadHandler.GetImage(actorsData[i].sprite, actorSprite =>
             {
-                actors[currentIndex].Initialize(actorSprite);
+                actors[currentIndex].Initialize(actorSprite, actorsData[currentIndex]);
             });
         }
         

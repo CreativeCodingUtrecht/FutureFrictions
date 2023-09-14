@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,8 +18,13 @@ public class ScenarioManager : MonoBehaviour
     [SerializeField]
     private ScenarioScreen scenarioScreen;
 
-    private ScenarioData _scenarioData;
+    [SerializeField]
+    private Friction friction;
     
+    private ScenarioData _scenarioData;
+
+    private readonly List<string> _interactedActors = new();
+
     public void StartPopulating(ScenarioData scenarioDataData)
     {
         _scenarioData = scenarioDataData;
@@ -38,6 +44,29 @@ public class ScenarioManager : MonoBehaviour
     private void OnIntroClosed()
     {
         scenarioScreen.InitializeActors(_scenarioData.actors);
+    }
+
+    public void StoreActorInteracted(string actorId)
+    {
+        if (!_interactedActors.Contains(actorId))
+        {
+            _interactedActors.Add(actorId);
+        }
+    }
+
+    public void CheckInteractionsDone()
+    {
+        if (_interactedActors.Count >= 3)
+        {
+            friction.Initialize(_scenarioData.friction);
+        }
+    }
+    
+    public void QuestionAnswered()
+    {
+        // Set new state
+        // Update actors
+        // Set choice images in the scene
     }
 
     private void OnDestroy()

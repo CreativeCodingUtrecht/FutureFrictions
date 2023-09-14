@@ -64,6 +64,7 @@ public class DataManager : MonoBehaviour
 public class ScenarioData
 {
     public ScenarioSceneData scene;
+    public FrictionData friction;
     public ActorData[] actors;
 }
 
@@ -103,4 +104,43 @@ public class ActorContentOptionsData
     public string a;
     public string b;
     public string c;
+}
+
+[Serializable]
+public class FrictionData
+{
+    public string description;
+    public string avatar;
+    public FrictionContentData content;
+    public FrictionOptionsData options;
+}
+
+[Serializable]
+public class FrictionContentData
+{
+    public string before;
+}
+
+[Serializable]
+public class FrictionOptionsData
+{
+    public FrictionOptionData a;
+    public FrictionOptionData b;
+    public FrictionOptionData c;
+}
+
+[Serializable]
+public class FrictionOptionData
+{
+    public string avatar;
+    public string content;
+    public FrictionOptionSpriteData sprites;
+}
+
+[Serializable]
+public class FrictionOptionSpriteData
+{
+    public string[] foreground;
+    public string[] background;
+    public string[] floating;
 }

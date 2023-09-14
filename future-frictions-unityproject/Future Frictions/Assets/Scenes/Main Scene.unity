@@ -850,8 +850,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1037906201653984482}
-        m_TargetAssemblyTypeName: DialogScreen, Assembly-CSharp
-        m_MethodName: CloseScreen
+        m_TargetAssemblyTypeName: BaseScreen, Assembly-CSharp
+        m_MethodName: Close
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1595,7 +1595,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: e2eb31f567106eb4babfc84cd00d5888, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -1640,12 +1640,12 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 0
+  m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.48538482, g: 1, b: 0, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -1664,7 +1664,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1379421713648263603}
   toggleTransition: 1
   graphic: {fileID: 0}
-  m_Group: {fileID: 0}
+  m_Group: {fileID: 1379421712959576020}
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2771,12 +2771,12 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 0
+  m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.48538482, g: 1, b: 0, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -2795,7 +2795,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1379421712520783117}
   toggleTransition: 1
   graphic: {fileID: 0}
-  m_Group: {fileID: 0}
+  m_Group: {fileID: 1379421712959576020}
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3185,6 +3185,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1379421712959576016}
   - component: {fileID: 1379421712959576017}
+  - component: {fileID: 1379421712959576020}
   m_Layer: 0
   m_Name: Answers
   m_TagString: Untagged
@@ -3192,6 +3193,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1379421712959576020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1379421712959576019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fafe2cfe61f6974895a912c3755e8f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AllowSwitchOff: 0
 --- !u!222 &1379421712962764890
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3299,6 +3313,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1379421713088322224}
+  - component: {fileID: 1379421713088322228}
   m_Layer: 5
   m_Name: QuestionScreen
   m_TagString: Untagged
@@ -3306,6 +3321,31 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!114 &1379421713088322228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1379421713088322227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4d374cb347674d74aaaf797e5c3f12e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  downloadHandler: {fileID: 1572234206}
+  questionAvatar: {fileID: 1379421711725174989}
+  questionText: {fileID: 1379421713103200898}
+  optionAText: {fileID: 1379421711957757301}
+  optionAImage: {fileID: 1379421713126645323}
+  optionAToggle: {fileID: 1379421712586872752}
+  optionBText: {fileID: 1379421713679426912}
+  optionBImage: {fileID: 1379421712424348427}
+  optionBToggle: {fileID: 1379421713239143218}
+  optionCText: {fileID: 1379421712735416416}
+  optionCImage: {fileID: 1379421711893718190}
+  optionCToggle: {fileID: 1379421711764867382}
+  answerButton: {fileID: 1379421713112912337}
 --- !u!114 &1379421713103200898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3507,7 +3547,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1379421713112912366}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1379421713088322228}
+        m_TargetAssemblyTypeName: BaseScreen, Assembly-CSharp
+        m_MethodName: Close
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1379421713112912339
 GameObject:
   m_ObjectHideFlags: 0
@@ -3737,12 +3789,12 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 0
+  m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.48538482, g: 1, b: 0, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -3761,7 +3813,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1379421713424455587}
   toggleTransition: 1
   graphic: {fileID: 0}
-  m_Group: {fileID: 0}
+  m_Group: {fileID: 1379421712959576020}
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -9568,7 +9620,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7917555718282742431}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7917555718282742432}
+        m_TargetAssemblyTypeName: Actor, Assembly-CSharp
+        m_MethodName: Interact
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &7917555718282742430
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9619,7 +9683,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63a217e83d35d47dea9e0a49e76707fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogScreen: {fileID: 1037906201653984482}
+  downloadHandler: {fileID: 1572234206}
+  scenarioManager: {fileID: 7917555719561631480}
   image: {fileID: 7917555718282742431}
+  marker: {fileID: 7917555718738327882}
 --- !u!222 &7917555718366497947
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10318,6 +10386,7 @@ GameObject:
   - component: {fileID: 7917555718641561438}
   - component: {fileID: 7917555718641561439}
   - component: {fileID: 7917555718641561436}
+  - component: {fileID: 7917555718641561440}
   m_Layer: 5
   m_Name: Friction
   m_TagString: Untagged
@@ -10375,6 +10444,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7917555718641561440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7917555718641561409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea50175a003454aaeb1074f05bd8de67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questionScreen: {fileID: 1379421713088322228}
 --- !u!1 &7917555718705360128
 GameObject:
   m_ObjectHideFlags: 0
@@ -11082,7 +11164,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7917555719035082275}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7917555719035082304}
+        m_TargetAssemblyTypeName: Actor, Assembly-CSharp
+        m_MethodName: Interact
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &7917555719035082274
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11187,7 +11281,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63a217e83d35d47dea9e0a49e76707fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogScreen: {fileID: 1037906201653984482}
+  downloadHandler: {fileID: 1572234206}
+  scenarioManager: {fileID: 7917555719561631480}
   image: {fileID: 7917555719035082275}
+  marker: {fileID: 7917555718056919484}
 --- !u!222 &7917555719037607520
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12349,6 +12447,7 @@ MonoBehaviour:
   backgroundImage: {fileID: 7917555718574187501}
   introScreen: {fileID: 3145869800487708240}
   scenarioScreen: {fileID: 7917555718849207865}
+  friction: {fileID: 7917555718641561440}
 --- !u!114 &7917555719594550496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12882,7 +12981,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7917555719862097368}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7917555719862097371}
+        m_TargetAssemblyTypeName: Actor, Assembly-CSharp
+        m_MethodName: Interact
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &7917555719862097367
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12975,7 +13086,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63a217e83d35d47dea9e0a49e76707fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogScreen: {fileID: 1037906201653984482}
+  downloadHandler: {fileID: 1572234206}
+  scenarioManager: {fileID: 7917555719561631480}
   image: {fileID: 7917555719862097368}
+  marker: {fileID: 7917555718277433684}
 --- !u!222 &7917555719990251510
 CanvasRenderer:
   m_ObjectHideFlags: 0
