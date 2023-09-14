@@ -39,19 +39,19 @@
 				"content": "The images are directly uploaded to a database that belongs to the neighbourhood so that everyone is equally informed.",
 				"sprites": {
 					"foreground" : [
-						"text3",						
-						"Oldman",
-						"gossip1"
+						"have_you_heard_13_6_2021_23_09.png",						
+						"old_man_10_6_2021_00_31.png",
+						"gossip1_13_6_2021_23_09.png"
 					],
 					"background" : [
-						"dogbin",						
-						"billboard",
-						"gossip2"
+						"Dronescenario_DogBin_06-05-2021-2311.png",						
+						"Billboard option B.png",
+						"gossip2_13_6_2021_23_09.png"
 					],
 					"floating": [
-						"text1",						
+						"cant_hide_it_13_6_2021_23_09.png",						
 						"null",
-						"text2"
+						"i_want_to_know_more_13_6_2021_23_09.png"
 					]
 				}				
 			},
@@ -60,14 +60,14 @@
 				"content":  "The images are directly uploaded to a government database so that public authorities can improve their services.",
 				"sprites": {
 					"foreground" : [
-						"policecar",						
-						"ipad1",
+						"Politieauto_17_5_2021_12_29 (1).png",						
+						"ipad_group_31_5_2021_00_48.png",
 						"null"
 					],
 					"background" : [
-						"ipad2",						
-						"billboard",
-						"police"
+						"ipad_guy_31_5_2021_00_48.png",						
+						"Billboard option C.png",
+						"policemen_31_5_2021_01_04.png"
 					],
 					"floating": [
 						null,						
