@@ -1,15 +1,28 @@
 import type { RequestHandler } from './$types';
+import { error } from '@sveltejs/kit';
 import fs from 'fs'
+import path from 'path'
 
 export const GET: RequestHandler = ({ params }) => {
     const scenario = params.scenario;
     const image = params.image;
 
-    const data = fs.readFileSync(`../data/${scenario}/${image}`);
+    const filename = `../data/${scenario}/${image}`;
+    const extension = filename.split('.').pop();
+    const mime = `image/${extension}`;
+
+    if (!fs.existsSync(filename)) {
+        console.log("File does not exist")
+        throw error(404, {
+            message: 'Requested image does not exist',
+        });
+    }
+
+    const data = fs.readFileSync(filename);
 
 	return new Response(data, {
         headers: {
-            "Content-Type": "image/png"
+            "Content-Type": mime
         }
     });
 
