@@ -4,7 +4,8 @@
 
 @layer base {
     h1 {
-      @apply text-5xl font-bold;
+      /* @apply text-5xl font-bold; */
+      @apply inline-block text-5xl font-bold;
     }
 
     h2 {

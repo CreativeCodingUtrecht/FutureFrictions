@@ -8,7 +8,6 @@ export const load: PageServerLoad = ({ params }) => {
 
     const scenario = params.scenario;
     const json = scenarios.json(scenario);
-
     const images = scenarios.images(scenario);
 
     return {

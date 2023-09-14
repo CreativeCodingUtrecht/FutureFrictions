@@ -1,7 +1,6 @@
 import fs from 'fs';
 import { error } from '@sveltejs/kit';
-
-const DATAROOT = '../data';
+import { DATAROOT } from '$lib/constants';
 
 const list = () => {
 	const scenarios = fs
@@ -44,27 +43,27 @@ const images = (scenario: String) => {
 	return images;
 };
 
-const imagesFetch = (json: any) => {
-	const images = [
-		json.scene.background,
-		json.scene.avatar,
-		json.friction.avatar,
-		json.friction.options.a.avatar,
-		...json.friction.options.a.sprites.foreground,
-		json.friction.options.b.avatar,
-		...json.friction.options.b.sprites.background,
-		json.friction.options.c.avatar,
-		...json.friction.options.c.sprites.floating,
-		json.actors[0].sprite,
-		json.actors[0].avatar,
-		json.actors[1].sprite,
-		json.actors[1].avatar,
-		json.actors[2].sprite,
-		json.actors[2].avatar
-	];
+// const usedImages = (json: any) => {
+// 	const images = [
+// 		json.scene.background,
+// 		json.scene.avatar,
+// 		json.friction.avatar,
+// 		json.friction.options.a.avatar,
+// 		...json.friction.options.a.sprites.foreground,
+// 		json.friction.options.b.avatar,
+// 		...json.friction.options.b.sprites.background,
+// 		json.friction.options.c.avatar,
+// 		...json.friction.options.c.sprites.floating,
+// 		json.actors[0].sprite,
+// 		json.actors[0].avatar,
+// 		json.actors[1].sprite,
+// 		json.actors[1].avatar,
+// 		json.actors[2].sprite,
+// 		json.actors[2].avatar
+// 	];
 
-	return images;
-};
+// 	return images;
+// };
 
 const save = (scenario: String, json: any) => {
 	const filename = `${DATAROOT}/${scenario}/scenario.json`;
@@ -92,5 +91,6 @@ export default {
 	json,
 	save,
 	images,
+	// usedImages,
     addImage
 };
