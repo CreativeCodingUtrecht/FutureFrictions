@@ -1,2 +1,2 @@
 export const DATAROOT = '../data';
-export const FF_WEBGL = "/future-frictions-webgl/index.html"
+export const FF_WEBGL_URL = "/future-frictions-webgl/index.html"

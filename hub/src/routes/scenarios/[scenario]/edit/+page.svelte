@@ -1,6 +1,6 @@
 <script lang="ts">
     import type { PageData } from './$types';
-    import { FF_WEBGL } from '$lib/constants';
+    import { FF_WEBGL_URL } from '$lib/constants';
 
     export let data: PageData;
     
@@ -16,7 +16,7 @@
 
     const background_url = `/api/scenarios/${scenario}/${background}`;
     const avatar_url = `/api/scenarios/${scenario}/${avatar}`;
-    const url = `${FF_WEBGL}?scenario=${scenario}`
+    const url = `${FF_WEBGL_URL}?scenario=${scenario}`
 
     let raw = JSON.stringify(data.json, null, 4);
 
@@ -28,9 +28,9 @@
 <div class="container pt-5">
     <ul class="menu px-3 border bg-base-100 menu-horizontal rounded-box">
         <!-- <li class="menu-title">{title}</li> -->
-        <li class=""><a href="/scenarios/{scenario}" target="ff_webgl">View</a></li>
+        <li class=""><a href="/scenarios/{scenario}" target="FF_WEBGL_URL">View</a></li>
         <li class="inline-block font-bold border-b-2 text-base-content border-primary"><a href="/scenarios/{scenario}/edit">Edit</a></li>        
-        <li class=""><a href="{url}" target="ff_webgl">Play</a></li>
+        <li class=""><a href="{url}" target="FF_WEBGL_URL">Play</a></li>
     </ul>
 </div>
 
@@ -44,7 +44,7 @@
             <h2 class="card-title">{title}</h2> 
             <p>{welcome}</p> 
             <div class="card-actions">
-                <a href="{url}" class="btn btn-primary" target="ff_webgl">Play</a>
+                <a href="{url}" class="btn btn-primary" target="FF_WEBGL_URL">Play</a>
             </div>
           </div>
         </div>
