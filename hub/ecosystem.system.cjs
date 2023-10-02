@@ -4,7 +4,7 @@ module.exports = {
           name: "futurefrictions",
           script: "build/index.js",
           watch: true,
-          env: {
+          env_production: {
             PORT: 3001,
             ORIGIN: "https://futurefrictions.appliedcreative.nl",
             DATAROOT: "../data"
