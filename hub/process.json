@@ -6,7 +6,7 @@
 			"watch": false,
 			"env": {
 				"PORT": 3001,
-				"ORIGIN": "https://futurefrictions.appliedcreative.nl",
+				"ORIGIN": "https://futurefrictions.creativecodingutrecht.nl",
 				"DATAROOT": "../data"
 			}
 		}
