@@ -1,6 +1,8 @@
 import fs from 'fs';
 import { error } from '@sveltejs/kit';
-import { DATAROOT } from '$lib/constants';
+import { env } from '$env/dynamic/private'
+
+export const DATAROOT = env.DATAROOT || '../data';
 
 const list = () => {
 	const scenarios = fs
@@ -86,11 +88,32 @@ const addImage = (scenario: String, filename: any, data: Buffer) => {
 	}
 };
 
+const getImage = (scenario: String, image: any) => {
+	const filename = `${DATAROOT}/${scenario}/${image}`;
+    const extension = filename.split('.').pop();
+    const mime = `image/${extension}`;
+
+    if (!fs.existsSync(filename)) {
+        console.log("File does not exist")
+        throw error(404, {
+            message: 'Requested image does not exist',
+        });
+    }
+
+    const data = fs.readFileSync(filename);
+
+	return {
+		data,
+		mime
+	}
+}
+
 export default {
 	list,
 	json,
 	save,
 	images,
 	// usedImages,
-    addImage
+    addImage,
+	getImage
 };
