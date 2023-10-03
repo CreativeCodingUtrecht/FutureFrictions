@@ -8,7 +8,7 @@
 				"PORT": 3001,
 				"ORIGIN": "https://futurefrictions.creativecodingutrecht.nl",
 				"DATAROOT": "../data",
-				"BODY_SIZE_LIMIT": 10240
+				"BODY_SIZE_LIMIT": 0
 			}
 		}
 	]
