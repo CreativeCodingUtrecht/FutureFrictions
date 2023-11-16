@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -24,6 +25,8 @@ public class Actor : MonoBehaviour
     private ActorData _actorData;
     private ActorState currentState = ActorState.None;
 
+    private string _currentStateText;
+    
     private Sprite avatar;
     
     public void Initialize(Sprite actorSprite, ActorData actorData)
@@ -33,11 +36,36 @@ public class Actor : MonoBehaviour
         
         image.sprite = actorSprite;
 
+        _currentStateText = actorData.content.before;
+        
         currentState = ActorState.Clickable;
         marker.SetActive(true); // TODO: Animate the marker
         gameObject.SetActive(true);
     }
 
+    public void SetActorToOption(Options option)
+    {
+        switch (option)
+        {
+            case Options.A:
+                _currentStateText = _actorData.content.after.a;
+                break;
+            case Options.B:
+                _currentStateText = _actorData.content.after.b;
+                break;
+            case Options.C:
+                _currentStateText = _actorData.content.after.c;
+                break;
+            case Options.None:
+            default:
+                throw new ArgumentOutOfRangeException(nameof(option), option, null);
+        }
+
+        currentState = ActorState.Clickable;
+        marker.SetActive(true); // TODO: Animate the marker
+        gameObject.SetActive(true);
+    }
+    
     public void Interact()
     {
         if (currentState != ActorState.Clickable) return;
@@ -54,7 +82,7 @@ public class Actor : MonoBehaviour
             downloadHandler.GetImage(_actorData.avatar, avatarSprite =>
             {
                 avatar = avatarSprite;
-                dialogScreen.InitializeScreen(avatarSprite, _actorData.content.before, () =>
+                dialogScreen.InitializeScreen(avatarSprite, _currentStateText, () =>
                 {
                     scenarioManager.CheckInteractionsDone();
                 }); 
@@ -62,7 +90,7 @@ public class Actor : MonoBehaviour
         }
         else
         {
-            dialogScreen.InitializeScreen(avatar, _actorData.content.before, () =>
+            dialogScreen.InitializeScreen(avatar, _currentStateText, () =>
             {
                 scenarioManager.CheckInteractionsDone();
             });

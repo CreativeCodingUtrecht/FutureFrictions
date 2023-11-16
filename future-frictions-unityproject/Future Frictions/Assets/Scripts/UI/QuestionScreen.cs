@@ -1,11 +1,15 @@
 using TMPro;
+using UI;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class QuestionScreen : BaseScreen
 {
+    [Header("References")]
     [SerializeField] private DownloadHandler downloadHandler;
+    [SerializeField] private ResultScreen resultScreen;
     
+    [Header("UI Items")]
     [SerializeField] private Image questionAvatar;
     [SerializeField] private TMP_Text questionText;
 
@@ -23,8 +27,12 @@ public class QuestionScreen : BaseScreen
 
     [SerializeField] private Button answerButton;
 
+    private Options _currentOption;
+    
     public void Initialize(FrictionData frictionData)
     {
+        _currentOption = Options.None;
+        
         questionText.text = frictionData.content.before;
         
         downloadHandler.GetImage(frictionData.avatar, avatarSprite =>
@@ -52,7 +60,7 @@ public class QuestionScreen : BaseScreen
         });
 
         answerButton.interactable = false;
-        
+
         optionAToggle.onValueChanged.AddListener(state => {
             if (state)
             {
@@ -74,6 +82,8 @@ public class QuestionScreen : BaseScreen
             } 
         });
         
+        answerButton.onClick.AddListener(AnswerQuestion);
+        
         Open();
     }
 
@@ -81,13 +91,22 @@ public class QuestionScreen : BaseScreen
     {
         // Enable answer button
         answerButton.interactable = true;
+
+        _currentOption = option;
         
         Debug.Log($"Answer: {option}");
+    }
+    
+    private void AnswerQuestion()
+    {
+        resultScreen.InitializeResults(_currentOption);
+        Close();
     }
 }
 
 public enum Options
 {
+    None,
     A,
     B,
     C

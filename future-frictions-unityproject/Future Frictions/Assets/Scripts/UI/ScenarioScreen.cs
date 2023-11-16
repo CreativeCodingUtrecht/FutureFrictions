@@ -22,4 +22,12 @@ public class ScenarioScreen : BaseScreen
         
         Open();
     }
+
+    public void SetActorsToScenarioAnswer(Options option)
+    {
+        foreach (var actor in actors)
+        {
+            actor.SetActorToOption(option);
+        }
+    }
 }

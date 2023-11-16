@@ -60,6 +60,7 @@ public class DownloadHandler : MonoBehaviour
                 break;
             case UnityWebRequest.Result.ProtocolError:
                 Debug.LogError("HTTP Error: " + webRequest.error);
+                downloadComplete?.Invoke(null);
                 break;
             case UnityWebRequest.Result.Success:
                 var texture = DownloadHandlerTexture.GetContent(webRequest);
