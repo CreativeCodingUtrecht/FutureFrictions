@@ -80,6 +80,42 @@ const save = (scenario: String, json: any) => {
 	fs.writeFileSync(filename, JSON.stringify(json, null, 4));
 };
 
+const duplicate = (scenario: String, newScenario: String, name: String) => {
+	if (scenario === newScenario) return;
+
+	const dir = `${DATAROOT}/${scenario}`;
+	const newDir = `${DATAROOT}/${newScenario}`;
+
+	// Create directory
+	if (!fs.existsSync(newDir)){
+		fs.mkdirSync(newDir);
+	}
+
+	// Copy contents
+	fs.cpSync(dir, newDir, { recursive: true });
+
+	// Update JSON
+	const data = json(newScenario)
+	data.friction.description = name;
+	save(newScenario,data);
+}
+
+const remove = (scenario: String) => {
+	const dir = `${DATAROOT}/${scenario}`;
+
+	// Check directory
+	if (!fs.existsSync(dir)){
+		console.log('File does not exist');
+		throw error(404, {
+			message: 'Requested scenario does not exist'
+		});
+
+	}
+
+	// Copy contents
+	fs.rmSync(dir, { recursive: true, force: true });
+}
+
 const addImage = (scenario: String, filename: any, data: Buffer) => {
 	try {
 		fs.writeFileSync(filename, data);
@@ -108,6 +144,19 @@ const getImage = (scenario: String, image: any) => {
 	}
 }
 
+const removeImage = (scenario: String, image: any) => {
+	const filename = `${DATAROOT}/${scenario}/${image}`;
+
+    if (!fs.existsSync(filename)) {
+        console.log("File does not exist")
+        throw error(404, {
+            message: 'Requested image does not exist',
+        });
+    }
+
+	fs.rmSync(filename);
+}
+
 export default {
 	list,
 	json,
@@ -115,5 +164,8 @@ export default {
 	images,
 	// usedImages,
     addImage,
-	getImage
+	getImage,
+	removeImage,
+	duplicate,
+	remove
 };

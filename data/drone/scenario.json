@@ -1,7 +1,7 @@
 {
     "scene": {
         "content": {
-            "welcome": "The mayor of this fictional neighbourhood wants to implement new smart city ideas. Experience how these ideas might impact the neighbourhood by exploring your surroundings and listening to your neighbours. At the end of your exploration, write a postcard to a loved one to share your experiences. Click on the pink cubes to move around. If you find a person with a question mark on top of their heads... feel free to interact with them."
+            "welcome": "The mayor of this fictional neighbourhood wants to implement new smart city ideas. Experience how these ideas might impact the neighbourhood by exploring your surroundings and listening to your neighbours. If you find a person with a question mark on top of their heads... feel free to interact with them."
         },
         "background": "screen_1920x1080_2021-11-22_16-30-57.png",
         "avatar": "duif.png"

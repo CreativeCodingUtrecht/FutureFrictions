@@ -1,7 +1,7 @@
 <script lang="ts">
     import type { PageData } from './$types';
     import { FF_WEBGL_URL } from '$lib/constants';
-
+    
     export let data: PageData;
     
     const scenario = data.scenario;
@@ -15,6 +15,19 @@
     const background_url = `/api/scenarios/${scenario}/${background}`;
     const avatar_url = `/api/scenarios/${scenario}/${avatar}`;
     const url = `${FF_WEBGL_URL}?scenario=${scenario}`
+
+    const confirmRemove = (e) => {
+		if(!confirm("Are you sure you want to delete this scenario? 🤔")) {
+            e.preventDefault();
+        }
+    }
+
+    const confirmDuplicate = (e) => {
+		if(!confirm("Are you sure you want to duplicate this scenario? 🤔")) {
+            e.preventDefault();
+        }
+    }
+
 </script>
 
 <h1>{title}</h1>
@@ -23,8 +36,8 @@
     <ul class="menu px-3 border bg-base-100 menu-horizontal rounded-box">
         <!-- <li class="menu-title">{title}</li> -->
         <li class="inline-block font-bold border-b-2 text-base-content border-primary"><a href="/scenarios/{scenario}" target="FF_WEBGL_URL">View</a></li>
-        <li class=""><a href="/scenarios/{scenario}/edit">Edit</a></li>                
-        <li class=""><a href="{url}" target="FF_WEBGL_URL">Play</a></li>
+        <li class=""><a href="{url}" target="FF_WEBGL_URL">Play</a></li>        
+        <li class=""><a href="/scenarios/{scenario}/edit">Edit</a></li>
     </ul>
 </div>
 
@@ -46,4 +59,38 @@
       </div>
 </div>
 
+<br />
+<div class="container pt-5">    
+  <h2>Duplicate scenario</h2>    
+  <form method="POST" action="?/duplicate"> 
+    <label>
+        Slug
+        <input
+          class="input input-bordered px-0"
+          type="text"
+          value={`${scenario}-copy`}
+          required
+          name="slug"/>        
+        </label>          
+        <label>
+          Display name
+          <input
+            class="input input-bordered px-0"
+            type="text"
+            required
+            value={`${title} (Copy)`}
+            name="name"/>        
+          </label>          
+  
+        <button  on:click={confirmDuplicate} type="submit" class="btn btn-primary">Create</button>
+  </form>
+</div>
+
+<br />
+<div class="container pt-5">    
+  <h2>Delete scenario</h2>    
+  <form method="POST" action="?/remove"> 
+        <button on:click={confirmRemove} type="submit" class="btn btn-outline btn-error">Remove</button>
+  </form>
+</div>
 

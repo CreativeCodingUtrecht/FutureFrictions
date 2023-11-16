@@ -21,6 +21,12 @@
     let raw = JSON.stringify(data.json, null, 4);
 
     const image_url = `/api/scenarios/${scenario}/`;
+
+    const confirmRemove = (e) => {
+		if(!confirm("Are you sure you want to remove this image? 🤔")) {
+            e.preventDefault();
+        }
+    }
 </script>
 
 <h1>{title}</h1>
@@ -79,12 +85,11 @@
               <img src="{image_url}{image}" style="max-width:100px">
             </figure> 
             <div class="card-body">
-              <p class="card-title text-xs">{image}</p> 
-              <!-- <p>Rerum reiciendis beatae tenetur excepturi aut pariatur est eos. Sit sit necessitatibus veritatis sed molestiae voluptates incidunt iure sapiente.</p> 
-              <div class="card-actions">
-                <button class="btn btn-primary">Get Started</button> 
-                <button class="btn btn-ghost">More info</button>
-              </div> -->
+              <p class="card-title text-xs">{image}</p>
+              <form method="POST" action="?/removeImage"> 
+                <input type="hidden" name="image" value={image} />
+                <button on:click={confirmRemove} type="submit" class="btn btn-outline btn-xs btn-error"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg></button>
+                </form>            
             </div>
           </div> 
           {/if}
