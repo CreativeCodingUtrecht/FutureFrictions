@@ -73,7 +73,7 @@
           name="slug"/>        
         </label>          
         <label>
-          Display name
+          Title
           <input
             class="input input-bordered px-0"
             type="text"

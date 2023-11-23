@@ -3,6 +3,13 @@
     import { goto } from '$app/navigation';
     
     export let data: PageData;
+
+    const confirmCreate = (e) => {
+		if(!confirm("Are you sure you want to create a new scenario? 🤔")) {
+            e.preventDefault();
+        }
+    }
+
 </script>
 
 <div class="prose">
@@ -20,5 +27,30 @@
         </div>
     </div>
     {/each}
-    </div>
+    </div>    
+</div>
+
+<br />
+<div class="container pt-5">    
+  <h2>Create new scenario</h2>    
+  <form method="POST" action="?/create"> 
+    <label>
+        Slug
+        <input
+          class="input input-bordered px-0"
+          type="text"
+          required
+          name="slug"/>        
+        </label>          
+        <label>
+          Name
+          <input
+            class="input input-bordered px-0"
+            type="text"
+            required
+            name="name"/>        
+          </label>          
+  
+        <button on:click={confirmCreate} type="submit" class="btn btn-primary">Create</button>
+  </form>
 </div>

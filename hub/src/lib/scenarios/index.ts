@@ -3,10 +3,13 @@ import { error } from '@sveltejs/kit';
 import { env } from '$env/dynamic/private'
 
 export const DATAROOT = env.DATAROOT || '../data';
+export const SCENARIOROOT = `${DATAROOT}/scenarios`;
+export const TEMPLATEROOT = `${DATAROOT}/templates`;
+
 
 const list = () => {
 	const scenarios = fs
-		.readdirSync(DATAROOT, { withFileTypes: true })
+		.readdirSync(SCENARIOROOT, { withFileTypes: true })
 		.filter((dirent) => dirent.isDirectory())
 		.map((dirent) => dirent.name);
 
@@ -14,7 +17,7 @@ const list = () => {
 };
 
 const json = (scenario: String) => {
-	const filename = `${DATAROOT}/${scenario}/scenario.json`;
+	const filename = `${SCENARIOROOT}/${scenario}/scenario.json`;
 
 	if (!fs.existsSync(filename)) {
 		console.log('File does not exist');
@@ -30,7 +33,7 @@ const json = (scenario: String) => {
 
 const images = (scenario: String) => {
 	const images = fs
-		.readdirSync(`${DATAROOT}/${scenario}/`, { withFileTypes: true })
+		.readdirSync(`${SCENARIOROOT}/${scenario}/`, { withFileTypes: true })
 		.filter(
 			(dirent) =>
 				dirent.isFile() &&
@@ -68,7 +71,7 @@ const images = (scenario: String) => {
 // };
 
 const save = (scenario: String, json: any) => {
-	const filename = `${DATAROOT}/${scenario}/scenario.json`;
+	const filename = `${SCENARIOROOT}/${scenario}/scenario.json`;
 
 	if (!fs.existsSync(filename)) {
 		console.log('File does not exist');
@@ -83,8 +86,26 @@ const save = (scenario: String, json: any) => {
 const duplicate = (scenario: String, newScenario: String, name: String) => {
 	if (scenario === newScenario) return;
 
-	const dir = `${DATAROOT}/${scenario}`;
-	const newDir = `${DATAROOT}/${newScenario}`;
+	const dir = `${SCENARIOROOT}/${scenario}`;
+	const newDir = `${SCENARIOROOT}/${newScenario}`;
+
+	// Create directory
+	if (!fs.existsSync(newDir)){
+		fs.mkdirSync(newDir);
+	}
+
+	// Copy contents
+	fs.cpSync(dir, newDir, { recursive: true });
+
+	// Update JSON
+	const data = json(newScenario)
+	data.friction.description = name;
+	save(newScenario,data);
+}
+
+const create = (newScenario: String, name: String) => {
+	const dir = `${TEMPLATEROOT}/new`;
+	const newDir = `${SCENARIOROOT}/${newScenario}`;
 
 	// Create directory
 	if (!fs.existsSync(newDir)){
@@ -101,7 +122,7 @@ const duplicate = (scenario: String, newScenario: String, name: String) => {
 }
 
 const remove = (scenario: String) => {
-	const dir = `${DATAROOT}/${scenario}`;
+	const dir = `${SCENARIOROOT}/${scenario}`;
 
 	// Check directory
 	if (!fs.existsSync(dir)){
@@ -125,7 +146,7 @@ const addImage = (scenario: String, filename: any, data: Buffer) => {
 };
 
 const getImage = (scenario: String, image: any) => {
-	const filename = `${DATAROOT}/${scenario}/${image}`;
+	const filename = `${SCENARIOROOT}/${scenario}/${image}`;
     const extension = filename.split('.').pop();
     const mime = `image/${extension}`;
 
@@ -145,7 +166,7 @@ const getImage = (scenario: String, image: any) => {
 }
 
 const removeImage = (scenario: String, image: any) => {
-	const filename = `${DATAROOT}/${scenario}/${image}`;
+	const filename = `${SCENARIOROOT}/${scenario}/${image}`;
 
     if (!fs.existsSync(filename)) {
         console.log("File does not exist")
@@ -167,5 +188,6 @@ export default {
 	getImage,
 	removeImage,
 	duplicate,
-	remove
+	remove,
+	create
 };
