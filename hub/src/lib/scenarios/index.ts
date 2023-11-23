@@ -6,12 +6,17 @@ export const DATAROOT = env.DATAROOT || '../data';
 export const SCENARIOROOT = `${DATAROOT}/scenarios`;
 export const TEMPLATEROOT = `${DATAROOT}/templates`;
 
-
 const list = () => {
-	const scenarios = fs
+	const slugs = fs
 		.readdirSync(SCENARIOROOT, { withFileTypes: true })
 		.filter((dirent) => dirent.isDirectory())
 		.map((dirent) => dirent.name);
+		
+	let scenarios = {}
+	for (let slug of slugs) {
+		const data = json(slug);
+		scenarios[slug] = data;
+	}
 
 	return scenarios;
 };

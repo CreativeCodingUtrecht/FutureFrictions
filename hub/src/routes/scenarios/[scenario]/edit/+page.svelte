@@ -36,10 +36,11 @@
     <ul class="menu px-3 border bg-base-100 menu-horizontal rounded-box">
         <!-- <li class="menu-title">{title}</li> -->
         <li class=""><a href="/scenarios/{scenario}" target="FF_WEBGL_URL">View</a></li>
-        <li class="inline-block font-bold border-b-2 text-base-content border-primary"><a href="/scenarios/{scenario}/edit">Edit</a></li>        
-        <li class=""><a href="{url}" target="FF_WEBGL_URL">Play</a></li>
+        <li class=""><a href="{url}" target="FF_WEBGL_URL">Play</a></li>        
+        <li class="inline-block font-bold border-b-2 text-base-content border-primary"><a href="/scenarios/{scenario}/edit">Edit</a></li>
     </ul>
 </div>
+
 
 <div class="container pt-5">
     <div class="flex items-center w-full px-4 py-10 bg-cover card bg-base-200" style="background-image: url(&quot;{background_url}&quot;);">

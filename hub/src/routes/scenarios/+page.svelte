@@ -16,11 +16,11 @@
     <h1>Scenarios</h1>
 
     <div class="grid grid-cols-4 gap-4">
-    {#each data.scenarios as scenario}
-    <div class="card bg-base-200 shadow-xl">
+    {#each Object.keys(data.scenarios) as scenario}
+    <div class="card bg-base-200 shadow-xl image-full">      
+        <figure><img src="{data.scenarios[scenario].scene.background ? `/api/scenarios/${scenario}/${data.scenarios[scenario].scene.background}` : `/placeholders/background.jpg`}" /></figure>      
         <div class="card-body">
-            <h2 class="card-title">{scenario}</h2>
-            <!-- <p>If a dog chews shoes whose shoes does he choose?</p> -->
+            <h2 class="card-title">{data.scenarios[scenario].friction.description}</h2>
             <div class="card-actions justify-end">
                 <a href="/scenarios/{scenario}" class="btn btn-primary">Open</a>
             </div>

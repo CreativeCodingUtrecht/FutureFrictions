@@ -1,6 +1,7 @@
 import type { Handle } from "@sveltejs/kit";
-// import { ADMIN_LOGIN } from "$env/static/private";
-const ADMIN_LOGIN="admin:sekret"
+import { env } from '$env/dynamic/private'
+
+const ADMIN_LOGIN=env.ADMIN_LOGIN || "future:frictions"
 
 export const handle: Handle = async ({ event, resolve }) => {
     const url = new URL(event.request.url);
