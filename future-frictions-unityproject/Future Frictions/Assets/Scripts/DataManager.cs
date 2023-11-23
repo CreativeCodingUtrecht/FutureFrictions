@@ -135,6 +135,7 @@ public class FrictionOptionData
 {
     public string avatar;
     public string content;
+    public string alternativeBackground;
     public FrictionOptionSpriteData sprites;
 }
 

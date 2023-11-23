@@ -10,7 +10,15 @@ public class DownloadHandler : MonoBehaviour
     private string endpoint = "http://localhost:3000";
 
     private string _scenarioName;
-    
+
+    private void Awake()
+    {
+#if UNITY_WEBGL && !UNITY_EDITOR
+        // var url = Application.absoluteURL.Split('?')[0];
+        endpoint = "/api/scenarios";
+#endif
+    }
+
     public void GetJsonData(string scenarioName, UnityAction<string, bool> downloadComplete)
     {
         var uri = Path.Combine(endpoint, $"{scenarioName}");

@@ -27,12 +27,15 @@ namespace UI
             {
                 case Options.A:
                     scenarioResult.ShowResults(scenarioManager.ScenarioData.friction.options.a);
+                    scenarioManager.UpdateBackground(scenarioManager.ScenarioData.friction.options.a.alternativeBackground);
                     break;
                 case Options.B:
                     scenarioResult.ShowResults(scenarioManager.ScenarioData.friction.options.b);
+                    scenarioManager.UpdateBackground(scenarioManager.ScenarioData.friction.options.b.alternativeBackground);
                     break;
                 case Options.C:
                     scenarioResult.ShowResults(scenarioManager.ScenarioData.friction.options.c);
+                    scenarioManager.UpdateBackground(scenarioManager.ScenarioData.friction.options.b.alternativeBackground);
                     break;
                 case Options.None:
                 default:
@@ -41,7 +44,7 @@ namespace UI
             
             Open();
         }
-        
+
         private void SetElementsState(bool state)
         {
             floatingElements.gameObject.SetActive(state);
@@ -59,6 +62,7 @@ namespace UI
         {
             base.Close();
             SetElementsState(false);
+            scenarioScreen.gameObject.SetActive(false);
         }
     }
 }

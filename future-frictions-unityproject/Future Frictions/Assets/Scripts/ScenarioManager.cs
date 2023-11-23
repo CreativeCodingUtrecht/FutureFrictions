@@ -10,6 +10,8 @@ public class ScenarioManager : MonoBehaviour
 
     [SerializeField]
     private DownloadHandler downloadHandler;
+
+    [SerializeField] private ResultScreen resultScreen;
     
     [Header("References")]
     [SerializeField]
@@ -36,16 +38,23 @@ public class ScenarioManager : MonoBehaviour
         
         _scenarioData = scenarioDataData;
 
-        downloadHandler.GetImage(scenarioDataData.scene.background, (sprite, hasError) =>
-        {
-            backgroundImage.sprite = sprite;
-        });
+        UpdateBackground(scenarioDataData.scene.background);
         
         downloadHandler.GetImage(scenarioDataData.scene.avatar, (sprite, hasError) =>
         {
             introScreen.OnClose += OnIntroClosed;
             introScreen.InitializeScreen(sprite, scenarioDataData.scene.content.welcome);
             _currentState = ApplicationState.Intro;
+        });
+    }
+
+    public void UpdateBackground(string url)
+    {
+        if (url == null || string.IsNullOrEmpty(url)) return;
+        
+        downloadHandler.GetImage(url, (sprite, hasError) =>
+        {
+            backgroundImage.sprite = sprite;
         });
     }
 
@@ -100,6 +109,7 @@ public class ScenarioManager : MonoBehaviour
         _interactedActors.Clear();
         
         friction.ResetFriction();
+        scenarioScreen.Close();
     }
 }
 
