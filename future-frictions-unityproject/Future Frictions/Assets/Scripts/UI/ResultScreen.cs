@@ -11,12 +11,17 @@ namespace UI
         [SerializeField] private ScenarioScreen scenarioScreen;
         [SerializeField] private ScenarioResult scenarioResult;
         [SerializeField] private Button nextButton;
+
+        [SerializeField] private GameObject floatingElements;
+        [SerializeField] private GameObject backgroundElements;
+        [SerializeField] private GameObject foregroundElements;
         
         public void InitializeResults(Options option)
         {
             nextButton.onClick.AddListener(Close);
             
             scenarioScreen.SetActorsToScenarioAnswer(option);
+            SetElementsState(true);
 
             switch (option)
             {
@@ -33,11 +38,27 @@ namespace UI
                 default:
                     throw new ArgumentOutOfRangeException(nameof(option), option, null);
             }
-
-            
-            scenarioManager.SetScenarioInFront();
             
             Open();
+        }
+        
+        private void SetElementsState(bool state)
+        {
+            floatingElements.gameObject.SetActive(state);
+            backgroundElements.gameObject.SetActive(state);
+            foregroundElements.gameObject.SetActive(state);
+        }
+
+        public override void ResetScreen()
+        {
+            SetElementsState(false);
+            scenarioResult.ResetResults();
+        }
+
+        public override void Close()
+        {
+            base.Close();
+            SetElementsState(false);
         }
     }
 }

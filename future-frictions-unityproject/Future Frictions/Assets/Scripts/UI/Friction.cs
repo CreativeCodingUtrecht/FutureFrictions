@@ -1,18 +1,26 @@
 using UnityEngine;
 
-public class Friction : MonoBehaviour
+namespace UI
 {
-    [SerializeField] 
-    private QuestionScreen questionScreen;
-    
-    private FrictionData _frictionData;
-    
-    public void Initialize(FrictionData frictionData)
+    public class Friction : MonoBehaviour
     {
-        _frictionData = frictionData;
+        [SerializeField] 
+        private QuestionScreen questionScreen;
+    
+        private FrictionData _frictionData;
+    
+        public void Initialize(FrictionData frictionData)
+        {
+            _frictionData = frictionData;
         
-        questionScreen.Initialize(frictionData);
+            questionScreen.Initialize(frictionData);
         
-        gameObject.SetActive(true);
+            gameObject.SetActive(true);
+        }
+
+        public void ResetFriction()
+        {
+            gameObject.SetActive(false);
+        }
     }
 }

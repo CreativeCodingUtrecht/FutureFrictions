@@ -2,14 +2,15 @@ using UnityEngine;
 
 public class ApplicationManager : MonoBehaviour
 {
-    [SerializeField]
-    private DataManager dataManager;
+    [SerializeField] private DataManager dataManager;
+    [SerializeField] private ScenarioManager scenarioManager;
 
-    [SerializeField]
-    private ScenarioManager scenarioManager;
-    
+    [SerializeField] private BaseScreen[] allScreens;
+
     private void Awake()
     {
+        allScreens = FindObjectsByType<BaseScreen>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        
         dataManager.OnLoadComplete += LoadCompleted;
         dataManager.DownloadScenario();
     }
@@ -23,5 +24,19 @@ public class ApplicationManager : MonoBehaviour
     private void OnDestroy()
     {
         dataManager.OnLoadComplete -= LoadCompleted;
+    }
+
+    public void Restart()
+    {
+        CloseAllScreens();
+        scenarioManager.StartPopulating(DataManager.ScenarioData);
+    }
+
+    public void CloseAllScreens()
+    {
+        foreach (var screen in allScreens)
+        {
+            screen.Close();
+        }
     }
 }

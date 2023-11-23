@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BaseScreen : MonoBehaviour
@@ -12,5 +10,11 @@ public class BaseScreen : MonoBehaviour
     public virtual void Close()
     {
         gameObject.SetActive(false);
+        ResetScreen();
+    }
+
+    public virtual void ResetScreen()
+    {
+        
     }
 }

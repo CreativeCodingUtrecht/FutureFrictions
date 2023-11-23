@@ -11,20 +11,20 @@ public class DownloadHandler : MonoBehaviour
 
     private string _scenarioName;
     
-    public void GetJsonData(string scenarioName, UnityAction<string> downloadComplete)
+    public void GetJsonData(string scenarioName, UnityAction<string, bool> downloadComplete)
     {
         var uri = Path.Combine(endpoint, $"{scenarioName}");
         _scenarioName = scenarioName;
         StartCoroutine(GetTextRequest(uri, downloadComplete));
     }
 
-    public void GetImage(string imageName, UnityAction<Sprite> onComplete)
+    public void GetImage(string imageName, UnityAction<Sprite, bool> onComplete)
     {
         var uri = Path.Combine(endpoint, _scenarioName, imageName);
         StartCoroutine(GetImageRequest(uri, onComplete));
     }
     
-    private IEnumerator GetTextRequest(string uri, UnityAction<string> downloadComplete)
+    private IEnumerator GetTextRequest(string uri, UnityAction<string, bool> downloadComplete)
     {
         using var webRequest = UnityWebRequest.Get(uri);
 
@@ -36,17 +36,19 @@ public class DownloadHandler : MonoBehaviour
             case UnityWebRequest.Result.ConnectionError:
             case UnityWebRequest.Result.DataProcessingError:
                 Debug.LogError("Error: " + webRequest.error);
+                downloadComplete?.Invoke(webRequest.error, true);
                 break;
             case UnityWebRequest.Result.ProtocolError:
                 Debug.LogError("HTTP Error: " + webRequest.error);
+                downloadComplete?.Invoke(webRequest.error, true);
                 break;
             case UnityWebRequest.Result.Success:
-                downloadComplete?.Invoke(webRequest.downloadHandler.text);
+                downloadComplete?.Invoke(webRequest.downloadHandler.text, false);
                 break;
         }
     }
     
-    private IEnumerator GetImageRequest(string uri, UnityAction<Sprite> downloadComplete)
+    private IEnumerator GetImageRequest(string uri, UnityAction<Sprite, bool> downloadComplete)
     {
         using var webRequest = UnityWebRequestTexture.GetTexture(uri);
         
@@ -57,16 +59,17 @@ public class DownloadHandler : MonoBehaviour
             case UnityWebRequest.Result.ConnectionError:
             case UnityWebRequest.Result.DataProcessingError:
                 Debug.LogError("Error: " + webRequest.error);
+                downloadComplete?.Invoke(null, true);
                 break;
             case UnityWebRequest.Result.ProtocolError:
                 Debug.LogError("HTTP Error: " + webRequest.error);
-                downloadComplete?.Invoke(null);
+                downloadComplete?.Invoke(null, true);
                 break;
             case UnityWebRequest.Result.Success:
                 var texture = DownloadHandlerTexture.GetContent(webRequest);
                 var sprite = Sprite.Create(texture, new Rect(Vector2.zero, new Vector2(texture.width, texture.height)),
                     Vector2.one * 0.5f);
-                downloadComplete?.Invoke(sprite);
+                downloadComplete?.Invoke(sprite, false);
                 break;
         }
     }

@@ -2,10 +2,11 @@ using System;
 using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Serialization;
 
 public class DataManager : MonoBehaviour
 {
+    public static ScenarioData ScenarioData => _scenarioDataDataObject;
+
     public UnityAction<ScenarioData> OnLoadComplete;
 
     [SerializeField]
@@ -14,7 +15,7 @@ public class DataManager : MonoBehaviour
     [SerializeField]
     private DownloadHandler downloadHandler;
     
-    private ScenarioData _scenarioDataDataObject;
+    private static ScenarioData _scenarioDataDataObject;
     
     public void DownloadScenario()
     {
@@ -30,7 +31,7 @@ public class DataManager : MonoBehaviour
         downloadHandler.GetJsonData(defaultScenarioName, DownloadComplete);
     }
 
-    private void DownloadComplete(string jsonString)
+    private void DownloadComplete(string jsonString, bool hasError)
     {
         _scenarioDataDataObject = JsonConvert.DeserializeObject<ScenarioData>(jsonString);
         OnLoadComplete?.Invoke(_scenarioDataDataObject);

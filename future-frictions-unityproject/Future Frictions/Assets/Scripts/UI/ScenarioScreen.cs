@@ -1,33 +1,36 @@
 using UnityEngine;
 
-public class ScenarioScreen : BaseScreen
+namespace UI
 {
-    [SerializeField] 
-    private DownloadHandler downloadHandler;
+    public class ScenarioScreen : BaseScreen
+    {
+        [SerializeField] 
+        private DownloadHandler downloadHandler;
     
-    [SerializeField]
-    private Actor[] actors;
+        [SerializeField]
+        private Actor[] actors;
 
-    public void InitializeActors(ActorData[] actorsData)
-    {
-        for (var i = 0; i < actorsData.Length; i++)
+        public void InitializeActors(ActorData[] actorsData)
         {
-            var currentIndex = i;
-            
-            downloadHandler.GetImage(actorsData[i].sprite, actorSprite =>
+            for (var i = 0; i < actorsData.Length; i++)
             {
-                actors[currentIndex].Initialize(actorSprite, actorsData[currentIndex]);
-            });
-        }
+                var currentIndex = i;
+            
+                downloadHandler.GetImage(actorsData[i].sprite, (actorSprite, hasError) =>
+                {
+                    actors[currentIndex].Initialize(actorSprite, actorsData[currentIndex]);
+                });
+            }
         
-        Open();
-    }
+            Open();
+        }
 
-    public void SetActorsToScenarioAnswer(Options option)
-    {
-        foreach (var actor in actors)
+        public void SetActorsToScenarioAnswer(Options option)
         {
-            actor.SetActorToOption(option);
+            foreach (var actor in actors)
+            {
+                actor.SetActorToOption(option);
+            }
         }
     }
 }

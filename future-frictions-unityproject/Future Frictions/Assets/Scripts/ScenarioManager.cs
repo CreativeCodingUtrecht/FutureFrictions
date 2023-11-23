@@ -1,5 +1,5 @@
-using System;
 using System.Collections.Generic;
+using UI;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -32,14 +32,16 @@ public class ScenarioManager : MonoBehaviour
 
     public void StartPopulating(ScenarioData scenarioDataData)
     {
-        _scenarioData = scenarioDataData;
+        ResetScenarios();
         
-        downloadHandler.GetImage(scenarioDataData.scene.background, sprite =>
+        _scenarioData = scenarioDataData;
+
+        downloadHandler.GetImage(scenarioDataData.scene.background, (sprite, hasError) =>
         {
             backgroundImage.sprite = sprite;
         });
         
-        downloadHandler.GetImage(scenarioDataData.scene.avatar, sprite =>
+        downloadHandler.GetImage(scenarioDataData.scene.avatar, (sprite, hasError) =>
         {
             introScreen.OnClose += OnIntroClosed;
             introScreen.InitializeScreen(sprite, scenarioDataData.scene.content.welcome);
@@ -70,15 +72,15 @@ public class ScenarioManager : MonoBehaviour
         _currentState = ApplicationState.Question;
     }
 
-    public void SetScenarioInFront()
-    {
-        scenarioScreen.transform.SetAsLastSibling();
-    }
-    
-    public void SetUIInFront()
-    {
-        scenarioScreen.transform.SetAsLastSibling();
-    }
+    // public void SetScenarioInFront()
+    // {
+    //     scenarioScreen.transform.SetAsLastSibling();
+    // }
+    //
+    // public void SetUIInFront()
+    // {
+    //     scenarioScreen.transform.SetSiblingIndex(1);
+    // }
     
     // Set this from the resultscreen
     public void QuestionAnswered()
@@ -90,6 +92,14 @@ public class ScenarioManager : MonoBehaviour
     private void OnDestroy()
     {
         introScreen.OnClose -= OnIntroClosed;
+    }
+
+    public void ResetScenarios()
+    {
+        _currentState = ApplicationState.Intro;
+        _interactedActors.Clear();
+        
+        friction.ResetFriction();
     }
 }
 

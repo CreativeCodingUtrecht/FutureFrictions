@@ -1,4 +1,5 @@
 using System;
+using UI;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -79,7 +80,7 @@ public class Actor : MonoBehaviour
         // Show dialog
         if (avatar == null)
         {
-            downloadHandler.GetImage(_actorData.avatar, avatarSprite =>
+            downloadHandler.GetImage(_actorData.avatar, (avatarSprite, hasError) =>
             {
                 avatar = avatarSprite;
                 dialogScreen.InitializeScreen(avatarSprite, _currentStateText, () =>

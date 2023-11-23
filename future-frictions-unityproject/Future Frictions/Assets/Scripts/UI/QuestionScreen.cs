@@ -8,6 +8,7 @@ public class QuestionScreen : BaseScreen
     [Header("References")]
     [SerializeField] private DownloadHandler downloadHandler;
     [SerializeField] private ResultScreen resultScreen;
+    [SerializeField] private ScenarioManager scenarioManager;
     
     [Header("UI Items")]
     [SerializeField] private Image questionAvatar;
@@ -35,7 +36,7 @@ public class QuestionScreen : BaseScreen
         
         questionText.text = frictionData.content.before;
         
-        downloadHandler.GetImage(frictionData.avatar, avatarSprite =>
+        downloadHandler.GetImage(frictionData.avatar, (avatarSprite, hasError) =>
         {
             questionAvatar.sprite = avatarSprite;
         });
@@ -44,17 +45,17 @@ public class QuestionScreen : BaseScreen
         optionBText.text = frictionData.options.b.content;
         optionCText.text = frictionData.options.c.content;
         
-        downloadHandler.GetImage(frictionData.options.a.avatar, avatarSprite =>
+        downloadHandler.GetImage(frictionData.options.a.avatar, (avatarSprite, hasError) =>
         {
             optionAImage.sprite = avatarSprite;
         });
         
-        downloadHandler.GetImage(frictionData.options.b.avatar, avatarSprite =>
+        downloadHandler.GetImage(frictionData.options.b.avatar, (avatarSprite, hasError) =>
         {
             optionBImage.sprite = avatarSprite;
         });
         
-        downloadHandler.GetImage(frictionData.options.c.avatar, avatarSprite =>
+        downloadHandler.GetImage(frictionData.options.c.avatar, (avatarSprite, hasError) =>
         {
             optionCImage.sprite = avatarSprite;
         });
