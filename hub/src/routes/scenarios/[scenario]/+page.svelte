@@ -12,8 +12,8 @@
     const background = json.scene.background;
     const avatar = json.scene.avatar;
 
-    const background_url = `/api/scenarios/${scenario}/${background}`;
-    const avatar_url = `/api/scenarios/${scenario}/${avatar}`;
+    const background_url = background ? `/api/scenarios/${scenario}/${background}` : `/placeholders/background.jpg`;
+    const avatar_url = avatar ? `/api/scenarios/${scenario}/${avatar}` : `/placeholders/avatar.jpg`;
     const url = `${FF_WEBGL_URL}?scenario=${scenario}`
 
     const confirmRemove = (e) => {
