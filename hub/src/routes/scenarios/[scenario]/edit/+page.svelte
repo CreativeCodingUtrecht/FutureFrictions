@@ -14,13 +14,20 @@
     const background = json.scene.background;
     const avatar = json.scene.avatar;
 
-    const background_url = `/api/scenarios/${scenario}/${background}`;
-    const avatar_url = `/api/scenarios/${scenario}/${avatar}`;
+    const background_url = background ? `/api/scenarios/${scenario}/${background}` : `/placeholders/background.jpg`;
+    const avatar_url = avatar ? `/api/scenarios/${scenario}/${avatar}` : `/placeholders/avatar.jpg`;
+
     const url = `${FF_WEBGL_URL}?scenario=${scenario}`
 
     let raw = JSON.stringify(data.json, null, 4);
 
     const image_url = `/api/scenarios/${scenario}/`;
+
+    const confirmRemove = (e) => {
+		if(!confirm("Are you sure you want to remove this image? 🤔")) {
+            e.preventDefault();
+        }
+    }
 </script>
 
 <h1>{title}</h1>
@@ -29,10 +36,11 @@
     <ul class="menu px-3 border bg-base-100 menu-horizontal rounded-box">
         <!-- <li class="menu-title">{title}</li> -->
         <li class=""><a href="/scenarios/{scenario}" target="FF_WEBGL_URL">View</a></li>
-        <li class="inline-block font-bold border-b-2 text-base-content border-primary"><a href="/scenarios/{scenario}/edit">Edit</a></li>        
-        <li class=""><a href="{url}" target="FF_WEBGL_URL">Play</a></li>
+        <li class=""><a href="{url}" target="FF_WEBGL_URL">Play</a></li>        
+        <li class="inline-block font-bold border-b-2 text-base-content border-primary"><a href="/scenarios/{scenario}/edit">Edit</a></li>
     </ul>
 </div>
+
 
 <div class="container pt-5">
     <div class="flex items-center w-full px-4 py-10 bg-cover card bg-base-200" style="background-image: url(&quot;{background_url}&quot;);">
@@ -79,12 +87,11 @@
               <img src="{image_url}{image}" style="max-width:100px">
             </figure> 
             <div class="card-body">
-              <p class="card-title text-xs">{image}</p> 
-              <!-- <p>Rerum reiciendis beatae tenetur excepturi aut pariatur est eos. Sit sit necessitatibus veritatis sed molestiae voluptates incidunt iure sapiente.</p> 
-              <div class="card-actions">
-                <button class="btn btn-primary">Get Started</button> 
-                <button class="btn btn-ghost">More info</button>
-              </div> -->
+              <p class="card-title text-xs">{image}</p>
+              <form method="POST" action="?/removeImage"> 
+                <input type="hidden" name="image" value={image} />
+                <button on:click={confirmRemove} type="submit" class="btn btn-outline btn-xs btn-error"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg></button>
+                </form>            
             </div>
           </div> 
           {/if}

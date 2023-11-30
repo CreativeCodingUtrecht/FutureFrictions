@@ -47,5 +47,15 @@ export const actions = {
             success: true
           }
     },
+    removeImage: async({params, request}) => {
+        console.log("Removing image")
+        const scenario = params.scenario;
+        const data = await request.formData();
+        const image = data?.get('image');
+
+        const filename = `../data/${scenario}/${image}`;
+
+        scenarios.removeImage(scenario,image);
+    }
 
 } satisfies Actions;
