@@ -30,13 +30,13 @@ public class QuestionScreen : BaseScreen
 
     private Options _currentOption;
     
-    public void Initialize(FrictionData frictionData)
+    public void Initialize(ScenarioSceneData sceneData, FrictionData frictionData)
     {
         _currentOption = Options.None;
         
         questionText.text = frictionData.content.before;
         
-        downloadHandler.GetImage(frictionData.avatar, (avatarSprite, hasError) =>
+        downloadHandler.GetImage(sceneData.avatar, (avatarSprite, hasError) =>
         {
             questionAvatar.sprite = avatarSprite;
         });
