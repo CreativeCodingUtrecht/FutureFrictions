@@ -194,5 +194,6 @@ export default {
 	removeImage,
 	duplicate,
 	remove,
-	create
+	create,
+	SCENARIOROOT
 };

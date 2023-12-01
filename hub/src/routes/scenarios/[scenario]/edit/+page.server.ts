@@ -35,7 +35,7 @@ export const actions = {
 
         const uploadedFile = data?.get('file');
 
-        const filename = `../data/${scenario}/${uploadedFile?.name}`;
+        const filename = `${scenarios.SCENARIOROOT}/${scenario}/${uploadedFile?.name}`;
           
         console.log("filename", filename);
 
