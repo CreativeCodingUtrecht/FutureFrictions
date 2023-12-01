@@ -77,7 +77,7 @@ public class ScenarioManager : MonoBehaviour
         if (_currentState != ApplicationState.BeforeInteractions) return;
         if (_interactedActors.Count < 3) return;
         
-        friction.Initialize(_scenarioData.friction);
+        friction.Initialize(_scenarioData.scene, _scenarioData.friction);
         _currentState = ApplicationState.Question;
     }
 
