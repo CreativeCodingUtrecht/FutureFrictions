@@ -1,0 +1,125 @@
+{
+    "scene": {
+        "content": {
+            "welcome": "The mayor of this fictional neighbourhood wants to implement new smart city ideas. Experience how these ideas might impact the neighbourhood by exploring your surroundings and listening to your neighbours. If you find a person with a question mark on top of their heads... feel free to interact with them."
+        },
+        "background": "screen_1920x1080_2021-11-22_16-30-57.png",
+        "avatar": "duif.png"
+    },
+    "friction": {
+        "description": "Smart city ideas | Pigeons",
+        "avatar": "pigeon 8.png",
+        "content": {
+            "before": "Sensing pigeons have been sent troughout the city to monitor waste flows. The city wants to become a zero-waste municipality within 2 years. The pigeons collect data and transmit information to each other. Besides, they nudge citizens to reduce their household waste. You have the opportunity to decide how pigeons will use data to nudge citizens to reduce waste and plastic consumption."
+        },
+        "options": {
+            "a": {
+                "avatar": "dove.png",
+                "content": "Pigeons give constant real live feedback to people when they engage in waste-related unwanted behaviours.",
+                "alternativeBackground": null,
+                "sprites": {
+                    "foreground": [
+                        "pigeon 9.png",
+                        "extra visitor 2.png",                        
+                        null
+                    ],
+                    "background": [
+                        "extra visitor 3.png",
+                        null,
+                        "extra visitor.png"
+                    ],
+                    "floating": [
+                        "pigeon 4.png",
+                        null,
+                        "dove.png"
+                    ]
+                }
+            },
+            "b": {
+                "avatar": "pigeon 6.png",
+                "content": "Pigeons are connected to personal devices and mobile phone applications to turn waste reduction into an engaging community game. Individual scores are displayed on dashboards in public spaces.",
+                "alternativeBackground": null,
+                "sprites": {
+                    "foreground": [
+                        null,
+                        "pigeon 5.png",
+                        null
+                    ],
+                    "background": [
+                        null,
+                        "b_scoreboard.png",
+                        null
+                    ],
+                    "floating": [
+                        null,
+                        null,
+                        "pigeon 2.png"
+                    ]
+                }
+            },
+            "c": {
+                "avatar": "pigeon 7.png",
+                "content": "When individual waste goes beyond a pre-determined limit, pigeons introduce a sludge (a delay or burden) for people to access public services like public transport or healthcare.",
+                "alternativeBackground": null,
+                "sprites": {
+                    "foreground": [
+                        null,
+                        "pigeon 9.png",
+                        null
+                    ],
+                    "background": [
+                        null,
+                        "billboard.png",
+                        null
+                    ],
+                    "floating": [
+                        "dove.png",
+                        null,
+                        null
+                    ]
+                }
+            }
+        }
+    },
+    "actors": [
+        {
+            "description": "Person 1 (shop owner- young woman)",
+            "sprite": "cafe owner.png",
+            "avatar": "shop_owner_avatar.png",
+            "content": {
+                "before": "Hello there! So much going on, eh? I have just opened a café in this neighborhood. My first enterpreneurial adventure. Would you like to pass by? My carrot pie is probably the best one you have ever tried!",
+                "after": {
+                    "a": "These pigeons have become some kind of touristic attraction! I can't complain: the streets are clean, the city has a wonderful reputation and I get so many additional customers from all over the region!",
+                    "b": "I have decided that customers with an above average waste-reduction score will get better prices at my café. This might be a good incentive for them, plus it helps to keep my business at a certain social standard. Do you think you would score high enough for a free slice of my famous pie?",
+                    "c": "You know, I am all in for sustainability and for having a zero-waste city... But so many customers are bringing their own reusable take-away containers. They say they are afraid that they won't be able to use the public healthcare when they need it. I used to spread the word about my business by branding my cups and even spent a lot of money on these cardboard ones..."
+                }
+            }
+        },
+        {
+            "description": "Person 2 (visitor)",
+            "sprite": "visitor.png",
+            "avatar": "visitor_avatar.png",
+            "content": {
+                "before": "Do you know any interesting places I should visit? I am just passing by, exploring the surroundings. I heard there is an interesting painter working nearby.",
+                "after": {
+                    "a": "This is so amusing! The streets are super clean and all those cute pigeons flying around add to the charm. Sorry, I am about to post about this on social media. Did you see? That guy was being chased by that pigeon! What's going to happen to him, I wonder?...",
+                    "b": "So, I really like these colourful pigeons flying around and the fact that this city is so clean, but I've just realised that I'm not connected their system. That's a bit annoying as I need to pay much more for a cup of coffee that a local resident.",
+                    "c": "If you are looking for a café, go to that one in the corner. They serve coffee in these nice cups that are recyclable. Funny though, the owner of the café seemed so grumpy! People here don't want her cups anymore so she says she's missing out on new business..."
+                }
+            }
+        },
+        {
+            "description": "Person 3 (tech company expert)",
+            "sprite": "TEch developer.png",
+            "avatar": "tech_avatar.png",
+            "content": {
+                "before": "Are you here for the conference? Quite interesting that they have chosen this place this year, don't you think? I live right there, next to the fountain, and I was part of the development of \"Max the cat\", the AI companion. Have you heard about it?",
+                "after": {
+                    "a": "Have you seen the number of pigeons in this street? I was part of the advisory board for this project. The city is now almost waste-free but I have mixed feelings about the constant harassment of citizens. A friend of mine recently mentioned that she doesn't want to leave the house because she feels followed by these pigeons. I don't blame her.",
+                    "b": "So, do you see that scoreboard for best waste-reduction practices? It seems I am not on top of the list and I don't know why. Aparently, this is going to affect this year's appraisal with my manager....",
+                    "c": "I had a terrible toothache last week and desperately tried to make an appointment with my dentist. He checked my waste record though and said he couldn't give me an appointment until next month... What am I going to do?"
+                }
+            }
+        }
+    ]
+}
