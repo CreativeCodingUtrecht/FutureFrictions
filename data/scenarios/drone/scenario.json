@@ -7,7 +7,7 @@
         "avatar": "duif.png"
     },
     "friction": {
-        "description": "Drone Scenario",
+        "description": "Smart city ideas | Drone",
         "avatar": "drone_1.png",
         "content": {
             "before": "A new guardian angel drone has been introduced. What should the drone do with the images it records? Choose one of the 3 options:"
@@ -16,7 +16,7 @@
             "a": {
                 "avatar": "drone_A.png",
                 "content": "The images are directly uploaded to your device so you know exactly what happens to them at all times.",
-                "alternativeBackground": "policemen_31_5_2021_01_04.png",                
+                "alternativeBackground": null,
                 "sprites": {
                     "foreground": [
                         "eyes_option A_2.png",
@@ -38,7 +38,7 @@
             "b": {
                 "avatar": "drone_B.png",
                 "content": "The images are directly uploaded to a database that belongs to the neighbourhood so that everyone is equally informed.",
-                "alternativeBackground": null,                
+                "alternativeBackground": null,
                 "sprites": {
                     "foreground": [
                         "have_you_heard_13_6_2021_23_09.png",
@@ -60,7 +60,7 @@
             "c": {
                 "avatar": "drone_C.png",
                 "content": "The images are directly uploaded to a government database so that public authorities can improve their services.",
-                "alternativeBackground": null,                
+                "alternativeBackground": null,
                 "sprites": {
                     "foreground": [
                         "Politieauto_17_5_2021_12_29 (1).png",
