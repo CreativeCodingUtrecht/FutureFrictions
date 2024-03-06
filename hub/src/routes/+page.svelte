@@ -1,21 +1,8 @@
-<script lang="ts">
-    import type { PageData } from './$types';
-    import { goto } from '$app/navigation';
-    
-    export let data: PageData;
-
-    const browse = () => {
-        goto('/scenarios');
-    }
-</script>
-
-<div class="hero">
-    <div class="hero-content text-center">
-        <div class="">
-            <h1>Welcome to the Future Frictions Hub</h1>
-            <div class="pt-5">
-                <button class="btn btn-primary" on:click={browse}>Browse scenarios</button>
-            </div>
-        </div>
-    </div>
+<div class="container mx-auto p-8 space-y-8">
+	<h1 class="h1">Hello Future</h1>
+	<!-- <section>
+		<a class="btn variant-filled-primary" href="https://kit.svelte.dev/">SvelteKit</a>
+		<a class="btn variant-filled-secondary" href="https://tailwindcss.com/">Tailwind</a>
+		<a class="btn variant-filled-tertiary" href="https://github.com/">GitHub</a>
+	</section> -->
 </div>

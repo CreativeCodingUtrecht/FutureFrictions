@@ -1,21 +1,74 @@
 <script lang="ts">
-    import "$lib/global.css";
+	import '../app.postcss';
+	import { AppShell, AppBar } from '@skeletonlabs/skeleton';
+	import { LightSwitch } from '@skeletonlabs/skeleton';
+	import Navigation from '$lib/components/Navigation.svelte';
+	import CCU from '$lib/components/CCU.svelte';
+
+	// Floating UI for Popups
+	import { computePosition, autoUpdate, flip, shift, offset, arrow } from '@floating-ui/dom';
+	import { storePopup } from '@skeletonlabs/skeleton';
+	storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow });
+
+	// Modals
+	import { Modal } from '@skeletonlabs/skeleton';
+
+	// Drawer for Navigation
+	import { initializeStores, Drawer, getDrawerStore } from '@skeletonlabs/skeleton';
+	initializeStores();
+
+	const drawerStore = getDrawerStore();
+
+	function drawerOpen(): void {
+		drawerStore.open({});
+	}
 </script>
 
-<div class="w-screen mx-auto">
-	<div class="container">
-		<div class="navbar w-screen shadow-lg bg-neutral text-neutral-content">
-			<div class="navbar-start">
-			<a class="btn btn-ghost normal-case text-xl font-bold" href="/">Future Frictions</a>
-			<ul class="menu menu-horizontal px-1">
-				<li><a href="/scenarios">Browse</a></li>
-			</ul>
-			</div>
-		</div>	
-	</div>
+<Modal />
 
-	<div class="container w-screen mx-auto pt-5">
-		<slot />
-	</div>
+<Drawer>
+	<h2 class="p-4 text-xl uppercase futurefrictions">Navigation</h2>
+	<hr />	
+	<Navigation />
+</Drawer>
 
-</div>
+<!-- App Shell -->
+<AppShell slotSidebarLeft="bg-surface-500/5 w-0 lg:w-64">
+	<svelte:fragment slot="header">
+		<!-- App Bar -->
+		<AppBar>
+			<svelte:fragment slot="lead">
+				<div class="flex items-center">
+					<button class="lg:hidden btn btn-sm mr-4" on:click={drawerOpen}>
+						<span>
+							<svg viewBox="0 0 100 80" class="fill-token w-4 h-4">
+								<rect width="100" height="10" />
+								<rect y="30" width="100" height="10" />
+								<rect y="60" width="100" height="10" />
+							</svg>
+						</span>
+					</button>
+					<img src="/images/pigeon-8.webp" width="100" class="px-5" alt="Pigeon" />	
+					<span class="text-xl uppercase futurefrictions">Future Frictions &gt; Hub</span>
+				</div>
+			</svelte:fragment>
+
+			<svelte:fragment slot="trail">
+				<LightSwitch />
+				<CCU />
+			</svelte:fragment>
+		</AppBar>
+	</svelte:fragment>
+
+	<svelte:fragment slot="sidebarLeft">
+		<Navigation />
+	</svelte:fragment>
+
+	<slot />
+</AppShell>
+
+<style>
+	.futurefrictions {
+		font-family: 'Uni';
+	}	
+</style>
