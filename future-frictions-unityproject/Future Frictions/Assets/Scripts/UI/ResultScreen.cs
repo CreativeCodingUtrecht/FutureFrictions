@@ -18,7 +18,8 @@ namespace UI
         
         public void InitializeResults(Options option)
         {
-            nextButton.onClick.AddListener(Close);
+            // nextButton.onClick.AddListener(Close);
+            nextButton.gameObject.SetActive(false);
             
             scenarioScreen.SetActorsToScenarioAnswer(option);
             SetElementsState(true);

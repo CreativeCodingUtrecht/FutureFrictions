@@ -17,7 +17,14 @@ namespace UI
             
             downloadHandler.GetImage(frictionData.avatar, (frictionSprite, hasError) =>
             {
-                frictionImage.sprite = frictionSprite;
+                if (frictionSprite == null || hasError)
+                {
+                    frictionImage.enabled = false;
+                }
+                else
+                {
+                    frictionImage.sprite = frictionSprite;
+                }
 
                 questionScreen.Initialize(sceneData, frictionData);
                 gameObject.SetActive(true);

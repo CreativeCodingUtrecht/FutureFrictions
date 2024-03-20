@@ -34,8 +34,15 @@ public class Actor : MonoBehaviour
     {
         _actorId = actorData.description;
         _actorData = actorData;
-        
-        image.sprite = actorSprite;
+
+        if (actorSprite == null)
+        {
+            image.enabled = false;
+        }
+        else
+        {
+            image.sprite = actorSprite;
+        }
 
         _currentStateText = actorData.content.before;
         
@@ -83,7 +90,7 @@ public class Actor : MonoBehaviour
             downloadHandler.GetImage(_actorData.avatar, (avatarSprite, hasError) =>
             {
                 avatar = avatarSprite;
-                dialogScreen.InitializeScreen(avatarSprite, _currentStateText, () =>
+                dialogScreen.InitializeScreen(avatarSprite, _currentStateText, _actorData.description, () =>
                 {
                     scenarioManager.CheckInteractionsDone();
                 }); 
@@ -91,7 +98,7 @@ public class Actor : MonoBehaviour
         }
         else
         {
-            dialogScreen.InitializeScreen(avatar, _currentStateText, () =>
+            dialogScreen.InitializeScreen(avatar, _currentStateText, _actorData.description, () =>
             {
                 scenarioManager.CheckInteractionsDone();
             });
