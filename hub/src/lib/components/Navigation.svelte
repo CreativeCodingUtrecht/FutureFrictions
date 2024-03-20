@@ -10,7 +10,7 @@
 
 <nav class="list-nav p-4">
 	<ul>
-		<li><a href="/" on:click={drawerClose}>Hello Future</a></li>
-        <li><a href="/imaginaries" on:click={drawerClose}>Imaginaries</a></li>
+		<!-- <li><a href="/" on:click={drawerClose}>Hello Future</a></li> -->
+        <li><a href="/scenarios" on:click={drawerClose}>Scenarios</a></li>
 	</ul>
 </nav>
