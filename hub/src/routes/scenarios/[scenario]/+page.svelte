@@ -1,96 +1,86 @@
 <script lang="ts">
-    import type { PageData } from './$types';
-    import { FF_WEBGL_URL } from '$lib/constants';
-    
-    export let data: PageData;
-    
-    const scenario = data.scenario;
-    const json = data.json;
+	import type { PageData } from './$types';
+	import { FF_WEBGL_URL } from '$lib/constants';
 
-    const title = json.friction.description;
-    const welcome = json.scene.content.welcome;
-    const background = json.scene.background;
-    const avatar = json.scene.avatar;
+	export let data: PageData;
 
-    const background_url = background ? `/api/scenarios/${scenario}/${background}` : `/placeholders/background.jpg`;
-    const avatar_url = avatar ? `/api/scenarios/${scenario}/${avatar}` : `/placeholders/avatar.jpg`;
-    const url = `${FF_WEBGL_URL}?scenario=${scenario}`
+	const scenario = data.scenario;
+	const json = data.json;
 
-    const confirmRemove = (e) => {
-		if(!confirm("Are you sure you want to delete this scenario? 🤔")) {
-            e.preventDefault();
-        }
-    }
+	const title = json.friction.description;
+	const welcome = json.scene.content.welcome;
+	const background = json.scene.background;
+	const avatar = json.scene.avatar;
 
-    const confirmDuplicate = (e) => {
-		if(!confirm("Are you sure you want to duplicate this scenario? 🤔")) {
-            e.preventDefault();
-        }
-    }
+	const background_url = background
+		? `/api/scenarios/${scenario}/${background}`
+		: `/placeholders/background.jpg`;
+	const avatar_url = avatar ? `/api/scenarios/${scenario}/${avatar}` : `/placeholders/avatar.jpg`;
 
+	const url = `${FF_WEBGL_URL}?scenario=${scenario}`;
+
+	const confirmRemove = (e) => {
+		if (!confirm('Are you sure you want to delete this scenario? 🤔')) {
+			e.preventDefault();
+		}
+	};
+
+	const confirmDuplicate = (e) => {
+		if (!confirm('Are you sure you want to duplicate this scenario? 🤔')) {
+			e.preventDefault();
+		}
+	};
 </script>
 
-<h1>{title}</h1>
+<div class="w-full text-token grid grid-cols-1 md:grid-cols-1 gap-4">
+	<div class="card overflow-hidden">
+		<header>
+			<img src={background_url} />
+		</header>
+		<div class="p-4 space-y-4">
+			<h3 class="h3" data-toc-ignore>{title}</h3>
+			<a href={url} class="btn variant-filled-primary" target="FF_WEBGL_URL">Play</a>
+			<article>
+				<p class="py-5">
+					{welcome}
+				</p>
+			</article>
+            <form method="POST" action="?/remove">
+                <button on:click={confirmRemove} type="submit" class="btn variant-ghost-error">Remove</button>
+            </form>        
+		</div>
+	</div>
+	<div class="card overflow-hidden">
+		<div class="p-4 space-y-4">
+            <h2 class="h2">Duplicate scenario</h2>
+            <form method="POST" action="?/duplicate">
+                <div class="space-y-4">
+                <label>
+                    Slug
+                    <input
+                        class="input"
+                        type="text"
+                        value={`${scenario}-copy`}
+                        required
+                        name="slug"
+                    />
+                </label>
+                <label>
+                    Title
+                    <input
+                        class="input"
+                        type="text"
+                        required
+                        value={`${title} (Copy)`}
+                        name="name"
+                    />
+                </label>
+        
+                <button on:click={confirmDuplicate} type="submit" class="btn variant-filled-primary">Duplicate</button>
+                </div>
+            </form>
 
-<div class="container pt-5">
-    <ul class="menu px-3 border bg-base-100 menu-horizontal rounded-box">
-        <!-- <li class="menu-title">{title}</li> -->
-        <li class="inline-block font-bold border-b-2 text-base-content border-primary"><a href="/scenarios/{scenario}" target="FF_WEBGL_URL">View</a></li>
-        <li class=""><a href="{url}" target="FF_WEBGL_URL">Play</a></li>        
-        <li class=""><a href="/scenarios/{scenario}/edit">Edit</a></li>
-    </ul>
-</div>
 
-
-<div class="container pt-5">
-    <div class="flex items-center w-full px-4 py-10 bg-cover card bg-base-200" style="background-image: url(&quot;{background_url}&quot;);">
-        <div class="card glass lg:card-side text-neutral-content">
-          <figure class="p-6">
-            <img src="{avatar_url}" class="rounded-lg shadow-lg" style="max-width:200px">
-          </figure> 
-          <div class="max-w-md card-body">
-            <h2 class="card-title">{title}</h2> 
-            <p>{welcome}</p> 
-            <div class="card-actions">
-                <a href="{url}" class="btn btn-primary" target="FF_WEBGL_URL">Play</a>
-            </div>
-          </div>
         </div>
-      </div>
+	</div>
 </div>
-
-<br />
-<div class="container pt-5">    
-  <h2>Duplicate scenario</h2>    
-  <form method="POST" action="?/duplicate"> 
-    <label>
-        Slug
-        <input
-          class="input input-bordered px-0"
-          type="text"
-          value={`${scenario}-copy`}
-          required
-          name="slug"/>        
-        </label>          
-        <label>
-          Title
-          <input
-            class="input input-bordered px-0"
-            type="text"
-            required
-            value={`${title} (Copy)`}
-            name="name"/>        
-          </label>          
-  
-        <button  on:click={confirmDuplicate} type="submit" class="btn btn-primary">Create</button>
-  </form>
-</div>
-
-<br />
-<div class="container pt-5">    
-  <h2>Delete scenario</h2>    
-  <form method="POST" action="?/remove"> 
-        <button on:click={confirmRemove} type="submit" class="btn btn-outline btn-error">Remove</button>
-  </form>
-</div>
-

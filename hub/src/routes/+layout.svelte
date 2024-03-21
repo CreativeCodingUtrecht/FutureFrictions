@@ -28,7 +28,7 @@
 
 <Drawer>
 	<h2 class="p-4 text-xl uppercase futurefrictions">Navigation</h2>
-	<hr />	
+	<hr />
 	<Navigation />
 </Drawer>
 
@@ -48,8 +48,11 @@
 							</svg>
 						</span>
 					</button>
-					<img src="/images/pigeon-8.webp" width="100" class="px-5" alt="Pigeon" />	
-					<span class="text-xl uppercase futurefrictions">Future Frictions &gt; Hub</span>
+
+					<img src="/images/pigeon-8.webp" width="100" class="px-5" alt="Pigeon" />
+					<span class="text-xl uppercase futurefrictions"
+						><a href="/">Future Frictions &gt; Hub</a></span
+					>
 				</div>
 			</svelte:fragment>
 
@@ -72,5 +75,5 @@
 <style>
 	.futurefrictions {
 		font-family: 'Uni';
-	}	
+	}
 </style>

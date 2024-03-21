@@ -10,7 +10,7 @@
         "description": "Smart city ideas | Drone",
         "avatar": "drone_1.png",
         "content": {
-            "before": "A new guardian angel drone has been introduced. What should the drone do with the images it records? Choose one of the 3 options:"
+            "before": "A new guardian angel drone has been introduced. \n\nThe images are directly uploaded to your device so you know exactly what happens to them at all times."
         },
         "options": {
             "a": {
@@ -83,7 +83,7 @@
     },
     "actors": [
         {
-            "description": "Person 1 (teenager looking at phone- with a dog)",
+            "description": "Tina",
             "sprite": "telefoon.png",
             "avatar": "tina_avatar.png",
             "content": {
@@ -96,7 +96,7 @@
             }
         },
         {
-            "description": "Person 2 (Street artist)",
+            "description": "Street artist",
             "sprite": "artist_17_5_2021_21_50.png",
             "avatar": "streetartist_avatar.png",
             "content": {
@@ -109,7 +109,7 @@
             }
         },
         {
-            "description": "Person 3a (old woman on a bench)",
+            "description": "Elderly woman",
             "sprite": "elderly_on_bench_17_5_2021_21_14.png",
             "avatar": "lady_avatar.png",
             "content": {

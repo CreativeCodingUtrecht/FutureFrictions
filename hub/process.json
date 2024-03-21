@@ -1,0 +1,15 @@
+{
+	"apps": [
+		{
+			"name": "futurefrictions",
+			"script": "build/index.js",
+			"watch": false,
+			"env": {
+				"PORT": 3001,
+				"ORIGIN": "https://futurefrictions.creativecodingutrecht.nl",
+				"DATAROOT": "../data",
+				"BODY_SIZE_LIMIT": 0
+			}
+		}
+	]
+}
