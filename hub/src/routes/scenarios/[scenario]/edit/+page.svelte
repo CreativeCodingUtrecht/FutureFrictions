@@ -43,7 +43,19 @@
 <div>
 	<h2 class="h2">Scenario definition</h2>
 	<br />
-	<form method="POST" id="save" action="?/save">
+	<form method="POST" id="save" class="space-y-4" action="?/save">
+		<label class="label space-y-4">
+			<span>Title</span>
+
+			<input
+				bind:value={json.friction.description}
+				class="input"
+				title="Title"
+				type="text"
+				name="title"
+			/>
+		</label>
+
 		<input type="hidden" name="json" value={JSON.stringify(json)} />
 		<p>
 			<button class="btn variant-filled-primary">Save</button>
