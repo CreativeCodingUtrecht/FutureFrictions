@@ -9,17 +9,30 @@ namespace UI
     {
         [SerializeField]
         private Image avatarImage;
-    
+
+        [SerializeField]
+        private TMP_Text characterName;
+
         [SerializeField]
         private TMP_Text mainText;
 
         private Action _closeAction;
 
-        public void InitializeScreen(Sprite avatar, string text, Action closeAction = null)
+        public void InitializeScreen(Sprite avatar, string text, string description, Action closeAction = null)
         {
             _closeAction = closeAction;
-        
-            avatarImage.sprite = avatar;
+
+            if (avatar == null)
+            {
+                avatarImage.transform.parent.gameObject.SetActive(false);
+            }
+            else
+            {
+                avatarImage.transform.parent.gameObject.SetActive(true);
+                avatarImage.sprite = avatar;
+            }
+
+            characterName.text = description;
             mainText.text = text;
         
             Open();

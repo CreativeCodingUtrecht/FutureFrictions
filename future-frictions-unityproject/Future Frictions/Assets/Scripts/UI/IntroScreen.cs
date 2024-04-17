@@ -15,7 +15,14 @@ public class IntroScreen : BaseScreen
 
     public void InitializeScreen(Sprite avatar, string text)
     {
-        avatarImage.sprite = avatar;
+        if (avatar == null)
+        {
+            avatarImage.transform.parent.gameObject.SetActive(false);
+        }
+        else
+        {
+            avatarImage.sprite = avatar;
+        }
         mainText.text = text;
         
         Open();

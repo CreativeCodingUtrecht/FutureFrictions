@@ -28,8 +28,15 @@ public class DownloadHandler : MonoBehaviour
 
     public void GetImage(string imageName, UnityAction<Sprite, bool> onComplete)
     {
-        var uri = Path.Combine(endpoint, _scenarioName, imageName);
-        StartCoroutine(GetImageRequest(uri, onComplete));
+        if (string.IsNullOrEmpty(imageName))
+        {
+            onComplete?.Invoke(null, true);
+        }
+        else
+        {
+            var uri = Path.Combine(endpoint, _scenarioName, imageName);
+            StartCoroutine(GetImageRequest(uri, onComplete));
+        }
     }
     
     private IEnumerator GetTextRequest(string uri, UnityAction<string, bool> downloadComplete)
