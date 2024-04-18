@@ -42,5 +42,13 @@ const save = async (params, request) => {
     const avatar = data.get('avatar')
     json.scene.avatar = avatar;
 
+    const uploadedFile = data?.get('file');
+    if (uploadedFile?.name !== "undefined") {
+        const filename = `${scenarios.SCENARIOROOT}/${scenario}/${uploadedFile?.name}`;  
+        console.log("filename", filename);
+        const buffer = Buffer.from(await uploadedFile?.arrayBuffer());
+        scenarios.addImage(scenario, filename, buffer);
+    }
+
     scenarios.save(scenario, json);
 }
