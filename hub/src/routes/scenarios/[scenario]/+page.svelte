@@ -39,12 +39,13 @@
 		</header>
 		<div class="p-4 space-y-4">
 			<h3 class="h3" data-toc-ignore>{title}</h3>
-			<a href={url} class="btn variant-filled-primary" target="FF_WEBGL_URL">Play</a>
 			<article>
 				<p class="py-5">
 					{welcome}
 				</p>
 			</article>
+			<a href={url} class="btn variant-filled-primary" target="FF_WEBGL_URL">Play</a>
+			<a href="/scenarios/{scenario}/steps/0-setup" class="btn variant-filled-primary">Edit</a>
             <form method="POST" action="?/remove">
                 <button on:click={confirmRemove} type="submit" class="btn variant-ghost-error">Remove</button>
             </form>        

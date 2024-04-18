@@ -5,7 +5,6 @@
 	export let data: PageData;
 
 	const values = {
-		statement: form?.statement || data?.json.scene.content.welcome || ''
 	};
 </script>
 

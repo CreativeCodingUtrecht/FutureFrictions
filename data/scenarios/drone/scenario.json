@@ -1,8 +1,7 @@
 {
     "scene": {
         "content": {
-            "welcome": null,
-            "emergingfriction": "Police pigeons"
+            "welcome": "The mayor of this fictional neighbourhood wants to implement new smart city ideas. Experience how these ideas might impact the neighbourhood by exploring your surroundings and listening to your neighbours. If you find a person with a question mark on top of their heads... feel free to interact with them."
         },
         "background": "screen_1920x1080_2021-11-22_16-30-57.png",
         "avatar": "duif.png"
@@ -11,13 +10,13 @@
         "description": "Smart city ideas | Drone",
         "avatar": "drone_1.png",
         "content": {
-            "before": "A new guardian angel drone has been introduced. \r\n\r\nThe images are directly uploaded to your device so you know exactly what happens to them at all times."
+            "before": "A new guardian angel drone has been introduced. \n\nThe images are directly uploaded to your device so you know exactly what happens to them at all times."
         },
         "options": {
             "a": {
                 "avatar": "drone_A.png",
                 "content": "The images are directly uploaded to your device so you know exactly what happens to them at all times.",
-                "alternativeBackground": "",
+                "alternativeBackground": null,
                 "sprites": {
                     "foreground": [
                         "eyes_option A_2.png",
@@ -90,7 +89,7 @@
             "content": {
                 "before": "Hi, my name is Tina. Nice to meet you! After school, I usually meet up with some of my friends in this square. I'm going to meet them there later, but I need to do my homework first.",
                 "after": {
-                    "a": "I was trying to work on my maths homework, but then I got distracted because my phone notified me that my best friend Lola was in the area, shopping! Should I go out and meet her? Hmm..",
+                    "a": "I was trying to work on my maths homework, but then I got distracted because my phone notified me that my best friend Lola was in the area, shopping! Should I go out and meet her? Hmm...",
                     "b": "Can you believe it? The new drone posts pictures of everything we do, and shows it to everybody in the neighbourhood. This makes it hard to secretly meet my friends to hang out and smoke without my parents knowing our whereabouts. Just check out that old woman over there. I bet ya she'll tell my parents that I haven't done my homework!",
                     "c": "This makes me feel safe. I feel it is like my guardian angel drone. We don't need to ask each other 'are you home safe?' after a night out anymore, because the police know about our whereabouts at all times."
                 }
