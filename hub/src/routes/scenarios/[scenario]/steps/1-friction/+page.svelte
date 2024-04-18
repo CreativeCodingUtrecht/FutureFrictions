@@ -1,38 +1,39 @@
 <script lang="ts">
 	import type { PageData, ActionData } from './$types';
+	import ImageSelector from '$lib/components/ImageSelector.svelte';
 
 	export let form: ActionData;
 	export let data: PageData;
+
+	const scenario = data?.scenario;
 
 	const values = {
 		statement: form?.statement || data?.json.scene.content.welcome || '',
 		avatar : form?.avatar || data?.json.scene.avatar || ""
 	};
 
-	let avatarImage: String;
-
 	const images = data?.images;
 
-	const updateImage = (e) => {
-		const [file] = e.target.files;
-		if (file) {
-			avatarImage = URL.createObjectURL(file)
-			values.avatar = file.name;
-		}
-	}
+	// const updateImage = (e) => {
+	// 	const [file] = e.target.files;
+	// 	if (file) {
+	// 		avatarImage = URL.createObjectURL(file)
+	// 		values.avatar = file.name;
+	// 	}
+	// }
 
-	const updateImageFromSelect = (e) => {
-		const value = e.target.value;
-		console.log(`${value}`);
-		if (value !== "none") {
-			values.avatar = e.target.value;
-		}
-	}
+	// const updateImageFromSelect = (e) => {
+	// 	const value = e.target.value;
+	// 	console.log(`${value}`);
+	// 	if (value !== "none") {
+	// 		values.avatar = e.target.value;
+	// 	}
+	// }
 
-	const updateImageDirect = (e) => {
-		console.log(`${e.target.value}`);
-		values.avatar = e.target.value;
-	}
+	// const updateImageDirect = (e) => {
+	// 	console.log(`${e.target.value}`);
+	// 	values.avatar = e.target.value;
+	// }
 </script>
 
 <div>
@@ -76,33 +77,7 @@
 			<label class="label space-y-4">
 				<span>What character introduces this frictional statement?</span>
 	
-				<div class="card p-4 max-w-80">
-					<img id="preview" src={avatarImage ? `${avatarImage}` : `/api/scenarios/${data?.scenario}/${values.avatar}`} alt={values.avatar} />
-					
-					<input id="imgInput" type="file" name="file" accept=".jpg, .jpeg, .png" on:click={(e) => {e.stopPropagation();}} on:change={updateImage} />
-
-					<p>Or paste the file name of the image</p>
-
-					<input
-						id="imageText"
-						value={values.avatar}
-						class="input"
-						title="Avatar"
-						type="hidden"
-						name="avatar"
-						on:change={updateImageDirect}
-					/>
-					
-					<select class="select" on:change={updateImageFromSelect}>
-						<option></option>
-						{#each images as image}
-							<option value={image}>{image}</option>
-						{/each}
-					</select>
-
-					<a type="button" class="btn variant-filled mt-4" href={`/scenarios/${data?.scenario}/images`}>See Image Gallery</a>
-					<!-- <button type="button" class="btn variant-filled" on:click={() => { console.log("Clear input value") }}>clear</button> -->
-				</div>
+				<ImageSelector scenario={scenario} images={images} values={values} />
 			</label>
 	
 		</div>
