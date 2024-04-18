@@ -1,5 +1,6 @@
 <script lang="ts">
-	import type { PageData, ActionData } from './$types';
+	import { Avatar, FileDropzone } from '@skeletonlabs/skeleton';
+import type { PageData, ActionData } from './$types';
 
 	export let form: ActionData;
 	export let data: PageData;
@@ -51,13 +52,37 @@
 			<label class="label space-y-4">
 				<span>What character introduces this frictional statement?</span>
 	
-				<input
-					value={values.avatar}
-					class="input"
-					title="Avatar"
-					type="text"
-					name="avatar"
-				/>
+				<div class="image-upload-panel">
+
+					{#if values.avatar}
+					<img id="preview" src={`/api/scenarios/${data?.scenario}/${values.avatar}`} alt={values.avatar} />
+					{/if}
+
+					<FileDropzone 
+						name="image"
+						on:click={
+							(e) => {
+								e.preventDefault();
+								console.log("Open modal and push selection to the input");
+							}
+						} 
+						on:change={
+							(files) => { 
+								console.log(files);
+								// Upload file and update input
+							}
+						}
+					/>
+					
+					<input
+						value={values.avatar}
+						class="input"
+						title="Avatar"
+						type="text"
+						name="avatar"
+					/>
+					<button type="button" class="btn variant-filled" on:click={() => { console.log("Clear input value") }}>clear</button>
+				</div>
 			</label>
 	
 		</div>
@@ -69,3 +94,9 @@
 		<button class="btn variant-ghost-primary" formaction="?/next">Next</button>
 	</form>
 </div>
+
+<style>
+	.image-upload-panel {
+		max-width: 20%;
+	}
+</style>
