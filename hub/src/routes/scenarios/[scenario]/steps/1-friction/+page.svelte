@@ -66,10 +66,12 @@
 			<label class="label space-y-4">
 				<span>What character introduces this frictional statement?</span>
 	
-				<div class="image-upload-panel">
+				<div class="card p-4 max-w-80">
 					<img id="preview" src={avatarImage ? `${avatarImage}` : `/api/scenarios/${data?.scenario}/${values.avatar}`} alt={values.avatar} />
 					
-					<input id="imgInput" type="file" name="file" accept=".jpg, .jpeg, .png" on:change={updateImage} />
+					<input id="imgInput" type="file" name="file" accept=".jpg, .jpeg, .png" on:click={(e) => {e.stopPropagation();}} on:change={updateImage} />
+
+					<p>Or paste the file name of the image</p>
 
 					<input
 						id="imageText"
@@ -81,7 +83,7 @@
 						on:change={updateImageDirect}
 					/>
 
-					<a href={`/scenarios/${data?.scenario}/images`}>See Image Gallery</a>
+					<a type="button" class="btn variant-filled mt-4" href={`/scenarios/${data?.scenario}/images`}>See Image Gallery</a>
 					<!-- <button type="button" class="btn variant-filled" on:click={() => { console.log("Clear input value") }}>clear</button> -->
 				</div>
 			</label>
@@ -97,7 +99,7 @@
 </div>
 
 <style>
-	.image-upload-panel {
-		max-width: 20%;
+	input {
+		width: 100%;
 	}
 </style>
