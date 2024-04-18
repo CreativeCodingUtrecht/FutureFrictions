@@ -5,7 +5,8 @@
 	export let data: PageData;
 
 	const values = {
-		statement: form?.statement || data?.json.scene.content.welcome || ''
+		whatif: form?.whatif || data?.json.friction.content.before || '',
+		avatar: form?.avatar || data?.json.friction.avatar || '',
 	};
 </script>
 
@@ -15,31 +16,51 @@
 			<label class="label space-y-4">
 				<p>
 					<span>
-						Fill out this text box with a 'frictional statement' you would like to explore further.
-						Feel free to choose one from this list, or come up with yours.
-					</span>
-				</p>
-
-				<p>
-					<span>
-						<i>A frictional statement refers to an existing trend, change or vision that is potentially controversial and leads to dilemmas.</i>
+						Think of a near future (10 years for now) and transform your thought-provoking friction
+						into a WHAT IF question To formulate it, consider the friction in its context, and the
+						relationship with the characters you defined. (for example: what if local municipalities
+						allocate robots in each neighborhood to help reduce street litter?) .
 					</span>
 				</p>
 
 				<textarea
-					value={values.statement}
+					value={values.whatif}
 					class="textarea"
-					title="Frictional statement"
+					title="What if question"
 					rows="3"
-					name="statement"
+					name="whatif"
 				/>
 			</label>
+
+			<p>
+				<span>
+					<i
+						>Brainstorm the direct and indirect consequences of that What If question 10 years from
+						now, in the context you have chosen, for the actors you are exploring and beyond. Take a
+						sheet of paper and brainstorm these consequences using the Futures Wheel. What are the
+						three most thought-provoking impacts?</i
+					>
+				</span>
+			</p>
+
+			<label class="label space-y-4">
+				<span>What character represents this What If question?</span>
+	
+				<input
+					value={values.avatar}
+					class="input"
+					title="Avatar"
+					type="text"
+					name="avatar"
+				/>
+			</label>
+
 		</div>
 
 		<br />
 		<button class="btn variant-filled-primary">Save</button>
-		&nbsp;&nbsp;&nbsp;&nbsp; 
-		<button class="btn variant-ghost-primary" formaction="?/previous">Back</button>		
+		&nbsp;&nbsp;&nbsp;&nbsp;
+		<button class="btn variant-ghost-primary" formaction="?/previous">Back</button>
 		<button class="btn variant-ghost-primary" formaction="?/next">Next</button>
 	</form>
 </div>
