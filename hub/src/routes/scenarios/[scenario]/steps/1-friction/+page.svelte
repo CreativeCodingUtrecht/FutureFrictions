@@ -5,15 +5,13 @@
 	export let form: ActionData;
 	export let data: PageData;
 
+	const images = data?.images;
 	const scenario = data?.scenario;
 
 	const values = {
 		statement: form?.statement || data?.json.scene.content.welcome || '',
 		avatar : form?.avatar || data?.json.scene.avatar || ""
 	};
-
-	const images = data?.images;
-
 </script>
 
 <div>
@@ -54,10 +52,10 @@
 
 			<br />
 
-			<label class="label space-y-4">
+			<span class="label space-y-4">
 				<span>What character introduces this frictional statement?</span>
 				<ImageSelector scenario={scenario} images={images} values={values} />
-			</label>
+			</span>
 	
 		</div>
 

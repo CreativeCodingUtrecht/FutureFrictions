@@ -1,8 +1,11 @@
 <script lang="ts">
 	import type { PageData, ActionData } from './$types';
-
+	import ImageSelector from '$lib/components/ImageSelector.svelte';
 	export let form: ActionData;
 	export let data: PageData;
+
+	const images = data?.images;
+	const scenario = data?.scenario;
 
 	const values = {
 		whatif: form?.whatif || data?.json.friction.content.before || '',
@@ -43,17 +46,11 @@
 				</span>
 			</p>
 
-			<label class="label space-y-4">
+			<span class="label space-y-4">
 				<span>What character represents this What If question?</span>
 	
-				<input
-					value={values.avatar}
-					class="input"
-					title="Avatar"
-					type="text"
-					name="avatar"
-				/>
-			</label>
+				<ImageSelector scenario={scenario} images={images} values={values} />			
+			</span>
 
 		</div>
 

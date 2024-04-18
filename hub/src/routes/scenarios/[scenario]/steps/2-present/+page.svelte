@@ -1,8 +1,12 @@
 <script lang="ts">
 	import type { PageData, ActionData } from './$types';
+	import ImageSelector from '$lib/components/ImageSelector.svelte';
 
 	export let form: ActionData;
 	export let data: PageData;
+	
+	const images = data?.images;
+	const scenario = data?.scenario;
 
 	const values = {
 		collage: form?.collage || data?.json.scene.background || '',
@@ -31,19 +35,13 @@
 <div>
 	<form method="POST" action="?/save">
 		<div class="space-y-4">
-			<label class="label space-y-4">
+			<span class="label space-y-4">
 				<span
 					>Explore this frictional statement further. In what context do you think it is most useful
 					to explore the friction it t? Think of places and/or activities.</span
 				>
-				<input
-					bind:value={values.collage}
-					class="input"
-					title="Collage"
-					type="text"
-					name="collage"
-				/>
-			</label>
+				<ImageSelector scenario={scenario} images={images} values={values} input_value="collage" field="collage" extraClass="" />			
+			</span>
 
 			<p>
 				Think of 3 relevant human/non-human 'characters' in the story that may be affected or play a
