@@ -80,17 +80,6 @@
 					/>
 				</label>
 
-				<label class="label space-y-4">
-					<span>Narrator's avatar</span>
-
-					<input
-						bind:value={json.scene.avatar}
-						class="input"
-						title="Avatar"
-						type="text"
-						name="scene_avatar"
-					/>
-				</label>
 			</div>
 		</Step>
 		<Step>
