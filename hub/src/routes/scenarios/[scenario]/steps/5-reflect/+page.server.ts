@@ -20,7 +20,8 @@ export const actions = {
         return save(params, request);
     },
     complete: async ({params, request}) => {
-        return save(params, request);
+        save(params, request);
+        redirect(303, `/scenarios/${params.scenario}`);
     },
     previous: async ({params, request}) => {
         save(params, request);
@@ -34,8 +35,6 @@ const save = async (params, request) => {
     const json = scenarios.json(scenario);
 
     const data = await request.formData();
-    const statement = data.get('statement')
 
-    json.scene.content.welcome = statement;
     scenarios.save(scenario, json);
 }

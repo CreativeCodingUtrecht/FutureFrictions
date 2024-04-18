@@ -29,6 +29,7 @@
 		<br />
 		<button class="btn variant-filled-primary">Save</button>
 		&nbsp;&nbsp;&nbsp;&nbsp; 
+		<button class="btn variant-ghost-primary" formaction="?/previous">Back</button>		
 		<button class="btn variant-ghost-primary" formaction="?/next">Next</button>		
 
 	</form>

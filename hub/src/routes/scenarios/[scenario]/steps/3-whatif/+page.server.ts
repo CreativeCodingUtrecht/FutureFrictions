@@ -35,8 +35,12 @@ const save = async (params, request) => {
     const json = scenarios.json(scenario);
 
     const data = await request.formData();
-    const statement = data.get('statement')
 
-    json.scene.content.welcome = statement;
+    const whatif = data.get('whatif')  
+    json.friction.content.before = whatif;
+
+    const avatar = data.get('avatar')  
+    json.friction.avatar = avatar;
+
     scenarios.save(scenario, json);
 }

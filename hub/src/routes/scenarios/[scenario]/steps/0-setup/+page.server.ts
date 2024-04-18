@@ -23,7 +23,10 @@ export const actions = {
         save(params, request);
         redirect(303, `/scenarios/${params.scenario}/steps/1-friction`);
     },
-
+    previous: async ({params, request}) => {
+        save(params, request);
+        redirect(303, `/scenarios/${params.scenario}`);
+    },
 } satisfies Actions;
 
 const save = async (params, request) => {

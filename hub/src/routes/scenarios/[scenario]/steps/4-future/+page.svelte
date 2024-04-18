@@ -5,7 +5,25 @@
 	export let data: PageData;
 
 	const values = {
-		statement: form?.statement || data?.json.scene.content.welcome || ''
+		collage: form?.collage || data?.json.friction.options.a.alternativeBackground || '',
+		actor1: {
+			name: form?.actor1.name || data?.json.actors[0].description || '',
+			statement: form?.actor1.statement || data?.json.actors[0].content.after.a || '',
+			// avatar: form?.actor1.avatar || data?.json.actors[0].avatar || '',
+			// sprite: form?.actor1.sprite || data?.json.actors[0].sprite || ''
+		},
+		actor2: {
+			name: form?.actor2.name || data?.json.actors[1].description || '',
+			statement: form?.actor2.statement || data?.json.actors[1].content.after.a || '',
+			// avatar: form?.actor2.avatar || data?.json.actors[1].avatar || '',
+			// sprite: form?.actor2.sprite || data?.json.actors[1].sprite || ''
+		},
+		actor3: {
+			name: form?.actor3.name || data?.json.actors[2].description || '',
+			statement: form?.actor3.statement || data?.json.actors[2].content.after.a || '',
+			// avatar: form?.actor3.avatar || data?.json.actors[2].avatar || '',
+			// sprite: form?.actor3.sprite || data?.json.actors[2].sprite || ''
+		},		
 	};
 </script>
 
@@ -13,28 +31,172 @@
 	<form method="POST" action="?/save">
 		<div class="space-y-4">
 			<label class="label space-y-4">
-				<p>
-					<span>
-						Fill out this text box with a 'frictional statement' you would like to explore further.
-						Feel free to choose one from this list, or come up with yours.
-					</span>
-				</p>
-
-				<p>
-					<span>
-						<i>A frictional statement refers to an existing trend, change or vision that is potentially controversial and leads to dilemmas.</i>
-					</span>
-				</p>
-
-				<textarea
-					value={values.statement}
-					class="textarea"
-					title="Frictional statement"
-					rows="3"
-					name="statement"
+				<span
+					>Explore this frictional statement further. In what context do you think it is most useful to explore the friction? (Think of places and/or activities)
+					</span
+				>
+				<input
+					bind:value={values.collage}
+					class="input"
+					title="Collage"
+					type="text"
+					name="collage"
 				/>
 			</label>
 		</div>
+
+			<!-- Actor 1 -->
+			<div class="card">
+				<header class="card-header"><b>Character 1</b></header>
+				<section class="p-4 space-y-4">
+					<label class="label space-y-4">
+						<span>What's the name of the first character?</span>
+						<input
+							value={values.actor1.name}
+							class="input"
+							title="Name of the actor"
+							type="text"
+							name="actor1name"
+							readonly
+						/>
+					</label>
+
+					<label class="label">
+						<span>What does this actor say, think, feel?</span>
+						<textarea
+							value={values.actor1.statement}
+							class="textarea"
+							title="Actor statement"
+							rows="3"
+							name="actor1statement"
+						/>
+					</label>
+
+					<!-- <label class="label">
+						<span>Avatar of the actor</span>
+						<input
+							value={values.actor1.avatar}
+							class="input"
+							title="Image of the actor"
+							type="text"
+							name="actor1avatar"
+						/>
+					</label>
+
+					<label class="label">
+						<span>Sprite of the actor</span>
+						<input
+							value={values.actor1.sprite}
+							class="input"
+							title="Sprite of the actor"
+							type="text"
+							name="actor1sprite"
+						/>
+					</label> -->
+				</section>
+			</div>
+
+			<!-- Actor 2 -->
+			<div class="card">
+				<header class="card-header"><b>Character 2</b></header>
+				<section class="p-4 space-y-4">
+					<label class="label space-y-4">
+						<span>What's the name of the second character?</span>
+						<input
+							value={values.actor2.name}
+							class="input"
+							title="Name of the actor"
+							type="text"
+							name="actor2name"
+							readonly
+						/>
+					</label>
+
+					<label class="label">
+						<span>What does this actor say, think, feel?</span>
+						<textarea
+							value={values.actor2.statement}
+							class="textarea"
+							title="Actor statement"
+							rows="3"
+							name="actor2statement"
+						/>
+					</label>
+
+					<!-- <label class="label">
+						<span>Avatar of the actor</span>
+						<input
+							value={values.actor2.avatar}
+							class="input"
+							title="Image of the actor"
+							type="text"
+							name="actor2avatar"
+						/>
+					</label>
+
+					<label class="label">
+						<span>Sprite of the actor</span>
+						<input
+							value={values.actor2.sprite}
+							class="input"
+							title="Sprite of the actor"
+							type="text"
+							name="actor2sprite"
+						/>
+					</label> -->
+				</section>
+			</div>
+
+			<!-- Actor 3 -->
+			<div class="card">
+				<header class="card-header"><b>Character 3</b></header>
+				<section class="p-4 space-y-4">
+					<label class="label space-y-4">
+						<span>What's the name of the third character?</span>
+						<input
+							value={values.actor3.name}
+							class="input"
+							title="Name of the actor"
+							type="text"
+							name="actor3name"
+							readonly
+						/>
+					</label>
+
+					<label class="label">
+						<span>What does this actor say, think, feel?</span>
+						<textarea
+							value={values.actor3.statement}
+							class="textarea"
+							title="Actor statement"
+							rows="3"
+							name="actor3statement"
+						/>
+					</label>
+
+					<!-- <label class="label">
+						<span>Avatar of the actor</span>
+						<input
+							value={values.actor3.avatar}
+							class="input"
+							title="Image of the actor"
+							type="text"
+							name="actor3avatar"
+						/>
+					</label>
+
+					<label class="label">
+						<span>Sprite of the actor</span>
+						<input
+							value={values.actor3.sprite}
+							class="input"
+							title="Sprite of the actor"
+							type="text"
+							name="actor3sprite"
+						/>
+					</label> -->
+				</section>
+			</div>		
 
 		<br />
 		<button class="btn variant-filled-primary">Save</button>
