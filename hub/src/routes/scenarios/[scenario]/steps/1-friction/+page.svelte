@@ -1,6 +1,5 @@
 <script lang="ts">
-	import { Avatar, FileDropzone } from '@skeletonlabs/skeleton';
-import type { PageData, ActionData } from './$types';
+	import type { PageData, ActionData } from './$types';
 
 	export let form: ActionData;
 	export let data: PageData;
@@ -9,6 +8,15 @@ import type { PageData, ActionData } from './$types';
 		statement: form?.statement || data?.json.scene.content.welcome || '',
 		avatar : form?.avatar || data?.json.scene.avatar || ""
 	};
+
+	let avatarImage: String;
+
+	const updateImage = (e) => {
+		const [file] = e.target.files;
+		if (file) {
+			avatarImage = URL.createObjectURL(file)
+		}
+	}
 </script>
 
 <div>
@@ -53,27 +61,10 @@ import type { PageData, ActionData } from './$types';
 				<span>What character introduces this frictional statement?</span>
 	
 				<div class="image-upload-panel">
-
-					{#if values.avatar}
-					<img id="preview" src={`/api/scenarios/${data?.scenario}/${values.avatar}`} alt={values.avatar} />
-					{/if}
-
-					<FileDropzone 
-						name="image"
-						on:click={
-							(e) => {
-								e.preventDefault();
-								console.log("Open modal and push selection to the input");
-							}
-						} 
-						on:change={
-							(files) => { 
-								console.log(files);
-								// Upload file and update input
-							}
-						}
-					/>
+					<img id="preview" src={avatarImage ? `${avatarImage}` : `/api/scenarios/${data?.scenario}/${values.avatar}`} alt={values.avatar} />
 					
+					<input id="imgInput" type="file" name="file" accept=".jpg, .jpeg, .png" on:change={updateImage} />
+
 					<input
 						value={values.avatar}
 						class="input"
@@ -81,7 +72,7 @@ import type { PageData, ActionData } from './$types';
 						type="text"
 						name="avatar"
 					/>
-					<button type="button" class="btn variant-filled" on:click={() => { console.log("Clear input value") }}>clear</button>
+					<!-- <button type="button" class="btn variant-filled" on:click={() => { console.log("Clear input value") }}>clear</button> -->
 				</div>
 			</label>
 	
