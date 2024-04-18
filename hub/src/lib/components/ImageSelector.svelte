@@ -57,3 +57,9 @@
     <a type="button" class="btn variant-filled mt-4" href={`/scenarios/${scenario}/images`}>See Image Gallery</a>
     <!-- <button type="button" class="btn variant-filled" on:click={() => { console.log("Clear input value") }}>clear</button> -->
 </div>
+
+<style>
+	input {
+		width: 100%;
+	}
+</style>

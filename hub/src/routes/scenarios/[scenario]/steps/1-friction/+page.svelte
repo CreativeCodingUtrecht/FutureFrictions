@@ -14,26 +14,6 @@
 
 	const images = data?.images;
 
-	// const updateImage = (e) => {
-	// 	const [file] = e.target.files;
-	// 	if (file) {
-	// 		avatarImage = URL.createObjectURL(file)
-	// 		values.avatar = file.name;
-	// 	}
-	// }
-
-	// const updateImageFromSelect = (e) => {
-	// 	const value = e.target.value;
-	// 	console.log(`${value}`);
-	// 	if (value !== "none") {
-	// 		values.avatar = e.target.value;
-	// 	}
-	// }
-
-	// const updateImageDirect = (e) => {
-	// 	console.log(`${e.target.value}`);
-	// 	values.avatar = e.target.value;
-	// }
 </script>
 
 <div>
@@ -76,7 +56,6 @@
 
 			<label class="label space-y-4">
 				<span>What character introduces this frictional statement?</span>
-	
 				<ImageSelector scenario={scenario} images={images} values={values} />
 			</label>
 	
@@ -89,9 +68,3 @@
 		<button class="btn variant-ghost-primary" formaction="?/next">Next</button>
 	</form>
 </div>
-
-<style>
-	input {
-		width: 100%;
-	}
-</style>
