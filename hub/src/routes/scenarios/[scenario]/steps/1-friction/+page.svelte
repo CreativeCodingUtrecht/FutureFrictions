@@ -15,7 +15,13 @@
 		const [file] = e.target.files;
 		if (file) {
 			avatarImage = URL.createObjectURL(file)
+			values.avatar = file.name;
 		}
+	}
+
+	const updateImageDirect = (e) => {
+		console.log(`${e.target.value}`);
+		values.avatar = e.target.value;
 	}
 </script>
 
@@ -66,12 +72,16 @@
 					<input id="imgInput" type="file" name="file" accept=".jpg, .jpeg, .png" on:change={updateImage} />
 
 					<input
+						id="imageText"
 						value={values.avatar}
 						class="input"
 						title="Avatar"
 						type="text"
 						name="avatar"
+						on:change={updateImageDirect}
 					/>
+
+					<a href={`/scenarios/${data?.scenario}/images`}>See Image Gallery</a>
 					<!-- <button type="button" class="btn variant-filled" on:click={() => { console.log("Clear input value") }}>clear</button> -->
 				</div>
 			</label>
