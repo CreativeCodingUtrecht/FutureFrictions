@@ -11,11 +11,21 @@
 
 	let avatarImage: String;
 
+	const images = data?.images;
+
 	const updateImage = (e) => {
 		const [file] = e.target.files;
 		if (file) {
 			avatarImage = URL.createObjectURL(file)
 			values.avatar = file.name;
+		}
+	}
+
+	const updateImageFromSelect = (e) => {
+		const value = e.target.value;
+		console.log(`${value}`);
+		if (value !== "none") {
+			values.avatar = e.target.value;
 		}
 	}
 
@@ -76,10 +86,17 @@
 						value={values.avatar}
 						class="input"
 						title="Avatar"
-						type="text"
+						type="hidden"
 						name="avatar"
 						on:change={updateImageDirect}
 					/>
+
+					<select class="select" on:change={updateImageFromSelect}>
+						<option></option>
+						{#each images as image}
+							<option value={image}>{image}</option>
+						{/each}
+					</select>
 
 					<a href={`/scenarios/${data?.scenario}/images`}>See Image Gallery</a>
 					<!-- <button type="button" class="btn variant-filled" on:click={() => { console.log("Clear input value") }}>clear</button> -->
