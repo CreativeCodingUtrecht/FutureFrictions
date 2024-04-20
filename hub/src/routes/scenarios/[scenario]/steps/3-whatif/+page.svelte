@@ -14,7 +14,7 @@
 </script>
 
 <div>
-	<form method="POST" action="?/save">
+	<form method="POST" action="?/save" enctype="multipart/form-data">
 		<div class="space-y-4">
 			<label class="label space-y-4">
 				<p>

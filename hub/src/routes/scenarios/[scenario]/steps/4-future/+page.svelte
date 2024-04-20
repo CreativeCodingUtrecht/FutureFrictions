@@ -32,35 +32,25 @@
 </script>
 
 <div>
-	<form method="POST" action="?/save">
+	<form method="POST" action="?/save" enctype="multipart/form-data">
 		<div class="space-y-4">
 			<span class="label space-y-4">
 				<span
 					>Explore this frictional statement further. In what context do you think it is most useful to explore the friction? (Think of places and/or activities)
 					</span
 				>
-				<ImageSelector scenario={scenario} images={images} values={values} input_value="collage" field="collage" extraClass="" />
+				<ImageSelector scenario={scenario} images={images} values={values} input="collage" field="collage" upload="collageFile" extraClass="" />
 			</span>
 		</div>
 
+		<div class="space-y-4">
 			<!-- Actor 1 -->
 			<div class="card">
-				<header class="card-header"><b>Character 1</b></header>
+				<header class="card-header"><b>{values.actor1.name}</b></header>
 				<section class="p-4 space-y-4">
-					<label class="label space-y-4">
-						<span>What's the name of the first character?</span>
-						<input
-							value={values.actor1.name}
-							class="input"
-							title="Name of the actor"
-							type="text"
-							name="actor1name"
-							readonly
-						/>
-					</label>
 
 					<label class="label">
-						<span>What does this actor say, think, feel?</span>
+						<span>What does this character say, think, feel?</span>
 						<textarea
 							value={values.actor1.statement}
 							class="textarea"
@@ -69,49 +59,15 @@
 							name="actor1statement"
 						/>
 					</label>
-
-					<!-- <label class="label">
-						<span>Avatar of the actor</span>
-						<input
-							value={values.actor1.avatar}
-							class="input"
-							title="Image of the actor"
-							type="text"
-							name="actor1avatar"
-						/>
-					</label>
-
-					<label class="label">
-						<span>Sprite of the actor</span>
-						<input
-							value={values.actor1.sprite}
-							class="input"
-							title="Sprite of the actor"
-							type="text"
-							name="actor1sprite"
-						/>
-					</label> -->
 				</section>
 			</div>
 
 			<!-- Actor 2 -->
 			<div class="card">
-				<header class="card-header"><b>Character 2</b></header>
+				<header class="card-header"><b>{values.actor2.name}</b></header>
 				<section class="p-4 space-y-4">
-					<label class="label space-y-4">
-						<span>What's the name of the second character?</span>
-						<input
-							value={values.actor2.name}
-							class="input"
-							title="Name of the actor"
-							type="text"
-							name="actor2name"
-							readonly
-						/>
-					</label>
-
 					<label class="label">
-						<span>What does this actor say, think, feel?</span>
+						<span>What does this character say, think, feel?</span>
 						<textarea
 							value={values.actor2.statement}
 							class="textarea"
@@ -120,49 +76,15 @@
 							name="actor2statement"
 						/>
 					</label>
-
-					<!-- <label class="label">
-						<span>Avatar of the actor</span>
-						<input
-							value={values.actor2.avatar}
-							class="input"
-							title="Image of the actor"
-							type="text"
-							name="actor2avatar"
-						/>
-					</label>
-
-					<label class="label">
-						<span>Sprite of the actor</span>
-						<input
-							value={values.actor2.sprite}
-							class="input"
-							title="Sprite of the actor"
-							type="text"
-							name="actor2sprite"
-						/>
-					</label> -->
 				</section>
 			</div>
 
 			<!-- Actor 3 -->
 			<div class="card">
-				<header class="card-header"><b>Character 3</b></header>
+				<header class="card-header"><b>{values.actor3.name}</b></header>
 				<section class="p-4 space-y-4">
-					<label class="label space-y-4">
-						<span>What's the name of the third character?</span>
-						<input
-							value={values.actor3.name}
-							class="input"
-							title="Name of the actor"
-							type="text"
-							name="actor3name"
-							readonly
-						/>
-					</label>
-
 					<label class="label">
-						<span>What does this actor say, think, feel?</span>
+						<span>What does this character say, think, feel?</span>
 						<textarea
 							value={values.actor3.statement}
 							class="textarea"
@@ -171,30 +93,9 @@
 							name="actor3statement"
 						/>
 					</label>
-
-					<!-- <label class="label">
-						<span>Avatar of the actor</span>
-						<input
-							value={values.actor3.avatar}
-							class="input"
-							title="Image of the actor"
-							type="text"
-							name="actor3avatar"
-						/>
-					</label>
-
-					<label class="label">
-						<span>Sprite of the actor</span>
-						<input
-							value={values.actor3.sprite}
-							class="input"
-							title="Sprite of the actor"
-							type="text"
-							name="actor3sprite"
-						/>
-					</label> -->
 				</section>
 			</div>		
+		</div>
 
 		<br />
 		<button class="btn variant-filled-primary">Save</button>

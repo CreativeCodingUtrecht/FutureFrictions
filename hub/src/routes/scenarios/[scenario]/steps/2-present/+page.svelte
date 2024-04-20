@@ -33,16 +33,22 @@
 </script>
 
 <div>
-	<form method="POST" action="?/save">
-		<div class="space-y-4">
-			<span class="label space-y-4">
+	<form method="POST" action="?/save" enctype="multipart/form-data">
+		<div class="">
+			<h4 class="h4">Collage</h4>
+			<br />
+			<span>
 				<span
 					>Explore this frictional statement further. In what context do you think it is most useful
-					to explore the friction it t? Think of places and/or activities.</span
+					to explore the friction? Think of places and/or activities.</span
 				>
-				<ImageSelector scenario={scenario} images={images} values={values} input_value="collage" field="collage" extraClass="" />			
+				<ImageSelector field="collage" upload="collage_image" {scenario} {images} {values} extraClass="" />			
 			</span>
-
+		</div>
+		<br />
+		<div class="space-y-4">
+			
+			<h4 class="h4">Characters</h4>
 			<p>
 				Think of 3 relevant human/non-human 'characters' in the story that may be affected or play a
 				role in connection to this friction. What do you think these characters might say about the
@@ -51,12 +57,31 @@
 
 			<!-- Actor 1 -->
 			<div class="card">
-				<header class="card-header"><b>Character 1</b></header>
+				<header class="card-header"><b>{values.actor1.name ? values.actor1.name : "Character 1"}</b></header>
 				<section class="p-4 space-y-4">
+
+					<!-- <ImageSelector 
+						title="Avatar" 
+						field="avatar"
+						input="actor1avatar" 
+						{scenario} 
+						{images} 
+						upload="actor1avatarFile"
+						values={values.actor1} /> -->
+
+					<ImageSelector 
+						title="Sprite" 
+						field="sprite"
+						input="actor1sprite" 
+						{scenario} 
+						{images} 
+						upload="actor1spriteFile"
+						values={values.actor1} />
+
 					<label class="label space-y-4">
 						<span>What's the name of the first character?</span>
 						<input
-							value={values.actor1.name}
+							bind:value={values.actor1.name}
 							class="input"
 							title="Name of the actor"
 							type="text"
@@ -65,7 +90,7 @@
 					</label>
 
 					<label class="label">
-						<span>What does this actor say, think, feel?</span>
+						<span>What does this character say, think, feel?</span>
 						<textarea
 							value={values.actor1.statement}
 							class="textarea"
@@ -75,38 +100,35 @@
 						/>
 					</label>
 
-					<label class="label">
-						<span>Avatar of the actor</span>
-						<input
-							value={values.actor1.avatar}
-							class="input"
-							title="Image of the actor"
-							type="text"
-							name="actor1avatar"
-						/>
-					</label>
-
-					<label class="label">
-						<span>Sprite of the actor</span>
-						<input
-							value={values.actor1.sprite}
-							class="input"
-							title="Sprite of the actor"
-							type="text"
-							name="actor1sprite"
-						/>
-					</label>
 				</section>
 			</div>
 
 			<!-- Actor 2 -->
 			<div class="card">
-				<header class="card-header"><b>Character 2</b></header>
+				<header class="card-header"><b>{values.actor2.name ? values.actor2.name : "Character 2"}</b></header>
 				<section class="p-4 space-y-4">
+					<!-- <ImageSelector 
+						title="Avatar" 
+						field="avatar"
+						input="actor2avatar" 
+						{scenario} 
+						{images} 
+						upload="actor2avatarFile"
+						values={values.actor2} /> -->
+
+					<ImageSelector 
+						title="Sprite" 
+						field="sprite"
+						input="actor2sprite" 
+						{scenario} 
+						{images} 
+						upload="actor2spriteFile"
+						values={values.actor2} />					
+
 					<label class="label space-y-4">
 						<span>What's the name of the second character?</span>
 						<input
-							value={values.actor2.name}
+							bind:value={values.actor2.name}
 							class="input"
 							title="Name of the actor"
 							type="text"
@@ -124,39 +146,35 @@
 							name="actor2statement"
 						/>
 					</label>
-
-					<label class="label">
-						<span>Avatar of the actor</span>
-						<input
-							value={values.actor2.avatar}
-							class="input"
-							title="Image of the actor"
-							type="text"
-							name="actor2avatar"
-						/>
-					</label>
-
-					<label class="label">
-						<span>Sprite of the actor</span>
-						<input
-							value={values.actor2.sprite}
-							class="input"
-							title="Sprite of the actor"
-							type="text"
-							name="actor2sprite"
-						/>
-					</label>
 				</section>
 			</div>
 
 			<!-- Actor 3 -->
 			<div class="card">
-				<header class="card-header"><b>Character 3</b></header>
+				<header class="card-header"><b>{values.actor3.name ? values.actor3.name : "Character 3"}</b></header>
 				<section class="p-4 space-y-4">
-					<label class="label space-y-4">
+					<!-- <ImageSelector 
+						title="Avatar" 
+						field="avatar" 
+						input="actor3avatar" 
+						{scenario} 
+						{images} 
+						upload="actor3avatarFile"
+						values={values.actor3} /> -->
+
+					<ImageSelector 
+						title="Sprite" 
+						field="sprite"
+						input="actor3sprite" 
+						{scenario} 
+						{images} 
+						upload="actor3spriteFile"
+						values={values.actor3} />
+
+					<label class="label space-y-4">					
 						<span>What's the name of the third character?</span>
 						<input
-							value={values.actor3.name}
+							bind:value={values.actor3.name}
 							class="input"
 							title="Name of the actor"
 							type="text"
@@ -174,32 +192,13 @@
 							name="actor3statement"
 						/>
 					</label>
-
-					<label class="label">
-						<span>Avatar of the actor</span>
-						<input
-							value={values.actor3.avatar}
-							class="input"
-							title="Image of the actor"
-							type="text"
-							name="actor3avatar"
-						/>
-					</label>
-
-					<label class="label">
-						<span>Sprite of the actor</span>
-						<input
-							value={values.actor3.sprite}
-							class="input"
-							title="Sprite of the actor"
-							type="text"
-							name="actor3sprite"
-						/>
-					</label>
 				</section>
 			</div>
-
+			<br />
+			
 			<label class="label space-y-4">
+
+				<h4 class="h4">Emerging frictions</h4>
 				<p>
 					<span>
 						After expressing the background and characters related to the initial statement, do you see any emerging frictions? Select the most thought-provoking friction you want to explore in the next steps.
@@ -210,7 +209,7 @@
 					value={values.emergingfriction}
 					class="textarea"
 					title="Emerging friction"
-					rows="3"
+					rows="4"
 					name="emergingfriction"
 				/>
 			</label>			

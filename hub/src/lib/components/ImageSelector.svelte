@@ -1,19 +1,19 @@
 <script lang="ts">
 
-    export let images = [];
+    export let title : string = "Create a collage"
+    export let images : string[] = [];
     export let values = {};
-    export let field = "avatar"
-    export let scenario;
-    export let input_file = "file";
-    export let input_value = "avatar";
-    export let extraClass = "max-w-80";
-
-	let avatarImage: String;
+    export let field : string = "avatar"
+    export let input : string;
+    export let scenario : string;
+    export let upload : string = "file";
+    export let extraClass : string = "max-w-80";
+	let previewImage: string;
 
 	const updateImage = (e) => {
 		const [file] = e.target.files;
 		if (file) {
-			avatarImage = URL.createObjectURL(file)
+			previewImage = URL.createObjectURL(file)
 			values[field] = file.name;
 		}
 	}
@@ -32,32 +32,31 @@
 	}    
 </script>
 
-<div class="card p-4 {extraClass}">
-    <img id="preview" src={avatarImage ? `${avatarImage}` : `/api/scenarios/${scenario}/${values[field]}`} alt={values[field]} />
+<div class="card bg-surface-200/30 p-4 space-y-4 {extraClass}">
+    <!-- <h4 class="h4">{title}</h4> -->
+    <img id="preview" src={previewImage ? `${previewImage}` : `/api/scenarios/${scenario}/${values[field]}`} alt={values[field]} />
     
-    <input id="imgInput" type="file" name={input_file} accept=".jpg, .jpeg, .png" on:click={(e) => {e.stopPropagation();}} on:change={updateImage} />
+    <input id="imgInput" class="input" type="file" name={upload} accept=".jpg, .jpeg, .png" on:click={(e) => {e.stopPropagation();}} on:change={updateImage} />
 
-    <p>Or paste the file name of the image</p>
-
-    <input
-        id="imageText"
-        value={values[field]}
-        class="input"
-        title="Avatar"
-        type="hidden"
-        name={input_value}
-        on:change={updateImageDirect}
-    />
+    <p>Or, Select an image from the library</p>
     
     <select class="select" on:change={updateImageFromSelect}>
-        <option></option>
+        <option disabled selected value>No image selected.</option>
         {#each images as image}
             <option value={image}>{image}</option>
         {/each}
     </select>
 
-    <a type="button" class="btn variant-filled mt-4" href={`/scenarios/${scenario}/images`}>See Image Gallery</a>
-    <!-- <button type="button" class="btn variant-filled" on:click={() => { console.log("Clear input value") }}>clear</button> -->
+    <input
+        id="imageText"
+        value={values[field]}
+        class="input"
+        type="hidden"
+        name={input ? input : field}
+        on:change={updateImageDirect}
+    />
+
+    <a type="button" target="_images" class="btn variant-ghost-primary mt-4" href={`/scenarios/${scenario}/images`}>See Image Gallery</a>
 </div>
 
 <style>

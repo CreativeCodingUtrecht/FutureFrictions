@@ -15,7 +15,11 @@
 		action="?/save">
 
 		<label class="label space-y-4">
-			<span>What shall we call this scenario?
+
+			<span>
+				<h4 class="h4">Scenario title</h4>				
+				<br />
+				What shall we call this scenario?
 			</span>
 			<input
 				value={values.title}

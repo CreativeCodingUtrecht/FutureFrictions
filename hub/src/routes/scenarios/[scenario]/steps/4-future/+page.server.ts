@@ -29,6 +29,16 @@ export const actions = {
     },
 } satisfies Actions;
 
+const saveImage = async (scenario, data, name) => {
+    const file = data?.get(name);
+    if (file?.name && file.name.length > 0 && file.name !== "undefined" && file.name !== "") {        
+        const filename = `${scenarios.SCENARIOROOT}/${scenario}/${file.name}`;  
+        console.log("Saving image with filename", filename);        
+        const buffer = Buffer.from(await file.arrayBuffer());
+        scenarios.addImage(scenario, filename, buffer);
+    }    
+}
+
 const save = async (params, request) => {
     console.log("Saving step 0")
     const scenario = params.scenario;
@@ -38,6 +48,7 @@ const save = async (params, request) => {
     
     const collage = data.get('collage')
     json.friction.options.a.alternativeBackground = collage;
+    saveImage(scenario, data, 'collageFile');
 
     const actor1name = data.get('actor1name')
     const actor1statement = data.get('actor1statement')

@@ -29,6 +29,16 @@ export const actions = {
     },
 } satisfies Actions;
 
+const saveImage = async (scenario, data, name) => {
+    const file = data?.get(name);
+    if (file?.name && file.name.length > 0 && file.name !== "undefined" && file.name !== "") {        
+        const filename = `${scenarios.SCENARIOROOT}/${scenario}/${file.name}`;  
+        console.log("Saving image with filename", filename);        
+        const buffer = Buffer.from(await file.arrayBuffer());
+        scenarios.addImage(scenario, filename, buffer);
+    }    
+}
+
 const save = async (params, request) => {
     console.log("Saving step 0")
     const scenario = params.scenario;
@@ -39,6 +49,8 @@ const save = async (params, request) => {
     const collage = data.get('collage')
     json.scene.background = collage;
 
+    saveImage(scenario, data, 'collageFile');
+
     const actor1name = data.get('actor1name')
     const actor1statement = data.get('actor1statement')
     const actor1avatar = data.get('actor1avatar')
@@ -47,6 +59,8 @@ const save = async (params, request) => {
     json.actors[0].content.before = actor1statement
     json.actors[0].avatar = actor1avatar
     json.actors[0].sprite = actor1sprite;
+    saveImage(scenario, data, 'actor1spriteFile');
+    saveImage(scenario, data, 'actor1avatarFile');
 
     const actor2name = data.get('actor2name')
     const actor2statement = data.get('actor2statement')
@@ -56,6 +70,8 @@ const save = async (params, request) => {
     json.actors[1].content.before = actor2statement
     json.actors[1].avatar = actor2avatar
     json.actors[1].sprite = actor2sprite;
+    saveImage(scenario, data, 'actor2spriteFile');
+    saveImage(scenario, data, 'actor2avatarFile');
 
     const actor3name = data.get('actor3name')
     const actor3statement = data.get('actor3statement')
@@ -65,6 +81,8 @@ const save = async (params, request) => {
     json.actors[2].content.before = actor3statement
     json.actors[2].avatar = actor3avatar
     json.actors[2].sprite = actor3sprite;
+    saveImage(scenario, data, 'actor3spriteFile');
+    saveImage(scenario, data, 'actor3avatarFile');
 
     const emergingfriction = data.get('emergingfriction')
     json.scene.content.emergingfriction = emergingfriction;
@@ -90,6 +108,7 @@ const save = async (params, request) => {
             statement: actor3statement,
             avatar: actor3avatar,
             sprite: actor3sprite,
-        }
+        },
+        emergingfriction
     }
 }

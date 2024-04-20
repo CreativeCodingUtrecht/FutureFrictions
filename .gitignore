@@ -185,6 +185,8 @@ build/
 
 future-frictions-webgl/
 
+data/scenarios/*-test/
+
 old/
 
 # SvelteKit
