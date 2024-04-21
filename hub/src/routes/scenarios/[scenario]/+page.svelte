@@ -56,13 +56,13 @@
 	</div>
 	<div class="card overflow-hidden">
 		<div class="p-4 space-y-4">
-            <h2 class="h2">Duplicate scenario</h2>
+            <h4 class="h4">Duplicate scenario</h4>
             <form method="POST" action="?/duplicate">
                 <div class="space-y-4">
 				<input class="input" value={uuidv4()} type="hidden" required name="slug" />
 
                 <label>
-                    Title
+                    Name of your scenario
                     <input
                         class="input"
                         type="text"

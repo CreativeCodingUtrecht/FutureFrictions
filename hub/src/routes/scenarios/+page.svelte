@@ -16,12 +16,16 @@
 
 <div class="w-full text-token grid grid-cols-1 md:grid-cols-3 gap-4">	
 	<div class="card card-hover p-4 space-y-4">
-		<h4 class="h4">Create new scenario</h4>
+		<h4 class="h4">Create your own scenario</h4>
+		<p>
+			Start exploring a new frictional statement by <b>creating a new scenario</b>,
+			or by opening and <b>duplicating an existing scenario</b> to experiment with different outcomes.
+		</p>
 		<form method="POST" action="?/create">
 			<div class="space-y-4">
 			<input class="input" value={uuidv4()} type="hidden" required name="slug" />
 			<label>
-				Name
+				Name of your scenario
 				<input class="input" type="text" required name="name" />
 			</label>
 	
