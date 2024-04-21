@@ -10,6 +10,7 @@
 
 	const values = {
 		collage: form?.collage || data?.json.friction.options.a.alternativeBackground || data?.json.scene.background || '',
+
 		actor1: {
 			name: form?.actor1.name || data?.json.actors[0].description || '',
 			statement: form?.actor1.statement || data?.json.actors[0].content.after.a || '',
@@ -27,7 +28,24 @@
 			statement: form?.actor3.statement || data?.json.actors[2].content.after.a || '',
 			// avatar: form?.actor3.avatar || data?.json.actors[2].avatar || '',
 			// sprite: form?.actor3.sprite || data?.json.actors[2].sprite || ''
-		},		
+		},
+		elements: {
+			foreground: {
+				sprite1 : form?.elements?.foreground.sprite1 || data?.json.friction.options.a.sprites.foreground[0] || '',
+				sprite2 : form?.elements?.foreground.sprite2 || data?.json.friction.options.a.sprites.foreground[1] || '',
+				sprite3 : form?.elements?.foreground.sprite3 || data?.json.friction.options.a.sprites.foreground[2] || ''
+			},
+			background: {
+				sprite1 : form?.elements?.background.sprite1 || data?.json.friction.options.a.sprites.background[0] || '',
+				sprite2 : form?.elements?.background.sprite2 || data?.json.friction.options.a.sprites.background[1] || '',
+				sprite3 : form?.elements?.background.sprite3 || data?.json.friction.options.a.sprites.background[2] || ''				
+			},
+			floating: {
+				sprite1 : form?.elements?.floating.sprite1 || data?.json.friction.options.a.sprites.floating[0] || '',
+				sprite2 : form?.elements?.floating.sprite2 || data?.json.friction.options.a.sprites.floating[1] || '',
+				sprite3 : form?.elements?.floating.sprite3 || data?.json.friction.options.a.sprites.floating[2] || ''				
+			}
+		}
 	};
 </script>
 
@@ -50,6 +68,84 @@
 
 				<ImageSelector scenario={scenario} images={images} values={values} input="collage" field="collage" upload="collageFile" extraClass="" />
 			</span>
+
+			<br />
+			<h5 class="h5">Elements that emerge in this future: floating in the sky</h5>
+			<br />
+			<div class="w-full text-token grid grid-cols-1 md:grid-cols-3 gap-4">	
+				<ImageSelector 
+					scenario={scenario} 
+					images={images} 
+					values={values.elements.floating} 
+					input="floatingsprite1" field="sprite1" upload="floatingsprite1File" 
+					extraClass="" />
+
+				<ImageSelector 
+					scenario={scenario} 
+					images={images} 
+					values={values.elements.floating} 
+					input="floatingsprite2" field="sprite2" upload="floatingsprite2File" 
+					extraClass="" />
+
+				<ImageSelector 
+					scenario={scenario} 
+					images={images} 
+					values={values.elements.floating} 
+					input="floatingsprite3" field="sprite3" upload="floatingsprite3File" 
+					extraClass="" />
+			</div>
+			<br />
+			<h5 class="h5">Elements that emerge in this future: in the background</h5>
+			<br />
+			<div class="w-full text-token grid grid-cols-1 md:grid-cols-3 gap-4">	
+				<ImageSelector 
+					scenario={scenario} 
+					images={images} 
+					values={values.elements.background} 
+					input="backgroundsprite1" field="sprite1" upload="backgroundsprite1File" 
+					extraClass="" />
+
+				<ImageSelector 
+					scenario={scenario} 
+					images={images} 
+					values={values.elements.background} 
+					input="backgroundsprite2" field="sprite2" upload="backgroundsprite2File" 
+					extraClass="" />
+
+				<ImageSelector 
+					scenario={scenario} 
+					images={images} 
+					values={values.elements.background} 
+					input="backgroundsprite3" field="sprite3" upload="backgroundsprite3File" 
+					extraClass="" />
+			</div>
+			<br />
+			<h5 class="h5">Elements that emerge in this future: on the foreground</h5>
+			<br />
+			<div class="w-full text-token grid grid-cols-1 md:grid-cols-3 gap-4">	
+				<ImageSelector 
+					scenario={scenario} 
+					images={images} 
+					values={values.elements.foreground} 
+					input="foregroundsprite1" field="sprite1" upload="foregroundsprite1File" 
+					extraClass="" />
+
+				<ImageSelector 
+					scenario={scenario} 
+					images={images} 
+					values={values.elements.foreground} 
+					input="foregroundsprite2" field="sprite2" upload="foregroundsprite2File" 
+					extraClass="" />
+
+				<ImageSelector 
+					scenario={scenario} 
+					images={images} 
+					values={values.elements.foreground} 
+					input="foregroundsprite3" field="sprite3" upload="foregroundsprite3File" 
+					extraClass="" />
+			</div>
+
+
 		</div>
 
 		<div class="space-y-4">
