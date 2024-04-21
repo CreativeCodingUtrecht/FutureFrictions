@@ -30,7 +30,7 @@ export const actions = {
 } satisfies Actions;
 
 const save = async (params, request) => {
-    console.log("Saving step 0")
+    console.log("Saving step 1")
     const scenario = params.scenario;
     const json = scenarios.json(scenario);
 

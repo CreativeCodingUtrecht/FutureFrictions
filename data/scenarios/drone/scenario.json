@@ -2,7 +2,8 @@
     "scene": {
         "content": {
             "welcome": "The mayor of this fictional neighbourhood wants to implement new smart city ideas. Experience how these ideas might impact the neighbourhood by exploring your surroundings and listening to your neighbours. If you find a person with a question mark on top of their heads... feel free to interact with them.",
-            "emergingfriction": ""
+            "emergingfriction": "",
+            "provocativestatement": ""
         },
         "background": "screen_1920x1080_2021-11-22_16-30-57.png",
         "avatar": "duif.png"
@@ -11,13 +12,13 @@
         "description": "Smart city ideas | Drone",
         "avatar": "drone_1.png",
         "content": {
-            "before": "A new guardian angel drone has been introduced. \n\nThe images are directly uploaded to your device so you know exactly what happens to them at all times."
+            "before": "A new guardian angel drone has been introduced. \r\n\r\nThe images are directly uploaded to your device so you know exactly what happens to them at all times."
         },
         "options": {
             "a": {
                 "avatar": "drone_A.png",
                 "content": "The images are directly uploaded to your device so you know exactly what happens to them at all times.",
-                "alternativeBackground": null,
+                "alternativeBackground": "screen_1920x1080_2021-11-22_16-30-57.png",
                 "sprites": {
                     "foreground": [
                         "eyes_option A_2.png",
@@ -84,9 +85,9 @@
     },
     "actors": [
         {
-            "description": "Tina",
+            "description": null,
             "sprite": "telefoon.png",
-            "avatar": "tina_avatar.png",
+            "avatar": null,
             "content": {
                 "before": "Hi, my name is Tina. Nice to meet you! After school, I usually meet up with some of my friends in this square. I'm going to meet them there later, but I need to do my homework first.",
                 "after": {
@@ -97,9 +98,9 @@
             }
         },
         {
-            "description": "Street artist",
+            "description": null,
             "sprite": "artist_17_5_2021_21_50.png",
-            "avatar": "streetartist_avatar.png",
+            "avatar": null,
             "content": {
                 "before": "Hello! I often come to this square to observe people passing by, think about life, and paint.",
                 "after": {
@@ -110,9 +111,9 @@
             }
         },
         {
-            "description": "Elderly woman",
+            "description": null,
             "sprite": "elderly_on_bench_17_5_2021_21_14.png",
-            "avatar": "lady_avatar.png",
+            "avatar": null,
             "content": {
                 "before": "Hello dear, how nice to see you! I've always liked sitting here, in the square, and seeing if any of my neighbours want to stop for a chat.",
                 "after": {

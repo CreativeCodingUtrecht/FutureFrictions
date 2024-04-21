@@ -10,6 +10,6 @@
 
 </script>
 
-<h1 class="h1"><a href="/scenarios/{scenario}">{title}</a></h1>
+<h4 class="h4"><a href="/scenarios">Scenarios</a> ➡ <a href="/scenarios/{scenario}">{title}</a></h4>
 
 <slot />

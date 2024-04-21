@@ -40,7 +40,7 @@ const saveImage = async (scenario, data, name) => {
 }
 
 const save = async (params, request) => {
-    console.log("Saving step 0")
+    console.log("Saving step 2")
     const scenario = params.scenario;
     const json = scenarios.json(scenario);
 

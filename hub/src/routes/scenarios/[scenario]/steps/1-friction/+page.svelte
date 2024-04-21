@@ -21,7 +21,7 @@
 			<label class="label space-y-4">
 				<p>
 					<span>
-						Fill out this text box with a 'frictional statement' you would like to explore further.
+						Fill out this text box with a <b>frictional statement</b> you would like to explore further.
 						Feel free to copy one from this list, or come up with yours.
 					</span>
 				</p>
@@ -38,6 +38,7 @@
 					title="Frictional statement"
 					rows="4"
 					name="statement"
+					required
 				/>
 
 				<p>
@@ -55,7 +56,7 @@
 		
 			<span class="label space-y-4">
 				<br />
-				<span>Think of a character that introduces this frictional statement.</span>
+				<span>Think of a human/non-human character that introduces this frictional statement.</span>
 				<ImageSelector title="Create a character" field="avatar" {scenario} {images} {values} />
 			</span>
 	
@@ -64,7 +65,7 @@
 		<br />
 		<button class="btn variant-filled-primary">Save</button>
 		&nbsp;&nbsp;&nbsp;&nbsp; 
-		<button class="btn variant-ghost-primary" formaction="?/previous">Back</button>		
-		<button class="btn variant-ghost-primary" formaction="?/next">Next</button>
+		<button class="btn variant-filled-primary" formaction="?/previous">Back</button>		
+		<button class="btn variant-filled-primary" formaction="?/next">Next</button>
 	</form>
 </div>

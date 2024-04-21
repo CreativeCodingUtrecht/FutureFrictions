@@ -1,7 +1,6 @@
 <script lang="ts">
 	import type { PageData } from './$types';
-	import { Avatar } from '@skeletonlabs/skeleton';
-	import { goto } from '$app/navigation';
+	import { FF_WEBGL_URL } from '$lib/constants';
 
 	export let data: PageData;
 
@@ -12,9 +11,9 @@
 	};
 </script>
 
-<!-- <h1 class="h1">Scenarios</h1> -->
+<h4 class="h4"><a href="/scenarios">Scenarios</a></h4>
 
-<div class="w-full text-token grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="w-full text-token grid grid-cols-1 md:grid-cols-3 gap-4">	
 	<div class="card card-hover p-4 space-y-4">
 		<h4 class="h4">Create new scenario</h4>
 		<form method="POST" action="?/create">
@@ -42,7 +41,7 @@
                 />
 		</header>
 		<div class="p-4 space-y-4">
-			<h3 class="h3" data-toc-ignore>{data.scenarios[scenario].friction.description}</h3>
+			<h4 class="h4" data-toc-ignore>{data.scenarios[scenario].friction.description}</h4>
 			<!-- <h6 class="h6" data-toc-ignore>Scenario</h6> -->
 			<!-- <Avatar src={data.scenarios[scenario].friction.avatar
 				? `/api/scenarios/${scenario}/${data.scenarios[scenario].friction.avatar}`
@@ -50,13 +49,18 @@
 				background="white" />
 				 -->
 			<article>
+				<p>
+					<a href="/scenarios/{scenario}" class="btn variant-filled-primary">Open</a>
+					<a href={`${FF_WEBGL_URL}?scenario=${scenario}`} class="btn variant-ghost-primary" target="FF_WEBGL_URL">Play</a>
+					<a href="/scenarios/{scenario}/steps/0-setup" class="btn variant-ghost-primary">Edit</a>		
+				</p>
 				<p class="py-5">
 					<!-- cspell:disable -->
 					{data.scenarios[scenario].scene.content.welcome}
 					<!-- cspell:enable -->
 				</p>
                 <!-- <p class="italic">
-                    {data.scenarios[scenario].friction.content.before}
+                    {data.scenarios[scenario].friction.content.provocativestatement}
                 </p> -->
 			</article>
 		</div>

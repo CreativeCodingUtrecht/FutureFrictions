@@ -22,7 +22,7 @@
   <TabAnchor href={url_step0} selected={$page.url.pathname === url_step0}><b>0</b>. Before we start</TabAnchor>  
   <TabAnchor href={url_step1} selected={$page.url.pathname === url_step1}><b>1</b>. Friction</TabAnchor>  
   <TabAnchor href={url_step2} selected={$page.url.pathname === url_step2}><b>2</b>. Present context</TabAnchor>  
-  <TabAnchor href={url_step3} selected={$page.url.pathname === url_step3}><b>3</b>. What IF..</TabAnchor>  
+  <TabAnchor href={url_step3} selected={$page.url.pathname === url_step3}><b>3</b>. What if ..</TabAnchor>  
   <TabAnchor href={url_step4} selected={$page.url.pathname === url_step4}><b>4</b>. Back to the future</TabAnchor>  
   <TabAnchor href={url_step5} selected={$page.url.pathname === url_step5}><b>5</b>. Reflection</TabAnchor>  
 </TabGroup>

@@ -38,16 +38,17 @@
 			<img src={background_url} />
 		</header>
 		<div class="p-4 space-y-4">
-			<h3 class="h3" data-toc-ignore>{title}</h3>
+			<!-- <h3 class="h3" data-toc-ignore>{title}</h3> -->
 			<article>
+				<!-- <b>Frictional statement</b> -->
 				<p class="py-5">
 					{welcome}
 				</p>
 			</article>
-			<a href={url} class="btn variant-filled-primary" target="FF_WEBGL_URL">Play</a>
-			<a href="/scenarios/{scenario}/steps/0-setup" class="btn variant-filled-primary">Edit</a>
             <form method="POST" action="?/remove">
-                <button on:click={confirmRemove} type="submit" class="btn variant-ghost-error">Remove</button>
+				<a href={url} class="btn variant-filled-primary" target="FF_WEBGL_URL">Play</a>
+				<a href="/scenarios/{scenario}/steps/0-setup" class="btn variant-filled-primary">Edit</a>	
+				<button on:click={confirmRemove} type="submit" class="btn variant-ghost-error">Remove</button>
             </form>        
 		</div>
 	</div>
@@ -77,7 +78,7 @@
                     />
                 </label>
         
-                <button on:click={confirmDuplicate} type="submit" class="btn variant-filled-primary">Duplicate</button>
+                <button on:click={confirmDuplicate} type="submit" class="btn variant-ghost-primary">Duplicate</button>
                 </div>
             </form>
 

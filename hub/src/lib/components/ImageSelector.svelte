@@ -30,6 +30,11 @@
 		console.log(`${e.target.value}`);
 		values[field] = e.target.value;
 	}    
+
+	const updateImageClear = (e) => {
+		console.log(`${e.target.value}`);
+		values[field] = '';
+	}    
 </script>
 
 <div class="card bg-surface-200/30 p-4 space-y-4 {extraClass}">
@@ -38,7 +43,7 @@
     
     <input id="imgInput" class="input" type="file" name={upload} accept=".jpg, .jpeg, .png" on:click={(e) => {e.stopPropagation();}} on:change={updateImage} />
 
-    <p>Or, Select an image from the library</p>
+    <p>Or, Select an existing image from the library</p>
     
     <select class="select" on:change={updateImageFromSelect}>
         <option disabled selected value>No image selected.</option>
@@ -56,7 +61,8 @@
         on:change={updateImageDirect}
     />
 
-    <a type="button" target="_images" class="btn variant-ghost-primary mt-4" href={`/scenarios/${scenario}/images`}>See Image Gallery</a>
+    <button class="btn variant-ghost-primary mt-4" on:click={updateImageClear}>Clear image</button>
+    <a type="button" target="_images" class="btn variant-soft-primary mt-4" href={`/scenarios/${scenario}/images`}>See Image Gallery</a>
 </div>
 
 <style>

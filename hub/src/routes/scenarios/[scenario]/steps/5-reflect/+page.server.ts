@@ -30,11 +30,18 @@ export const actions = {
 } satisfies Actions;
 
 const save = async (params, request) => {
-    console.log("Saving step 0")
+    console.log("Saving step 5")
     const scenario = params.scenario;
     const json = scenarios.json(scenario);
 
     const data = await request.formData();
 
+    const provocativestatement = data.get('provocativestatement')
+    json.scene.content.provocativestatement = provocativestatement;
+
     scenarios.save(scenario, json);
+
+    return {
+        provocativestatement
+    }
 }
