@@ -13,19 +13,19 @@
 		actor1: {
 			name: form?.actor1.name || data?.json.actors[0].description || '',
 			statement: form?.actor1.statement || data?.json.actors[0].content.before || '',
-			avatar: form?.actor1.avatar || data?.json.actors[0].avatar || '',
+			// avatar: form?.actor1.avatar || data?.json.actors[0].avatar || '',
 			sprite: form?.actor1.sprite || data?.json.actors[0].sprite || ''
 		},
 		actor2: {
 			name: form?.actor2.name || data?.json.actors[1].description || '',
 			statement: form?.actor2.statement || data?.json.actors[1].content.before || '',
-			avatar: form?.actor2.avatar || data?.json.actors[1].avatar || '',
+			// avatar: form?.actor2.avatar || data?.json.actors[1].avatar || '',
 			sprite: form?.actor2.sprite || data?.json.actors[1].sprite || ''
 		},
 		actor3: {
 			name: form?.actor3.name || data?.json.actors[2].description || '',
 			statement: form?.actor3.statement || data?.json.actors[2].content.before || '',
-			avatar: form?.actor3.avatar || data?.json.actors[2].avatar || '',
+			// avatar: form?.actor3.avatar || data?.json.actors[2].avatar || '',
 			sprite: form?.actor3.sprite || data?.json.actors[2].sprite || ''
 		},
 		emergingfriction: form?.emergingfriction || data?.json.scene.content.emergingfriction || ''
