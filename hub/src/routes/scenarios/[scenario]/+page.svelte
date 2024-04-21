@@ -1,5 +1,7 @@
 <script lang="ts">
 	import type { PageData } from './$types';
+	import {v4 as uuidv4} from 'uuid';
+
 	import { FF_WEBGL_URL } from '$lib/constants';
 
 	export let data: PageData;
@@ -57,16 +59,8 @@
             <h2 class="h2">Duplicate scenario</h2>
             <form method="POST" action="?/duplicate">
                 <div class="space-y-4">
-                <label>
-                    Slug
-                    <input
-                        class="input"
-                        type="text"
-                        value={`${scenario}-copy`}
-                        required
-                        name="slug"
-                    />
-                </label>
+				<input class="input" value={uuidv4()} type="hidden" required name="slug" />
+
                 <label>
                     Title
                     <input

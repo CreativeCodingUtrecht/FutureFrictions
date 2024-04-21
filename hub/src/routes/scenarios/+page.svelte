@@ -1,4 +1,5 @@
 <script lang="ts">
+	import {v4 as uuidv4} from 'uuid';
 	import type { PageData } from './$types';
 	import { FF_WEBGL_URL } from '$lib/constants';
 
@@ -18,10 +19,7 @@
 		<h4 class="h4">Create new scenario</h4>
 		<form method="POST" action="?/create">
 			<div class="space-y-4">
-			<label>
-				Slug
-				<input class="input" type="text" required name="slug" />
-			</label>
+			<input class="input" value={uuidv4()} type="hidden" required name="slug" />
 			<label>
 				Name
 				<input class="input" type="text" required name="name" />
