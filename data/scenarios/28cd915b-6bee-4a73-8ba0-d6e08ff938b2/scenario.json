@@ -1,14 +1,15 @@
 {
     "scene": {
         "content": {
-            "welcome": "Welcome"
+            "welcome": "Welcome",
+            "emergingfriction": ""
         },
-        "background": null,
-        "avatar": "2cd43b_2b18d61ec51942d1aa8913193e653644_mv2.png"
+        "background": "city-beautiful-old-town.png",
+        "avatar": "Fish.png"
     },
     "friction": {
-        "description": "My scene",
-        "avatar": null,
+        "description": "New",
+        "avatar": "Leaves.png",
         "content": {
             "before": "Proposed intervention"
         },
@@ -18,21 +19,22 @@
                 "content": "Option A",
                 "sprites": {
                     "foreground": [
-                        null,
-                        null,
-                        null
+                        "Jelly fish.png",
+                        "Fish.png",
+                        "door.png"
                     ],
                     "background": [
-                        null,
-                        null,
-                        null
+                        "",
+                        "",
+                        ""
                     ],
                     "floating": [
-                        null,
-                        null,
-                        null
+                        "",
+                        "",
+                        ""
                     ]
-                }
+                },
+                "alternativeBackground": "city-beautiful-old-town.png"
             },
             "b": {
                 "avatar": null,
@@ -81,7 +83,7 @@
     "actors": [
         {
             "description": "Actor 1",
-            "sprite": null,
+            "sprite": "Brocolli.png",
             "avatar": null,
             "content": {
                 "before": "Story before the intervention.",
@@ -94,7 +96,7 @@
         },
         {
             "description": "Actor 2",
-            "sprite": null,
+            "sprite": "Cactus.png",
             "avatar": null,
             "content": {
                 "before": "Story before the intervention.",
@@ -107,7 +109,7 @@
         },
         {
             "description": "Actor 3",
-            "sprite": null,
+            "sprite": "Death 15.png",
             "avatar": null,
             "content": {
                 "before": "Story before the intervention.",
