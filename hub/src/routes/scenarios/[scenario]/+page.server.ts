@@ -24,7 +24,7 @@ export const actions = {
 
         console.log("Duplicating -- Old:", scenario, "New:", newScenario);
         scenarios.duplicate(scenario, newScenario, newName);
-        throw redirect(303, `/scenarios/${newScenario}`);
+        throw redirect(303, `/scenarios/${newScenario}/steps/0-setup`);
     },
     remove: async ({params, request}) => {
         const scenario = params.scenario;

@@ -39,7 +39,7 @@
 			<img
                 src={data.scenarios[scenario].scene.background
                     ? `/api/scenarios/${scenario}/${data.scenarios[scenario].scene.background}`
-                    : `/placeholders/background.jpg`}
+                    : ``}
                 />
 		</header>
 		<div class="p-4 space-y-4">

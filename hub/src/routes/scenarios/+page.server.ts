@@ -18,6 +18,6 @@ export const actions = {
 
         console.log("Creating -- New:", newScenario);
         scenarios.create(newScenario, newName);
-        throw redirect(303, `/scenarios/${newScenario}`);
+        throw redirect(303, `/scenarios/${newScenario}/steps/0-setup`);
     }    
 } satisfies Actions;
