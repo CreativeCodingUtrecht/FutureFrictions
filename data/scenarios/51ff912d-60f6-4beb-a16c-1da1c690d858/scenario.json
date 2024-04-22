@@ -1,0 +1,122 @@
+{
+    "scene": {
+        "content": {
+            "welcome": "Welcome"
+        },
+        "background": null,
+        "avatar": "2cd43b_2b18d61ec51942d1aa8913193e653644_mv2.png"
+    },
+    "friction": {
+        "description": "My scene",
+        "avatar": null,
+        "content": {
+            "before": "Proposed intervention"
+        },
+        "options": {
+            "a": {
+                "avatar": null,
+                "content": "Option A",
+                "sprites": {
+                    "foreground": [
+                        null,
+                        null,
+                        null
+                    ],
+                    "background": [
+                        null,
+                        null,
+                        null
+                    ],
+                    "floating": [
+                        null,
+                        null,
+                        null
+                    ]
+                }
+            },
+            "b": {
+                "avatar": null,
+                "content": "Option B",
+                "sprites": {
+                    "foreground": [
+                        null,
+                        null,
+                        null
+                    ],
+                    "background": [
+                        null,
+                        null,
+                        null
+                    ],
+                    "floating": [
+                        null,
+                        null,
+                        null
+                    ]
+                }
+            },
+            "c": {
+                "avatar": null,
+                "content": "Option C",
+                "sprites": {
+                    "foreground": [
+                        null,
+                        null,
+                        null
+                    ],
+                    "background": [
+                        null,
+                        null,
+                        null
+                    ],
+                    "floating": [
+                        null,
+                        null,
+                        null
+                    ]
+                }
+            }
+        }
+    },
+    "actors": [
+        {
+            "description": "Actor 1",
+            "sprite": null,
+            "avatar": null,
+            "content": {
+                "before": "Story before the intervention.",
+                "after": {
+                    "a": "Story after choosing option A.",
+                    "b": "Story after choosing option B.",
+                    "c": "Story after choosing option C."
+                }
+            }
+        },
+        {
+            "description": "Actor 2",
+            "sprite": null,
+            "avatar": null,
+            "content": {
+                "before": "Story before the intervention.",
+                "after": {
+                    "a": "Story after choosing option A.",
+                    "b": "Story after choosing option B.",
+                    "c": "Story after choosing option C."
+                }
+            }
+        },
+        {
+            "description": "Actor 3",
+            "sprite": null,
+            "avatar": null,
+            "content": {
+                "before": "Story before the intervention.",
+                "after": {
+                    "a": "Story after choosing option A.",
+                    "b": "Story after choosing option B.",
+                    "c": "Story after choosing option C."
+                }
+            }
+        }
+    ]
+}
