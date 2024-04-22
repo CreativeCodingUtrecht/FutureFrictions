@@ -22,11 +22,11 @@
 			Press the <b>Play</b> button to see the outcome of the future and a sequence of what you have created.
 		</p>
 		<br />
-		<a href={url} class="btn variant-filled-primary" target="FF_WEBGL_URL">Play</a>
+		<a href={url} class="btn variant-filled-primary" target="FF_WEBGL_URL">▶ Play</a>
 		<br />
 
 		<br />
-		<h4 class="h4">Provocative question</h4>		
+		<h4 class="h4">Provocative statement</h4>		
 		<br />
 
 		<label class="label space-y-4">

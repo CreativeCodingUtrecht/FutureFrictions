@@ -10,9 +10,13 @@
 	const json = data.json;
 
 	const title = json.friction.description;
-	const welcome = json.scene.content.welcome;
+	const welcome = json.scene.content.welcome;	
 	const background = json.scene.background;
 	const avatar = json.scene.avatar;
+
+	const frictionalstatement = data?.json?.friction?.content.before || '';
+	const emergingfrictions = data?.json?.scene?.content.emergingfriction || '';
+	const provocativestatement = data?.json.scene.content.provocativestatement || ''
 
 	const background_url = background
 		? `/api/scenarios/${scenario}/${background}`
@@ -40,15 +44,35 @@
 			<img src={background_url} />
 		</header>
 		<div class="p-4 space-y-4">
-			<!-- <h3 class="h3" data-toc-ignore>{title}</h3> -->
-			<article>
-				<!-- <b>Frictional statement</b> -->
-				<p class="py-5">
-					{welcome}
-				</p>
+			<h3 class="h3" data-toc-ignore>{title}</h3>
+			<article class="space-y-5">
+				{#if welcome}
+					<h5 class="h5">Frictional statement</h5>
+					<p>						
+						{welcome}
+					</p>
+				{/if}
+				{#if emergingfrictions}
+					<h5 class="h5">Emerging frictions</h5>
+					<p>
+						{emergingfrictions}
+					</p>
+				{/if}
+				{#if frictionalstatement}
+					<h5 class="h5">What If ..</h5>
+					<p>
+						{frictionalstatement}
+					</p>
+				{/if}
+				{#if provocativestatement}
+					<h5 class="h5">Provocative statement</h5>
+					<p>
+						{provocativestatement}
+					</p>
+				{/if}
 			</article>
             <form method="POST" action="?/remove">
-				<a href={url} class="btn variant-filled-primary" target="FF_WEBGL_URL">Play</a>
+				<a href={url} class="btn variant-filled-primary" target="FF_WEBGL_URL">▶ Play</a>
 				<a href="/scenarios/{scenario}/steps/0-setup" class="btn variant-filled-primary">Edit</a>	
 				<button on:click={confirmRemove} type="submit" class="btn variant-ghost-error">Remove</button>
             </form>        

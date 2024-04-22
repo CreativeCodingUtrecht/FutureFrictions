@@ -53,7 +53,7 @@
 			<article>
 				<p>
 					<a href="/scenarios/{scenario}" class="btn variant-filled-primary">Open</a>
-					<a href={`${FF_WEBGL_URL}?scenario=${scenario}`} class="btn variant-ghost-primary" target="FF_WEBGL_URL">Play</a>
+					<a href={`${FF_WEBGL_URL}?scenario=${scenario}`} class="btn variant-ghost-primary" target="FF_WEBGL_URL">▶ Play</a>
 					<a href="/scenarios/{scenario}/steps/0-setup" class="btn variant-ghost-primary">Edit</a>		
 				</p>
 				<p class="py-5">

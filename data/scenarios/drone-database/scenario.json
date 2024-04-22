@@ -1,0 +1,77 @@
+{
+    "scene": {
+        "content": {
+            "welcome": "The mayor of this fictional neighbourhood wants to implement new smart city ideas. Experience how these ideas might impact the neighbourhood by exploring your surroundings and listening to your neighbours. If you find a person with a question mark on top of their heads... feel free to interact with them.",
+            "emergingfriction": "",
+            "provocativestatement": ""
+        },
+        "background": "screen_1920x1080_2021-11-22_16-30-57.png",
+        "avatar": "duif.png"
+    },
+    "friction": {
+        "description": "Smart city ideas | Guardian angel drone uploads photos to government database",
+        "avatar": "drone_1.png",
+        "content": {
+            "before": "A new guardian angel drone has been introduced. \r\n\r\nThe images are directly uploaded to a government database so that public authorities can improve their services."
+        },
+        "options": {
+            "a": {
+                "avatar": "drone_C.png",
+                "content": "The images are directly uploaded to a government database so that public authorities can improve their services.",
+                "alternativeBackground": null,
+                "sprites": {
+                    "foreground": [
+                        "Politieauto_17_5_2021_12_29 (1).png",
+                        "ipad_group_31_5_2021_00_48.png",
+                        null
+                    ],
+                    "background": [
+                        "ipad_guy_31_5_2021_00_48.png",
+                        "Billboard option C.png",
+                        "policemen_31_5_2021_01_04.png"
+                    ],
+                    "floating": [
+                        null,
+                        null,
+                        null
+                    ]
+                }
+            }
+        }
+    },
+    "actors": [
+        {
+            "description": "Tina",
+            "sprite": "telefoon.png",
+            "avatar": "tina_avatar.png",
+            "content": {
+                "before": "Hi, my name is Tina. Nice to meet you! After school, I usually meet up with some of my friends in this square. I'm going to meet them there later, but I need to do my homework first.",
+                "after": {
+                    "a": "This makes me feel safe. I feel it is like my guardian angel drone. We don't need to ask each other 'are you home safe?' after a night out anymore, because the police know about our whereabouts at all times."
+                }
+            }
+        },
+        {
+            "description": "Street artist",
+            "sprite": "artist_17_5_2021_21_50.png",
+            "avatar": "streetartist_avatar.png",
+            "content": {
+                "before": "Hello! I often come to this square to observe people passing by, think about life, and paint.",
+                "after": {
+                    "a": "It is nice that thanks to the new drone I don't need to worry about protecting my paintings anymore. However, I am a bit worried as sometimes I make activist art. I hope the government won't monitor me for that!"
+                }
+            }
+        },
+        {
+            "description": "Elderly woman",
+            "sprite": "elderly_on_bench_17_5_2021_21_14.png",
+            "avatar": "lady_avatar.png",
+            "content": {
+                "before": "Hello dear, how nice to see you! I've always liked sitting here, in the square, and seeing if any of my neighbours want to stop for a chat.",
+                "after": {
+                    "a": "I'm old and living by myself, so I am now part of a programme that helps people in need. The government has enrolled me there based on the information they get from this drone. The thing is: I don't really feel I need help. I am doing great!"
+                }
+            }
+        }
+    ]
+}
