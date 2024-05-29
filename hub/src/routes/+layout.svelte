@@ -39,7 +39,7 @@
 		<AppBar>
 			<svelte:fragment slot="lead">
 				<div class="flex items-center">
-					<button class="lg:hidden btn btn-sm mr-4" on:click={drawerOpen}>
+					<!-- <button class="lg:hidden btn btn-sm mr-4" on:click={drawerOpen}>
 						<span>
 							<svg viewBox="0 0 100 80" class="fill-token w-4 h-4">
 								<rect width="100" height="10" />
@@ -47,7 +47,7 @@
 								<rect y="60" width="100" height="10" />
 							</svg>
 						</span>
-					</button>
+					</button> -->
 
 					<img src="/images/pigeon-8.webp" width="100" class="px-5" alt="Pigeon" />
 					<span class="text-xl uppercase futurefrictions"
@@ -63,9 +63,9 @@
 		</AppBar>
 	</svelte:fragment>
 
-	<svelte:fragment slot="sidebarLeft">
+	<!-- <svelte:fragment slot="sidebarLeft">
 		<Navigation />
-	</svelte:fragment>
+	</svelte:fragment> -->
 
 	<div class="container mx-auto p-8 space-y-8">
 		<slot />

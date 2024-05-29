@@ -1,15 +1,19 @@
 <script lang="ts">
 	import type { PageData, ActionData } from './$types';
 	import ImageSelector from '$lib/components/ImageSelector.svelte';
+	import Collage from '$lib/components/Collage.svelte';
 
 	export let form: ActionData;
 	export let data: PageData;
 
 	const images = data?.images;
 	const scenario = data?.scenario;
+	const backgrounds = data?.backgrounds;
+	const elements = data?.elements;
+	const characters = data?.characters;
 
 	const values = {
-		collage: form?.collage || data?.json.friction.options.a.alternativeBackground || data?.json.scene.background || '',
+		collage: data?.json.collage?.future?.canvas || data?.json.collage?.present?.canvas || '',
 
 		actor1: {
 			name: form?.actor1.name || data?.json.actors[0].description || '',
@@ -64,12 +68,14 @@
 				<ul class="list">
 					<li><span>🤔</span><span class="flex-auto">How might that future look like?</span></li>
 					<li><span>🤖</span><span class="flex-auto">What are elements that emerge? Think of new characters, conversations, activities, and interactions.</span></li>
-				</ul>				
-
-				<ImageSelector scenario={scenario} images={images} values={values} input="collage" field="collage" upload="collageFile" extraClass="" />
+				</ul>								
+				<!-- <ImageSelector scenario={scenario} images={images} values={values} input="collage" field="collage" upload="collageFile" extraClass="" /> -->
 			</span>
-
 			<br />
+			<Collage {scenario} {backgrounds} {elements} {characters} bind:collage={values.collage} />
+			<input type="hidden" name="collage" bind:value={values.collage} />
+			
+			<!-- <br />
 			<h5 class="h5">Elements that emerge in this future: floating in the sky</h5>
 			<br />
 			<div class="w-full text-token grid grid-cols-1 md:grid-cols-3 gap-4">	
@@ -146,7 +152,7 @@
 			</div>
 
 
-		</div>
+		</div> -->
 
 		<div class="space-y-4">
 			<br />

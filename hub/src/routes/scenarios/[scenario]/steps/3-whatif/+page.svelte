@@ -38,7 +38,7 @@
 			</label>
 
 			
-			<h4 class="h4">Futures Wheel</h4>					
+			<!-- <h4 class="h4">Futures Wheel</h4>					
 
 			<p>
 
@@ -52,7 +52,7 @@
 			<div class="card bg-surface-200/30 p-4 space-y-4" >
 				<img src="/images/futureswheel.gif" class="px-5" alt="Futures Wheel" />
 				<span class="text-sm"><br /><center>Source: <a href="https://matthewlarn.medium.com/explore-direct-indirect-consequences-using-a-futures-wheel-213feb0915a1" class="anchor" target="_new">Explore Direct & Indirect Consequences Using a Futures Wheel</a></center></span>
-			</div>
+			</div> -->
 		
 
 			<h4 class="h4">Character</h4>

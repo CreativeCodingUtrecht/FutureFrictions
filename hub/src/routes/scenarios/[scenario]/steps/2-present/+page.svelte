@@ -1,15 +1,20 @@
 <script lang="ts">
 	import type { PageData, ActionData } from './$types';
 	import ImageSelector from '$lib/components/ImageSelector.svelte';
+	import Collage from '$lib/components/Collage.svelte';
 
 	export let form: ActionData;
 	export let data: PageData;
-	
+
 	const images = data?.images;
 	const scenario = data?.scenario;
+	const backgrounds = data?.backgrounds;
+	const elements = data?.elements;
+	const characters = data?.characters;
 
 	const values = {
-		collage: form?.collage || data?.json.scene.background || '',
+		blob: '',
+		collage: data?.json?.collage?.present?.canvas || {},
 		actor1: {
 			name: form?.actor1.name || data?.json.actors[0].description || '',
 			statement: form?.actor1.statement || data?.json.actors[0].content.before || '',
@@ -30,6 +35,10 @@
 		},
 		emergingfriction: form?.emergingfriction || data?.json.scene.content.emergingfriction || ''
 	};
+
+	$: stringifiedCollage = () => {
+		return JSON.stringify(values.collage);
+	}
 </script>
 
 <div>
@@ -37,17 +46,16 @@
 		<div class="">
 			<h4 class="h4">Collage</h4>
 			<br />
-			<span>
-				<span
-					>Explore this frictional statement further. In what context do you think it is most useful
-					to explore the friction? Think of places and/or activities.</span
-				>
-				<ImageSelector field="collage" upload="collage_image" {scenario} {images} {values} extraClass="" />			
-			</span>
+			<span
+				>Explore this frictional statement further. In what context do you think it is most useful
+				to explore the friction? Think of places and/or activities.
+			</span>			
 		</div>
+		<Collage {scenario} {backgrounds} {elements} {characters} bind:blob={values.blob} bind:collage={values.collage} />
+		<input type="hidden" name="collage" value={stringifiedCollage()} />
+		<!-- <input type="hidden" name="collageFile" bind:value={values.blob} /> -->
 		<br />
 		<div class="space-y-4">
-			
 			<h4 class="h4">Characters</h4>
 			<p>
 				Think of 3 relevant human/non-human 'characters' in the story that may be affected or play a
@@ -57,26 +65,20 @@
 
 			<!-- Actor 1 -->
 			<div class="card">
-				<header class="card-header"><b>{values.actor1.name ? values.actor1.name : "Character 1"}</b></header>
+				<header class="card-header">
+					<b>{values.actor1.name ? values.actor1.name : 'Character 1'}</b>
+				</header>
 				<section class="p-4 space-y-4">
 
-					<!-- <ImageSelector 
-						title="Avatar" 
-						field="avatar"
-						input="actor1avatar" 
-						{scenario} 
-						{images} 
-						upload="actor1avatarFile"
-						values={values.actor1} /> -->
-
-					<ImageSelector 
-						title="Sprite" 
+					<!-- <ImageSelector
+						title="Sprite"
 						field="sprite"
-						input="actor1sprite" 
-						{scenario} 
-						{images} 
+						input="actor1sprite"
+						{scenario}
+						{images}
 						upload="actor1spriteFile"
-						values={values.actor1} />
+						values={values.actor1}
+					/> -->
 
 					<label class="label space-y-4">
 						<span>What's the name of the first character?</span>
@@ -99,31 +101,25 @@
 							name="actor1statement"
 						/>
 					</label>
-
 				</section>
 			</div>
 
 			<!-- Actor 2 -->
 			<div class="card">
-				<header class="card-header"><b>{values.actor2.name ? values.actor2.name : "Character 2"}</b></header>
+				<header class="card-header">
+					<b>{values.actor2.name ? values.actor2.name : 'Character 2'}</b>
+				</header>
 				<section class="p-4 space-y-4">
-					<!-- <ImageSelector 
-						title="Avatar" 
-						field="avatar"
-						input="actor2avatar" 
-						{scenario} 
-						{images} 
-						upload="actor2avatarFile"
-						values={values.actor2} /> -->
 
-					<ImageSelector 
-						title="Sprite" 
+					<!-- <ImageSelector
+						title="Sprite"
 						field="sprite"
-						input="actor2sprite" 
-						{scenario} 
-						{images} 
+						input="actor2sprite"
+						{scenario}
+						{images}
 						upload="actor2spriteFile"
-						values={values.actor2} />					
+						values={values.actor2}
+					/> -->
 
 					<label class="label space-y-4">
 						<span>What's the name of the second character?</span>
@@ -151,27 +147,22 @@
 
 			<!-- Actor 3 -->
 			<div class="card">
-				<header class="card-header"><b>{values.actor3.name ? values.actor3.name : "Character 3"}</b></header>
-				<section class="p-4 space-y-4">
-					<!-- <ImageSelector 
-						title="Avatar" 
-						field="avatar" 
-						input="actor3avatar" 
-						{scenario} 
-						{images} 
-						upload="actor3avatarFile"
-						values={values.actor3} /> -->
+				<header class="card-header">
+					<b>{values.actor3.name ? values.actor3.name : 'Character 3'}</b>
+				</header>
+				<section class="p-4 space-y-4">				
 
-					<ImageSelector 
-						title="Sprite" 
+					<!-- <ImageSelector
+						title="Sprite"
 						field="sprite"
-						input="actor3sprite" 
-						{scenario} 
-						{images} 
+						input="actor3sprite"
+						{scenario}
+						{images}
 						upload="actor3spriteFile"
-						values={values.actor3} />
+						values={values.actor3}
+					/> -->
 
-					<label class="label space-y-4">					
+					<label class="label space-y-4">
 						<span>What's the name of the third character?</span>
 						<input
 							bind:value={values.actor3.name}
@@ -195,13 +186,14 @@
 				</section>
 			</div>
 			<br />
-			
-			<label class="label space-y-4">
 
+			<label class="label space-y-4">
 				<h4 class="h4">Emerging frictions</h4>
 				<p>
 					<span>
-						After expressing the background and characters related to the initial statement, do you see any emerging frictions? Select the most thought-provoking friction you want to explore in the next steps.
+						After expressing the background and characters related to the initial statement, do you
+						see any emerging frictions? Select the most thought-provoking friction you want to
+						explore in the next steps.
 					</span>
 				</p>
 
@@ -212,7 +204,7 @@
 					rows="4"
 					name="emergingfriction"
 				/>
-			</label>			
+			</label>
 		</div>
 
 		<br />

@@ -8,10 +8,17 @@ export const load: PageServerLoad = ({ params }) => {
     const json = scenarios.json(scenario);
     const images = scenarios.images(scenario);
 
+    const backgrounds = scenarios.backgrounds(scenario);
+    const elements = scenarios.elements(scenario);
+    const characters = scenarios.characters(scenario);
+
     return {
         scenario,
         json,
-        images
+        images,
+        backgrounds,
+        elements,
+        characters
     }
 };
 
@@ -46,10 +53,26 @@ const save = async (params, request) => {
 
     const data = await request.formData();
         
-    const collage = data.get('collage')
-    json.scene.background = collage;
+    const collagejson = data.get('collage')
+    console.log("Collage (fabric.js) to save", collagejson);
 
-    saveImage(scenario, data, 'collageFile');
+    const collage = JSON.parse(collagejson);
+    if (!json.collage) {
+        json.collage = {}
+    }
+    if (!json.collage.present) {
+        json.collage.present = {}
+    }
+    json.collage.present.canvas = collage;
+
+    // Legacy
+    const background = new URL(collage.backgroundImage.src).pathname;  
+    json.scene.background = background;
+
+    // New canvas data 
+    json.collage.present.background = background;
+    
+    // saveImage(scenario, data, 'collageFile'); 
 
     const actor1name = data.get('actor1name')
     const actor1statement = data.get('actor1statement')

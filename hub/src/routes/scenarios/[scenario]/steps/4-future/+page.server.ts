@@ -9,10 +9,17 @@ export const load: PageServerLoad = ({ params }) => {
     const json = scenarios.json(scenario);
     const images = scenarios.images(scenario);
 
+    const backgrounds = scenarios.backgrounds(scenario);
+    const elements = scenarios.elements(scenario);
+    const characters = scenarios.characters(scenario);
+
     return {
         scenario,
         json,
-        images
+        images,
+        backgrounds,
+        elements,
+        characters
     }
 };
 
@@ -47,9 +54,24 @@ const save = async (params, request) => {
 
     const data = await request.formData();
     
-    const collage = data.get('collage')
-    json.friction.options.a.alternativeBackground = collage;
-    saveImage(scenario, data, 'collageFile');
+    const collage = JSON.parse(data.get('collage'));
+    console.log("Collage (fabric.js) to save", collage);
+    if (!json.collage) {
+        json.collage = {}
+    }
+    if (!json.collage.future) {
+        json.collage.future = {}
+    }
+    json.collage.future.canvas = collage;
+
+    // Legacy
+    const background = new URL(collage.backgroundImage.src).pathname;  
+    console.log(background);
+    json.friction.options.a.alternativeBackground = background;
+    // saveImage(scenario, data, 'collageFile'); )    
+
+    // New canvas data 
+    json.collage.future.background = background;
 
     // const actor1name = data.get('actor1name')
     const actor1statement = data.get('actor1statement')

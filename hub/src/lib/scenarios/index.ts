@@ -36,9 +36,17 @@ const json = (scenario: String) => {
 	return JSON.parse(data);
 };
 
-const images = (scenario: String) => {
-	const images = fs
-		.readdirSync(`${SCENARIOROOT}/${scenario}/`, { withFileTypes: true })
+const images = (scenario: String, subdir : String = "") => {
+	const dir = `${SCENARIOROOT}/${scenario}/${subdir}`
+
+	// Check directory
+	if (!fs.existsSync(dir)){
+		console.log('File does not exist');
+		return [];
+	}
+
+	return fs
+		.readdirSync(dir, { withFileTypes: true })
 		.filter(
 			(dirent) =>
 				dirent.isFile() &&
@@ -47,33 +55,19 @@ const images = (scenario: String) => {
 					dirent.name.endsWith('.jpeg'))
 		)
 		.map((dirent) => dirent.name);
-
-	// console.log(images)
-
-	return images;
 };
 
-// const usedImages = (json: any) => {
-// 	const images = [
-// 		json.scene.background,
-// 		json.scene.avatar,
-// 		json.friction.avatar,
-// 		json.friction.options.a.avatar,
-// 		...json.friction.options.a.sprites.foreground,
-// 		json.friction.options.b.avatar,
-// 		...json.friction.options.b.sprites.background,
-// 		json.friction.options.c.avatar,
-// 		...json.friction.options.c.sprites.floating,
-// 		json.actors[0].sprite,
-// 		json.actors[0].avatar,
-// 		json.actors[1].sprite,
-// 		json.actors[1].avatar,
-// 		json.actors[2].sprite,
-// 		json.actors[2].avatar
-// 	];
+const backgrounds = (scenario: String) => {
+	return images(scenario, 'backgrounds');
+}
 
-// 	return images;
-// };
+const elements = (scenario: String) => {
+	return images(scenario, 'elements');
+}
+
+const characters = (scenario: String) => {
+	return images(scenario, 'characters');
+}
 
 const save = (scenario: String, json: any) => {
 	const filename = `${SCENARIOROOT}/${scenario}/scenario.json`;
@@ -150,8 +144,8 @@ const addImage = (scenario: String, filename: any, data: Buffer) => {
 	}
 };
 
-const getImage = (scenario: String, image: any) => {
-	const filename = `${SCENARIOROOT}/${scenario}/${image}`;
+const getImage = (scenario: String, image: any, subdir: String) => {
+	const filename = `${SCENARIOROOT}/${scenario}/${subdir ? `${subdir}/` : ''}${image}`;
     const extension = filename.split('.').pop();
     const mime = `image/${extension}`;
 
@@ -169,6 +163,19 @@ const getImage = (scenario: String, image: any) => {
 		mime
 	}
 }
+
+const getBackgroundImage = (scenario: String, image: any) => {
+	return getImage(scenario, image, 'backgrounds');
+}
+
+const getElementImage = (scenario: String, image: any) => {
+	return getImage(scenario, image, 'elements');
+}
+
+const getCharacterImage = (scenario: String, image: any) => {
+	return getImage(scenario, image, 'characters');
+}
+	
 
 const removeImage = (scenario: String, image: any) => {
 	const filename = `${SCENARIOROOT}/${scenario}/${image}`;
@@ -188,9 +195,15 @@ export default {
 	json,
 	save,
 	images,
+	backgrounds, 
+	elements,
+	characters,
 	// usedImages,
     addImage,
 	getImage,
+	getBackgroundImage,
+	getElementImage,
+	getCharacterImage,
 	removeImage,
 	duplicate,
 	remove,
