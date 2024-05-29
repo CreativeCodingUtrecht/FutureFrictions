@@ -1,6 +1,5 @@
 <script lang="ts">
 	import type { PageData, ActionData } from './$types';
-	import ImageSelector from '$lib/components/ImageSelector.svelte';
 	import Collage from '$lib/components/Collage.svelte';
 
 	export let form: ActionData;
@@ -13,44 +12,17 @@
 	const characters = data?.characters;
 
 	const values = {
-		collage: data?.json.collage?.future?.canvas || data?.json.collage?.present?.canvas || '',
-
-		actor1: {
-			name: form?.actor1.name || data?.json.actors[0].description || '',
-			statement: form?.actor1.statement || data?.json.actors[0].content.after.a || '',
-			// avatar: form?.actor1.avatar || data?.json.actors[0].avatar || '',
-			// sprite: form?.actor1.sprite || data?.json.actors[0].sprite || ''
-		},
-		actor2: {
-			name: form?.actor2.name || data?.json.actors[1].description || '',
-			statement: form?.actor2.statement || data?.json.actors[1].content.after.a || '',
-			// avatar: form?.actor2.avatar || data?.json.actors[1].avatar || '',
-			// sprite: form?.actor2.sprite || data?.json.actors[1].sprite || ''
-		},
-		actor3: {
-			name: form?.actor3.name || data?.json.actors[2].description || '',
-			statement: form?.actor3.statement || data?.json.actors[2].content.after.a || '',
-			// avatar: form?.actor3.avatar || data?.json.actors[2].avatar || '',
-			// sprite: form?.actor3.sprite || data?.json.actors[2].sprite || ''
-		},
-		elements: {
-			foreground: {
-				sprite1 : form?.elements?.foreground.sprite1 || data?.json.friction.options.a.sprites.foreground[0] || '',
-				sprite2 : form?.elements?.foreground.sprite2 || data?.json.friction.options.a.sprites.foreground[1] || '',
-				sprite3 : form?.elements?.foreground.sprite3 || data?.json.friction.options.a.sprites.foreground[2] || ''
-			},
-			background: {
-				sprite1 : form?.elements?.background.sprite1 || data?.json.friction.options.a.sprites.background[0] || '',
-				sprite2 : form?.elements?.background.sprite2 || data?.json.friction.options.a.sprites.background[1] || '',
-				sprite3 : form?.elements?.background.sprite3 || data?.json.friction.options.a.sprites.background[2] || ''				
-			},
-			floating: {
-				sprite1 : form?.elements?.floating.sprite1 || data?.json.friction.options.a.sprites.floating[0] || '',
-				sprite2 : form?.elements?.floating.sprite2 || data?.json.friction.options.a.sprites.floating[1] || '',
-				sprite3 : form?.elements?.floating.sprite3 || data?.json.friction.options.a.sprites.floating[2] || ''				
-			}
-		}
+		collage: data?.json.collage?.future?.canvas || data?.json.collage?.present?.canvas || {},
+		definition: data?.json?.collage?.future?.definition || {}
 	};
+
+	$: stringifiedCollage = () => {
+		return JSON.stringify(values.collage);
+	}
+
+	$: stringifiedDefinition = () => {
+		return JSON.stringify(values.definition);
+	}
 </script>
 
 <div>
@@ -72,9 +44,10 @@
 				<!-- <ImageSelector scenario={scenario} images={images} values={values} input="collage" field="collage" upload="collageFile" extraClass="" /> -->
 			</span>
 			<br />
-			<Collage {scenario} {backgrounds} {elements} {characters} bind:collage={values.collage} />
-			<input type="hidden" name="collage" bind:value={values.collage} />
-			
+			<Collage {scenario} {backgrounds} {elements} {characters} bind:collage={values.collage} bind:definition={values.definition} />
+			<input type="hidden" name="collage" value={stringifiedCollage()} />
+			<input type="hidden" name="definition" value={stringifiedDefinition()} />
+				
 			<!-- <br />
 			<h5 class="h5">Elements that emerge in this future: floating in the sky</h5>
 			<br />
@@ -154,18 +127,35 @@
 
 		</div> -->
 
+		{#if values.definition.characters?.length > 0}
 		<div class="space-y-4">
 			<br />
 			<h4 class="h4">Characters</h4>			
+
 			<!-- Actor 1 -->
 			<div class="card">
-				<header class="card-header"><b>{values.actor1.name}</b></header>
+				<!-- <header class="card-header">
+					<b>{values.actor1.name ? values.actor1.name : 'Character 1'}</b>
+				</header> -->
 				<section class="p-4 space-y-4">
 
+					<img src={values.definition.characters[0].src} alt="Character 1" width="100" />
+
+					<label class="label space-y-4">
+						<span>What's the name of this character?</span>
+						<input
+							bind:value={values.definition.characters[0].name}
+							class="input"
+							title="Name of the actor"
+							type="text"
+							name="actor1name"
+						/>
+					</label>
+
 					<label class="label">
-						<span>What does this character say, think, feel about this future?</span>
+						<span>What does this character say, think, feel?</span>
 						<textarea
-							value={values.actor1.statement}
+							bind:value={values.definition.characters[0].statement}
 							class="textarea"
 							title="Actor statement"
 							rows="3"
@@ -174,15 +164,33 @@
 					</label>
 				</section>
 			</div>
+			
 
 			<!-- Actor 2 -->
+			{#if values.definition.characters?.length > 1}			
 			<div class="card">
-				<header class="card-header"><b>{values.actor2.name}</b></header>
+				<!-- <header class="card-header">
+					<b>{values.actor2.name ? values.actor2.name : 'Character 2'}</b>
+				</header> -->
 				<section class="p-4 space-y-4">
+
+					<img src={values.definition.characters[1].src} alt="Character 2" width="100" />
+
+					<label class="label space-y-4">
+						<span>What's the name of this character?</span>
+						<input
+							bind:value={values.definition.characters[1].name}
+							class="input"
+							title="Name of the actor"
+							type="text"
+							name="actor2name"
+						/>
+					</label>
+
 					<label class="label">
-						<span>What does this character say, think, feel about this future?</span>
+						<span>What does this actor say, think, feel?</span>
 						<textarea
-							value={values.actor2.statement}
+							bind:value={values.definition.characters[1].statement}
 							class="textarea"
 							title="Actor statement"
 							rows="3"
@@ -191,15 +199,33 @@
 					</label>
 				</section>
 			</div>
+			{/if}
 
 			<!-- Actor 3 -->
+			{#if values.definition.characters?.length > 2}			
 			<div class="card">
-				<header class="card-header"><b>{values.actor3.name}</b></header>
-				<section class="p-4 space-y-4">
+				<!-- <header class="card-header">
+					<b>{values.actor3.name ? values.actor3.name : 'Character 3'}</b>
+				</header> -->
+				<section class="p-4 space-y-4">				
+
+					<img src={values.definition.characters[2].src} alt="Character 3" width="100" />
+
+					<label class="label space-y-4">
+						<span>What's the name of this character?</span>
+						<input
+							bind:value={values.definition.characters[2].name}
+							class="input"
+							title="Name of the actor"
+							type="text"
+							name="actor3name"
+						/>
+					</label>
+
 					<label class="label">
-						<span>What does this character say, think, feel about this future?</span>
+						<span>What does this actor say, think, feel?</span>
 						<textarea
-							value={values.actor3.statement}
+							bind:value={values.definition.characters[2].statement}
 							class="textarea"
 							title="Actor statement"
 							rows="3"
@@ -207,8 +233,11 @@
 						/>
 					</label>
 				</section>
-			</div>		
+			</div>
+			{/if}
+
 		</div>
+		{/if}
 
 		<br />
 		<button class="btn variant-filled-primary">Save</button>

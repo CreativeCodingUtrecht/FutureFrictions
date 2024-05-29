@@ -38,7 +38,6 @@
 					title="Frictional statement"
 					rows="4"
 					name="statement"
-					required
 				/>
 
 				<p>

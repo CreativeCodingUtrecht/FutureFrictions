@@ -2,13 +2,14 @@
 	import { fabric } from 'fabric';
 	import { onMount } from 'svelte';
 	import { Accordion, AccordionItem } from '@skeletonlabs/skeleton';
+	import { scale } from 'svelte/transition';
 
 	export let scenario: String;
 	export let backgrounds: String[] = [];
 	export let elements: String[] = [];
 	export let characters: String[] = [];
-	export let collage: String = "{}";
-	export let blob: String;
+	export let collage: any = {};
+	export let definition: any = {};
 
 	let selectedBackground;
 
@@ -17,10 +18,15 @@
 
 	let canvas: fabric.Canvas | undefined;
 
+	console.log("Collage",collage);
+	console.log("Definition",definition);
+
 	const serializeCanvasHandler = () => {		
-		// collage = JSON.stringify(canvas?.toJSON(['meta']));
 		collage = canvas?.toObject(['meta']);
-		console.log("Serializing canvas", collage);
+		// console.log("Serializing canvas", collage);
+		extractCanvasDefinition();
+
+		// Save canvas to blob (base64 encoded image)
 		// const dataURI = canvas?.toDataURL();
 		// var binary = atob(dataURI.split(',')[1]);
 		// var array = [];
@@ -31,10 +37,75 @@
 		// console.log('Collage blob', blob);
 	}
 
+	const extractCanvasDefinition = () => {		
+		if (!collage) return;
+
+		let background;
+		const characters = [];
+		const elements = [];
+
+		// Fetch background
+		if (collage.backgroundImage) {
+			background = new URL(collage.backgroundImage.src).pathname;  
+		}
+
+		// Fetch images in collage relevant for visualization		
+		let idxCharacter = 0;
+		let idxElement = 0;
+
+		if (collage.objects) {
+			collage.objects.forEach((obj) => {
+				// Fetch characters 
+				if (obj.meta?.role === 'character') {					
+					const character = {
+						src : new URL(obj.src).pathname,
+						placement : {	
+							index : idxCharacter++,												
+							left : obj.left,
+							top : obj.top,
+							width: obj.width,
+							height: obj.height,
+							scaleX: obj.scaleX,
+							scaleY: obj.scaleY,
+							angle: obj.angle
+						}
+					}
+					characters.push(character);
+				}
+
+				// Fetch elements		
+				if (obj.meta?.role === 'element') {
+					const element = {
+						src : new URL(obj.src).pathname,
+						placement : {
+							index : idxElement++,													
+							left : obj.left,
+							top : obj.top,
+							width: obj.width,
+							height: obj.height,
+							scaleX: obj.scaleX,
+							scaleY: obj.scaleY,
+							angle: obj.angle
+						}
+					}
+					elements.push(element);
+				}
+			});
+		}		
+
+		definition = {
+			background,
+			characters,
+			elements
+		}
+
+		console.log("Canvas object definition", definition);
+	}
+
 	onMount(() => {
 		const wrapper: HTMLElement | null = document.getElementById('canvas-wrapper');
 
-		console.log('Collage component:', scenario, backgrounds, elements, characters);
+		// console.log('Collage component:', scenario, backgrounds, elements, characters);
 
 		canvas = new fabric.Canvas('collage-canvas', {
 			width: 1920,
@@ -59,6 +130,7 @@
 		};
 
 		const handleKeyUp = (e) => {
+			console.log(e)
 			var selectedObjects = canvas?.getActiveObjects() || [];
 
 			if (e.keyCode == 46 || e.key === 'Delete' || e.code === 'Delete' || e.key === 'Backspace') {
@@ -68,48 +140,23 @@
 						canvas?.remove(obj);
 					});
 					canvas?.discardActiveObject().renderAll();
+					serializeCanvasHandler();					
 				}
 			}
-
-			serializeCanvasHandler();
 		};
 
 		const handleObjectSelected = (e) => {
 			console.log('Object selected', e.target);
 		};
 
+		wrapper?.addEventListener('keyup', handleKeyUp);
 		window.addEventListener('resize', handleResize);
-		window.addEventListener('keyup', handleKeyUp);
 		canvas.on('object:selected', handleObjectSelected);
 		canvas.on('object:modified', serializeCanvasHandler);
 
 		handleResize();
+		// serializeCanvasHandler();		
 	});
-
-	// function allowDrop(e) {
-	// 	e.preventDefault();
-	// }
-	// //dragElement function called on ondrag event.
-	// function dragElement(e) {
-	// 	console.log('dragElement', e);
-	// 	e.dataTransfer.setData('id', e.target.id); //transfer the "data" i.e. id of the target dragged.
-	// } // allowDrop function called on ondragover event.
-
-	// //dropElement function called on ondrop event.
-	// function dropElement(e) {
-	// 	console.log('dropElement', e);
-	// 	e.preventDefault();
-	// 	var data = e.dataTransfer.getData('id'); //receiving the "data" i.e. id of the target dropped.
-	// 	var imag = document.getElementById(data); //getting the target image info through its id.
-	// 	var img = new fabric.Image(imag, {
-	// 		//initializing the fabric image.
-	// 		left: e.layerX - 80, //positioning the target on exact position of mouse event drop through event.layerX,Y.
-	// 		top: e.layerY - 40
-	// 	});
-	// 	img.scaleToWidth(imag.width); //scaling the image height and width with target height and width, scaleToWidth, scaleToHeight fabric inbuilt function.
-	// 	img.scaleToHeight(imag.height);
-	// 	canvas.add(img);
-	// }
 
 	const addBackground = (background) => {
 		selectedBackground = background;
@@ -140,7 +187,6 @@
 				img.meta = {
 					image: character,
 					role: 'character',
-					index: 3
 				};
 
 				img.scale(FABRIC_SCALE_NEW_OBJECT);
@@ -149,10 +195,11 @@
 				canvas?.setActiveObject(img);
 				canvas?.viewportCenterObject(img);
 				canvas?.renderAll();
+				serializeCanvasHandler();
 			},
 			{ perPixelTargetFind: true }
 		);
-		serializeCanvasHandler();
+		
 	};
 
 	const addElement = (element) => {
@@ -160,6 +207,11 @@
 		fabric.Image.fromURL(
 			url,
 			(img) => {
+				img.meta = {
+					image: element,
+					role: 'element',
+				};
+
 				// scale image down, and flip it, before adding it onto canvas
 				img.scale(FABRIC_SCALE_NEW_OBJECT);
 				img.setControlsVisibility({ mtr: false, mb: false, mt: false, ml: false, mr: false });
@@ -167,10 +219,10 @@
 				canvas?.setActiveObject(img);
 				canvas?.viewportCenterObject(img);
 				canvas?.renderAll();
+				serializeCanvasHandler();
 			},
 			{ perPixelTargetFind: true, left: 200, top: 200 }
 		);
-		serializeCanvasHandler();
 	};
 
 </script>
@@ -241,7 +293,7 @@
 				</Accordion>
 			</section>
 		</div>
-		<div class="card col-span-3 row-span-1 variant-ghost-tertiary max-h-fit" id="canvas-wrapper">
+		<div class="card col-span-3 row-span-1 variant-ghost-tertiary max-h-fit" id="canvas-wrapper" tabindex=1>
 			<section class="p-4"> <!-- on:dragover={allowDrop} on:drop={dropElement} -->
 				<canvas id="collage-canvas"></canvas>
 			</section>
