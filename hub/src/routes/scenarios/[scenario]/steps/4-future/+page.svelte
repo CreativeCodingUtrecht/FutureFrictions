@@ -66,198 +66,47 @@
 			<input type="hidden" name="definition" value={stringifiedDefinition()} />
 			<input id="file" type="file" name="collageFile" bind:value={values.file} />
 			<br />
-			<a class="btn variant-ghost-warning" on:click={resetCollage}>Reset collage</a>
-				
-			<!-- <br />
-			<h5 class="h5">Elements that emerge in this future: floating in the sky</h5>
-			<br />
-			<div class="w-full text-token grid grid-cols-1 md:grid-cols-3 gap-4">	
-				<ImageSelector 
-					scenario={scenario} 
-					images={images} 
-					values={values.elements.floating} 
-					input="floatingsprite1" field="sprite1" upload="floatingsprite1File" 
-					extraClass="" />
+			<a class="btn variant-ghost-warning" on:click={resetCollage}>Reset collage</a>			
+		</div> 
 
-				<ImageSelector 
-					scenario={scenario} 
-					images={images} 
-					values={values.elements.floating} 
-					input="floatingsprite2" field="sprite2" upload="floatingsprite2File" 
-					extraClass="" />
-
-				<ImageSelector 
-					scenario={scenario} 
-					images={images} 
-					values={values.elements.floating} 
-					input="floatingsprite3" field="sprite3" upload="floatingsprite3File" 
-					extraClass="" />
-			</div>
-			<br />
-			<h5 class="h5">Elements that emerge in this future: in the background</h5>
-			<br />
-			<div class="w-full text-token grid grid-cols-1 md:grid-cols-3 gap-4">	
-				<ImageSelector 
-					scenario={scenario} 
-					images={images} 
-					values={values.elements.background} 
-					input="backgroundsprite1" field="sprite1" upload="backgroundsprite1File" 
-					extraClass="" />
-
-				<ImageSelector 
-					scenario={scenario} 
-					images={images} 
-					values={values.elements.background} 
-					input="backgroundsprite2" field="sprite2" upload="backgroundsprite2File" 
-					extraClass="" />
-
-				<ImageSelector 
-					scenario={scenario} 
-					images={images} 
-					values={values.elements.background} 
-					input="backgroundsprite3" field="sprite3" upload="backgroundsprite3File" 
-					extraClass="" />
-			</div>
-			<br />
-			<h5 class="h5">Elements that emerge in this future: on the foreground</h5>
-			<br />
-			<div class="w-full text-token grid grid-cols-1 md:grid-cols-3 gap-4">	
-				<ImageSelector 
-					scenario={scenario} 
-					images={images} 
-					values={values.elements.foreground} 
-					input="foregroundsprite1" field="sprite1" upload="foregroundsprite1File" 
-					extraClass="" />
-
-				<ImageSelector 
-					scenario={scenario} 
-					images={images} 
-					values={values.elements.foreground} 
-					input="foregroundsprite2" field="sprite2" upload="foregroundsprite2File" 
-					extraClass="" />
-
-				<ImageSelector 
-					scenario={scenario} 
-					images={images} 
-					values={values.elements.foreground} 
-					input="foregroundsprite3" field="sprite3" upload="foregroundsprite3File" 
-					extraClass="" />
-			</div>
-
-
-		</div> -->
-
-		{#if values.definition?.characters?.length > 0}
 		<div class="space-y-4">
 			<br />
 			<h4 class="h4">Characters</h4>			
 
-			<!-- Actor 1 -->
-			<div class="card">
-				<!-- <header class="card-header">
-					<b>{values.actor1.name ? values.actor1.name : 'Character 1'}</b>
-				</header> -->
-				<section class="p-4 space-y-4">
+			{#each values.definition.characters as character, i}
 
-					<img src={values.definition.characters[0].url} alt="Character 1" width="100" />
+				<!-- Actor 1 -->
+				<div class="card">
+					<header class="card-header">
+						<img src={character.url} alt={`Character ${i}`} width="100" />
+					</header>
+					<section class="p-4 space-y-4">
+						<label class="label space-y-4">
+							<span>What's the name of this character?</span>
+							<input
+								bind:value={character.name}
+								class="input"
+								title="Name of the actor"
+								type="text"
+								name="actor1name"
+							/>
+						</label>
 
-					<label class="label space-y-4">
-						<span>What's the name of this character?</span>
-						<input
-							bind:value={values.definition.characters[0].name}
-							class="input"
-							title="Name of the actor"
-							type="text"
-							name="actor1name"
-						/>
-					</label>
-
-					<label class="label">
-						<span>What does this character say, think, feel?</span>
-						<textarea
-							bind:value={values.definition.characters[0].statement}
-							class="textarea"
-							title="Actor statement"
-							rows="3"
-							name="actor1statement"
-						/>
-					</label>
-				</section>
-			</div>
-			
-
-			<!-- Actor 2 -->
-			{#if values.definition.characters?.length > 1}			
-			<div class="card">
-				<!-- <header class="card-header">
-					<b>{values.actor2.name ? values.actor2.name : 'Character 2'}</b>
-				</header> -->
-				<section class="p-4 space-y-4">
-
-					<img src={values.definition.characters[1].url} alt="Character 2" width="100" />
-
-					<label class="label space-y-4">
-						<span>What's the name of this character?</span>
-						<input
-							bind:value={values.definition.characters[1].name}
-							class="input"
-							title="Name of the actor"
-							type="text"
-							name="actor2name"
-						/>
-					</label>
-
-					<label class="label">
-						<span>What does this actor say, think, feel?</span>
-						<textarea
-							bind:value={values.definition.characters[1].statement}
-							class="textarea"
-							title="Actor statement"
-							rows="3"
-							name="actor2statement"
-						/>
-					</label>
-				</section>
-			</div>
-			{/if}
-
-			<!-- Actor 3 -->
-			{#if values.definition.characters?.length > 2}			
-			<div class="card">
-				<!-- <header class="card-header">
-					<b>{values.actor3.name ? values.actor3.name : 'Character 3'}</b>
-				</header> -->
-				<section class="p-4 space-y-4">				
-
-					<img src={values.definition.characters[2].url} alt="Character 3" width="100" />
-
-					<label class="label space-y-4">
-						<span>What's the name of this character?</span>
-						<input
-							bind:value={values.definition.characters[2].name}
-							class="input"
-							title="Name of the actor"
-							type="text"
-							name="actor3name"
-						/>
-					</label>
-
-					<label class="label">
-						<span>What does this actor say, think, feel?</span>
-						<textarea
-							bind:value={values.definition.characters[2].statement}
-							class="textarea"
-							title="Actor statement"
-							rows="3"
-							name="actor3statement"
-						/>
-					</label>
-				</section>
-			</div>
-			{/if}
+						<label class="label">
+							<span>What does this character say, think, feel?</span>
+							<textarea
+								bind:value={character.statement}
+								class="textarea"
+								title="Actor statement"
+								rows="3"
+								name="actor1statement"
+							/>
+						</label>
+					</section>
+				</div>
+			{/each}
 
 		</div>
-		{/if}
 
 		<br />
 		<button class="btn variant-filled-primary">Save</button>

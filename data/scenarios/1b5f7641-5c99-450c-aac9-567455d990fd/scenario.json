@@ -275,7 +275,7 @@
                             "scaleY": 0.43,
                             "angle": 0
                         },
-                        "name": "Henry",
+                        "name": "Henry Sr.",
                         "statement": "I love kids!",
                         "id": 0
                     },
@@ -688,8 +688,8 @@
                             "scaleY": 1.29,
                             "angle": 0
                         },
-                        "name": "Betty ",
-                        "statement": "Hmmmm, love it!",
+                        "name": "Lady Betty",
+                        "statement": "Hmmmm, love it! This grass is sooooo fresh!",
                         "id": 2
                     }
                 ],
@@ -737,7 +737,8 @@
                         "id": 2
                     }
                 ]
-            }
+            },
+            "url": "/api/scenarios/1b5f7641-5c99-450c-aac9-567455d990fd/collage/future.png"
         }
     },
     "whatif": {
