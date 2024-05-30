@@ -13,7 +13,7 @@
 
 	const values = {
 		collage: data?.json.collage?.future?.canvas || data?.json.collage?.present?.canvas || {},
-		definition: data?.json?.collage?.future?.definition || {}
+		definition: data?.json.collage?.future?.definition || data?.json?.collage?.present?.definition || {}
 	};
 
 	$: stringifiedCollage = () => {
@@ -23,6 +23,12 @@
 	$: stringifiedDefinition = () => {
 		return JSON.stringify(values.definition);
 	}
+
+	const resetCollage = () => {
+		values.collage = data?.json.collage?.present?.canvas || {};
+		values.definition = data?.json?.collage?.present?.definition || {};
+	}
+
 </script>
 
 <div>
@@ -47,6 +53,8 @@
 			<Collage {scenario} {backgrounds} {elements} {characters} bind:collage={values.collage} bind:definition={values.definition} />
 			<input type="hidden" name="collage" value={stringifiedCollage()} />
 			<input type="hidden" name="definition" value={stringifiedDefinition()} />
+			<br />
+			<a class="btn variant-ghost-warning" on:click={resetCollage}>Reset collage</a>
 				
 			<!-- <br />
 			<h5 class="h5">Elements that emerge in this future: floating in the sky</h5>
@@ -127,7 +135,7 @@
 
 		</div> -->
 
-		{#if values.definition.characters?.length > 0}
+		{#if values.definition?.characters?.length > 0}
 		<div class="space-y-4">
 			<br />
 			<h4 class="h4">Characters</h4>			
