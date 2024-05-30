@@ -73,9 +73,7 @@
 			<br />
 			<h4 class="h4">Characters</h4>			
 
-			{#each values.definition.characters as character, i}
-
-				<!-- Actor 1 -->
+			{#each (values.definition.characters || []) as character, i}
 				<div class="card">
 					<header class="card-header">
 						<img src={character.url} alt={`Character ${i}`} width="100" />
