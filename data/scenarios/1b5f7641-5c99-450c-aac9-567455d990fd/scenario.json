@@ -57,8 +57,8 @@
                         "version": "5.3.0",
                         "originX": "left",
                         "originY": "top",
-                        "left": 279.64,
-                        "top": 553.92,
+                        "left": 288.36,
+                        "top": 455.74,
                         "width": 400,
                         "height": 1086,
                         "fill": "rgb(0,0,0)",
@@ -264,24 +264,25 @@
                 "background": "/api/scenarios/1b5f7641-5c99-450c-aac9-567455d990fd/background/street%20(2).png",
                 "characters": [
                     {
-                        "src": "/api/scenarios/1b5f7641-5c99-450c-aac9-567455d990fd/character/Picture1.png",
+                        "url": "/api/scenarios/1b5f7641-5c99-450c-aac9-567455d990fd/character/Picture1.png",
                         "placement": {
-                            "index": 0,
-                            "left": 279.64,
-                            "top": 553.92,
+                            "index": 1,
+                            "left": 288.36,
+                            "top": 455.74,
                             "width": 400,
                             "height": 1086,
                             "scaleX": 0.43,
                             "scaleY": 0.43,
                             "angle": 0
                         },
-                        "name": "Old man",
-                        "statement": "I love my city .. "
+                        "name": "Henry",
+                        "statement": "I love kids!",
+                        "id": 0
                     },
                     {
-                        "src": "/api/scenarios/1b5f7641-5c99-450c-aac9-567455d990fd/character/Picture2.png",
+                        "url": "/api/scenarios/1b5f7641-5c99-450c-aac9-567455d990fd/character/Picture2.png",
                         "placement": {
-                            "index": 1,
+                            "index": 2,
                             "left": 1549.15,
                             "top": 470.12,
                             "width": 400,
@@ -291,12 +292,13 @@
                             "angle": 0
                         },
                         "name": "Paul",
-                        "statement": "I want my kids to grow up in a city where they can play!"
+                        "statement": "I want my kids to grow up in a city where they can play!",
+                        "id": 1
                     },
                     {
-                        "src": "/api/scenarios/1b5f7641-5c99-450c-aac9-567455d990fd/character/Picture3.png",
+                        "url": "/api/scenarios/1b5f7641-5c99-450c-aac9-567455d990fd/character/Picture3.png",
                         "placement": {
-                            "index": 2,
+                            "index": 3,
                             "left": 754.99,
                             "top": 428.64,
                             "width": 400,
@@ -306,12 +308,13 @@
                             "angle": 0
                         },
                         "name": "Timo",
-                        "statement": "There is no one to play ball with .. and no grass to play it on"
+                        "statement": "There is no one to play ball with .. and no grass to play it on",
+                        "id": 2
                     }
                 ],
                 "elements": [
                     {
-                        "src": "/api/scenarios/1b5f7641-5c99-450c-aac9-567455d990fd/element/Paintings%20185.png",
+                        "url": "/api/scenarios/1b5f7641-5c99-450c-aac9-567455d990fd/element/Paintings%20185.png",
                         "placement": {
                             "index": 0,
                             "left": 253.45,
@@ -321,12 +324,13 @@
                             "scaleX": 0.5,
                             "scaleY": 0.5,
                             "angle": 0
-                        }
+                        },
+                        "id": 0
                     },
                     {
-                        "src": "/api/scenarios/1b5f7641-5c99-450c-aac9-567455d990fd/element/aerostat.png",
+                        "url": "/api/scenarios/1b5f7641-5c99-450c-aac9-567455d990fd/element/aerostat.png",
                         "placement": {
-                            "index": 1,
+                            "index": 4,
                             "left": 977.06,
                             "top": -91.75,
                             "width": 400,
@@ -334,7 +338,8 @@
                             "scaleX": 0.62,
                             "scaleY": 0.62,
                             "angle": 0
-                        }
+                        },
+                        "id": 1
                     }
                 ]
             }
@@ -390,8 +395,8 @@
                         "version": "5.3.0",
                         "originX": "left",
                         "originY": "top",
-                        "left": 728.81,
-                        "top": 485.37,
+                        "left": 748.45,
+                        "top": 406.82,
                         "width": 400,
                         "height": 1319,
                         "fill": "rgb(0,0,0)",
@@ -639,7 +644,7 @@
                 "background": "/api/scenarios/1b5f7641-5c99-450c-aac9-567455d990fd/background/8-2-nature-free-download-png.png",
                 "characters": [
                     {
-                        "src": "/api/scenarios/1b5f7641-5c99-450c-aac9-567455d990fd/character/Picture2.png",
+                        "url": "/api/scenarios/1b5f7641-5c99-450c-aac9-567455d990fd/character/Picture2.png",
                         "placement": {
                             "index": 0,
                             "left": 1549.15,
@@ -651,14 +656,15 @@
                             "angle": 0
                         },
                         "name": "Paul",
-                        "statement": "Wow, I love the city! It's so green"
+                        "statement": "Wow, I love the city! It's so green",
+                        "id": 0
                     },
                     {
-                        "src": "/api/scenarios/1b5f7641-5c99-450c-aac9-567455d990fd/character/Picture3.png",
+                        "url": "/api/scenarios/1b5f7641-5c99-450c-aac9-567455d990fd/character/Picture3.png",
                         "placement": {
                             "index": 1,
-                            "left": 728.81,
-                            "top": 485.37,
+                            "left": 748.45,
+                            "top": 406.82,
                             "width": 400,
                             "height": 1319,
                             "scaleX": 0.33,
@@ -666,12 +672,13 @@
                             "angle": 0
                         },
                         "name": "Timo",
-                        "statement": "The grass is awesome"
+                        "statement": "The grass is awesome",
+                        "id": 1
                     },
                     {
-                        "src": "/api/scenarios/1b5f7641-5c99-450c-aac9-567455d990fd/character/cow%20(1).png",
+                        "url": "/api/scenarios/1b5f7641-5c99-450c-aac9-567455d990fd/character/cow%20(1).png",
                         "placement": {
-                            "index": 2,
+                            "index": 3,
                             "left": 72.86,
                             "top": 592.66,
                             "width": 400,
@@ -681,14 +688,15 @@
                             "angle": 0
                         },
                         "name": "Betty ",
-                        "statement": "Hmmmm, love it!"
+                        "statement": "Hmmmm, love it!",
+                        "id": 2
                     }
                 ],
                 "elements": [
                     {
-                        "src": "/api/scenarios/1b5f7641-5c99-450c-aac9-567455d990fd/element/aerostat.png",
+                        "url": "/api/scenarios/1b5f7641-5c99-450c-aac9-567455d990fd/element/aerostat.png",
                         "placement": {
-                            "index": 0,
+                            "index": 2,
                             "left": 977.06,
                             "top": -91.75,
                             "width": 400,
@@ -696,12 +704,13 @@
                             "scaleX": 0.62,
                             "scaleY": 0.62,
                             "angle": 0
-                        }
+                        },
+                        "id": 0
                     },
                     {
-                        "src": "/api/scenarios/1b5f7641-5c99-450c-aac9-567455d990fd/element/Picture8.png",
+                        "url": "/api/scenarios/1b5f7641-5c99-450c-aac9-567455d990fd/element/Picture8.png",
                         "placement": {
-                            "index": 1,
+                            "index": 4,
                             "left": 1281.09,
                             "top": 329.75,
                             "width": 400,
@@ -709,12 +718,13 @@
                             "scaleX": 0.5,
                             "scaleY": 0.5,
                             "angle": 0
-                        }
+                        },
+                        "id": 1
                     },
                     {
-                        "src": "/api/scenarios/1b5f7641-5c99-450c-aac9-567455d990fd/element/Picture10.png",
+                        "url": "/api/scenarios/1b5f7641-5c99-450c-aac9-567455d990fd/element/Picture10.png",
                         "placement": {
-                            "index": 2,
+                            "index": 5,
                             "left": 892.73,
                             "top": 521.16,
                             "width": 400,
@@ -722,7 +732,8 @@
                             "scaleX": 1.04,
                             "scaleY": 1.04,
                             "angle": 0
-                        }
+                        },
+                        "id": 2
                     }
                 ]
             }

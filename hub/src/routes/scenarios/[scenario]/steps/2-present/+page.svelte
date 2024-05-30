@@ -58,7 +58,7 @@
 				</header> -->
 				<section class="p-4 space-y-4">
 
-					<img src={values.definition.characters[0].src} alt="Character 1" width="100" />
+					<img src={values.definition.characters[0].url} alt="Character 1" width="100" />
 
 					<label class="label space-y-4">
 						<span>What's the name of this character?</span>
@@ -92,7 +92,7 @@
 				</header> -->
 				<section class="p-4 space-y-4">
 
-					<img src={values.definition.characters[1].src} alt="Character 2" width="100" />
+					<img src={values.definition.characters[1].url} alt="Character 2" width="100" />
 
 					<label class="label space-y-4">
 						<span>What's the name of this character?</span>
@@ -127,7 +127,7 @@
 				</header> -->
 				<section class="p-4 space-y-4">				
 
-					<img src={values.definition.characters[2].src} alt="Character 3" width="100" />
+					<img src={values.definition.characters[2].url} alt="Character 3" width="100" />
 
 					<label class="label space-y-4">
 						<span>What's the name of this character?</span>

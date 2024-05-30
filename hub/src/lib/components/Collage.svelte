@@ -2,7 +2,6 @@
 	import { fabric } from 'fabric';
 	import { onMount } from 'svelte';
 	import { Accordion, AccordionItem } from '@skeletonlabs/skeleton';
-	import { scale } from 'svelte/transition';
 
 	export let scenario: String;
 	export let backgrounds: String[] = [];
@@ -24,7 +23,7 @@
 	const serializeCanvasHandler = () => {		
 		collage = canvas?.toObject(['meta']);
 		// console.log("Serializing canvas", collage);
-		extractCanvasDefinition();
+		updateCanvasDefinition();
 
 		// Save canvas to blob (base64 encoded image)
 		// const dataURI = canvas?.toDataURL();
@@ -37,8 +36,10 @@
 		// console.log('Collage blob', blob);
 	}
 
-	const extractCanvasDefinition = () => {		
+	const updateCanvasDefinition = () => {		
 		if (!collage) return;
+
+		const prevdefinition = definition || {};
 
 		let background;
 		const characters = [];
@@ -50,46 +51,44 @@
 		}
 
 		// Fetch images in collage relevant for visualization		
+		let idxObject = 0;
 		let idxCharacter = 0;
 		let idxElement = 0;
 
 		if (collage.objects) {
 			collage.objects.forEach((obj) => {
+				// Fetch image info
+				const image = {
+					url : new URL(obj.src).pathname,
+					placement : {	
+						index : idxObject,												
+						left : obj.left,
+						top : obj.top,
+						width: obj.width,
+						height: obj.height,
+						scaleX: obj.scaleX,
+						scaleY: obj.scaleY,
+						angle: obj.angle
+					}
+				}
+
 				// Fetch characters 
 				if (obj.meta?.role === 'character') {					
-					const character = {
-						src : new URL(obj.src).pathname,
-						placement : {	
-							index : idxCharacter++,												
-							left : obj.left,
-							top : obj.top,
-							width: obj.width,
-							height: obj.height,
-							scaleX: obj.scaleX,
-							scaleY: obj.scaleY,
-							angle: obj.angle
-						}
-					}
-					characters.push(character);
+					image.name = prevdefinition.characters[idxCharacter]?.name || '';
+					image.statement = prevdefinition.characters[idxCharacter]?.statement || '';
+					image.id = idxCharacter;
+					characters.push(image);
+					idxCharacter++;
 				}
 
 				// Fetch elements		
 				if (obj.meta?.role === 'element') {
-					const element = {
-						src : new URL(obj.src).pathname,
-						placement : {
-							index : idxElement++,													
-							left : obj.left,
-							top : obj.top,
-							width: obj.width,
-							height: obj.height,
-							scaleX: obj.scaleX,
-							scaleY: obj.scaleY,
-							angle: obj.angle
-						}
-					}
-					elements.push(element);
+					image.id = idxElement;
+					elements.push(image);
+					idxElement++;
 				}
+
+				idxObject++;
 			});
 		}		
 
