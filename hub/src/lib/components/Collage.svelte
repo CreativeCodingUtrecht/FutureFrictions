@@ -255,26 +255,6 @@
 						</svelte:fragment>
 					</AccordionItem>
 					<AccordionItem>
-						<svelte:fragment slot="lead">🌳</svelte:fragment>
-						<svelte:fragment slot="summary">Elements</svelte:fragment>
-						<svelte:fragment slot="content">
-							<section class="grid grid-cols-2 md:grid-cols-3 gap-4">
-								{#each elements as element}
-									<div>
-										<img
-											draggable="false"
-											on:click={() => addElement(element)}
-											class="h-auto max-w-full rounded-sm"
-											alt=""
-											src="/api/scenarios/{scenario}/element/{element}"
-										/>
-										<!-- on:dragstart={dragElement} -->
-									</div>
-								{/each}
-							</section>
-						</svelte:fragment>
-					</AccordionItem>
-					<AccordionItem>
 						<svelte:fragment slot="lead">👩‍🦰</svelte:fragment>
 						<svelte:fragment slot="summary">Characters</svelte:fragment>
 						<svelte:fragment slot="content">
@@ -289,6 +269,26 @@
 											src="/api/scenarios/{scenario}/character/{character}"
 										/>
 										<!-- on:dragstart={dragElement}-->
+									</div>
+								{/each}
+							</section>
+						</svelte:fragment>
+					</AccordionItem>
+					<AccordionItem>
+						<svelte:fragment slot="lead">🌳</svelte:fragment>
+						<svelte:fragment slot="summary">Elements</svelte:fragment>
+						<svelte:fragment slot="content">
+							<section class="grid grid-cols-2 md:grid-cols-3 gap-4">
+								{#each elements as element}
+									<div>
+										<img
+											draggable="false"
+											on:click={() => addElement(element)}
+											class="h-auto max-w-full rounded-sm"
+											alt=""
+											src="/api/scenarios/{scenario}/element/{element}"
+										/>
+										<!-- on:dragstart={dragElement} -->
 									</div>
 								{/each}
 							</section>

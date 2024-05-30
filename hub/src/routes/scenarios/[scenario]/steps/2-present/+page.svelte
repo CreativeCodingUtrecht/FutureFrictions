@@ -63,32 +63,37 @@
 			</p>
 
 			{#each (values.definition.characters || []) as character, i}
-				<div class="card">
-					<header class="card-header">
+				<div class="card variant-ghost-tertiary">
+					<!-- <header class="card-header">
 						<img src={character.url} alt={`Character ${i}`} width="100" />
-					</header>
-					<section class="p-4 space-y-4">
-						<label class="label space-y-4">
-							<span>What's the name of this character?</span>
-							<input
-								bind:value={character.name}
-								class="input"
-								title="Name of the actor"
-								type="text"
-								name="actor1name"
-							/>
-						</label>
+					</header> -->
+					<section class="grid grid-cols-6 gap-2">
+						<div class="col-span-1 p-10">
+							<img src={character.url} alt={`Character ${i}`} width="75" />
+						</div>
+						<div class="col-span-5 p-4 space-y-4">
+							<label class="label space-y-4">
+								<span>What's the name of this character?</span>
+								<input
+									bind:value={character.name}
+									class="input"
+									title="Name of the actor"
+									type="text"
+									name="actor1name"
+								/>
+							</label>
 
-						<label class="label">
-							<span>What does this character say, think, feel?</span>
-							<textarea
-								bind:value={character.statement}
-								class="textarea"
-								title="Actor statement"
-								rows="3"
-								name="actor1statement"
-							/>
-						</label>
+							<label class="label">
+								<span>What does this character say, think, feel?</span>
+								<textarea
+									bind:value={character.statement}
+									class="textarea"
+									title="Actor statement"
+									rows="3"
+									name="actor1statement"
+								/>
+							</label>
+						</div>
 					</section>
 				</div>
 			{/each}
