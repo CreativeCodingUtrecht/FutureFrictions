@@ -13,7 +13,7 @@
 	const frictionalstatement = json.friction?.frictionalstatement;
 	const emergingfrictions = json.friction?.emergingfrictions;
 	const whatif = json.whatif?.question;
-	const background = json.collage?.present?.definition?.background || '';
+	const background = json.collage?.present?.url || '';
 	const provocativestatement = json.provocativestatement;
 
 	const url = `${FF_WEBGL_URL}?scenario=${scenario}`;
@@ -38,6 +38,11 @@
 		</header>
 		<div class="p-4 space-y-4">
 			<h3 class="h3" data-toc-ignore>{name}</h3>
+            <form method="POST" action="?/remove">
+				<a href={url} class="btn variant-filled-primary" target="FF_WEBGL_URL">▶ Play</a>
+				<a href="/scenarios/{scenario}/steps/0-setup" class="btn variant-filled-primary">Edit</a>	
+				<button on:click={confirmRemove} type="submit" class="btn variant-ghost-error">Remove</button>
+            </form>        
 			<article class="space-y-5">
 				{#if frictionalstatement}
 					<h5 class="h5">Frictional statement</h5>
@@ -64,11 +69,6 @@
 					</p>
 				{/if}
 			</article>
-            <form method="POST" action="?/remove">
-				<a href={url} class="btn variant-filled-primary" target="FF_WEBGL_URL">▶ Play</a>
-				<a href="/scenarios/{scenario}/steps/0-setup" class="btn variant-filled-primary">Edit</a>	
-				<button on:click={confirmRemove} type="submit" class="btn variant-ghost-error">Remove</button>
-            </form>        
 		</div>
 	</div>
 	<div class="card overflow-hidden">

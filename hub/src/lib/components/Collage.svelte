@@ -9,100 +9,19 @@
 	export let characters: String[] = [];
 	export let collage: any = {};
 	export let definition: any = {};
-
-	let selectedBackground;
+	export let file: File | undefined = undefined;
 
 	const FABRIC_CONTROL_VISIBILITY = { mtr: false, mb: false, mt: false, ml: false, mr: false };
 	const FABRIC_SCALE_NEW_OBJECT = 0.5;
 
 	let canvas: fabric.Canvas | undefined;
 
-	console.log("Collage",collage);
-	console.log("Definition",definition);
-
-	const serializeCanvasHandler = () => {		
-		collage = canvas?.toObject(['meta']);
-		// console.log("Serializing canvas", collage);
-		updateCanvasDefinition();
-
-		// Save canvas to blob (base64 encoded image)
-		// const dataURI = canvas?.toDataURL();
-		// var binary = atob(dataURI.split(',')[1]);
-		// var array = [];
-		// for (var i = 0; i < binary.length; i++) {
-		// 	array.push(binary.charCodeAt(i));
-		// }
-		// blob = new Blob([new Uint8Array(array)], { type: 'image/png' });
-		// console.log('Collage blob', blob);
-	}
-
-	const updateCanvasDefinition = () => {		
-		if (!collage) return;
-
-		const prevdefinition = definition || {};
-
-		let background;
-		const characters = [];
-		const elements = [];
-
-		// Fetch background
-		if (collage.backgroundImage) {
-			background = new URL(collage.backgroundImage.src).pathname;  
-		}
-
-		// Fetch images in collage relevant for visualization		
-		let idxObject = 0;
-		let idxCharacter = 0;
-		let idxElement = 0;
-
-		if (collage.objects) {
-			collage.objects.forEach((obj) => {
-				// Fetch image info
-				const image = {
-					url : new URL(obj.src).pathname,
-					placement : {	
-						index : idxObject,												
-						left : obj.left,
-						top : obj.top,
-						width: obj.width,
-						height: obj.height,
-						scaleX: obj.scaleX,
-						scaleY: obj.scaleY,
-						angle: obj.angle
-					}
-				}
-
-				// Fetch characters 
-				if (obj.meta?.role === 'character') {					
-					image.name = prevdefinition.characters[idxCharacter]?.name || '';
-					image.statement = prevdefinition.characters[idxCharacter]?.statement || '';
-					image.id = idxCharacter;
-					characters.push(image);
-					idxCharacter++;
-				}
-
-				// Fetch elements		
-				if (obj.meta?.role === 'element') {
-					image.id = idxElement;
-					elements.push(image);
-					idxElement++;
-				}
-
-				idxObject++;
-			});
-		}		
-
-		definition = {
-			background,
-			characters,
-			elements
-		}
-
-		console.log("Canvas object definition", definition);
-	}
+	// console.log("Collage",collage);
+	// console.log("Definition",definition);
 
 	onMount(() => {
 		const wrapper: HTMLElement | null = document.getElementById('canvas-wrapper');
+		const canvasElem: HTMLElement | null = document.getElementById('collage-canvas');
 
 		// console.log('Collage component:', scenario, backgrounds, elements, characters);
 
@@ -112,9 +31,97 @@
 			backgroundColor: '#eee'
 		});
 
+		const updateExportFile = () => {
+			// Save canvas to blob (base64 encoded image)
+			const dataURI = canvas?.toDataURL({
+				multiplier: 1920 / canvas.getWidth()
+			});
+			const binary = atob(dataURI.split(',')[1]);			
+			const array = [];			
+			for (var i = 0; i < binary.length; i++) {
+				array.push(binary.charCodeAt(i));
+			}
+			const blob = new Blob([new Uint8Array(array)], { type: 'octet/stream' });
+			file = new File([blob], 'collage.png', { type: 'image/png' });
+			console.log('Collage export file', file);
+		};
+
+		const serializeCanvasHandler = () => {
+			collage = canvas?.toObject(['meta']);
+			// console.log("Serializing canvas", collage);
+			updateCanvasDefinition();
+			updateExportFile();
+		};
+
+		const updateCanvasDefinition = () => {
+			if (!collage) return;
+
+			const prevdefinition = definition || {};
+
+			let background;
+			const characters = [];
+			const elements = [];
+
+			// Fetch background
+			if (collage.backgroundImage) {
+				background = new URL(collage.backgroundImage.src).pathname;
+			}
+
+			// Fetch images in collage relevant for visualization
+			let idxObject = 0;
+			let idxCharacter = 0;
+			let idxElement = 0;
+
+			if (collage.objects) {
+				collage.objects.forEach((obj) => {
+					// Fetch image info
+					const image = {
+						url: new URL(obj.src).pathname,
+						placement: {
+							index: idxObject,
+							left: obj.left,
+							top: obj.top,
+							width: obj.width,
+							height: obj.height,
+							scaleX: obj.scaleX,
+							scaleY: obj.scaleY,
+							angle: obj.angle
+						}
+					};
+
+					// Fetch characters
+					if (obj.meta?.role === 'character') {
+						image.name = prevdefinition.characters[idxCharacter]?.name || '';
+						image.statement = prevdefinition.characters[idxCharacter]?.statement || '';
+						image.id = idxCharacter;
+						characters.push(image);
+						idxCharacter++;
+					}
+
+					// Fetch elements
+					if (obj.meta?.role === 'element') {
+						image.id = idxElement;
+						elements.push(image);
+						idxElement++;
+					}
+
+					idxObject++;
+				});
+			}
+
+			definition = {
+				background,
+				characters,
+				elements
+			};
+
+			// console.log("Canvas object definition", definition);
+		};
+
 		if (collage) {
 			canvas.loadFromJSON(collage, () => {
 				canvas?.renderAll();
+				serializeCanvasHandler();
 			});
 		}
 
@@ -124,12 +131,13 @@
 
 			canvas?.setWidth(width);
 			canvas?.setHeight(height);
+
 			canvas?.setZoom(width / 1920);
 			canvas?.renderAll();
 		};
 
 		const handleKeyUp = (e) => {
-			console.log(e)
+			console.log(e);
 			var selectedObjects = canvas?.getActiveObjects() || [];
 
 			if (e.keyCode == 46 || e.key === 'Delete' || e.code === 'Delete' || e.key === 'Backspace') {
@@ -139,7 +147,7 @@
 						canvas?.remove(obj);
 					});
 					canvas?.discardActiveObject().renderAll();
-					serializeCanvasHandler();					
+					serializeCanvasHandler();
 				}
 			}
 		};
@@ -154,13 +162,10 @@
 		canvas.on('object:modified', serializeCanvasHandler);
 
 		handleResize();
-		// serializeCanvasHandler();		
 	});
 
 	const addBackground = (background) => {
-		selectedBackground = background;
 		const url = `/api/scenarios/${scenario}/background/${background}`;
-		// const url = '/api/scenarios/drone-database/screen_1920x1080_2021-11-22_16-30-57.png';
 		fabric.Image.fromURL(
 			url,
 			function (img) {
@@ -170,10 +175,10 @@
 					scaleX,
 					scaleY
 				});
+				serializeCanvasHandler();
 			},
 			{ crossOrigin: 'Anonymous' }
 		);
-		serializeCanvasHandler();
 	};
 
 	const addCharacter = (character: String) => {
@@ -185,7 +190,7 @@
 				// scale image down, and flip it, before adding it onto canvas
 				img.meta = {
 					image: character,
-					role: 'character',
+					role: 'character'
 				};
 
 				img.scale(FABRIC_SCALE_NEW_OBJECT);
@@ -198,7 +203,6 @@
 			},
 			{ perPixelTargetFind: true }
 		);
-		
 	};
 
 	const addElement = (element) => {
@@ -208,7 +212,7 @@
 			(img) => {
 				img.meta = {
 					image: element,
-					role: 'element',
+					role: 'element'
 				};
 
 				// scale image down, and flip it, before adding it onto canvas
@@ -223,7 +227,6 @@
 			{ perPixelTargetFind: true, left: 200, top: 200 }
 		);
 	};
-
 </script>
 
 <div class="container sm">
@@ -239,12 +242,13 @@
 								{#each backgrounds as background}
 									<div>
 										<img
-											on:click={() => addBackground(background)}											
+											on:click={() => addBackground(background)}
 											draggable="false"
 											class="h-auto max-w-full rounded-sm"
 											alt=""
 											src="/api/scenarios/{scenario}/background/{background}"
-										/> <!-- on:dragstart={dragElement} -->
+										/>
+										<!-- on:dragstart={dragElement} -->
 									</div>
 								{/each}
 							</section>
@@ -258,13 +262,13 @@
 								{#each elements as element}
 									<div>
 										<img
-											
 											draggable="false"
 											on:click={() => addElement(element)}
 											class="h-auto max-w-full rounded-sm"
 											alt=""
 											src="/api/scenarios/{scenario}/element/{element}"
-										/> <!-- on:dragstart={dragElement} -->
+										/>
+										<!-- on:dragstart={dragElement} -->
 									</div>
 								{/each}
 							</section>
@@ -283,7 +287,8 @@
 											class="h-auto max-w-full rounded-sm"
 											alt=""
 											src="/api/scenarios/{scenario}/character/{character}"
-										/> <!-- on:dragstart={dragElement}-->
+										/>
+										<!-- on:dragstart={dragElement}-->
 									</div>
 								{/each}
 							</section>
@@ -292,9 +297,14 @@
 				</Accordion>
 			</section>
 		</div>
-		<div class="card col-span-3 row-span-1 variant-ghost-tertiary max-h-fit" id="canvas-wrapper" tabindex=1>
-			<section class="p-4"> <!-- on:dragover={allowDrop} on:drop={dropElement} -->
-				<canvas id="collage-canvas"></canvas>
+		<div
+			class="card col-span-3 row-span-1 variant-ghost-tertiary max-h-fit"
+			id="canvas-wrapper"
+			tabindex="1"
+		>
+			<section class="p-4">
+				<!-- on:dragover={allowDrop} on:drop={dropElement} -->
+				<canvas width="1920" height="1080" id="collage-canvas"></canvas>
 			</section>
 		</div>
 		<!-- <div class="card variant-ghost-tertiary row-span-1 col-span-1">

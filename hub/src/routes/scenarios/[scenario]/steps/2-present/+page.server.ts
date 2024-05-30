@@ -68,6 +68,7 @@ const save = async (params, request) => {
     // Definition of the collage used for visualisations
     const definitionjson = data.get('definition');
     const definition = JSON.parse(definitionjson);
+    
     json.collage.present.definition = definition;
 
     if (!json.friction) {
@@ -78,6 +79,20 @@ const save = async (params, request) => {
     const emergingfrictions = data.get('emergingfrictions')
     json.friction.emergingfrictions = emergingfrictions;
     
+    // Collage PNG
+    const collageFile = data.get('collageFile');
+    
+    console.log("CollageFile:", collageFile.name, collageFile.type);
+
+    if (collageFile.name && collageFile.name.length > 0 && collageFile?.name !== "undefined") {
+        console.log("Saving collage PNG as", collageFile.name)
+        const filename = `${scenarios.SCENARIOROOT}/${scenario}/collage/present.png`;  
+        console.log("filename", filename);
+        const buffer = Buffer.from(await collageFile?.arrayBuffer());
+        scenarios.addImage(scenario, filename, buffer);
+        json.collage.present.url = `/api/scenarios/${scenario}/collage/present.png`;
+    }
+
     scenarios.save(scenario, json);
 
     return {

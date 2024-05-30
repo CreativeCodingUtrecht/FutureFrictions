@@ -15,8 +15,8 @@
                         "version": "5.3.0",
                         "originX": "left",
                         "originY": "top",
-                        "left": 253.45,
-                        "top": 20.09,
+                        "left": 96.37,
+                        "top": -47.55,
                         "width": 400,
                         "height": 500,
                         "fill": "rgb(0,0,0)",
@@ -57,8 +57,8 @@
                         "version": "5.3.0",
                         "originX": "left",
                         "originY": "top",
-                        "left": 288.36,
-                        "top": 455.74,
+                        "left": 266.54,
+                        "top": 466.65,
                         "width": 400,
                         "height": 1086,
                         "fill": "rgb(0,0,0)",
@@ -183,8 +183,8 @@
                         "version": "5.3.0",
                         "originX": "left",
                         "originY": "top",
-                        "left": 977.06,
-                        "top": -91.75,
+                        "left": 1491.98,
+                        "top": -30.65,
                         "width": 400,
                         "height": 511,
                         "fill": "rgb(0,0,0)",
@@ -267,8 +267,8 @@
                         "url": "/api/scenarios/1b5f7641-5c99-450c-aac9-567455d990fd/character/Picture1.png",
                         "placement": {
                             "index": 1,
-                            "left": 288.36,
-                            "top": 455.74,
+                            "left": 266.54,
+                            "top": 466.65,
                             "width": 400,
                             "height": 1086,
                             "scaleX": 0.43,
@@ -317,8 +317,8 @@
                         "url": "/api/scenarios/1b5f7641-5c99-450c-aac9-567455d990fd/element/Paintings%20185.png",
                         "placement": {
                             "index": 0,
-                            "left": 253.45,
-                            "top": 20.09,
+                            "left": 96.37,
+                            "top": -47.55,
                             "width": 400,
                             "height": 500,
                             "scaleX": 0.5,
@@ -331,8 +331,8 @@
                         "url": "/api/scenarios/1b5f7641-5c99-450c-aac9-567455d990fd/element/aerostat.png",
                         "placement": {
                             "index": 4,
-                            "left": 977.06,
-                            "top": -91.75,
+                            "left": 1491.98,
+                            "top": -30.65,
                             "width": 400,
                             "height": 511,
                             "scaleX": 0.62,
@@ -342,7 +342,8 @@
                         "id": 1
                     }
                 ]
-            }
+            },
+            "url": "/api/scenarios/1b5f7641-5c99-450c-aac9-567455d990fd/collage/present.png"
         },
         "future": {
             "canvas": {
@@ -479,8 +480,8 @@
                         "version": "5.3.0",
                         "originX": "left",
                         "originY": "top",
-                        "left": 72.86,
-                        "top": 592.66,
+                        "left": 79.41,
+                        "top": 586.11,
                         "width": 400,
                         "height": 314,
                         "fill": "rgb(0,0,0)",
@@ -679,8 +680,8 @@
                         "url": "/api/scenarios/1b5f7641-5c99-450c-aac9-567455d990fd/character/cow%20(1).png",
                         "placement": {
                             "index": 3,
-                            "left": 72.86,
-                            "top": 592.66,
+                            "left": 79.41,
+                            "top": 586.11,
                             "width": 400,
                             "height": 314,
                             "scaleX": 1.29,

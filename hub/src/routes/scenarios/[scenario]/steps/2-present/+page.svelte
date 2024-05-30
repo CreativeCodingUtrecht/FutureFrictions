@@ -13,7 +13,8 @@
 	const values = {
 		collage: data?.json?.collage?.present?.canvas || {},
 		definition: data?.json?.collage?.present?.definition || {},
-		emergingfrictions: form?.emergingfrictions || data?.json.friction?.emergingfrictions || ''
+		emergingfrictions: form?.emergingfrictions || data?.json.friction?.emergingfrictions || '',
+		file: undefined
 	};
 
 	$: stringifiedCollage = () => {
@@ -23,10 +24,21 @@
 	$: stringifiedDefinition = () => {
 		return JSON.stringify(values.definition);
 	}
+
+	const handleSubmit = async () => {
+		console.log('Submitting');
+		if (values.file) {
+			let fileInputElement = document.getElementById('file');		
+			let container = new DataTransfer();
+			container.items.add(values.file);
+			fileInputElement.files = container.files;
+		}
+	}
+
 </script>
 
 <div>
-	<form method="POST" action="?/save" enctype="multipart/form-data">
+	<form on:submit={handleSubmit} method="POST" action="?/save" enctype="multipart/form-data">
 		<div class="">
 			<h4 class="h4">Collage</h4>
 			<br />
@@ -39,10 +51,10 @@
 
 		</div>
 		<br />		
-		<Collage {scenario} {backgrounds} {elements} {characters} bind:collage={values.collage} bind:definition={values.definition}/>
+		<Collage {scenario} {backgrounds} {elements} {characters} bind:collage={values.collage} bind:definition={values.definition} bind:file={values.file}/>
 		<input type="hidden" name="collage" value={stringifiedCollage()} />
 		<input type="hidden" name="definition" value={stringifiedDefinition()} />
-		<!-- <input type="hidden" name="collageFile" bind:value={values.blob} /> -->
+		<input id="file" type="file" name="collageFile" bind:value={values.file} />
 		<br />
 		{#if values.definition.characters?.length > 0}
 		<div class="space-y-4">
@@ -184,3 +196,9 @@
 		<button class="btn variant-filled-primary" formaction="?/next">Next</button>
 	</form>
 </div>
+
+<style>
+	input#file {
+		display: none;
+	}
+</style>

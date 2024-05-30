@@ -37,7 +37,7 @@
 	<a class="card card-hover overflow-hidden" href="/scenarios/{scenario}">
 		<header>
 			<img
-                src={data.scenarios[scenario].collage?.present?.definition?.background || ''}
+                src={data.scenarios[scenario].collage?.present?.url || ''}
                 />
 		</header>
 		<div class="p-4 space-y-4">

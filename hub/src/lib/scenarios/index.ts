@@ -1,6 +1,7 @@
 import fs from 'fs';
 import { error } from '@sveltejs/kit';
 import { env } from '$env/dynamic/private'
+import path from 'path';
 
 export const DATAROOT = env.DATAROOT || '../data';
 export const SCENARIOROOT = `${DATAROOT}/scenarios`;
@@ -138,6 +139,11 @@ const remove = (scenario: String) => {
 
 const addImage = (scenario: String, filename: any, data: Buffer) => {
 	try {
+		const dir = path.dirname(filename);
+		console.log("Adding image to directory", dir);
+		if (!fs.existsSync(dir)){
+			fs.mkdirSync(dir, { recursive: true });
+		}
 		fs.writeFileSync(filename, data);
 	} catch {
 		throw error(500, 'Unable to save image to disk');
@@ -176,6 +182,9 @@ const getCharacterImage = (scenario: String, image: any) => {
 	return getImage(scenario, image, 'characters');
 }
 	
+const getCollageImage = (scenario: String, image: any) => {
+	return getImage(scenario, image, 'collage');
+}
 
 const removeImage = (scenario: String, image: any) => {
 	const filename = `${SCENARIOROOT}/${scenario}/${image}`;
@@ -203,6 +212,7 @@ export default {
 	getImage,
 	getBackgroundImage,
 	getElementImage,
+	getCollageImage,	
 	getCharacterImage,
 	removeImage,
 	duplicate,
