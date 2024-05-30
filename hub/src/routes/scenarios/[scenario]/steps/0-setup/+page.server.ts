@@ -37,6 +37,6 @@ const save = async (params, request) => {
     const data = await request.formData();
     const title = data.get('title')
 
-    json.friction.description = title;
+    json.name = title;
     scenarios.save(scenario, json);
 }

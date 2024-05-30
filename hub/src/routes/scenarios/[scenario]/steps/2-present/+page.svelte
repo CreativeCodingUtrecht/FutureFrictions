@@ -13,7 +13,7 @@
 	const values = {
 		collage: data?.json?.collage?.present?.canvas || {},
 		definition: data?.json?.collage?.present?.definition || {},
-		emergingfriction: form?.emergingfriction || data?.json.scene.content.emergingfriction || ''
+		emergingfriction: form?.emergingfriction || data?.json.friction?.emergingfriction || ''
 	};
 
 	$: stringifiedCollage = () => {

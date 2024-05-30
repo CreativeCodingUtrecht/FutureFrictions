@@ -98,7 +98,7 @@ const duplicate = (scenario: String, newScenario: String, name: String) => {
 
 	// Update JSON
 	const data = json(newScenario)
-	data.friction.description = name;
+	data.name = name;
 	save(newScenario,data);
 }
 
@@ -116,7 +116,7 @@ const create = (newScenario: String, name: String) => {
 
 	// Update JSON
 	const data = json(newScenario)
-	data.friction.description = name;
+	data.name = name;
 	save(newScenario,data);
 }
 

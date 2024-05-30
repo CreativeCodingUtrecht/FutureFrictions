@@ -5,7 +5,7 @@
 	export let data: PageData;
 
 	const values = {
-		title : form?.title || data?.json.friction.description || ""
+		title : form?.title || data?.json.name || ""
 	}
 </script>
 

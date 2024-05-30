@@ -37,13 +37,11 @@
 	<a class="card card-hover overflow-hidden" href="/scenarios/{scenario}">
 		<header>
 			<img
-                src={data.scenarios[scenario].scene.background
-                    ? `/api/scenarios/${scenario}/${data.scenarios[scenario].scene.background}`
-                    : (data.scenarios[scenario].collage.present.definition.background ?  data.scenarios[scenario].collage.present.definition.background : ``)}
+                src={data.scenarios[scenario].collage?.present?.definition?.background || ''}
                 />
 		</header>
 		<div class="p-4 space-y-4">
-			<h4 class="h4" data-toc-ignore>{data.scenarios[scenario].friction.description}</h4>
+			<h4 class="h4" data-toc-ignore>{data.scenarios[scenario].name}</h4>
 			<!-- <h6 class="h6" data-toc-ignore>Scenario</h6> -->
 			<!-- <Avatar src={data.scenarios[scenario].friction.avatar
 				? `/api/scenarios/${scenario}/${data.scenarios[scenario].friction.avatar}`
@@ -58,7 +56,7 @@
 				</p>
 				<p class="py-5">
 					<!-- cspell:disable -->
-					{data.scenarios[scenario].scene.content.welcome}
+					<!-- {data.scenarios[scenario].scene.content.welcome} -->
 					<!-- cspell:enable -->
 				</p>
                 <!-- <p class="italic">

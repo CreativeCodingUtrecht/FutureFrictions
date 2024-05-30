@@ -36,15 +36,19 @@ const save = async (params, request) => {
 
     const data = await request.formData();
 
+    if (!json.friction) {
+        json.friction = {};
+    }
+
     const statement = data.get('statement')
-    json.scene.content.welcome = statement;
+    json.friction.frictionalstatement = statement;
 
     const avatar = data.get('avatar')
-    json.scene.avatar = avatar;
+    json.friction.avatar = avatar;
 
     const avatarFile = data?.get('file');
 
-    if (avatarFile?.name && avatarFile.name.length > 0 && avatarFile?.name !== "undefined" && uploadedFile?.name !== "") {
+    if (avatarFile?.name && avatarFile.name.length > 0 && avatarFile?.name !== "undefined") {
         const filename = `${scenarios.SCENARIOROOT}/${scenario}/${avatarFile?.name}`;  
         console.log("filename", filename);
         const buffer = Buffer.from(await avatarFile?.arrayBuffer());

@@ -9,19 +9,8 @@
 	const scenario = data.scenario;
 	const json = data.json;
 
-	const title = json.friction.description;
-	const welcome = json.scene.content.welcome;	
-	const background = json.scene.background;
-	const avatar = json.scene.avatar;
-
-	const frictionalstatement = data?.json?.friction?.content.before || '';
-	const emergingfrictions = data?.json?.scene?.content.emergingfriction || '';
-	const provocativestatement = data?.json.scene.content.provocativestatement || ''
-
-	const background_url = background
-		? `/api/scenarios/${scenario}/${background}`
-		: ``;
-	const avatar_url = avatar ? `/api/scenarios/${scenario}/${avatar}` : `/placeholders/avatar.jpg`;
+	const name = json.name || '';
+	const background = json.collage?.present?.definition?.background || '';
 
 	const url = `${FF_WEBGL_URL}?scenario=${scenario}`;
 
@@ -41,12 +30,12 @@
 <div class="w-full text-token grid grid-cols-1 md:grid-cols-1 gap-4">
 	<div class="card overflow-hidden">
 		<header>
-			<img src={background_url} />
+			<img src={background} />
 		</header>
 		<div class="p-4 space-y-4">
-			<h3 class="h3" data-toc-ignore>{title}</h3>
+			<h3 class="h3" data-toc-ignore>{name}</h3>
 			<article class="space-y-5">
-				{#if welcome}
+				<!-- {#if welcome}
 					<h5 class="h5">Frictional statement</h5>
 					<p>						
 						{welcome}
@@ -69,7 +58,7 @@
 					<p>
 						{provocativestatement}
 					</p>
-				{/if}
+				{/if} -->
 			</article>
             <form method="POST" action="?/remove">
 				<a href={url} class="btn variant-filled-primary" target="FF_WEBGL_URL">▶ Play</a>
@@ -91,7 +80,7 @@
                         class="input"
                         type="text"
                         required
-                        value={`${title} (Copy)`}
+                        value={`${name} (Copy)`}
                         name="name"
                     />
                 </label>

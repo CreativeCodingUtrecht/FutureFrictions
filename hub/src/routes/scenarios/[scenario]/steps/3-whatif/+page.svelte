@@ -8,8 +8,8 @@
 	const scenario = data?.scenario;
 
 	const values = {
-		whatif: form?.whatif || data?.json.friction.content.before || '',
-		avatar: form?.avatar || data?.json.friction.avatar || '',
+		whatif: form?.whatif || data?.json.whatif?.question || '',
+		avatar: form?.avatar || data?.json.whatif?.avatar || '',
 	};
 </script>
 

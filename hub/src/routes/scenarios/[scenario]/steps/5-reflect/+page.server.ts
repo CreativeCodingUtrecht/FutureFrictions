@@ -37,7 +37,7 @@ const save = async (params, request) => {
     const data = await request.formData();
 
     const provocativestatement = data.get('provocativestatement')
-    json.scene.content.provocativestatement = provocativestatement;
+    json.provocativestatement = provocativestatement;
 
     scenarios.save(scenario, json);
 

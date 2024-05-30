@@ -9,8 +9,8 @@
 	const scenario = data?.scenario;
 
 	const values = {
-		statement: form?.statement || data?.json.scene.content.welcome || '',
-		avatar : form?.avatar || data?.json.scene.avatar || ""
+		statement: form?.statement || data?.json.friction?.frictionalstatement || '',
+		avatar : form?.avatar || data?.json.friction?.avatar || ""
 	};
 </script>
 

@@ -7,7 +7,7 @@
     const scenario = data.scenario;
     const json = data.json;
 
-    const title = json.friction.description;
+    const title = json.name;
 	const url = `${FF_WEBGL_URL}?scenario=${scenario}`;
 
 </script>

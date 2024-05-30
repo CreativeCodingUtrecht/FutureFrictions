@@ -56,6 +56,7 @@ const save = async (params, request) => {
     // Collage (fabric.js)
     const collagejson = data.get('collage')
     const collage = JSON.parse(collagejson);
+
     if (!json.collage) {
         json.collage = {}
     }
@@ -69,9 +70,13 @@ const save = async (params, request) => {
     const definition = JSON.parse(definitionjson);
     json.collage.present.definition = definition;
 
+    if (!json.friction) {
+        json.friction = {}
+    }
+
     // Emerging friction
     const emergingfriction = data.get('emergingfriction')
-    json.scene.content.emergingfriction = emergingfriction;
+    json.friction.emergingfriction = emergingfriction;
     
     scenarios.save(scenario, json);
 

@@ -10,7 +10,7 @@
 	const url = `${FF_WEBGL_URL}?scenario=${scenario}`;
 
 	const values = {
-		provocativestatement : form?.provocativestatement || data?.json.scene.content.provocativestatement || ''
+		provocativestatement : form?.provocativestatement || data?.json.provocativestatement || ''
 	};
 </script>
 

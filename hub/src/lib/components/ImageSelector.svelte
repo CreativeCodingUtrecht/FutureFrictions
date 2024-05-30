@@ -41,9 +41,7 @@
     <!-- <h4 class="h4">{title}</h4> -->
     <img id="preview" src={previewImage ? `${previewImage}` : `/api/scenarios/${scenario}/${values[field]}`} alt={values[field]} />
     
-    <input id="imgInput" class="input" type="file" name={upload} accept=".jpg, .jpeg, .png" on:click={(e) => {e.stopPropagation();}} on:change={updateImage} />
-
-    <p>Or, Select an existing image from the library</p>
+    <p>Select an image from the list</p>
     
     <select class="select" on:change={updateImageFromSelect}>
         <option disabled selected value>No image selected.</option>
@@ -51,6 +49,11 @@
             <option value={image}>{image}</option>
         {/each}
     </select>
+
+    <p>Or, upload a new image</p> 
+
+    <input id="imgInput" class="input" type="file" name={upload} accept=".jpg, .jpeg, .png" on:click={(e) => {e.stopPropagation();}} on:change={updateImage} />
+
 
     <input
         id="imageText"
@@ -62,7 +65,7 @@
     />
 
     <button class="btn variant-ghost-primary mt-4" on:click={updateImageClear}>Clear image</button>
-    <a type="button" target="_images" class="btn variant-soft-primary mt-4" href={`/scenarios/${scenario}/images`}>See Image Gallery</a>
+    <!-- <a type="button" target="_images" class="btn variant-soft-primary mt-4" href={`/scenarios/${scenario}/images`}>See Image Gallery</a> -->
 </div>
 
 <style>

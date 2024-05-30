@@ -36,11 +36,15 @@ const save = async (params, request) => {
 
     const data = await request.formData();
 
+    if (!json.whatif) {
+        json.whatif = {};
+    }
+
     const whatif = data.get('whatif')  
-    json.friction.content.before = whatif;
+    json.whatif.question = whatif;
 
     const avatar = data.get('avatar')  
-    json.friction.avatar = avatar;
+    json.whatif.avatar = avatar;
 
     const uploadedFile = data?.get('file');
 
