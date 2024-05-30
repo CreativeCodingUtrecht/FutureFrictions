@@ -70,6 +70,19 @@ const save = async (params, request) => {
     const definition = JSON.parse(definitionjson);
     json.collage.future.definition = definition;
 
+    // Collage PNG
+    const collageFile = data.get('collageFile');
+    
+    console.log("CollageFile:", collageFile.name, collageFile.type);
+
+    if (collageFile.name && collageFile.name.length > 0 && collageFile?.name !== "undefined") {
+        const filename = `${scenarios.SCENARIOROOT}/${scenario}/collage/future.png`;  
+        console.log("Saving collage PNG as", filename)        
+        const buffer = Buffer.from(await collageFile?.arrayBuffer());
+        scenarios.addImage(scenario, filename, buffer);
+        json.collage.future.url = `/api/scenarios/${scenario}/collage/future.png`;
+    }
+
     scenarios.save(scenario, json);
 
     return {

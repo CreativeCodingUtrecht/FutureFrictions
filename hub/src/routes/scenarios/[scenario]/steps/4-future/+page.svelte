@@ -13,7 +13,8 @@
 
 	const values = {
 		collage: data?.json.collage?.future?.canvas || data?.json.collage?.present?.canvas || {},
-		definition: data?.json.collage?.future?.definition || data?.json?.collage?.present?.definition || {}
+		definition: data?.json.collage?.future?.definition || data?.json?.collage?.present?.definition || {},
+		file: undefined
 	};
 
 	$: stringifiedCollage = () => {
@@ -29,10 +30,20 @@
 		values.definition = data?.json?.collage?.present?.definition || {};
 	}
 
+	const handleSubmit = async () => {
+		console.log('Submitting');
+		if (values.file) {
+			let fileInputElement = document.getElementById('file');		
+			let container = new DataTransfer();
+			container.items.add(values.file);
+			fileInputElement.files = container.files;
+		}
+	}
+
 </script>
 
 <div>
-	<form method="POST" action="?/save" enctype="multipart/form-data">
+	<form method="POST" on:submit={handleSubmit} action="?/save" enctype="multipart/form-data">
 		<div class="">
 			<h4 class="h4">Collage</h4>
 			<br />
@@ -50,9 +61,10 @@
 				<!-- <ImageSelector scenario={scenario} images={images} values={values} input="collage" field="collage" upload="collageFile" extraClass="" /> -->
 			</span>
 			<br />
-			<Collage {scenario} {backgrounds} {elements} {characters} bind:collage={values.collage} bind:definition={values.definition} />
+			<Collage {scenario} {backgrounds} {elements} {characters} bind:collage={values.collage} bind:definition={values.definition} bind:file={values.file} />
 			<input type="hidden" name="collage" value={stringifiedCollage()} />
 			<input type="hidden" name="definition" value={stringifiedDefinition()} />
+			<input id="file" type="file" name="collageFile" bind:value={values.file} />
 			<br />
 			<a class="btn variant-ghost-warning" on:click={resetCollage}>Reset collage</a>
 				
@@ -254,3 +266,9 @@
 		<button class="btn variant-filled-primary" formaction="?/next">Next</button>
 	</form>
 </div>
+
+<style>
+	input#file {
+		display: none;
+	}
+</style>
