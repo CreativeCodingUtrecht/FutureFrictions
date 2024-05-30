@@ -10,7 +10,11 @@
 	const json = data.json;
 
 	const name = json.name || '';
+	const frictionalstatement = json.friction?.frictionalstatement;
+	const emergingfrictions = json.friction?.emergingfrictions;
+	const whatif = json.whatif?.question;
 	const background = json.collage?.present?.definition?.background || '';
+	const provocativestatement = json.provocativestatement;
 
 	const url = `${FF_WEBGL_URL}?scenario=${scenario}`;
 
@@ -35,10 +39,10 @@
 		<div class="p-4 space-y-4">
 			<h3 class="h3" data-toc-ignore>{name}</h3>
 			<article class="space-y-5">
-				<!-- {#if welcome}
+				{#if frictionalstatement}
 					<h5 class="h5">Frictional statement</h5>
 					<p>						
-						{welcome}
+						{frictionalstatement}
 					</p>
 				{/if}
 				{#if emergingfrictions}
@@ -47,10 +51,10 @@
 						{emergingfrictions}
 					</p>
 				{/if}
-				{#if frictionalstatement}
+				{#if whatif}
 					<h5 class="h5">What If ..</h5>
 					<p>
-						{frictionalstatement}
+						{whatif}
 					</p>
 				{/if}
 				{#if provocativestatement}
@@ -58,7 +62,7 @@
 					<p>
 						{provocativestatement}
 					</p>
-				{/if} -->
+				{/if}
 			</article>
             <form method="POST" action="?/remove">
 				<a href={url} class="btn variant-filled-primary" target="FF_WEBGL_URL">▶ Play</a>

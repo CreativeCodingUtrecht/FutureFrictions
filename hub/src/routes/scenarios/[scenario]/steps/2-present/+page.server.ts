@@ -75,14 +75,14 @@ const save = async (params, request) => {
     }
 
     // Emerging friction
-    const emergingfriction = data.get('emergingfriction')
-    json.friction.emergingfriction = emergingfriction;
+    const emergingfrictions = data.get('emergingfrictions')
+    json.friction.emergingfrictions = emergingfrictions;
     
     scenarios.save(scenario, json);
 
     return {
         collage,
         definition,
-        emergingfriction
+        emergingfrictions
     }
 }

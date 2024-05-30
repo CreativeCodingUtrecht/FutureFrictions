@@ -13,7 +13,7 @@
 	const values = {
 		collage: data?.json?.collage?.present?.canvas || {},
 		definition: data?.json?.collage?.present?.definition || {},
-		emergingfriction: form?.emergingfriction || data?.json.friction?.emergingfriction || ''
+		emergingfrictions: form?.emergingfrictions || data?.json.friction?.emergingfrictions || ''
 	};
 
 	$: stringifiedCollage = () => {
@@ -169,11 +169,11 @@
 			</p>
 
 			<textarea
-				value={values.emergingfriction}
+				value={values.emergingfrictions}
 				class="textarea"
 				title="Emerging friction"
 				rows="4"
-				name="emergingfriction"
+				name="emergingfrictions"
 			/>
 		</label>
 
