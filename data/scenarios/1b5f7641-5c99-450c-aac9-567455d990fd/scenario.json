@@ -221,6 +221,7 @@
                         "filters": []
                     }
                 ],
+                "background": "#ddddee",
                 "backgroundImage": {
                     "type": "image",
                     "version": "5.3.0",
@@ -261,6 +262,7 @@
                 }
             },
             "definition": {
+                "backgroundColor": "#ddddee",
                 "background": "/api/scenarios/1b5f7641-5c99-450c-aac9-567455d990fd/background/street%20(2).png",
                 "characters": [
                     {
