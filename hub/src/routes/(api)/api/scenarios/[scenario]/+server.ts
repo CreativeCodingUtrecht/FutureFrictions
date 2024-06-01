@@ -1,7 +1,6 @@
 import { json } from '@sveltejs/kit';
 import { error } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
-import fs from 'fs'
 import scenarios from '$lib/scenarios'
 
 export const GET: RequestHandler = ({ params }) => {
