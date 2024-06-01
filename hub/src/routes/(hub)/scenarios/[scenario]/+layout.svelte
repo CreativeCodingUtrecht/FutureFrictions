@@ -13,7 +13,7 @@
 </script>
 
 <h4 class="h4">
-    <a href="/scenarios">Scenarios</a> ➡ <a href="/scenarios/{scenario}">{title}</a>
+    <a href="/">Scenarios</a> ➡ <a href="/scenarios/{scenario}">{title}</a>
     &nbsp;<a href={url} class="text-surface-500" target="FF_WEBGL_URL">▶</a>
 </h4>
 

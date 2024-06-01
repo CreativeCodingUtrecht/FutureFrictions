@@ -7,12 +7,13 @@
 	export let backgrounds: String[] = [];
 	export let elements: String[] = [];
 	export let characters: String[] = [];
-	export let collage: any = {};
+	export let collage: any;
 	export let definition: any = {};
 	export let file: File | undefined = undefined;
 
 	const FABRIC_CONTROL_VISIBILITY = { mtr: false, mb: false, mt: false, ml: false, mr: false };
 	const FABRIC_SCALE_NEW_OBJECT = 0.5;
+	const FABRIC_BACKGROUND_COLOR = '#ddddee';
 
 	let canvas: fabric.Canvas | undefined;
 
@@ -28,7 +29,7 @@
 		canvas = new fabric.Canvas('collage-canvas', {
 			width: 1920,
 			height: 1080,
-			backgroundColor: '#eee'
+			backgroundColor: FABRIC_BACKGROUND_COLOR
 		});
 
 		const updateExportFile = () => {
@@ -59,12 +60,17 @@
 			const prevdefinition = definition || {};
 
 			let background;
+			let backgroundColor;
 			const characters = [];
 			const elements = [];
 
 			// Fetch background
 			if (collage.backgroundImage) {
-				background = new URL(collage.backgroundImage.src).pathname;
+				background = new URL(collage.backgroundImage.src).pathname;			
+			}
+
+			if (collage.background) {
+				backgroundColor = collage.background;
 			}
 
 			// Fetch images in collage relevant for visualization
@@ -110,6 +116,7 @@
 			}
 
 			definition = {
+				backgroundColor,
 				background,
 				characters,
 				elements
@@ -120,10 +127,15 @@
 
 		if (collage) {
 			canvas.loadFromJSON(collage, () => {
-				canvas?.renderAll();
-				serializeCanvasHandler();
+				// canvas?.renderAll();
+				canvas.setBackgroundColor(FABRIC_BACKGROUND_COLOR, () => {
+					canvas?.renderAll();
+					serializeCanvasHandler();
+				})
+				
 			});
-		}
+		} 
+
 
 		const handleResize = () => {
 			const width = wrapper.offsetWidth - 30;
@@ -177,7 +189,7 @@
 				});
 				serializeCanvasHandler();
 			},
-			{ crossOrigin: 'Anonymous' }
+			{ crossOrigin: 'anonymous' }
 		);
 	};
 
@@ -201,7 +213,7 @@
 				canvas?.renderAll();
 				serializeCanvasHandler();
 			},
-			{ perPixelTargetFind: true }
+			{ crossOrigin: 'anonymous', perPixelTargetFind: true }
 		);
 	};
 
@@ -224,15 +236,15 @@
 				canvas?.renderAll();
 				serializeCanvasHandler();
 			},
-			{ perPixelTargetFind: true, left: 200, top: 200 }
+			{ crossOrigin: 'anonymous', perPixelTargetFind: true, left: 200, top: 200 }
 		);
 	};
 </script>
 
 <div class="container sm">
-	<section class="grid grid-rows-1 grid-cols-4 gap-2" id="collage-wrapper">
-		<div class="card row-span-1 colspan-1 variant-ghost-tertiary">
-			<section class="p-4 overflow-auto">
+	<section class="grid grid-rows-1 md:grid-cols-4 grid-cols-1 gap-2" id="collage-wrapper">
+		<div class="card variant-ghost-tertiary">
+			<section class="p-4">
 				<Accordion autocollapse>
 					<AccordionItem open>
 						<svelte:fragment slot="lead">🚞</svelte:fragment>
@@ -251,13 +263,13 @@
 										<!-- on:dragstart={dragElement} -->
 									</div>
 								{/each}
-							</section>
+							</section>							
 						</svelte:fragment>
 					</AccordionItem>
 					<AccordionItem>
 						<svelte:fragment slot="lead">👩‍🦰</svelte:fragment>
 						<svelte:fragment slot="summary">Characters</svelte:fragment>
-						<svelte:fragment slot="content">
+						<svelte:fragment slot="content"> 
 							<section class="grid grid-cols-2 md:grid-cols-3 gap-4">
 								{#each characters as character}
 									<div>
@@ -267,11 +279,10 @@
 											class="h-auto max-w-full rounded-sm"
 											alt=""
 											src="/api/scenarios/{scenario}/character/{character}"
-										/>
-										<!-- on:dragstart={dragElement}-->
+										/>									
 									</div>
 								{/each}
-							</section>
+							</section> 
 						</svelte:fragment>
 					</AccordionItem>
 					<AccordionItem>
@@ -288,7 +299,6 @@
 											alt=""
 											src="/api/scenarios/{scenario}/element/{element}"
 										/>
-										<!-- on:dragstart={dragElement} -->
 									</div>
 								{/each}
 							</section>
@@ -298,7 +308,7 @@
 			</section>
 		</div>
 		<div
-			class="card col-span-3 row-span-1 variant-ghost-tertiary max-h-fit"
+			class="card md:col-span-3 variant-ghost-tertiary"
 			id="canvas-wrapper"
 			tabindex="1"
 		>
@@ -307,8 +317,5 @@
 				<canvas width="1920" height="1080" id="collage-canvas"></canvas>
 			</section>
 		</div>
-		<!-- <div class="card variant-ghost-tertiary row-span-1 col-span-1">
-			<section class="p-4">[Object]</section>
-		</div> -->
 	</section>
 </div>
