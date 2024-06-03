@@ -14,44 +14,33 @@
 	const FABRIC_CONTROL_VISIBILITY = { mtr: false, mb: false, mt: false, ml: false, mr: false };
 	const FABRIC_SCALE_NEW_OBJECT = 0.5;
 	const FABRIC_BACKGROUND_COLOR = '#ddddee';
+	let canvasSectionHeight = 1080;
 
 	let canvas: fabric.Canvas | undefined;
 
 	// console.log("Collage",collage);
 	// console.log("Definition",definition);
 
-	onMount(() => {
-		const wrapper: HTMLElement | null = document.getElementById('canvas-wrapper');
-		const canvasElem: HTMLElement | null = document.getElementById('collage-canvas');
+	const serializeCanvasHandler = () => {
+		collage = canvas?.toObject(['meta']);
+		// console.log("Serializing canvas", collage);
+		updateCanvasDefinition();
+		updateExportFile();
+	};
 
-		// console.log('Collage component:', scenario, backgrounds, elements, characters);
-
-		canvas = new fabric.Canvas('collage-canvas', {
-			width: 1920,
-			height: 1080,
-			backgroundColor: FABRIC_BACKGROUND_COLOR
-		});
-
-		const updateExportFile = () => {
+	const updateExportFile = () => {
 			// Save canvas to blob (base64 encoded image)
 			const dataURI = canvas?.toDataURL({
 				multiplier: 1920 / canvas.getWidth()
 			});
-			const binary = atob(dataURI.split(',')[1]);			
-			const array = [];			
+			const binary = atob(dataURI.split(',')[1]);
+			const array = [];
 			for (var i = 0; i < binary.length; i++) {
 				array.push(binary.charCodeAt(i));
 			}
 			const blob = new Blob([new Uint8Array(array)], { type: 'octet/stream' });
 			file = new File([blob], 'collage.png', { type: 'image/png' });
 			console.log('Collage export file', file);
-		};
-
-		const serializeCanvasHandler = () => {
-			collage = canvas?.toObject(['meta']);
-			// console.log("Serializing canvas", collage);
-			updateCanvasDefinition();
-			updateExportFile();
 		};
 
 		const updateCanvasDefinition = () => {
@@ -66,7 +55,7 @@
 
 			// Fetch background
 			if (collage.backgroundImage) {
-				background = new URL(collage.backgroundImage.src).pathname;			
+				background = new URL(collage.backgroundImage.src).pathname;
 			}
 
 			if (collage.background) {
@@ -123,7 +112,19 @@
 			};
 
 			// console.log("Canvas object definition", definition);
-		};
+		};	
+
+	onMount(() => {
+		const wrapper: HTMLElement | null = document.getElementById('canvas-wrapper');
+		const canvasElem: HTMLElement | null = document.getElementById('collage-canvas');
+
+		// console.log('Collage component:', scenario, backgrounds, elements, characters);
+
+		canvas = new fabric.Canvas('collage-canvas', {
+			width: 1920,
+			height: 1080,
+			backgroundColor: FABRIC_BACKGROUND_COLOR
+		});
 
 		if (collage) {
 			canvas.loadFromJSON(collage, () => {
@@ -131,11 +132,9 @@
 				canvas.setBackgroundColor(FABRIC_BACKGROUND_COLOR, () => {
 					canvas?.renderAll();
 					serializeCanvasHandler();
-				})
-				
+				});
 			});
-		} 
-
+		}
 
 		const handleResize = () => {
 			const width = wrapper.offsetWidth - 30;
@@ -146,6 +145,8 @@
 
 			canvas?.setZoom(width / 1920);
 			canvas?.renderAll();
+
+			canvasSectionHeight = height;
 		};
 
 		const handleKeyUp = (e) => {
@@ -242,9 +243,9 @@
 </script>
 
 <div class="container sm">
-	<section class="grid grid-rows-1 md:grid-cols-4 grid-cols-1 gap-2" id="collage-wrapper">
+	<section class="grid grid-rows-1 md:grid-cols-4 grid-cols-1 gap-2 h-[{canvasSectionHeight}px]" id="collage-wrapper">
 		<div class="card variant-ghost-tertiary">
-			<section class="p-4">
+			<section class="p-4 overflow-auto h-full">
 				<Accordion autocollapse>
 					<AccordionItem open>
 						<svelte:fragment slot="lead">🚞</svelte:fragment>
@@ -263,13 +264,13 @@
 										<!-- on:dragstart={dragElement} -->
 									</div>
 								{/each}
-							</section>							
+							</section>
 						</svelte:fragment>
 					</AccordionItem>
 					<AccordionItem>
 						<svelte:fragment slot="lead">👩‍🦰</svelte:fragment>
 						<svelte:fragment slot="summary">Characters</svelte:fragment>
-						<svelte:fragment slot="content"> 
+						<svelte:fragment slot="content">
 							<section class="grid grid-cols-2 md:grid-cols-3 gap-4">
 								{#each characters as character}
 									<div>
@@ -279,10 +280,10 @@
 											class="h-auto max-w-full rounded-sm"
 											alt=""
 											src="/api/scenarios/{scenario}/character/{character}"
-										/>									
+										/>
 									</div>
 								{/each}
-							</section> 
+							</section>
 						</svelte:fragment>
 					</AccordionItem>
 					<AccordionItem>
@@ -307,11 +308,7 @@
 				</Accordion>
 			</section>
 		</div>
-		<div
-			class="card md:col-span-3 variant-ghost-tertiary"
-			id="canvas-wrapper"
-			tabindex="1"
-		>
+		<div class="card md:col-span-3 variant-ghost-tertiary" id="canvas-wrapper" tabindex="1">
 			<section class="p-4">
 				<!-- on:dragover={allowDrop} on:drop={dropElement} -->
 				<canvas width="1920" height="1080" id="collage-canvas"></canvas>
