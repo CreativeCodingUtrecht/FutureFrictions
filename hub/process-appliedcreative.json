@@ -1,0 +1,16 @@
+{
+	"apps": [
+		{
+			"name": "futurefrictions",
+			"script": "build/index.js",
+			"exec_interpreter": "/home/niels/.nvm/versions/node/v20.14.0/bin/node",
+			"watch": false,
+			"env": {
+				"PORT": 3001,
+				"ORIGIN": "https://futurefrictions.appliedcreative.nl",
+				"DATAROOT": "../data",
+				"BODY_SIZE_LIMIT": "Infinity"
+			}
+		}
+	]
+}
