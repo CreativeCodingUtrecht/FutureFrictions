@@ -49,7 +49,6 @@
                             "role": "element"
                         },
                         "src": "http://localhost:5173/api/scenarios/1b5f7641-5c99-450c-aac9-567455d990fd/element/Paintings%20185.png",
-                        "crossOrigin": null,
                         "filters": []
                     },
                     {
@@ -91,7 +90,6 @@
                             "role": "character"
                         },
                         "src": "http://localhost:5173/api/scenarios/1b5f7641-5c99-450c-aac9-567455d990fd/character/Picture1.png",
-                        "crossOrigin": null,
                         "filters": []
                     },
                     {
@@ -133,7 +131,6 @@
                             "role": "character"
                         },
                         "src": "http://localhost:5173/api/scenarios/1b5f7641-5c99-450c-aac9-567455d990fd/character/Picture2.png",
-                        "crossOrigin": null,
                         "filters": []
                     },
                     {
@@ -175,7 +172,6 @@
                             "role": "character"
                         },
                         "src": "http://localhost:5173/api/scenarios/1b5f7641-5c99-450c-aac9-567455d990fd/character/Picture3.png",
-                        "crossOrigin": null,
                         "filters": []
                     },
                     {
@@ -183,8 +179,8 @@
                         "version": "5.3.0",
                         "originX": "left",
                         "originY": "top",
-                        "left": 1491.98,
-                        "top": -30.65,
+                        "left": 878.89,
+                        "top": -28.47,
                         "width": 400,
                         "height": 511,
                         "fill": "rgb(0,0,0)",
@@ -217,7 +213,6 @@
                             "role": "element"
                         },
                         "src": "http://localhost:5173/api/scenarios/1b5f7641-5c99-450c-aac9-567455d990fd/element/aerostat.png",
-                        "crossOrigin": null,
                         "filters": []
                     }
                 ],
@@ -257,7 +252,6 @@
                     "cropX": 0,
                     "cropY": 0,
                     "src": "http://localhost:5173/api/scenarios/1b5f7641-5c99-450c-aac9-567455d990fd/background/street%20(2).png",
-                    "crossOrigin": "anonymous",
                     "filters": []
                 }
             },
@@ -333,8 +327,8 @@
                         "url": "/api/scenarios/1b5f7641-5c99-450c-aac9-567455d990fd/element/aerostat.png",
                         "placement": {
                             "index": 4,
-                            "left": 1491.98,
-                            "top": -30.65,
+                            "left": 878.89,
+                            "top": -28.47,
                             "width": 400,
                             "height": 511,
                             "scaleX": 0.62,
@@ -390,7 +384,6 @@
                             "role": "character"
                         },
                         "src": "http://localhost:5173/api/scenarios/1b5f7641-5c99-450c-aac9-567455d990fd/character/Picture2.png",
-                        "crossOrigin": null,
                         "filters": []
                     },
                     {
@@ -432,7 +425,6 @@
                             "role": "character"
                         },
                         "src": "http://localhost:5173/api/scenarios/1b5f7641-5c99-450c-aac9-567455d990fd/character/Picture3.png",
-                        "crossOrigin": null,
                         "filters": []
                     },
                     {
@@ -474,7 +466,6 @@
                             "role": "element"
                         },
                         "src": "http://localhost:5173/api/scenarios/1b5f7641-5c99-450c-aac9-567455d990fd/element/aerostat.png",
-                        "crossOrigin": null,
                         "filters": []
                     },
                     {
@@ -516,7 +507,6 @@
                             "role": "character"
                         },
                         "src": "http://localhost:5173/api/scenarios/1b5f7641-5c99-450c-aac9-567455d990fd/character/cow%20(1).png",
-                        "crossOrigin": null,
                         "filters": []
                     },
                     {
@@ -558,7 +548,6 @@
                             "role": "element"
                         },
                         "src": "http://localhost:5173/api/scenarios/1b5f7641-5c99-450c-aac9-567455d990fd/element/Picture8.png",
-                        "crossOrigin": null,
                         "filters": []
                     },
                     {
@@ -600,7 +589,6 @@
                             "role": "element"
                         },
                         "src": "http://localhost:5173/api/scenarios/1b5f7641-5c99-450c-aac9-567455d990fd/element/Picture10.png",
-                        "crossOrigin": null,
                         "filters": []
                     }
                 ],
@@ -640,7 +628,6 @@
                     "cropX": 0,
                     "cropY": 0,
                     "src": "http://localhost:5173/api/scenarios/1b5f7641-5c99-450c-aac9-567455d990fd/background/8-2-nature-free-download-png.png",
-                    "crossOrigin": "anonymous",
                     "filters": []
                 }
             },
