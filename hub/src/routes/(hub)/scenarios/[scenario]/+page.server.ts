@@ -31,6 +31,6 @@ export const actions = {
         console.log("Removing scenario", scenario)
 
         scenarios.remove(scenario);
-        throw redirect(303, '/scenarios');
+        throw redirect(303, '/');
     }    
 } satisfies Actions;
