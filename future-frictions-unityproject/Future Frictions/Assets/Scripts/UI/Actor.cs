@@ -22,18 +22,18 @@ public class Actor : MonoBehaviour
     [SerializeField] 
     private GameObject marker;
     
-    private string _actorId;
-    private ActorData _actorData;
+    private int _actorId;
+    private Character _characterData;
     private ActorState currentState = ActorState.None;
 
     private string _currentStateText;
     
     private Sprite avatar;
     
-    public void Initialize(Sprite actorSprite, ActorData actorData)
+    public void Initialize(Sprite actorSprite, Character characterData)
     {
-        _actorId = actorData.description;
-        _actorData = actorData;
+        _actorId = characterData.id;
+        this._characterData = characterData;
 
         if (actorSprite == null)
         {
@@ -44,10 +44,10 @@ public class Actor : MonoBehaviour
             image.sprite = actorSprite;
         }
 
-        _currentStateText = actorData.content.before;
+        _currentStateText = characterData.statement;
         
         currentState = ActorState.Clickable;
-        marker.SetActive(true); // TODO: Animate the marker
+        marker.SetActive(true);
         gameObject.SetActive(true);
     }
 
@@ -56,17 +56,12 @@ public class Actor : MonoBehaviour
         switch (option)
         {
             case Options.A:
-                _currentStateText = _actorData.content.after.a;
-                break;
             case Options.B:
-                _currentStateText = _actorData.content.after.b;
-                break;
             case Options.C:
-                _currentStateText = _actorData.content.after.c;
-                break;
             case Options.None:
             default:
-                throw new ArgumentOutOfRangeException(nameof(option), option, null);
+                _currentStateText = _characterData.statement;
+                break;
         }
 
         currentState = ActorState.Clickable;
@@ -87,10 +82,10 @@ public class Actor : MonoBehaviour
         // Show dialog
         if (avatar == null)
         {
-            downloadHandler.GetImage(_actorData.avatar, (avatarSprite, hasError) =>
+            downloadHandler.GetImage(_characterData.url, (avatarSprite, hasError) =>
             {
                 avatar = avatarSprite;
-                dialogScreen.InitializeScreen(avatarSprite, _currentStateText, _actorData.description, () =>
+                dialogScreen.InitializeScreen(avatarSprite, _currentStateText, _characterData.statement, () =>
                 {
                     scenarioManager.CheckInteractionsDone();
                 }); 
@@ -98,7 +93,7 @@ public class Actor : MonoBehaviour
         }
         else
         {
-            dialogScreen.InitializeScreen(avatar, _currentStateText, _actorData.description, () =>
+            dialogScreen.InitializeScreen(avatar, _currentStateText, _characterData.statement, () =>
             {
                 scenarioManager.CheckInteractionsDone();
             });

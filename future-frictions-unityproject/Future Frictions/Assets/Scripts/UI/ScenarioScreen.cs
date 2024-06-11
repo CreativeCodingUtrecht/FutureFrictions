@@ -10,15 +10,15 @@ namespace UI
         [SerializeField]
         private Actor[] actors;
 
-        public void InitializeActors(ActorData[] actorsData)
+        public void InitializeActors(Character[] characters)
         {
-            for (var i = 0; i < actorsData.Length; i++)
+            for (var i = 0; i < characters.Length; i++)
             {
                 var currentIndex = i;
             
-                downloadHandler.GetImage(actorsData[i].sprite, (actorSprite, hasError) =>
+                downloadHandler.GetImage(characters[i].url, (actorSprite, hasError) =>
                 {
-                    actors[currentIndex].Initialize(actorSprite, actorsData[currentIndex]);
+                    actors[currentIndex].Initialize(actorSprite, characters[currentIndex]);
                 });
             }
         

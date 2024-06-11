@@ -11,7 +11,7 @@ namespace UI
         
         private FrictionData _frictionData;
     
-        public void Initialize(ScenarioSceneData sceneData, FrictionData frictionData)
+        public void Initialize(ScenarioData sceneData, FrictionData frictionData)
         {
             _frictionData = frictionData;
             

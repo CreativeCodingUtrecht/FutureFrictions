@@ -13,15 +13,15 @@ public class DownloadHandler : MonoBehaviour
 
     private void Awake()
     {
-#if UNITY_WEBGL && !UNITY_EDITOR
-        // var url = Application.absoluteURL.Split('?')[0];
-        endpoint = "/api/scenarios";
-#endif
+// #if UNITY_WEBGL && !UNITY_EDITOR
+//         // var url = Application.absoluteURL.Split('?')[0];
+//         endpoint = "/api/scenarios";
+// #endif
     }
 
     public void GetJsonData(string scenarioName, UnityAction<string, bool> downloadComplete)
     {
-        var uri = Path.Combine(endpoint, $"{scenarioName}");
+        var uri = Path.Combine(endpoint, "api/scenarios", $"{scenarioName}");
         _scenarioName = scenarioName;
         StartCoroutine(GetTextRequest(uri, downloadComplete));
     }
@@ -34,7 +34,13 @@ public class DownloadHandler : MonoBehaviour
         }
         else
         {
-            var uri = Path.Combine(endpoint, _scenarioName, imageName);
+            var url = endpoint;
+            if (!imageName.Contains("/api/scenarios"))
+            {
+                url = Path.Join(endpoint, "api/scenarios");
+            }
+            
+            var uri = Path.Join(url, imageName);
             StartCoroutine(GetImageRequest(uri, onComplete));
         }
     }

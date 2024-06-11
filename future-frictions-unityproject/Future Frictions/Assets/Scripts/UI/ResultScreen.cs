@@ -23,25 +23,27 @@ namespace UI
             
             scenarioScreen.SetActorsToScenarioAnswer(option);
             SetElementsState(true);
-
-            switch (option)
-            {
-                case Options.A:
-                    scenarioResult.ShowResults(scenarioManager.ScenarioData.friction.options.a);
-                    scenarioManager.UpdateBackground(scenarioManager.ScenarioData.friction.options.a.alternativeBackground);
-                    break;
-                case Options.B:
-                    scenarioResult.ShowResults(scenarioManager.ScenarioData.friction.options.b);
-                    scenarioManager.UpdateBackground(scenarioManager.ScenarioData.friction.options.b.alternativeBackground);
-                    break;
-                case Options.C:
-                    scenarioResult.ShowResults(scenarioManager.ScenarioData.friction.options.c);
-                    scenarioManager.UpdateBackground(scenarioManager.ScenarioData.friction.options.b.alternativeBackground);
-                    break;
-                case Options.None:
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(option), option, null);
-            }
+            
+            // TODO: Neander make sure the correct data is shown here
+            
+            // switch (option)
+            // {
+            //     case Options.A:
+            //         scenarioResult.ShowResults(scenarioManager.ScenarioData.collage.future.definition);
+            //         scenarioManager.UpdateBackground(scenarioManager.ScenarioData.friction.options.a.alternativeBackground);
+            //         break;
+            //     case Options.B:
+            //         scenarioResult.ShowResults(scenarioManager.ScenarioData.friction.options.b);
+            //         scenarioManager.UpdateBackground(scenarioManager.ScenarioData.friction.options.b.alternativeBackground);
+            //         break;
+            //     case Options.C:
+            //         scenarioResult.ShowResults(scenarioManager.ScenarioData.friction.options.c);
+            //         scenarioManager.UpdateBackground(scenarioManager.ScenarioData.friction.options.b.alternativeBackground);
+            //         break;
+            //     case Options.None:
+            //     default:
+            //         throw new ArgumentOutOfRangeException(nameof(option), option, null);
+            // }
             
             Open();
         }

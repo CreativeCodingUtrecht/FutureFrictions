@@ -27,23 +27,26 @@ public class ScenarioManager : MonoBehaviour
     private Friction friction;
 
     private ApplicationState _currentState;
-    
+
     private ScenarioData _scenarioData;
+    private Scenario _scenario;
 
-    private readonly List<string> _interactedActors = new();
+    private readonly List<int> _interactedActors = new();
 
-    public void StartPopulating(ScenarioData scenarioDataData)
+    public void StartPopulating(ScenarioData scenarioData)
     {
         ResetScenarios();
         
-        _scenarioData = scenarioDataData;
+        _scenarioData = _scenarioData;
 
-        UpdateBackground(scenarioDataData.scene.background);
+        // Set background to the present background
+        UpdateBackground(scenarioData.collage.present.definition.background);
         
-        downloadHandler.GetImage(scenarioDataData.scene.avatar, (sprite, hasError) =>
+        // Set the friction on the intro screen with the avatar
+        downloadHandler.GetImage(scenarioData.friction.avatar, (sprite, hasError) =>
         {
             introScreen.OnClose += OnIntroClosed;
-            introScreen.InitializeScreen(sprite, scenarioDataData.scene.content.welcome);
+            introScreen.InitializeScreen(sprite, scenarioData.friction.frictionalstatement);
             _currentState = ApplicationState.Intro;
         });
     }
@@ -60,11 +63,11 @@ public class ScenarioManager : MonoBehaviour
 
     private void OnIntroClosed()
     {
-        scenarioScreen.InitializeActors(_scenarioData.actors);
+        scenarioScreen.InitializeActors(_scenario.definition.characters);
         _currentState = ApplicationState.BeforeInteractions;
     }
 
-    public void StoreActorInteracted(string actorId)
+    public void StoreActorInteracted(int actorId)
     {
         if (!_interactedActors.Contains(actorId))
         {
@@ -77,7 +80,7 @@ public class ScenarioManager : MonoBehaviour
         if (_currentState != ApplicationState.BeforeInteractions) return;
         if (_interactedActors.Count < 3) return;
         
-        friction.Initialize(_scenarioData.scene, _scenarioData.friction);
+        friction.Initialize(_scenarioData, _scenarioData.friction);
         _currentState = ApplicationState.Question;
     }
 
