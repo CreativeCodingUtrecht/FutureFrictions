@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 	import { v4 as uuidv4 } from 'uuid';
+	import Play from '$lib/components/Play.svelte';
 
 	import { FF_WEBGL_URL } from '$lib/constants';
 
@@ -40,8 +41,8 @@
 		<div class="p-4 space-y-4">
 			<h3 class="h3" data-toc-ignore>{name}</h3>
 			<form method="POST" action="?/remove">
-				<a href={url} class="btn variant-filled-primary" target="FF_WEBGL_URL">▶ Play</a>
-				<a href="/scenarios/{scenario}/steps/0-setup" class="btn variant-filled-primary">Edit</a>
+				<Play {scenario} />
+				<a href="/scenarios/{scenario}/steps/0-setup" class="btn variant-ghost-primary">Edit</a>
 				<button on:click={confirmRemove} type="submit" class="btn variant-ghost-error"
 					>Remove</button
 				>

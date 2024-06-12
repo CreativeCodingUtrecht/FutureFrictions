@@ -2,6 +2,7 @@
 	import {v4 as uuidv4} from 'uuid';
 	import type { PageData } from './$types';
 	import { FF_WEBGL_URL } from '$lib/constants';
+	import Play from '$lib/components/Play.svelte';
 
 	export let data: PageData;
 
@@ -34,11 +35,13 @@
 		</form> 	
 	</div>
 {#each Object.keys(data.scenarios) as scenario}
-	<a class="card card-hover overflow-hidden" href="/scenarios/{scenario}">
+	<div class="card card-hover overflow-hidden">
 		<header>
+			<a href="/scenarios/{scenario}">
 			<img
                 src={data.scenarios[scenario].collage?.present?.url || ''}
                 />
+			</a>
 		</header>
 		<div class="p-4 space-y-4">
 			<h4 class="h4" data-toc-ignore>{data.scenarios[scenario].name}</h4>
@@ -50,8 +53,9 @@
 				 -->
 			<article>
 				<p>
-					<a href="/scenarios/{scenario}" class="btn variant-filled-primary">Open</a>
-					<a href={`${FF_WEBGL_URL}?scenario=${scenario}`} class="btn variant-ghost-primary" target="FF_WEBGL_URL">▶ Play</a>
+					<!-- <a href={`${FF_WEBGL_URL}?scenario=${scenario}`} class="btn variant-ghost-primary" target="FF_WEBGL_URL">▶ Play</a> -->
+					<Play {scenario} />
+					<a href="/scenarios/{scenario}" class="btn variant-ghost-primary">Open</a>
 					<a href="/scenarios/{scenario}/steps/0-setup" class="btn variant-ghost-primary">Edit</a>		
 				</p>
 				<p class="py-5">
@@ -70,7 +74,7 @@
 				<h6 class="font-bold" data-toc-ignore>Boom</h6>
 			</div>
 		</footer> -->
-	</a>
+	</div>
 {/each}
 </div>
 <!-- 

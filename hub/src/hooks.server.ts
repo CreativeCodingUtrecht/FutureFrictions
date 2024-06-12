@@ -6,7 +6,7 @@ const ADMIN_LOGIN=env.ADMIN_LOGIN || "future:frictions"
 export const handle: Handle = async ({ event, resolve }) => {
     const url = new URL(event.request.url);
 
-    if (!url.pathname.startsWith("/api")) {
+    if (false && !url.pathname.startsWith("/api")) {
         console.log("Admin area")
         const auth = event.request.headers.get("Authorization");
 

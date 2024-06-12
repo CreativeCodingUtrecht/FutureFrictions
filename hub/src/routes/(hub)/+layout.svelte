@@ -24,7 +24,7 @@
 	}
 </script>
 
-<Modal />
+<Modal width="w-5/6" regionBody="max-h-[800px]"/>
 
 <Drawer>
 	<h2 class="p-4 text-xl uppercase futurefrictions">Navigation</h2>
