@@ -1,34 +1,16 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace UI
 {
     public class Friction : MonoBehaviour
     {
-        [SerializeField] private Image frictionImage;
         [SerializeField] private QuestionScreen questionScreen;
-        [SerializeField] private DownloadHandler downloadHandler;
+        [SerializeField] private ScenarioManager scenarioManager;
         
-        private FrictionData _frictionData;
-    
-        public void Initialize(ScenarioData sceneData, FrictionData frictionData)
+        public void Initialize(ScenarioData scenarioData)
         {
-            _frictionData = frictionData;
-            
-            downloadHandler.GetImage(frictionData.avatar, (frictionSprite, hasError) =>
-            {
-                if (frictionSprite == null || hasError)
-                {
-                    frictionImage.enabled = false;
-                }
-                else
-                {
-                    frictionImage.sprite = frictionSprite;
-                }
-
-                questionScreen.Initialize(sceneData, frictionData);
-                gameObject.SetActive(true);
-            });
+            questionScreen.Initialize(scenarioData);
+            scenarioManager.PopulateTheFuture();
         }
 
         public void ResetFriction()

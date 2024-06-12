@@ -1,5 +1,4 @@
 using TMPro;
-using UI;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,24 +6,18 @@ public class QuestionScreen : BaseScreen
 {
     [Header("References")]
     [SerializeField] private DownloadHandler downloadHandler;
-    [SerializeField] private ResultScreen resultScreen;
-    [SerializeField] private ScenarioManager scenarioManager;
     
     [Header("UI Items")]
     [SerializeField] private Image questionAvatar;
     [SerializeField] private TMP_Text questionText;
 
     [SerializeField] private Button answerButton;
-
-    private Options _currentOption;
     
-    public void Initialize(ScenarioData sceneData, FrictionData frictionData)
+    public void Initialize(ScenarioData scenarioData)
     {
-        _currentOption = Options.None;
+        questionText.text = scenarioData.whatIf.question;
         
-        questionText.text = frictionData.frictionalstatement;
-        
-        downloadHandler.GetImage(sceneData.friction.avatar, (avatarSprite, hasError) =>
+        downloadHandler.GetImage(scenarioData.friction.avatar, (avatarSprite, hasError) =>
         {
             if (avatarSprite == null)
             {
@@ -44,15 +37,6 @@ public class QuestionScreen : BaseScreen
     
     private void AnswerQuestion()
     {
-        resultScreen.InitializeResults(Options.A);
         Close();
     }
-}
-
-public enum Options
-{
-    None,
-    A,
-    B,
-    C
 }

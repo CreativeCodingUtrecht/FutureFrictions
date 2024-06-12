@@ -5,8 +5,6 @@ using UnityEngine.Events;
 
 public class DataManager : MonoBehaviour
 {
-    public static ScenarioData ScenarioData => _scenarioDataDataObject;
-
     public UnityAction<ScenarioData> OnLoadComplete;
 
     [SerializeField]
@@ -99,7 +97,7 @@ public class Definition
     public string backgroundColor;
     public string background;
     public Character[] characters;
-    public Elements[] elements;
+    public Element[] elements;
 }
 
 [Serializable]
@@ -113,7 +111,7 @@ public class Character
 }
 
 [Serializable]
-public class Elements
+public class Element
 {
     public int id;
     public Placement placement;

@@ -1,17 +1,11 @@
-using System.Collections.Generic;
 using UI;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ScenarioManager : MonoBehaviour
 {
-    public ApplicationState ApplicationState => _currentState;
-    public ScenarioData ScenarioData => _scenarioData;
-
     [SerializeField]
     private DownloadHandler downloadHandler;
-
-    [SerializeField] private ResultScreen resultScreen;
     
     [Header("References")]
     [SerializeField]
@@ -26,32 +20,46 @@ public class ScenarioManager : MonoBehaviour
     [SerializeField]
     private Friction friction;
 
+    [SerializeField]
+    private TitleScreen titleScreen;
+
     private ApplicationState _currentState;
 
     private ScenarioData _scenarioData;
     private Scenario _scenario;
 
-    private readonly List<int> _interactedActors = new();
-
-    public void StartPopulating(ScenarioData scenarioData)
+    public void ShowTitle(ScenarioData scenarioData)
+    {
+        _scenarioData = scenarioData;
+        
+        UpdateBackground(_scenarioData.collage.present.definition.background);
+        titleScreen.Initialize(scenarioData, this);
+    }
+    
+    public void StartPopulating()
     {
         ResetScenarios();
-        
-        _scenarioData = _scenarioData;
 
         // Set background to the present background
-        UpdateBackground(scenarioData.collage.present.definition.background);
+        UpdateBackground(_scenarioData.collage.present.definition.background);
         
         // Set the friction on the intro screen with the avatar
-        downloadHandler.GetImage(scenarioData.friction.avatar, (sprite, hasError) =>
+        downloadHandler.GetImage(_scenarioData.friction.avatar, (sprite, hasError) =>
         {
             introScreen.OnClose += OnIntroClosed;
-            introScreen.InitializeScreen(sprite, scenarioData.friction.frictionalstatement);
+            introScreen.InitializeScreen(sprite, _scenarioData.friction.frictionalstatement);
             _currentState = ApplicationState.Intro;
         });
     }
 
-    public void UpdateBackground(string url)
+    public void PopulateTheFuture()
+    {
+        UpdateBackground(_scenarioData.collage.future.definition.background);
+        
+        scenarioScreen.InitializeScenario(_scenarioData, TimeFrame.Future);
+    }
+    
+    private void UpdateBackground(string url)
     {
         if (url == null || string.IsNullOrEmpty(url)) return;
         
@@ -63,42 +71,8 @@ public class ScenarioManager : MonoBehaviour
 
     private void OnIntroClosed()
     {
-        scenarioScreen.InitializeActors(_scenario.definition.characters);
+        scenarioScreen.InitializeScenario(_scenarioData, TimeFrame.Present);
         _currentState = ApplicationState.BeforeInteractions;
-    }
-
-    public void StoreActorInteracted(int actorId)
-    {
-        if (!_interactedActors.Contains(actorId))
-        {
-            _interactedActors.Add(actorId);
-        }
-    }
-
-    public void CheckInteractionsDone()
-    {
-        if (_currentState != ApplicationState.BeforeInteractions) return;
-        if (_interactedActors.Count < 3) return;
-        
-        friction.Initialize(_scenarioData, _scenarioData.friction);
-        _currentState = ApplicationState.Question;
-    }
-
-    // public void SetScenarioInFront()
-    // {
-    //     scenarioScreen.transform.SetAsLastSibling();
-    // }
-    //
-    // public void SetUIInFront()
-    // {
-    //     scenarioScreen.transform.SetSiblingIndex(1);
-    // }
-    
-    // Set this from the resultscreen
-    public void QuestionAnswered()
-    {
-        Debug.Log("Question answered");
-        _currentState = ApplicationState.Results;
     }
 
     private void OnDestroy()
@@ -106,10 +80,9 @@ public class ScenarioManager : MonoBehaviour
         introScreen.OnClose -= OnIntroClosed;
     }
 
-    public void ResetScenarios()
+    private void ResetScenarios()
     {
         _currentState = ApplicationState.Intro;
-        _interactedActors.Clear();
         
         friction.ResetFriction();
         scenarioScreen.Close();
