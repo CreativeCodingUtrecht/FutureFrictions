@@ -35,7 +35,7 @@
 </script>
 
 {#if button}
-	<a on:click={modalPlay} class="btn variant-filled-primary cursor-pointer">▶ Play</a>	
+	<a on:click={modalPlay} class="btn variant-filled-primary cursor-pointer">▶ Explore</a>	
 {:else}
 	<a on:click={modalPlay} class="text-surface-500 cursor-pointer">▶</a>
 {/if}
