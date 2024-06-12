@@ -5,7 +5,7 @@
 [Ll]ibrary/
 [Tt]emp/
 [Oo]bj/
-[Bb]uild/
+# [Bb]uild/
 [Bb]uilds/
 [Ll]ogs/
 [Uu]ser[Ss]ettings/
@@ -177,7 +177,7 @@ dist
 .tern-port
 
 # Electron build
-build/
+# build/
 
 .DS_Store
 
@@ -192,7 +192,7 @@ old/
 # SvelteKit
 .DS_Store
 node_modules
-/build
+/hub/build
 .svelte-kit/
 /package
 .env
