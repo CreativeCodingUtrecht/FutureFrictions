@@ -245,8 +245,8 @@
 <div class="container sm">
 	<section class="grid grid-rows-1 md:grid-cols-4 grid-cols-1 gap-2 h-[{canvasSectionHeight}px]" id="collage-wrapper">
 		<div class="card variant-ghost-tertiary">
-			<section class="p-4 overflow-auto h-full">
-				<Accordion autocollapse>
+			<section class="p-4 overflow-auto max-h-[500px]">
+				<Accordion autocollapse class="h-fit">
 					<AccordionItem open>
 						<svelte:fragment slot="lead">🚞</svelte:fragment>
 						<svelte:fragment slot="summary">Backgrounds</svelte:fragment>
@@ -288,7 +288,7 @@
 					</AccordionItem>
 					<AccordionItem>
 						<svelte:fragment slot="lead">🌳</svelte:fragment>
-						<svelte:fragment slot="summary">Elements</svelte:fragment>
+						<svelte:fragment slot="summary">Ambient</svelte:fragment>
 						<svelte:fragment slot="content">
 							<section class="grid grid-cols-2 md:grid-cols-3 gap-4">
 								{#each elements as element}
