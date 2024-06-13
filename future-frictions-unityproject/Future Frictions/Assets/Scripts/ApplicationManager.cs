@@ -18,7 +18,7 @@ public class ApplicationManager : MonoBehaviour
     private void LoadCompleted(ScenarioData scenarioDataData)
     {
         // Start the building of the app and open the first screen
-        scenarioManager.StartPopulating(scenarioDataData);
+        scenarioManager.ShowTitle(scenarioDataData);
     }
 
     private void OnDestroy()
@@ -29,7 +29,7 @@ public class ApplicationManager : MonoBehaviour
     public void Restart()
     {
         CloseAllScreens();
-        scenarioManager.StartPopulating(DataManager.ScenarioData);
+        scenarioManager.StartPopulating();
     }
 
     public void CloseAllScreens()

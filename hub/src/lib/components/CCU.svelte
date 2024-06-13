@@ -7,13 +7,15 @@
 	function modalCCU(): void {
 		const modal: ModalSettings = {
 			type: 'alert',
-			buttonTextCancel: 'Sluit',
-			title: 'Creative Coding Utrecht',
-			body: `            
+			buttonTextCancel: 'Close',
+			title: 'Future Frictions',
+			body: `
+            <i>Collaboratively finding frictions in imaginative futures.</i>
+            <br /><br />            
             <a class="anchor" href="https://www.creativecodingutrecht.nl/" target="_blank">Creative Coding Utrecht</a> (CCU) is a platform 
             for digital creativity. CCU supports creators, connects organizations and transcends sectors, inspires audiences and shares 
             knowledge with hobbyists and ICT professionals.
-            <br /><br />
+            <br /><br />        
             The Future Frictions Hub is developed by <a class="anchor" href="https://www.katpatat.nl/" target="_blank">Neander Giljam</a> and <a class="anchor" href="https://www.appliedcreative.nl/" target="_blank">Niels Janssen</a>.
         `
 		};

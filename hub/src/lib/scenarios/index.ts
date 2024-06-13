@@ -1,6 +1,7 @@
 import fs from 'fs';
 import { error } from '@sveltejs/kit';
 import { env } from '$env/dynamic/private'
+import path from 'path';
 
 export const DATAROOT = env.DATAROOT || '../data';
 export const SCENARIOROOT = `${DATAROOT}/scenarios`;
@@ -36,9 +37,17 @@ const json = (scenario: String) => {
 	return JSON.parse(data);
 };
 
-const images = (scenario: String) => {
-	const images = fs
-		.readdirSync(`${SCENARIOROOT}/${scenario}/`, { withFileTypes: true })
+const images = (scenario: String, subdir : String = "") => {
+	const dir = `${SCENARIOROOT}/${scenario}/${subdir}`
+
+	// Check directory
+	if (!fs.existsSync(dir)){
+		console.log('File does not exist');
+		return [];
+	}
+
+	return fs
+		.readdirSync(dir, { withFileTypes: true })
 		.filter(
 			(dirent) =>
 				dirent.isFile() &&
@@ -47,33 +56,19 @@ const images = (scenario: String) => {
 					dirent.name.endsWith('.jpeg'))
 		)
 		.map((dirent) => dirent.name);
-
-	// console.log(images)
-
-	return images;
 };
 
-// const usedImages = (json: any) => {
-// 	const images = [
-// 		json.scene.background,
-// 		json.scene.avatar,
-// 		json.friction.avatar,
-// 		json.friction.options.a.avatar,
-// 		...json.friction.options.a.sprites.foreground,
-// 		json.friction.options.b.avatar,
-// 		...json.friction.options.b.sprites.background,
-// 		json.friction.options.c.avatar,
-// 		...json.friction.options.c.sprites.floating,
-// 		json.actors[0].sprite,
-// 		json.actors[0].avatar,
-// 		json.actors[1].sprite,
-// 		json.actors[1].avatar,
-// 		json.actors[2].sprite,
-// 		json.actors[2].avatar
-// 	];
+const backgrounds = (scenario: String) => {
+	return images(scenario, 'backgrounds');
+}
 
-// 	return images;
-// };
+const elements = (scenario: String) => {
+	return images(scenario, 'elements');
+}
+
+const characters = (scenario: String) => {
+	return images(scenario, 'characters');
+}
 
 const save = (scenario: String, json: any) => {
 	const filename = `${SCENARIOROOT}/${scenario}/scenario.json`;
@@ -104,7 +99,7 @@ const duplicate = (scenario: String, newScenario: String, name: String) => {
 
 	// Update JSON
 	const data = json(newScenario)
-	data.friction.description = name;
+	data.name = name;
 	save(newScenario,data);
 }
 
@@ -122,7 +117,7 @@ const create = (newScenario: String, name: String) => {
 
 	// Update JSON
 	const data = json(newScenario)
-	data.friction.description = name;
+	data.name = name;
 	save(newScenario,data);
 }
 
@@ -144,14 +139,19 @@ const remove = (scenario: String) => {
 
 const addImage = (scenario: String, filename: any, data: Buffer) => {
 	try {
+		const dir = path.dirname(filename);
+		console.log("Adding image to directory", dir);
+		if (!fs.existsSync(dir)){
+			fs.mkdirSync(dir, { recursive: true });
+		}
 		fs.writeFileSync(filename, data);
 	} catch {
 		throw error(500, 'Unable to save image to disk');
 	}
 };
 
-const getImage = (scenario: String, image: any) => {
-	const filename = `${SCENARIOROOT}/${scenario}/${image}`;
+const getImage = (scenario: String, image: any, subdir: String) => {
+	const filename = `${SCENARIOROOT}/${scenario}/${subdir ? `${subdir}/` : ''}${image}`;
     const extension = filename.split('.').pop();
     const mime = `image/${extension}`;
 
@@ -168,6 +168,22 @@ const getImage = (scenario: String, image: any) => {
 		data,
 		mime
 	}
+}
+
+const getBackgroundImage = (scenario: String, image: any) => {
+	return getImage(scenario, image, 'backgrounds');
+}
+
+const getElementImage = (scenario: String, image: any) => {
+	return getImage(scenario, image, 'elements');
+}
+
+const getCharacterImage = (scenario: String, image: any) => {
+	return getImage(scenario, image, 'characters');
+}
+	
+const getCollageImage = (scenario: String, image: any) => {
+	return getImage(scenario, image, 'collage');
 }
 
 const removeImage = (scenario: String, image: any) => {
@@ -188,9 +204,16 @@ export default {
 	json,
 	save,
 	images,
+	backgrounds, 
+	elements,
+	characters,
 	// usedImages,
     addImage,
 	getImage,
+	getBackgroundImage,
+	getElementImage,
+	getCollageImage,	
+	getCharacterImage,
 	removeImage,
 	duplicate,
 	remove,

@@ -11,30 +11,27 @@ public class DownloadHandler : MonoBehaviour
 
     private string _scenarioName;
 
-    private void Awake()
-    {
-#if UNITY_WEBGL && !UNITY_EDITOR
-        // var url = Application.absoluteURL.Split('?')[0];
-        endpoint = "/api/scenarios";
-#endif
-    }
-
     public void GetJsonData(string scenarioName, UnityAction<string, bool> downloadComplete)
     {
-        var uri = Path.Combine(endpoint, $"{scenarioName}");
+        var uri = Path.Combine(endpoint, "api/scenarios", $"{scenarioName}");
         _scenarioName = scenarioName;
         StartCoroutine(GetTextRequest(uri, downloadComplete));
     }
 
-    public void GetImage(string imageName, UnityAction<Sprite, bool> onComplete)
+    public void GetImage(string url, UnityAction<Sprite, bool> onComplete)
     {
-        if (string.IsNullOrEmpty(imageName))
+        if (string.IsNullOrEmpty(url))
         {
             onComplete?.Invoke(null, true);
         }
         else
         {
-            var uri = Path.Combine(endpoint, _scenarioName, imageName);
+            if (!url.StartsWith("/api/scenarios"))
+            {
+                url = Path.Join("api/scenarios", $"{_scenarioName}", url);
+            }
+            
+            var uri = Path.Join(endpoint, url);
             StartCoroutine(GetImageRequest(uri, onComplete));
         }
     }

@@ -1,119 +1,77 @@
-using System;
 using UI;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Actor : MonoBehaviour
 {
-    [Header("External References")]
-    [SerializeField] 
-    private DialogScreen dialogScreen;
-
-    [SerializeField]
-    private DownloadHandler downloadHandler;
-
-    [SerializeField] 
-    private ScenarioManager scenarioManager;
-    
-    [Header("Local References")]
     [SerializeField] 
     private Image image;
     
     [SerializeField] 
     private GameObject marker;
     
-    private string _actorId;
-    private ActorData _actorData;
-    private ActorState currentState = ActorState.None;
+    private DialogScreen _dialogScreen;
+    private DownloadHandler _downloadHandler;
+    private ScenarioScreen _scenarioScreen;
 
+    private int _actorId;
     private string _currentStateText;
+    private Sprite _avatar;
+    private Character _characterData;
     
-    private Sprite avatar;
-    
-    public void Initialize(Sprite actorSprite, ActorData actorData)
+    public void Initialize(Character characterData, ScenarioScreen scenarioScreen, DialogScreen dialogScreen, DownloadHandler downloadHandler)
     {
-        _actorId = actorData.description;
-        _actorData = actorData;
+        _scenarioScreen = scenarioScreen;
+        _dialogScreen = dialogScreen;
+        _characterData = characterData;
 
-        if (actorSprite == null)
+        _actorId = characterData.id;
+        _currentStateText = _characterData.statement;
+
+        if (_avatar == null)
         {
-            image.enabled = false;
+            downloadHandler.GetImage(characterData.url, (sprite, error) =>
+            {
+                if (error || !image) return;
+                
+                _avatar = sprite;
+                image.sprite = _avatar;
+                gameObject.SetActive(true);
+            });
         }
         else
         {
-            image.sprite = actorSprite;
+            image.sprite = _avatar;
+            gameObject.SetActive(true);
         }
-
-        _currentStateText = actorData.content.before;
         
-        currentState = ActorState.Clickable;
-        marker.SetActive(true); // TODO: Animate the marker
-        gameObject.SetActive(true);
+        _currentStateText = characterData.statement;
+        marker.SetActive(true);
     }
 
-    public void SetActorToOption(Options option)
-    {
-        switch (option)
-        {
-            case Options.A:
-                _currentStateText = _actorData.content.after.a;
-                break;
-            case Options.B:
-                _currentStateText = _actorData.content.after.b;
-                break;
-            case Options.C:
-                _currentStateText = _actorData.content.after.c;
-                break;
-            case Options.None:
-            default:
-                throw new ArgumentOutOfRangeException(nameof(option), option, null);
-        }
-
-        currentState = ActorState.Clickable;
-        marker.SetActive(true); // TODO: Animate the marker
-        gameObject.SetActive(true);
-    }
-    
     public void Interact()
     {
-        if (currentState != ActorState.Clickable) return;
-        
-        SetState(ActorState.Interacted);
-        // Update manager that we interacted with this actor
         marker.SetActive(false);
 
-        scenarioManager.StoreActorInteracted(_actorId);
+        _scenarioScreen.InteractedWithCharacter(_actorId);
         
-        // Show dialog
-        if (avatar == null)
+        if (_avatar == null)
         {
-            downloadHandler.GetImage(_actorData.avatar, (avatarSprite, hasError) =>
+            _downloadHandler.GetImage(_characterData.url, (avatarSprite, hasError) =>
             {
-                avatar = avatarSprite;
-                dialogScreen.InitializeScreen(avatarSprite, _currentStateText, _actorData.description, () =>
+                _avatar = avatarSprite;
+                _dialogScreen.InitializeScreen(avatarSprite, _currentStateText, _characterData.name, () =>
                 {
-                    scenarioManager.CheckInteractionsDone();
-                }); 
+                    _scenarioScreen.CheckInteractionsDone();
+                });
             });
         }
         else
         {
-            dialogScreen.InitializeScreen(avatar, _currentStateText, _actorData.description, () =>
+            _dialogScreen.InitializeScreen(_avatar, _currentStateText, _characterData.name, () =>
             {
-                scenarioManager.CheckInteractionsDone();
+                _scenarioScreen.CheckInteractionsDone();
             });
         }
     }
-
-    private void SetState(ActorState state)
-    {
-        currentState = state;
-    }
-}
-
-public enum ActorState
-{
-    None,
-    Clickable,
-    Interacted
 }
