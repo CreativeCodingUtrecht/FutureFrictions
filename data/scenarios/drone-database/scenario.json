@@ -232,7 +232,7 @@
                 ],
                 "elements": []
             },
-            "url": "/api/scenarios/bb74ee41-0950-4466-8fe5-918007b9cf6d/collage/present.png"
+            "url": "/api/scenarios/drone-database/collage/present.png"
         },
         "future": {
             "canvas": {
@@ -444,7 +444,7 @@
                             "image": "ipad_guy_31_5_2021_00_48.png",
                             "role": "element"
                         },
-                        "src": "https://futurefrictions.creativecodingutrecht.nl/api/scenarios/bb74ee41-0950-4466-8fe5-918007b9cf6d/element/ipad_guy_31_5_2021_00_48.png",
+                        "src": "https://futurefrictions.creativecodingutrecht.nl/api/scenarios/drone-database/element/ipad_guy_31_5_2021_00_48.png",
                         "crossOrigin": "anonymous",
                         "filters": []
                     },
@@ -486,7 +486,7 @@
                             "image": "ipad_group_31_5_2021_00_48.png",
                             "role": "element"
                         },
-                        "src": "https://futurefrictions.creativecodingutrecht.nl/api/scenarios/bb74ee41-0950-4466-8fe5-918007b9cf6d/element/ipad_group_31_5_2021_00_48.png",
+                        "src": "https://futurefrictions.creativecodingutrecht.nl/api/scenarios/drone-database/element/ipad_group_31_5_2021_00_48.png",
                         "crossOrigin": "anonymous",
                         "filters": []
                     },
@@ -528,7 +528,7 @@
                             "image": "policemen_31_5_2021_01_04.png",
                             "role": "element"
                         },
-                        "src": "https://futurefrictions.creativecodingutrecht.nl/api/scenarios/bb74ee41-0950-4466-8fe5-918007b9cf6d/element/policemen_31_5_2021_01_04.png",
+                        "src": "https://futurefrictions.creativecodingutrecht.nl/api/scenarios/drone-database/element/policemen_31_5_2021_01_04.png",
                         "crossOrigin": "anonymous",
                         "filters": []
                     },
@@ -570,7 +570,7 @@
                             "image": "Billboard option C.png",
                             "role": "element"
                         },
-                        "src": "https://futurefrictions.creativecodingutrecht.nl/api/scenarios/bb74ee41-0950-4466-8fe5-918007b9cf6d/element/Billboard%20option%20C.png",
+                        "src": "https://futurefrictions.creativecodingutrecht.nl/api/scenarios/drone-database/element/Billboard%20option%20C.png",
                         "crossOrigin": "anonymous",
                         "filters": []
                     }
@@ -684,7 +684,7 @@
                         "id": 0
                     },
                     {
-                        "url": "/api/scenarios/bb74ee41-0950-4466-8fe5-918007b9cf6d/element/ipad_guy_31_5_2021_00_48.png",
+                        "url": "/api/scenarios/drone-database/element/ipad_guy_31_5_2021_00_48.png",
                         "placement": {
                             "index": 4,
                             "left": 70.55,
@@ -698,7 +698,7 @@
                         "id": 1
                     },
                     {
-                        "url": "/api/scenarios/bb74ee41-0950-4466-8fe5-918007b9cf6d/element/ipad_group_31_5_2021_00_48.png",
+                        "url": "/api/scenarios/drone-database/element/ipad_group_31_5_2021_00_48.png",
                         "placement": {
                             "index": 5,
                             "left": 725.09,
@@ -712,7 +712,7 @@
                         "id": 2
                     },
                     {
-                        "url": "/api/scenarios/bb74ee41-0950-4466-8fe5-918007b9cf6d/element/policemen_31_5_2021_01_04.png",
+                        "url": "/api/scenarios/drone-database/element/policemen_31_5_2021_01_04.png",
                         "placement": {
                             "index": 6,
                             "left": 1192,
@@ -726,7 +726,7 @@
                         "id": 3
                     },
                     {
-                        "url": "/api/scenarios/bb74ee41-0950-4466-8fe5-918007b9cf6d/element/Billboard%20option%20C.png",
+                        "url": "/api/scenarios/drone-database/element/Billboard%20option%20C.png",
                         "placement": {
                             "index": 7,
                             "left": 139.5,
@@ -741,7 +741,7 @@
                     }
                 ]
             },
-            "url": "/api/scenarios/bb74ee41-0950-4466-8fe5-918007b9cf6d/collage/future.png"
+            "url": "/api/scenarios/drone-database/collage/future.png"
         }
     },
     "whatif": {
