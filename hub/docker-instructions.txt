@@ -1,0 +1,1 @@
+mac: docker build --platform linux/amd64 -t ff-hub:0.1 .
