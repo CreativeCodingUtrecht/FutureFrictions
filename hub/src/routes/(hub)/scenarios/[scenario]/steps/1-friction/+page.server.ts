@@ -7,11 +7,12 @@ export const load: PageServerLoad = ({ params }) => {
     const scenario = params.scenario;
     const json = scenarios.json(scenario);
     const images = scenarios.images(scenario);
+    const elements = scenarios.elements(scenario);
 
     return {
         scenario,
         json,
-        images
+        elements
     }
 };
 
@@ -44,12 +45,14 @@ const save = async (params, request) => {
     json.friction.frictionalstatement = statement;
 
     const avatar = data.get('avatar')
+    
     json.friction.avatar = avatar;
+    json.friction.avatarSrc = `/api/scenarios/${scenario}/element/${avatar}`;
 
     const avatarFile = data?.get('file');
 
     if (avatarFile?.name && avatarFile.name.length > 0 && avatarFile?.name !== "undefined") {
-        const filename = `${scenarios.SCENARIOROOT}/${scenario}/${avatarFile?.name}`;  
+        const filename = `${scenarios.SCENARIOROOT}/${scenario}/elements/${avatarFile?.name}`;  
         console.log("filename", filename);
         const buffer = Buffer.from(await avatarFile?.arrayBuffer());
         scenarios.addImage(scenario, filename, buffer);

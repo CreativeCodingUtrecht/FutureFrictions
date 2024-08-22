@@ -5,7 +5,7 @@
 	export let form: ActionData;
 	export let data: PageData;
 
-	const images = data?.images;
+	const elements = data?.elements;
 	const scenario = data?.scenario;
 
 	const values = {
@@ -56,7 +56,7 @@
 			<span class="label space-y-4">
 				<br />
 				<span>Think of a human/non-human character that introduces this frictional statement.</span>
-				<ImageSelector title="Create a character" field="avatar" {scenario} {images} {values} />
+				<ImageSelector title="Create a character" field="avatar" {scenario} {elements} {values} />
 			</span>
 	
 		</div>
