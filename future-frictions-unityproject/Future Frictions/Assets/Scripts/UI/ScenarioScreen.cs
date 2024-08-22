@@ -28,6 +28,10 @@ namespace UI
         private List<GameObject> _characters = new();
         private List<GameObject> _elements = new();
         
+        // Canvas is 960 x 540 -> 1920 1080
+        private const float XScale = 960f / 1920f;
+        private const float YScale = 540f / 1080f;
+        
         public void InitializeScenario(ScenarioData scenarioData, TimeFrame timeFrame)
         {
             Clean();
@@ -80,10 +84,6 @@ namespace UI
         {
             foreach (var character in characters)
             {
-                // Canvas is 960 x 600 -> 1920 1080
-                const float xScale = 960f / 1920f;
-                const float yScale = 540f / 1080f;
-                
                 var newCharacter = Instantiate(characterUIPrefab, transform);
                 
                 var characterTransform = newCharacter.transform;
@@ -95,10 +95,10 @@ namespace UI
                 ((RectTransform) characterTransform).pivot = new Vector2(0, 1);
                 
                 ((RectTransform) characterTransform).anchoredPosition =
-                    new Vector2(character.placement.left * xScale, -character.placement.top * yScale);
+                    new Vector2(character.placement.left * XScale, -character.placement.top * YScale);
                 
                 ((RectTransform) characterTransform).sizeDelta =
-                    new Vector2((character.placement.width * xScale) * character.placement.scaleX, (character.placement.height * yScale) * character.placement.scaleY);
+                    new Vector2((character.placement.width * XScale) * character.placement.scaleX, (character.placement.height * YScale) * character.placement.scaleY);
 
                 newCharacter.Initialize(character, this, dialogScreen, downloadHandler);
                 
@@ -110,10 +110,6 @@ namespace UI
         {
             foreach (var element in elements)
             {
-                // Canvas is 960 x 600 -> 1920 1080
-                const float xScale = 960f / 1920f;
-                const float yScale = 600f / 1080f;
-                
                 var newElement = Instantiate(elementPrefab, transform);
                 
                 downloadHandler.GetImage(element.url, (sprite, error) =>
@@ -132,11 +128,18 @@ namespace UI
                 });
                 
                 var elementTransform = newElement.transform;
+                
+                ((RectTransform) elementTransform).pivot = new Vector2(0.5f, 0.5f);
+                
+                ((RectTransform) elementTransform).rotation = Quaternion.Euler(0, 0, -element.placement.angle);
+                
+                ((RectTransform) elementTransform).pivot = new Vector2(0, 1);
+                
                 ((RectTransform) elementTransform).anchoredPosition =
-                    new Vector2(element.placement.left * xScale, -element.placement.top * yScale);
+                    new Vector2(element.placement.left * XScale, -element.placement.top * YScale);
                 
                 ((RectTransform) elementTransform).sizeDelta =
-                    new Vector2((element.placement.width * xScale) * element.placement.scaleX, (element.placement.height * yScale) * element.placement.scaleY);
+                    new Vector2((element.placement.width * XScale) * element.placement.scaleX, (element.placement.height * YScale) * element.placement.scaleY);
                 
                 _elements.Add(newElement.gameObject);
             }
