@@ -12,13 +12,14 @@
 
 	const FABRIC_CONTROL_VISIBILITY = { mtr: true, mb: false, mt: false, ml: false, mr: false };
 	const FABRIC_SCALE_NEW_OBJECT = 0.5;
+	const FABRIC_SCALE_LIMIT_PX = 32;	
 	const FABRIC_BACKGROUND_COLOR = '#ddddee';
 	let canvasSectionHeight = 1080;
 
 	let canvas: fabric.Canvas | undefined;
 
 	const serializeCanvasHandler = () => {
-		collage = canvas?.toObject(['meta','_controlsVisibility']);
+		collage = canvas?.toObject(['meta','_controlsVisibility','minScaleLimit','lockScalingFlip']);
 		collage = cleanCollageUrls(collage);
 		updateCanvasDefinition();
 		updateExportFile();
@@ -247,6 +248,8 @@
 
 				// scale image down, and flip it, before adding it onto canvas
 				img.scale(FABRIC_SCALE_NEW_OBJECT);
+				img.minScaleLimit = FABRIC_SCALE_LIMIT_PX / canvas?.getZoom() / img.getOriginalSize().width;
+				img.lockScalingFlip = true;
 				img.setControlsVisibility(FABRIC_CONTROL_VISIBILITY);
 				canvas?.add(img);
 				canvas?.setActiveObject(img);
