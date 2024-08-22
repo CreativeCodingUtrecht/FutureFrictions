@@ -60,18 +60,12 @@ public class Actor : MonoBehaviour
             _downloadHandler.GetImage(_characterData.url, (avatarSprite, hasError) =>
             {
                 _avatar = avatarSprite;
-                _dialogScreen.InitializeScreen(avatarSprite, _currentStateText, _characterData.name, () =>
-                {
-                    _scenarioScreen.CheckInteractionsDone();
-                });
+                _dialogScreen.InitializeScreen(avatarSprite, _currentStateText, _characterData.name);
             });
         }
         else
         {
-            _dialogScreen.InitializeScreen(_avatar, _currentStateText, _characterData.name, () =>
-            {
-                _scenarioScreen.CheckInteractionsDone();
-            });
+            _dialogScreen.InitializeScreen(_avatar, _currentStateText, _characterData.name);
         }
     }
 }

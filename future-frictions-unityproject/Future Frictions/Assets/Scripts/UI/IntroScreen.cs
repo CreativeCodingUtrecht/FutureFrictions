@@ -1,4 +1,5 @@
 using TMPro;
+using UI;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -24,6 +25,13 @@ public class IntroScreen : BaseScreen
             avatarImage.sprite = avatar;
         }
         mainText.text = text;
+     
+        NextButton.Instance.Show();
+        NextButton.Instance.SetInteraction(() =>
+        {
+            NextButton.Instance.Hide();
+            Close();
+        });
         
         Open();
     }

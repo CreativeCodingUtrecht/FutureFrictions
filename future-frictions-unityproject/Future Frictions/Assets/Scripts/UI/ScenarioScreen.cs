@@ -58,6 +58,16 @@ namespace UI
             if (_interactedCharacters.Contains(characterId)) return;
             
             _interactedCharacters.Add(characterId);
+
+            if (_interactedCharacters.Count == _characters.Count)
+            {
+                NextButton.Instance.SetInteraction(() =>
+                {
+                    dialogScreen.Close();
+                    CheckInteractionsDone();
+                });
+                NextButton.Instance.Show();
+            }
         }
 
         public void CheckInteractionsDone()
@@ -71,6 +81,8 @@ namespace UI
                 else
                 {
                     // END   
+                    NextButton.Instance.Hide();
+                    Debug.Log("The game is done!");
                 }
             }
         }

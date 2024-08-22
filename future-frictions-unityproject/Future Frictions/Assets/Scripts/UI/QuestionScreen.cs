@@ -1,4 +1,5 @@
 using TMPro;
+using UI;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -32,11 +33,15 @@ public class QuestionScreen : BaseScreen
         answerButton.interactable = true;
         answerButton.onClick.AddListener(AnswerQuestion);
         
+        NextButton.Instance.SetInteraction(AnswerQuestion);
+        NextButton.Instance.Show();
+        
         Open();
     }
     
     private void AnswerQuestion()
     {
         Close();
+        NextButton.Instance.Hide();
     }
 }

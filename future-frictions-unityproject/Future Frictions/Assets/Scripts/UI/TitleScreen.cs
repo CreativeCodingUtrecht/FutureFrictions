@@ -1,4 +1,6 @@
+using System;
 using TMPro;
+using UI;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,6 +21,11 @@ public class TitleScreen : BaseScreen
     private ScenarioData _scenarioData;
     private ScenarioManager _scenarioManager;
 
+    private void Awake()
+    {
+        NextButton.Instance.Hide();
+    }
+
     public void Initialize(ScenarioData scenarioData, ScenarioManager scenarioManager)
     {
         _scenarioData = scenarioData;
@@ -36,7 +43,7 @@ public class TitleScreen : BaseScreen
         }
         
         startButton.onClick.AddListener(Close);
-        
+
         restartButton.SetActive(false);
         Open();
     }

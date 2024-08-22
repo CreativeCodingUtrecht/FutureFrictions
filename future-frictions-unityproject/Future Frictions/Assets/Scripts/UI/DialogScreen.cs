@@ -1,4 +1,3 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,13 +14,9 @@ namespace UI
 
         [SerializeField]
         private TMP_Text mainText;
-
-        private Action _closeAction;
-
-        public void InitializeScreen(Sprite avatar, string text, string description, Action closeAction = null)
+        
+        public void InitializeScreen(Sprite avatar, string text, string description)
         {
-            _closeAction = closeAction;
-
             if (avatar == null)
             {
                 avatarImage.transform.parent.gameObject.SetActive(false);
@@ -36,13 +31,6 @@ namespace UI
             mainText.text = text;
         
             Open();
-        }
-
-        public override void Close()
-        {
-            base.Close();
-        
-            _closeAction?.Invoke();
         }
     }
 }
