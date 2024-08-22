@@ -18,7 +18,7 @@
 	let canvas: fabric.Canvas | undefined;
 
 	const serializeCanvasHandler = () => {
-		collage = canvas?.toObject(['meta']);
+		collage = canvas?.toObject(['meta','_controlsVisibility']);
 		collage = cleanCollageUrls(collage);
 		updateCanvasDefinition();
 		updateExportFile();
