@@ -1,7 +1,7 @@
 <script lang="ts">
 
     export let title : string = "Create a collage"
-    export let images : string[] = [];
+    export let elements : string[] = [];
     export let values = {};
     export let field : string = "avatar"
     export let input : string;
@@ -9,6 +9,8 @@
     export let upload : string = "file";
     export let extraClass : string = "max-w-80";
 	let previewImage: string;
+
+    const images = elements;
 
 	const updateImage = (e) => {
 		const [file] = e.target.files;
@@ -38,8 +40,7 @@
 </script>
 
 <div class="card bg-surface-200/30 p-4 space-y-4 {extraClass}">
-    <!-- <h4 class="h4">{title}</h4> -->
-    <img id="preview" src={previewImage ? `${previewImage}` : `/api/scenarios/${scenario}/${values[field]}`} alt={values[field]} />
+    <img id="preview" src={previewImage ? `${previewImage}` : `/api/scenarios/${scenario}/element/${values[field]}`} alt={values[field]} />
     
     <p>Select an image from the list</p>
     

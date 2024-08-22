@@ -6,12 +6,11 @@
 	export let scenario: String;
 	export let backgrounds: String[] = [];
 	export let elements: String[] = [];
-	export let characters: String[] = [];
 	export let collage: any;
 	export let definition: any = {};
 	export let file: File | undefined = undefined;
 
-	const FABRIC_CONTROL_VISIBILITY = { mtr: false, mb: false, mt: false, ml: false, mr: false };
+	const FABRIC_CONTROL_VISIBILITY = { mtr: true, mb: false, mt: false, ml: false, mr: false };
 	const FABRIC_SCALE_NEW_OBJECT = 0.5;
 	const FABRIC_BACKGROUND_COLOR = '#ddddee';
 	let canvasSectionHeight = 1080;
@@ -63,7 +62,6 @@
 
 			let background;
 			let backgroundColor;
-			const characters = [];
 			const elements = [];
 
 			// Fetch background
@@ -98,13 +96,13 @@
 					};
 
 					// Fetch characters
-					if (obj.meta?.role === 'character') {
-						image.name = prevdefinition.characters[idxCharacter]?.name || '';
-						image.statement = prevdefinition.characters[idxCharacter]?.statement || '';
-						image.id = idxCharacter;
-						characters.push(image);
-						idxCharacter++;
-					}
+					// if (obj.meta?.role === 'character') {
+					// 	image.name = prevdefinition.characters[idxCharacter]?.name || '';
+					// 	image.statement = prevdefinition.characters[idxCharacter]?.statement || '';
+					// 	image.id = idxCharacter;
+					// 	characters.push(image);
+					// 	idxCharacter++;
+					// }
 
 					// Fetch elements
 					if (obj.meta?.role === 'element') {
@@ -120,7 +118,6 @@
 			definition = {
 				backgroundColor,
 				background,
-				characters,
 				elements
 			};
 
@@ -131,7 +128,7 @@
 		const wrapper: HTMLElement | null = document.getElementById('canvas-wrapper');
 		const canvasElem: HTMLElement | null = document.getElementById('collage-canvas');
 
-		// console.log('Collage component:', scenario, backgrounds, elements, characters);
+		// console.log('Collage component:', scenario, backgrounds, elements);
 
 		canvas = new fabric.Canvas('collage-canvas', {
 			width: 1920,
@@ -207,29 +204,29 @@
 		);
 	};
 
-	const addCharacter = (character: String) => {
-		const url = `/api/scenarios/${scenario}/character/${character}`;
+	// const addCharacter = (character: String) => {
+	// 	const url = `/api/scenarios/${scenario}/character/${character}`;
 
-		fabric.Image.fromURL(
-			url,
-			function (img) {
-				// scale image down, and flip it, before adding it onto canvas
-				img.meta = {
-					image: character,
-					role: 'character'
-				};
+	// 	fabric.Image.fromURL(
+	// 		url,
+	// 		function (img) {
+	// 			// scale image down, and flip it, before adding it onto canvas
+	// 			img.meta = {
+	// 				image: character,
+	// 				role: 'character'
+	// 			};
 
-				img.scale(FABRIC_SCALE_NEW_OBJECT);
-				img.setControlsVisibility(FABRIC_CONTROL_VISIBILITY);
-				canvas?.add(img);
-				canvas?.setActiveObject(img);
-				canvas?.viewportCenterObject(img);
-				canvas?.renderAll();
-				serializeCanvasHandler();
-			},
-			{ crossOrigin: 'anonymous', perPixelTargetFind: true }
-		);
-	};
+	// 			img.scale(FABRIC_SCALE_NEW_OBJECT);
+	// 			img.setControlsVisibility(FABRIC_CONTROL_VISIBILITY);
+	// 			canvas?.add(img);
+	// 			canvas?.setActiveObject(img);
+	// 			canvas?.viewportCenterObject(img);
+	// 			canvas?.renderAll();
+	// 			serializeCanvasHandler();
+	// 		},
+	// 		{ crossOrigin: 'anonymous', perPixelTargetFind: true }
+	// 	);
+	// };
 
 	const addElement = (element) => {
 		const url = `/api/scenarios/${scenario}/element/${element}`;
@@ -241,9 +238,16 @@
 					role: 'element'
 				};
 
+				// If it was a character, then use 
+				// img.meta = {
+				// 	image: character,
+				// 	role: 'character'
+				// };
+
+
 				// scale image down, and flip it, before adding it onto canvas
 				img.scale(FABRIC_SCALE_NEW_OBJECT);
-				img.setControlsVisibility({ mtr: false, mb: false, mt: false, ml: false, mr: false });
+				img.setControlsVisibility(FABRIC_CONTROL_VISIBILITY);
 				canvas?.add(img);
 				canvas?.setActiveObject(img);
 				canvas?.viewportCenterObject(img);
@@ -281,27 +285,8 @@
 						</svelte:fragment>
 					</AccordionItem>
 					<AccordionItem>
-						<svelte:fragment slot="lead">👩‍🦰</svelte:fragment>
-						<svelte:fragment slot="summary">Characters</svelte:fragment>
-						<svelte:fragment slot="content">
-							<section class="grid grid-cols-2 md:grid-cols-3 gap-4">
-								{#each characters as character}
-									<div>
-										<img
-											draggable="false"
-											on:click={() => addCharacter(character)}
-											class="h-auto max-w-full rounded-sm"
-											alt=""
-											src="/api/scenarios/{scenario}/character/{character}"
-										/>
-									</div>
-								{/each}
-							</section>
-						</svelte:fragment>
-					</AccordionItem>
-					<AccordionItem>
 						<svelte:fragment slot="lead">🌳</svelte:fragment>
-						<svelte:fragment slot="summary">Ambient</svelte:fragment>
+						<svelte:fragment slot="summary">Elements</svelte:fragment>
 						<svelte:fragment slot="content">
 							<section class="grid grid-cols-2 md:grid-cols-3 gap-4">
 								{#each elements as element}
