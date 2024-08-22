@@ -248,7 +248,6 @@
 
 				// scale image down, and flip it, before adding it onto canvas
 				img.scale(FABRIC_SCALE_NEW_OBJECT);
-				// img.minScaleLimit = 0.15; // TODO Relatie this to the width of the image versus minimum width (16px)				
 				img.minScaleLimit = FABRIC_SCALE_LIMIT_PX / canvas?.getZoom() / img.getOriginalSize().width;
 				img.lockScalingFlip = true;
 				img.setControlsVisibility(FABRIC_CONTROL_VISIBILITY);
