@@ -186,6 +186,7 @@ dist
 
 
 data/scenarios/*-test/
+data/scenarios/[0-9a-zA-Z]*-[0-9a-zA-Z]*-[0-9a-zA-Z]*-[0-9a-zA-Z]*-[0-9a-zA-Z]*
 
 old/
 

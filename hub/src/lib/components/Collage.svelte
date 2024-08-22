@@ -18,15 +18,28 @@
 
 	let canvas: fabric.Canvas | undefined;
 
-	// console.log("Collage",collage);
-	// console.log("Definition",definition);
-
 	const serializeCanvasHandler = () => {
 		collage = canvas?.toObject(['meta']);
-		// console.log("Serializing canvas", collage);
+		collage = cleanCollageUrls(collage);
 		updateCanvasDefinition();
 		updateExportFile();
 	};
+
+	const cleanCollageUrls = (collage) => {
+		if (collage.backgroundImage && collage.backgroundImage.src) {
+			collage.backgroundImage.src = new URL(collage.backgroundImage.src, "http://localhost").pathname;
+		}
+		
+		if (collage.objects) {
+			collage.objects.forEach((obj) => {
+				if (obj.src) {
+					obj.src = new URL(obj.src, "http://localhost").pathname;
+				}
+			});
+		}
+
+		return collage;
+	}
 
 	const updateExportFile = () => {
 			// Save canvas to blob (base64 encoded image)
@@ -55,7 +68,7 @@
 
 			// Fetch background
 			if (collage.backgroundImage) {
-				background = new URL(collage.backgroundImage.src).pathname;
+				background = collage.backgroundImage.src;
 			}
 
 			if (collage.background) {
@@ -71,7 +84,7 @@
 				collage.objects.forEach((obj) => {
 					// Fetch image info
 					const image = {
-						url: new URL(obj.src).pathname,
+						url: obj.src,
 						placement: {
 							index: idxObject,
 							left: obj.left,
