@@ -37,32 +37,6 @@
 				<br />
 			</label>
 
-			
-			<h4 class="h4">Futures Wheel</h4>					
-
-			<p>
-				<span>
-					Brainstorm the direct and indirect consequences of that What If question 10 years from
-						now, in the context you have chosen, for the actors you are exploring and beyond. Take a
-						sheet of paper and brainstorm these consequences using the Futures Wheel. What are the
-						three most thought-provoking impacts?
-				</span>
-			</p>	
-			<div class="card bg-surface-200/30 p-4 space-y-4" >
-				<center>
-					<img src="/images/futureswheel.gif" class="px-5 w-2/3" alt="Futures Wheel" />
-				</center>					
-				<span class="text-sm"><br /><center>Source: <a href="https://matthewlarn.medium.com/explore-direct-indirect-consequences-using-a-futures-wheel-213feb0915a1" class="anchor" target="_new">Explore Direct & Indirect Consequences Using a Futures Wheel</a></center></span>
-			</div>
-		
-
-			<h4 class="h4">Character</h4>
-			<span class="label space-y-4">
-				<span>What human/non-human character represents this What If question?</span>
-				<br />
-				<ImageSelector scenario={scenario} images={images} values={values} />			
-			</span>
-
 		</div>
 
 		<br />

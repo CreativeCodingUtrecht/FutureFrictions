@@ -43,17 +43,5 @@ const save = async (params, request) => {
     const whatif = data.get('whatif')  
     json.whatif.question = whatif;
 
-    const avatar = data.get('avatar')  
-    json.whatif.avatar = avatar;
-
-    const uploadedFile = data?.get('file');
-
-    if (uploadedFile?.name && uploadedFile.name.length > 0 && uploadedFile?.name !== "undefined" && uploadedFile?.name !== "") {
-        const filename = `${scenarios.SCENARIOROOT}/${scenario}/${uploadedFile?.name}`;  
-        console.log("filename", filename);
-        const buffer = Buffer.from(await uploadedFile?.arrayBuffer());
-        scenarios.addImage(scenario, filename, buffer);
-    }
-
     scenarios.save(scenario, json);
 }
