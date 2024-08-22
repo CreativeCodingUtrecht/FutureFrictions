@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { PageData, ActionData } from './$types';
 	import { FF_WEBGL_URL } from '$lib/constants';
+	import Play from '$lib/components/Play.svelte';
 
 	export let form: ActionData;
 	export let data: PageData;
@@ -19,10 +20,10 @@
 		<h4 class="h4">Let's see the outcome of our future!</h4>				
 		<br />
 		<p>
-			Press the <b>Play</b> button to see the outcome of the future and a sequence of what you have created.
+			Press the <b>Explore</b> button to see the outcome of the future and a sequence of what you have created.
 		</p>
 		<br />
-		<a href={url} class="btn variant-filled-primary" target="FF_WEBGL_URL">▶ Play</a>
+		<Play {scenario} />
 		<br />
 
 		<br />
