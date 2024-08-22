@@ -82,11 +82,18 @@ namespace UI
             {
                 // Canvas is 960 x 600 -> 1920 1080
                 const float xScale = 960f / 1920f;
-                const float yScale = 600f / 1080f;
+                const float yScale = 540f / 1080f;
                 
                 var newCharacter = Instantiate(characterUIPrefab, transform);
                 
                 var characterTransform = newCharacter.transform;
+                
+                ((RectTransform) characterTransform).pivot = new Vector2(0.5f, 0.5f);
+                
+                ((RectTransform) characterTransform).rotation = Quaternion.Euler(0, 0, -character.placement.angle);
+
+                ((RectTransform) characterTransform).pivot = new Vector2(0, 1);
+                
                 ((RectTransform) characterTransform).anchoredPosition =
                     new Vector2(character.placement.left * xScale, -character.placement.top * yScale);
                 
