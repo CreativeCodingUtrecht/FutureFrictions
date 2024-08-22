@@ -48,7 +48,7 @@
                             "image": "telefoon.png",
                             "role": "character"
                         },
-                        "src": "https://futurefrictions.creativecodingutrecht.nl/api/scenarios/drone-upload/character/telefoon.png",
+                        "src": "/api/scenarios/drone-upload/character/telefoon.png",
                         "crossOrigin": "anonymous",
                         "filters": []
                     },
@@ -90,7 +90,7 @@
                             "image": "elderly_on_bench_17_5_2021_21_14.png",
                             "role": "character"
                         },
-                        "src": "https://futurefrictions.creativecodingutrecht.nl/api/scenarios/drone-upload/character/elderly_on_bench_17_5_2021_21_14.png",
+                        "src": "/api/scenarios/drone-upload/character/elderly_on_bench_17_5_2021_21_14.png",
                         "crossOrigin": "anonymous",
                         "filters": []
                     },
@@ -132,7 +132,7 @@
                             "image": "artist_17_5_2021_21_50.png",
                             "role": "character"
                         },
-                        "src": "https://futurefrictions.creativecodingutrecht.nl/api/scenarios/drone-upload/character/artist_17_5_2021_21_50.png",
+                        "src": "/api/scenarios/drone-upload/character/artist_17_5_2021_21_50.png",
                         "crossOrigin": "anonymous",
                         "filters": []
                     }
@@ -172,7 +172,7 @@
                     "skewY": 0,
                     "cropX": 0,
                     "cropY": 0,
-                    "src": "https://futurefrictions.creativecodingutrecht.nl/api/scenarios/drone-upload/background/screen_1920x1080_2021-11-22_16-30-57.png",
+                    "src": "/api/scenarios/drone-upload/background/screen_1920x1080_2021-11-22_16-30-57.png",
                     "crossOrigin": "anonymous",
                     "filters": []
                 }
@@ -276,7 +276,7 @@
                             "image": "telefoon.png",
                             "role": "character"
                         },
-                        "src": "https://futurefrictions.creativecodingutrecht.nl/api/scenarios/drone-upload/character/telefoon.png",
+                        "src": "/api/scenarios/drone-upload/character/telefoon.png",
                         "crossOrigin": "anonymous",
                         "filters": []
                     },
@@ -318,7 +318,7 @@
                             "image": "elderly_on_bench_17_5_2021_21_14.png",
                             "role": "character"
                         },
-                        "src": "https://futurefrictions.creativecodingutrecht.nl/api/scenarios/drone-upload/character/elderly_on_bench_17_5_2021_21_14.png",
+                        "src": "/api/scenarios/drone-upload/character/elderly_on_bench_17_5_2021_21_14.png",
                         "crossOrigin": "anonymous",
                         "filters": []
                     },
@@ -360,7 +360,7 @@
                             "image": "artist_17_5_2021_21_50.png",
                             "role": "character"
                         },
-                        "src": "https://futurefrictions.creativecodingutrecht.nl/api/scenarios/drone-upload/character/artist_17_5_2021_21_50.png",
+                        "src": "/api/scenarios/drone-upload/character/artist_17_5_2021_21_50.png",
                         "crossOrigin": "anonymous",
                         "filters": []
                     },
@@ -402,7 +402,7 @@
                             "image": "drone_1.png",
                             "role": "element"
                         },
-                        "src": "https://futurefrictions.creativecodingutrecht.nl/api/scenarios/drone-upload/element/drone_1.png",
+                        "src": "/api/scenarios/drone-upload/element/drone_1.png",
                         "crossOrigin": "anonymous",
                         "filters": []
                     },
@@ -444,7 +444,7 @@
                             "image": "Billboard option A.png",
                             "role": "element"
                         },
-                        "src": "https://futurefrictions.creativecodingutrecht.nl/api/scenarios/drone-upload/element/Billboard%20option%20A.png",
+                        "src": "/api/scenarios/drone-upload/element/Billboard%20option%20A.png",
                         "crossOrigin": "anonymous",
                         "filters": []
                     },
@@ -486,7 +486,7 @@
                             "image": "eyes_option A_1.png",
                             "role": "element"
                         },
-                        "src": "https://futurefrictions.creativecodingutrecht.nl/api/scenarios/drone-upload/element/eyes_option%20A_1.png",
+                        "src": "/api/scenarios/drone-upload/element/eyes_option%20A_1.png",
                         "crossOrigin": "anonymous",
                         "filters": []
                     },
@@ -528,7 +528,7 @@
                             "image": "eyes_option A_3.png",
                             "role": "element"
                         },
-                        "src": "https://futurefrictions.creativecodingutrecht.nl/api/scenarios/drone-upload/element/eyes_option%20A_3.png",
+                        "src": "/api/scenarios/drone-upload/element/eyes_option%20A_3.png",
                         "crossOrigin": "anonymous",
                         "filters": []
                     },
@@ -570,7 +570,7 @@
                             "image": "woman_shopping_31_5_2021_00_48.png",
                             "role": "element"
                         },
-                        "src": "https://futurefrictions.creativecodingutrecht.nl/api/scenarios/drone-upload/element/woman_shopping_31_5_2021_00_48.png",
+                        "src": "/api/scenarios/drone-upload/element/woman_shopping_31_5_2021_00_48.png",
                         "crossOrigin": "anonymous",
                         "filters": []
                     },
@@ -612,7 +612,7 @@
                             "image": "eyes_option A_2.png",
                             "role": "element"
                         },
-                        "src": "https://futurefrictions.creativecodingutrecht.nl/api/scenarios/drone-upload/element/eyes_option%20A_2.png",
+                        "src": "/api/scenarios/drone-upload/element/eyes_option%20A_2.png",
                         "crossOrigin": "anonymous",
                         "filters": []
                     }
@@ -652,7 +652,7 @@
                     "skewY": 0,
                     "cropX": 0,
                     "cropY": 0,
-                    "src": "https://futurefrictions.creativecodingutrecht.nl/api/scenarios/drone-upload/background/screen_1920x1080_2021-11-22_16-30-57.png",
+                    "src": "/api/scenarios/drone-upload/background/screen_1920x1080_2021-11-22_16-30-57.png",
                     "crossOrigin": "anonymous",
                     "filters": []
                 }
