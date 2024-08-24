@@ -3,7 +3,8 @@
     "friction": {
         "frictionalstatement": "The mayor of this fictional neighbourhood wants to implement new smart city ideas. Experience how these ideas might impact the neighbourhood by exploring your surroundings and listening to your neighbours. If you find a person with a question mark on top of their heads... feel free to interact with them.",
         "avatar": "duif.png",
-        "emergingfrictions": ""
+        "emergingfrictions": "",
+        "avatarSrc": "/api/scenarios/drone-upload/element/duif.png"
     },
     "collage": {
         "present": {
@@ -15,8 +16,8 @@
                         "version": "5.3.0",
                         "originX": "left",
                         "originY": "top",
-                        "left": -88.36,
-                        "top": 385.27,
+                        "left": -66.07,
+                        "top": 393.99,
                         "width": 2048,
                         "height": 2048,
                         "fill": "rgb(0,0,0)",
@@ -28,8 +29,8 @@
                         "strokeLineJoin": "miter",
                         "strokeUniform": false,
                         "strokeMiterLimit": 4,
-                        "scaleX": 0.22,
-                        "scaleY": 0.22,
+                        "scaleX": 0.2,
+                        "scaleY": 0.2,
                         "angle": 0,
                         "flipX": false,
                         "flipY": false,
@@ -46,9 +47,22 @@
                         "cropY": 0,
                         "meta": {
                             "image": "telefoon.png",
-                            "role": "character"
+                            "role": "element",
+                            "uuid": "69eaaf89-c855-482d-81e0-9e8fb3e57256",
+                            "interactable": true,
+                            "name": "Tina",
+                            "statement": "Hi, my name is Tina. Nice to meet you! After school, I usually meet up with some of my friends in this square. I'm going to meet them there later, but I need to do my homework first."
                         },
-                        "src": "/api/scenarios/drone-upload/character/telefoon.png",
+                        "_controlsVisibility": {
+                            "mtr": true,
+                            "mb": false,
+                            "mt": false,
+                            "ml": false,
+                            "mr": false
+                        },
+                        "minScaleLimit": 0.034090909090909095,
+                        "lockScalingFlip": true,
+                        "src": "/api/scenarios/drone-database/element/telefoon.png",
                         "crossOrigin": "anonymous",
                         "filters": []
                     },
@@ -57,8 +71,8 @@
                         "version": "5.3.0",
                         "originX": "left",
                         "originY": "top",
-                        "left": 452.73,
-                        "top": 410.18,
+                        "left": 450.33,
+                        "top": 411.2,
                         "width": 2048,
                         "height": 2048,
                         "fill": "rgb(0,0,0)",
@@ -88,9 +102,22 @@
                         "cropY": 0,
                         "meta": {
                             "image": "elderly_on_bench_17_5_2021_21_14.png",
-                            "role": "character"
+                            "role": "element",
+                            "uuid": "0e718abd-0f0b-4c7f-b6ab-75ddaf5df849",
+                            "interactable": true,
+                            "name": "Elderly woman",
+                            "statement": "Hello dear, how nice to see you! I've always liked sitting here, in the square, and seeing if any of my neighbours want to stop for a chat."
                         },
-                        "src": "/api/scenarios/drone-upload/character/elderly_on_bench_17_5_2021_21_14.png",
+                        "_controlsVisibility": {
+                            "mtr": true,
+                            "mb": false,
+                            "mt": false,
+                            "ml": false,
+                            "mr": false
+                        },
+                        "minScaleLimit": 0.034090909090909095,
+                        "lockScalingFlip": true,
+                        "src": "/api/scenarios/drone-database/element/elderly_on_bench_17_5_2021_21_14.png",
                         "crossOrigin": "anonymous",
                         "filters": []
                     },
@@ -99,8 +126,8 @@
                         "version": "5.3.0",
                         "originX": "left",
                         "originY": "top",
-                        "left": 1489.5,
-                        "top": 438.09,
+                        "left": 1495.55,
+                        "top": 427.77,
                         "width": 2048,
                         "height": 2048,
                         "fill": "rgb(0,0,0)",
@@ -112,8 +139,8 @@
                         "strokeLineJoin": "miter",
                         "strokeUniform": false,
                         "strokeMiterLimit": 4,
-                        "scaleX": 0.21,
-                        "scaleY": 0.21,
+                        "scaleX": 0.19,
+                        "scaleY": 0.19,
                         "angle": 0,
                         "flipX": false,
                         "flipY": false,
@@ -130,9 +157,22 @@
                         "cropY": 0,
                         "meta": {
                             "image": "artist_17_5_2021_21_50.png",
-                            "role": "character"
+                            "role": "element",
+                            "uuid": "2c212f2c-b669-41bd-b9ba-8ec8f2a24a1c",
+                            "interactable": true,
+                            "name": "Street artist",
+                            "statement": "Hello! I often come to this square to observe people passing by, think about life, and paint."
                         },
-                        "src": "/api/scenarios/drone-upload/character/artist_17_5_2021_21_50.png",
+                        "_controlsVisibility": {
+                            "mtr": true,
+                            "mb": false,
+                            "mt": false,
+                            "ml": false,
+                            "mr": false
+                        },
+                        "minScaleLimit": 0.034090909090909095,
+                        "lockScalingFlip": true,
+                        "src": "/api/scenarios/drone-database/element/artist_17_5_2021_21_50.png",
                         "crossOrigin": "anonymous",
                         "filters": []
                     }
@@ -172,65 +212,78 @@
                     "skewY": 0,
                     "cropX": 0,
                     "cropY": 0,
-                    "src": "/api/scenarios/drone-upload/background/screen_1920x1080_2021-11-22_16-30-57.png",
+                    "minScaleLimit": 0,
+                    "lockScalingFlip": false,
+                    "src": "/api/scenarios/drone-database/background/screen_1920x1080_2021-11-22_16-30-57.png",
                     "crossOrigin": "anonymous",
                     "filters": []
                 }
             },
             "definition": {
                 "backgroundColor": "#ddddee",
-                "background": "/api/scenarios/drone-upload/background/screen_1920x1080_2021-11-22_16-30-57.png",
-                "characters": [
+                "background": "/api/scenarios/drone-database/background/screen_1920x1080_2021-11-22_16-30-57.png",
+                "elements": [
                     {
-                        "url": "/api/scenarios/drone-upload/character/telefoon.png",
+                        "url": "/api/scenarios/drone-database/element/telefoon.png",
                         "placement": {
                             "index": 0,
-                            "left": -88.36,
-                            "top": 385.27,
+                            "left": -66.07,
+                            "top": 393.99,
                             "width": 2048,
                             "height": 2048,
-                            "scaleX": 0.22,
-                            "scaleY": 0.22,
+                            "scaleX": 0.2,
+                            "scaleY": 0.2,
                             "angle": 0
                         },
-                        "name": "Tina",
-                        "statement": "Hi, my name is Tina. Nice to meet you! After school, I usually meet up with some of my friends in this square. I'm going to meet them there later, but I need to do my homework first.",
+                        "intervention": false,
+                        "interactable": true,
+                        "interaction": {
+                            "name": "Tina",
+                            "statement": "Hi, my name is Tina. Nice to meet you! After school, I usually meet up with some of my friends in this square. I'm going to meet them there later, but I need to do my homework first."
+                        },
                         "id": 0
                     },
                     {
-                        "url": "/api/scenarios/drone-upload/character/elderly_on_bench_17_5_2021_21_14.png",
+                        "url": "/api/scenarios/drone-database/element/elderly_on_bench_17_5_2021_21_14.png",
                         "placement": {
                             "index": 1,
-                            "left": 452.73,
-                            "top": 410.18,
+                            "left": 450.33,
+                            "top": 411.2,
                             "width": 2048,
                             "height": 2048,
                             "scaleX": 0.16,
                             "scaleY": 0.16,
                             "angle": 0
                         },
-                        "name": "Elderly woman",
-                        "statement": "Hello dear, how nice to see you! I've always liked sitting here, in the square, and seeing if any of my neighbours want to stop for a chat.",
+                        "intervention": false,
+                        "interactable": true,
+                        "interaction": {
+                            "name": "Elderly woman",
+                            "statement": "Hello dear, how nice to see you! I've always liked sitting here, in the square, and seeing if any of my neighbours want to stop for a chat."
+                        },
                         "id": 1
                     },
                     {
-                        "url": "/api/scenarios/drone-upload/character/artist_17_5_2021_21_50.png",
+                        "url": "/api/scenarios/drone-database/element/artist_17_5_2021_21_50.png",
                         "placement": {
                             "index": 2,
-                            "left": 1489.5,
-                            "top": 438.09,
+                            "left": 1495.55,
+                            "top": 427.77,
                             "width": 2048,
                             "height": 2048,
-                            "scaleX": 0.21,
-                            "scaleY": 0.21,
+                            "scaleX": 0.19,
+                            "scaleY": 0.19,
                             "angle": 0
                         },
-                        "name": "Street artist",
-                        "statement": "Hello! I often come to this square to observe people passing by, think about life, and paint.",
+                        "intervention": false,
+                        "interactable": true,
+                        "interaction": {
+                            "name": "Street artist",
+                            "statement": "Hello! I often come to this square to observe people passing by, think about life, and paint."
+                        },
                         "id": 2
                     }
-                ],
-                "elements": []
+                ]
             },
             "url": "/api/scenarios/drone-upload/collage/present.png"
         },
@@ -243,8 +296,8 @@
                         "version": "5.3.0",
                         "originX": "left",
                         "originY": "top",
-                        "left": -88.36,
-                        "top": 385.27,
+                        "left": -66.07,
+                        "top": 393.99,
                         "width": 2048,
                         "height": 2048,
                         "fill": "rgb(0,0,0)",
@@ -256,8 +309,8 @@
                         "strokeLineJoin": "miter",
                         "strokeUniform": false,
                         "strokeMiterLimit": 4,
-                        "scaleX": 0.22,
-                        "scaleY": 0.22,
+                        "scaleX": 0.2,
+                        "scaleY": 0.2,
                         "angle": 0,
                         "flipX": false,
                         "flipY": false,
@@ -274,9 +327,23 @@
                         "cropY": 0,
                         "meta": {
                             "image": "telefoon.png",
-                            "role": "character"
+                            "role": "element",
+                            "uuid": "69eaaf89-c855-482d-81e0-9e8fb3e57256",
+                            "interactable": true,
+                            "name": "Tina",
+                            "statement": "I was trying to work on my maths homework, but then I got distracted because my phone notified me that my best friend Lola was in the area, shopping! Should I go out and meet her? Hmm...",
+                            "intervention": false
                         },
-                        "src": "/api/scenarios/drone-upload/character/telefoon.png",
+                        "_controlsVisibility": {
+                            "mtr": true,
+                            "mb": false,
+                            "mt": false,
+                            "ml": false,
+                            "mr": false
+                        },
+                        "minScaleLimit": 0.034090909090909095,
+                        "lockScalingFlip": true,
+                        "src": "/api/scenarios/drone-database/element/telefoon.png",
                         "crossOrigin": "anonymous",
                         "filters": []
                     },
@@ -285,8 +352,8 @@
                         "version": "5.3.0",
                         "originX": "left",
                         "originY": "top",
-                        "left": 452.73,
-                        "top": 410.18,
+                        "left": 450.33,
+                        "top": 411.2,
                         "width": 2048,
                         "height": 2048,
                         "fill": "rgb(0,0,0)",
@@ -316,9 +383,22 @@
                         "cropY": 0,
                         "meta": {
                             "image": "elderly_on_bench_17_5_2021_21_14.png",
-                            "role": "character"
+                            "role": "element",
+                            "uuid": "0e718abd-0f0b-4c7f-b6ab-75ddaf5df849",
+                            "interactable": true,
+                            "name": "Elderly woman",
+                            "statement": "It's been a while since the last time I met my grandchild. Thanks to this new drone, I am constantly receiving pictures of her. It makes me so happy! However, I'm still a bit sad because my son doesn't call me anymore. He receives the pictures from the drone so he thinks everything is just fine..."
                         },
-                        "src": "/api/scenarios/drone-upload/character/elderly_on_bench_17_5_2021_21_14.png",
+                        "_controlsVisibility": {
+                            "mtr": true,
+                            "mb": false,
+                            "mt": false,
+                            "ml": false,
+                            "mr": false
+                        },
+                        "minScaleLimit": 0.034090909090909095,
+                        "lockScalingFlip": true,
+                        "src": "/api/scenarios/drone-database/element/elderly_on_bench_17_5_2021_21_14.png",
                         "crossOrigin": "anonymous",
                         "filters": []
                     },
@@ -327,8 +407,8 @@
                         "version": "5.3.0",
                         "originX": "left",
                         "originY": "top",
-                        "left": 1489.5,
-                        "top": 438.09,
+                        "left": 1495.55,
+                        "top": 427.77,
                         "width": 2048,
                         "height": 2048,
                         "fill": "rgb(0,0,0)",
@@ -340,8 +420,8 @@
                         "strokeLineJoin": "miter",
                         "strokeUniform": false,
                         "strokeMiterLimit": 4,
-                        "scaleX": 0.21,
-                        "scaleY": 0.21,
+                        "scaleX": 0.19,
+                        "scaleY": 0.19,
                         "angle": 0,
                         "flipX": false,
                         "flipY": false,
@@ -358,9 +438,22 @@
                         "cropY": 0,
                         "meta": {
                             "image": "artist_17_5_2021_21_50.png",
-                            "role": "character"
+                            "role": "element",
+                            "uuid": "2c212f2c-b669-41bd-b9ba-8ec8f2a24a1c",
+                            "interactable": true,
+                            "name": "Street artist",
+                            "statement": "This drone seems very convenient to get customers for my work. But I don't have time to check all of the images so I've lost control over which ones are uploaded: it even puts the failed paintings online!"
                         },
-                        "src": "/api/scenarios/drone-upload/character/artist_17_5_2021_21_50.png",
+                        "_controlsVisibility": {
+                            "mtr": true,
+                            "mb": false,
+                            "mt": false,
+                            "ml": false,
+                            "mr": false
+                        },
+                        "minScaleLimit": 0.034090909090909095,
+                        "lockScalingFlip": true,
+                        "src": "/api/scenarios/drone-database/element/artist_17_5_2021_21_50.png",
                         "crossOrigin": "anonymous",
                         "filters": []
                     },
@@ -369,8 +462,8 @@
                         "version": "5.3.0",
                         "originX": "left",
                         "originY": "top",
-                        "left": 744.59,
-                        "top": 135.77,
+                        "left": 755.34,
+                        "top": 139.52,
                         "width": 2000,
                         "height": 764,
                         "fill": "rgb(0,0,0)",
@@ -382,8 +475,8 @@
                         "strokeLineJoin": "miter",
                         "strokeUniform": false,
                         "strokeMiterLimit": 4,
-                        "scaleX": 0.2,
-                        "scaleY": 0.2,
+                        "scaleX": 0.19,
+                        "scaleY": 0.19,
                         "angle": 0,
                         "flipX": false,
                         "flipY": false,
@@ -400,9 +493,21 @@
                         "cropY": 0,
                         "meta": {
                             "image": "drone_1.png",
-                            "role": "element"
+                            "role": "element",
+                            "uuid": "23762db2-d5f9-41b0-bc8c-8a14857b114b",
+                            "interactable": false,
+                            "intervention": true
                         },
-                        "src": "/api/scenarios/drone-upload/element/drone_1.png",
+                        "_controlsVisibility": {
+                            "mtr": true,
+                            "mb": false,
+                            "mt": false,
+                            "ml": false,
+                            "mr": false
+                        },
+                        "minScaleLimit": 0.056263736263736264,
+                        "lockScalingFlip": true,
+                        "src": "/api/scenarios/drone-database/element/drone_1.png",
                         "crossOrigin": "anonymous",
                         "filters": []
                     },
@@ -411,10 +516,10 @@
                         "version": "5.3.0",
                         "originX": "left",
                         "originY": "top",
-                        "left": 658.39,
-                        "top": 232.63,
-                        "width": 1280,
-                        "height": 720,
+                        "left": 38.78,
+                        "top": 32.18,
+                        "width": 578,
+                        "height": 461,
                         "fill": "rgb(0,0,0)",
                         "stroke": null,
                         "strokeWidth": 0,
@@ -424,8 +529,8 @@
                         "strokeLineJoin": "miter",
                         "strokeUniform": false,
                         "strokeMiterLimit": 4,
-                        "scaleX": 0.57,
-                        "scaleY": 0.57,
+                        "scaleX": 0.61,
+                        "scaleY": 0.61,
                         "angle": 0,
                         "flipX": false,
                         "flipY": false,
@@ -441,10 +546,22 @@
                         "cropX": 0,
                         "cropY": 0,
                         "meta": {
-                            "image": "Billboard option A.png",
-                            "role": "element"
+                            "image": "eyes_option A_1.png",
+                            "role": "element",
+                            "uuid": "714e3642-98b4-404a-9b99-49c88be684be",
+                            "interactable": false,
+                            "intervention": false
                         },
-                        "src": "/api/scenarios/drone-upload/element/Billboard%20option%20A.png",
+                        "_controlsVisibility": {
+                            "mtr": true,
+                            "mb": false,
+                            "mt": false,
+                            "ml": false,
+                            "mr": false
+                        },
+                        "minScaleLimit": 0.12079270210758102,
+                        "lockScalingFlip": true,
+                        "src": "/api/scenarios/drone-upload/element/eyes_option%20A_1.png",
                         "crossOrigin": "anonymous",
                         "filters": []
                     },
@@ -453,10 +570,10 @@
                         "version": "5.3.0",
                         "originX": "left",
                         "originY": "top",
-                        "left": 39.85,
-                        "top": 33.24,
-                        "width": 578,
-                        "height": 461,
+                        "left": 1623.99,
+                        "top": 50.07,
+                        "width": 521,
+                        "height": 415,
                         "fill": "rgb(0,0,0)",
                         "stroke": null,
                         "strokeWidth": 0,
@@ -483,10 +600,22 @@
                         "cropX": 0,
                         "cropY": 0,
                         "meta": {
-                            "image": "eyes_option A_1.png",
-                            "role": "element"
+                            "image": "eyes_option A_3.png",
+                            "role": "element",
+                            "uuid": "59108c2d-05ab-4653-81d2-62f2bfddaa2c",
+                            "interactable": false,
+                            "intervention": false
                         },
-                        "src": "/api/scenarios/drone-upload/element/eyes_option%20A_1.png",
+                        "_controlsVisibility": {
+                            "mtr": true,
+                            "mb": false,
+                            "mt": false,
+                            "ml": false,
+                            "mr": false
+                        },
+                        "minScaleLimit": 0.13400802652242194,
+                        "lockScalingFlip": true,
+                        "src": "/api/scenarios/drone-upload/element/eyes_option%20A_3.png",
                         "crossOrigin": "anonymous",
                         "filters": []
                     },
@@ -495,10 +624,118 @@
                         "version": "5.3.0",
                         "originX": "left",
                         "originY": "top",
-                        "left": 1626.9,
-                        "top": 45.79,
-                        "width": 521,
-                        "height": 415,
+                        "left": 340.68,
+                        "top": 793.87,
+                        "width": 562,
+                        "height": 556,
+                        "fill": "rgb(0,0,0)",
+                        "stroke": null,
+                        "strokeWidth": 0,
+                        "strokeDashArray": null,
+                        "strokeLineCap": "butt",
+                        "strokeDashOffset": 0,
+                        "strokeLineJoin": "miter",
+                        "strokeUniform": false,
+                        "strokeMiterLimit": 4,
+                        "scaleX": 0.33,
+                        "scaleY": 0.33,
+                        "angle": 0,
+                        "flipX": false,
+                        "flipY": false,
+                        "opacity": 1,
+                        "shadow": null,
+                        "visible": true,
+                        "backgroundColor": "",
+                        "fillRule": "nonzero",
+                        "paintFirst": "fill",
+                        "globalCompositeOperation": "source-over",
+                        "skewX": 0,
+                        "skewY": 0,
+                        "cropX": 0,
+                        "cropY": 0,
+                        "meta": {
+                            "image": "eyes_option A_2.png",
+                            "role": "element",
+                            "uuid": "5b266d2f-fd55-40d6-b86c-6d550600f6a1",
+                            "interactable": false,
+                            "intervention": false
+                        },
+                        "_controlsVisibility": {
+                            "mtr": true,
+                            "mb": false,
+                            "mt": false,
+                            "ml": false,
+                            "mr": false
+                        },
+                        "minScaleLimit": 0.12423164024587514,
+                        "lockScalingFlip": true,
+                        "src": "/api/scenarios/drone-upload/element/eyes_option%20A_2.png",
+                        "crossOrigin": "anonymous",
+                        "filters": []
+                    },
+                    {
+                        "type": "image",
+                        "version": "5.3.0",
+                        "originX": "left",
+                        "originY": "top",
+                        "left": 805.51,
+                        "top": 586.49,
+                        "width": 2048,
+                        "height": 2048,
+                        "fill": "rgb(0,0,0)",
+                        "stroke": null,
+                        "strokeWidth": 0,
+                        "strokeDashArray": null,
+                        "strokeLineCap": "butt",
+                        "strokeDashOffset": 0,
+                        "strokeLineJoin": "miter",
+                        "strokeUniform": false,
+                        "strokeMiterLimit": 4,
+                        "scaleX": 0.21,
+                        "scaleY": 0.21,
+                        "angle": 0,
+                        "flipX": false,
+                        "flipY": false,
+                        "opacity": 1,
+                        "shadow": null,
+                        "visible": true,
+                        "backgroundColor": "",
+                        "fillRule": "nonzero",
+                        "paintFirst": "fill",
+                        "globalCompositeOperation": "source-over",
+                        "skewX": 0,
+                        "skewY": 0,
+                        "cropX": 0,
+                        "cropY": 0,
+                        "meta": {
+                            "image": "woman_shopping_31_5_2021_00_48.png",
+                            "role": "element",
+                            "uuid": "ffb7837d-55f7-4fbd-abdd-be3cbbd34074",
+                            "interactable": false,
+                            "intervention": false
+                        },
+                        "_controlsVisibility": {
+                            "mtr": true,
+                            "mb": false,
+                            "mt": false,
+                            "ml": false,
+                            "mr": false
+                        },
+                        "minScaleLimit": 0.034090909090909095,
+                        "lockScalingFlip": true,
+                        "src": "/api/scenarios/drone-upload/element/woman_shopping_31_5_2021_00_48.png",
+                        "crossOrigin": "anonymous",
+                        "filters": []
+                    },
+                    {
+                        "type": "image",
+                        "version": "5.3.0",
+                        "originX": "left",
+                        "originY": "top",
+                        "left": 655.21,
+                        "top": 229.44,
+                        "width": 1280,
+                        "height": 720,
                         "fill": "rgb(0,0,0)",
                         "stroke": null,
                         "strokeWidth": 0,
@@ -525,94 +762,22 @@
                         "cropX": 0,
                         "cropY": 0,
                         "meta": {
-                            "image": "eyes_option A_3.png",
-                            "role": "element"
+                            "image": "Billboard option A.png",
+                            "role": "element",
+                            "uuid": "a04b58fb-8740-4009-8cd0-c8aa6023cc5b",
+                            "interactable": false,
+                            "intervention": false
                         },
-                        "src": "/api/scenarios/drone-upload/element/eyes_option%20A_3.png",
-                        "crossOrigin": "anonymous",
-                        "filters": []
-                    },
-                    {
-                        "type": "image",
-                        "version": "5.3.0",
-                        "originX": "left",
-                        "originY": "top",
-                        "left": 820.36,
-                        "top": 598.91,
-                        "width": 2048,
-                        "height": 2048,
-                        "fill": "rgb(0,0,0)",
-                        "stroke": null,
-                        "strokeWidth": 0,
-                        "strokeDashArray": null,
-                        "strokeLineCap": "butt",
-                        "strokeDashOffset": 0,
-                        "strokeLineJoin": "miter",
-                        "strokeUniform": false,
-                        "strokeMiterLimit": 4,
-                        "scaleX": 0.2,
-                        "scaleY": 0.2,
-                        "angle": 0,
-                        "flipX": false,
-                        "flipY": false,
-                        "opacity": 1,
-                        "shadow": null,
-                        "visible": true,
-                        "backgroundColor": "",
-                        "fillRule": "nonzero",
-                        "paintFirst": "fill",
-                        "globalCompositeOperation": "source-over",
-                        "skewX": 0,
-                        "skewY": 0,
-                        "cropX": 0,
-                        "cropY": 0,
-                        "meta": {
-                            "image": "woman_shopping_31_5_2021_00_48.png",
-                            "role": "element"
+                        "_controlsVisibility": {
+                            "mtr": true,
+                            "mb": false,
+                            "mt": false,
+                            "ml": false,
+                            "mr": false
                         },
-                        "src": "/api/scenarios/drone-upload/element/woman_shopping_31_5_2021_00_48.png",
-                        "crossOrigin": "anonymous",
-                        "filters": []
-                    },
-                    {
-                        "type": "image",
-                        "version": "5.3.0",
-                        "originX": "left",
-                        "originY": "top",
-                        "left": 343.91,
-                        "top": 803.43,
-                        "width": 562,
-                        "height": 556,
-                        "fill": "rgb(0,0,0)",
-                        "stroke": null,
-                        "strokeWidth": 0,
-                        "strokeDashArray": null,
-                        "strokeLineCap": "butt",
-                        "strokeDashOffset": 0,
-                        "strokeLineJoin": "miter",
-                        "strokeUniform": false,
-                        "strokeMiterLimit": 4,
-                        "scaleX": 0.32,
-                        "scaleY": 0.32,
-                        "angle": 0,
-                        "flipX": false,
-                        "flipY": false,
-                        "opacity": 1,
-                        "shadow": null,
-                        "visible": true,
-                        "backgroundColor": "",
-                        "fillRule": "nonzero",
-                        "paintFirst": "fill",
-                        "globalCompositeOperation": "source-over",
-                        "skewX": 0,
-                        "skewY": 0,
-                        "cropX": 0,
-                        "cropY": 0,
-                        "meta": {
-                            "image": "eyes_option A_2.png",
-                            "role": "element"
-                        },
-                        "src": "/api/scenarios/drone-upload/element/eyes_option%20A_2.png",
+                        "minScaleLimit": 0.05454545454545455,
+                        "lockScalingFlip": true,
+                        "src": "/api/scenarios/drone-upload/element/Billboard%20option%20A.png",
                         "crossOrigin": "anonymous",
                         "filters": []
                     }
@@ -652,148 +817,172 @@
                     "skewY": 0,
                     "cropX": 0,
                     "cropY": 0,
-                    "src": "/api/scenarios/drone-upload/background/screen_1920x1080_2021-11-22_16-30-57.png",
+                    "minScaleLimit": 0,
+                    "lockScalingFlip": false,
+                    "src": "/api/scenarios/drone-database/background/screen_1920x1080_2021-11-22_16-30-57.png",
                     "crossOrigin": "anonymous",
                     "filters": []
                 }
             },
             "definition": {
                 "backgroundColor": "#ddddee",
-                "background": "/api/scenarios/drone-upload/background/screen_1920x1080_2021-11-22_16-30-57.png",
-                "characters": [
+                "background": "/api/scenarios/drone-database/background/screen_1920x1080_2021-11-22_16-30-57.png",
+                "elements": [
                     {
-                        "url": "/api/scenarios/drone-upload/character/telefoon.png",
+                        "url": "/api/scenarios/drone-database/element/telefoon.png",
                         "placement": {
                             "index": 0,
-                            "left": -88.36,
-                            "top": 385.27,
+                            "left": -66.07,
+                            "top": 393.99,
                             "width": 2048,
                             "height": 2048,
-                            "scaleX": 0.22,
-                            "scaleY": 0.22,
+                            "scaleX": 0.2,
+                            "scaleY": 0.2,
                             "angle": 0
                         },
-                        "name": "Tina",
-                        "statement": "I was trying to work on my maths homework, but then I got distracted because my phone notified me that my best friend Lola was in the area, shopping! Should I go out and meet her? Hmm...",
+                        "intervention": false,
+                        "interactable": true,
+                        "interaction": {
+                            "name": "Tina",
+                            "statement": "I was trying to work on my maths homework, but then I got distracted because my phone notified me that my best friend Lola was in the area, shopping! Should I go out and meet her? Hmm..."
+                        },
                         "id": 0
                     },
                     {
-                        "url": "/api/scenarios/drone-upload/character/elderly_on_bench_17_5_2021_21_14.png",
+                        "url": "/api/scenarios/drone-database/element/elderly_on_bench_17_5_2021_21_14.png",
                         "placement": {
                             "index": 1,
-                            "left": 452.73,
-                            "top": 410.18,
+                            "left": 450.33,
+                            "top": 411.2,
                             "width": 2048,
                             "height": 2048,
                             "scaleX": 0.16,
                             "scaleY": 0.16,
                             "angle": 0
                         },
-                        "name": "Elderly woman",
-                        "statement": "It's been a while since the last time I met my grandchild. Thanks to this new drone, I am constantly receiving pictures of her. It makes me so happy! However, I'm still a bit sad because my son doesn't call me anymore. He receives the pictures from the drone so he thinks everything is just fine...",
+                        "intervention": false,
+                        "interactable": true,
+                        "interaction": {
+                            "name": "Elderly woman",
+                            "statement": "It's been a while since the last time I met my grandchild. Thanks to this new drone, I am constantly receiving pictures of her. It makes me so happy! However, I'm still a bit sad because my son doesn't call me anymore. He receives the pictures from the drone so he thinks everything is just fine..."
+                        },
                         "id": 1
                     },
                     {
-                        "url": "/api/scenarios/drone-upload/character/artist_17_5_2021_21_50.png",
+                        "url": "/api/scenarios/drone-database/element/artist_17_5_2021_21_50.png",
                         "placement": {
                             "index": 2,
-                            "left": 1489.5,
-                            "top": 438.09,
+                            "left": 1495.55,
+                            "top": 427.77,
+                            "width": 2048,
+                            "height": 2048,
+                            "scaleX": 0.19,
+                            "scaleY": 0.19,
+                            "angle": 0
+                        },
+                        "intervention": false,
+                        "interactable": true,
+                        "interaction": {
+                            "name": "Street artist",
+                            "statement": "This drone seems very convenient to get customers for my work. But I don't have time to check all of the images so I've lost control over which ones are uploaded: it even puts the failed paintings online!"
+                        },
+                        "id": 2
+                    },
+                    {
+                        "url": "/api/scenarios/drone-database/element/drone_1.png",
+                        "placement": {
+                            "index": 3,
+                            "left": 755.34,
+                            "top": 139.52,
+                            "width": 2000,
+                            "height": 764,
+                            "scaleX": 0.19,
+                            "scaleY": 0.19,
+                            "angle": 0
+                        },
+                        "intervention": true,
+                        "interactable": false,
+                        "id": 3
+                    },
+                    {
+                        "url": "/api/scenarios/drone-upload/element/eyes_option%20A_1.png",
+                        "placement": {
+                            "index": 4,
+                            "left": 38.78,
+                            "top": 32.18,
+                            "width": 578,
+                            "height": 461,
+                            "scaleX": 0.61,
+                            "scaleY": 0.61,
+                            "angle": 0
+                        },
+                        "intervention": false,
+                        "interactable": false,
+                        "id": 4
+                    },
+                    {
+                        "url": "/api/scenarios/drone-upload/element/eyes_option%20A_3.png",
+                        "placement": {
+                            "index": 5,
+                            "left": 1623.99,
+                            "top": 50.07,
+                            "width": 521,
+                            "height": 415,
+                            "scaleX": 0.6,
+                            "scaleY": 0.6,
+                            "angle": 0
+                        },
+                        "intervention": false,
+                        "interactable": false,
+                        "id": 5
+                    },
+                    {
+                        "url": "/api/scenarios/drone-upload/element/eyes_option%20A_2.png",
+                        "placement": {
+                            "index": 6,
+                            "left": 340.68,
+                            "top": 793.87,
+                            "width": 562,
+                            "height": 556,
+                            "scaleX": 0.33,
+                            "scaleY": 0.33,
+                            "angle": 0
+                        },
+                        "intervention": false,
+                        "interactable": false,
+                        "id": 6
+                    },
+                    {
+                        "url": "/api/scenarios/drone-upload/element/woman_shopping_31_5_2021_00_48.png",
+                        "placement": {
+                            "index": 7,
+                            "left": 805.51,
+                            "top": 586.49,
                             "width": 2048,
                             "height": 2048,
                             "scaleX": 0.21,
                             "scaleY": 0.21,
                             "angle": 0
                         },
-                        "name": "Street artist",
-                        "statement": "This drone seems very convenient to get customers for my work. But I don't have time to check all of the images so I've lost control over which ones are uploaded: it even puts the failed paintings online!",
-                        "id": 2
-                    }
-                ],
-                "elements": [
-                    {
-                        "url": "/api/scenarios/drone-upload/element/drone_1.png",
-                        "placement": {
-                            "index": 3,
-                            "left": 744.59,
-                            "top": 135.77,
-                            "width": 2000,
-                            "height": 764,
-                            "scaleX": 0.2,
-                            "scaleY": 0.2,
-                            "angle": 0
-                        },
-                        "id": 0
+                        "intervention": false,
+                        "interactable": false,
+                        "id": 7
                     },
                     {
                         "url": "/api/scenarios/drone-upload/element/Billboard%20option%20A.png",
                         "placement": {
-                            "index": 4,
-                            "left": 658.39,
-                            "top": 232.63,
+                            "index": 8,
+                            "left": 655.21,
+                            "top": 229.44,
                             "width": 1280,
                             "height": 720,
-                            "scaleX": 0.57,
-                            "scaleY": 0.57,
-                            "angle": 0
-                        },
-                        "id": 1
-                    },
-                    {
-                        "url": "/api/scenarios/drone-upload/element/eyes_option%20A_1.png",
-                        "placement": {
-                            "index": 5,
-                            "left": 39.85,
-                            "top": 33.24,
-                            "width": 578,
-                            "height": 461,
-                            "scaleX": 0.6,
-                            "scaleY": 0.6,
-                            "angle": 0
-                        },
-                        "id": 2
-                    },
-                    {
-                        "url": "/api/scenarios/drone-upload/element/eyes_option%20A_3.png",
-                        "placement": {
-                            "index": 6,
-                            "left": 1626.9,
-                            "top": 45.79,
-                            "width": 521,
-                            "height": 415,
                             "scaleX": 0.59,
                             "scaleY": 0.59,
                             "angle": 0
                         },
-                        "id": 3
-                    },
-                    {
-                        "url": "/api/scenarios/drone-upload/element/woman_shopping_31_5_2021_00_48.png",
-                        "placement": {
-                            "index": 7,
-                            "left": 820.36,
-                            "top": 598.91,
-                            "width": 2048,
-                            "height": 2048,
-                            "scaleX": 0.2,
-                            "scaleY": 0.2,
-                            "angle": 0
-                        },
-                        "id": 4
-                    },
-                    {
-                        "url": "/api/scenarios/drone-upload/element/eyes_option%20A_2.png",
-                        "placement": {
-                            "index": 8,
-                            "left": 343.91,
-                            "top": 803.43,
-                            "width": 562,
-                            "height": 556,
-                            "scaleX": 0.32,
-                            "scaleY": 0.32,
-                            "angle": 0
-                        },
-                        "id": 5
+                        "intervention": false,
+                        "interactable": false,
+                        "id": 8
                     }
                 ]
             },
