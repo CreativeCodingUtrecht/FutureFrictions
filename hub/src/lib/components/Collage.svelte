@@ -104,12 +104,13 @@
 						scaleY: obj.scaleY,
 						angle: obj.angle
 					},
-					intervention: obj.meta?.intervention,
-					interactable: obj.meta?.interactable,
-					...(obj.meta?.interactable == true ) && { interaction: {
-						name: obj.meta?.name,
-						statement: obj.meta?.statement
-					}}
+					...(obj.meta?.intervention == true ) ? { intervention: true } : {intervention: false},
+					...(obj.meta?.interactable == true ) ? { interactable: true,
+						...(obj.meta?.interactable == true ) && { interaction: {
+							name: obj.meta?.name,
+							statement: obj.meta?.statement
+						}}
+					} : {interactable: false},
 				};
 
 				// Fetch elements
