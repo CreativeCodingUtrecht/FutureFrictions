@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { fabric } from 'fabric';
 	import { onMount } from 'svelte';
-	import { Accordion, AccordionItem } from '@skeletonlabs/skeleton';
+	import { Accordion, AccordionItem, SlideToggle } from '@skeletonlabs/skeleton';
+	import {v4 as uuidv4} from 'uuid';
 
 	export let scenario: String;
 	export let backgrounds: String[] = [];
@@ -9,17 +10,26 @@
 	export let collage: any;
 	export let definition: any = {};
 	export let file: File | undefined = undefined;
+	export let includeInterventions: Boolean = false;
 
 	const FABRIC_CONTROL_VISIBILITY = { mtr: true, mb: false, mt: false, ml: false, mr: false };
 	const FABRIC_SCALE_NEW_OBJECT = 0.5;
-	const FABRIC_SCALE_LIMIT_PX = 32;	
+	const FABRIC_SCALE_LIMIT_PX = 32;
 	const FABRIC_BACKGROUND_COLOR = '#ddddee';
+	const FABRIC_INCLUDE_IN_EXPORT = [
+		'meta',
+		'_controlsVisibility',
+		'minScaleLimit',
+		'lockScalingFlip'
+	];
 	let canvasSectionHeight = 1080;
 
 	let canvas: fabric.Canvas | undefined;
 
+	let selectedObject: fabric.Object | undefined;
+
 	const serializeCanvasHandler = () => {
-		collage = canvas?.toObject(['meta','_controlsVisibility','minScaleLimit','lockScalingFlip']);
+		collage = canvas?.toObject(FABRIC_INCLUDE_IN_EXPORT);
 		collage = cleanCollageUrls(collage);
 		updateCanvasDefinition();
 		updateExportFile();
@@ -27,103 +37,92 @@
 
 	const cleanCollageUrls = (collage) => {
 		if (collage.backgroundImage && collage.backgroundImage.src) {
-			collage.backgroundImage.src = new URL(collage.backgroundImage.src, "http://localhost").pathname;
+			collage.backgroundImage.src = new URL(
+				collage.backgroundImage.src,
+				'http://localhost'
+			).pathname;
 		}
-		
+
 		if (collage.objects) {
 			collage.objects.forEach((obj) => {
 				if (obj.src) {
-					obj.src = new URL(obj.src, "http://localhost").pathname;
+					obj.src = new URL(obj.src, 'http://localhost').pathname;
 				}
 			});
 		}
 
 		return collage;
-	}
+	};
 
 	const updateExportFile = () => {
-			// Save canvas to blob (base64 encoded image)
-			const dataURI = canvas?.toDataURL({
-				multiplier: 1920 / canvas.getWidth()
-			});
-			const binary = atob(dataURI.split(',')[1]);
-			const array = [];
-			for (var i = 0; i < binary.length; i++) {
-				array.push(binary.charCodeAt(i));
-			}
-			const blob = new Blob([new Uint8Array(array)], { type: 'octet/stream' });
-			file = new File([blob], 'collage.png', { type: 'image/png' });
-			console.log('Collage export file', file);
-		};
+		// Save canvas to blob (base64 encoded image)
+		const dataURI = canvas?.toDataURL({
+			multiplier: 1920 / canvas.getWidth()
+		});
+		const binary = atob(dataURI.split(',')[1]);
+		const array = [];
+		for (var i = 0; i < binary.length; i++) {
+			array.push(binary.charCodeAt(i));
+		}
+		const blob = new Blob([new Uint8Array(array)], { type: 'octet/stream' });
+		file = new File([blob], 'collage.png', { type: 'image/png' });
+		console.log('Collage export file', file);
+	};
 
-		const updateCanvasDefinition = () => {
-			if (!collage) return;
+	const updateCanvasDefinition = () => {
+		if (!collage) return;
 
-			const prevdefinition = definition || {};
+		let background;
+		let backgroundColor;
+		const elements = [];
 
-			let background;
-			let backgroundColor;
-			const elements = [];
+		// Fetch background
+		if (collage.backgroundImage) {
+			background = collage.backgroundImage.src;
+		}
 
-			// Fetch background
-			if (collage.backgroundImage) {
-				background = collage.backgroundImage.src;
-			}
+		if (collage.background) {
+			backgroundColor = collage.background;
+		}
 
-			if (collage.background) {
-				backgroundColor = collage.background;
-			}
+		// Fetch images in collage relevant for visualization
+		let idxObject = 0;
+		let idxElement = 0;
 
-			// Fetch images in collage relevant for visualization
-			let idxObject = 0;
-			let idxCharacter = 0;
-			let idxElement = 0;
-
-			if (collage.objects) {
-				collage.objects.forEach((obj) => {
-					// Fetch image info
-					const image = {
-						url: obj.src,
-						placement: {
-							index: idxObject,
-							left: obj.left,
-							top: obj.top,
-							width: obj.width,
-							height: obj.height,
-							scaleX: obj.scaleX,
-							scaleY: obj.scaleY,
-							angle: obj.angle
-						}
-					};
-
-					// Fetch characters
-					// if (obj.meta?.role === 'character') {
-					// 	image.name = prevdefinition.characters[idxCharacter]?.name || '';
-					// 	image.statement = prevdefinition.characters[idxCharacter]?.statement || '';
-					// 	image.id = idxCharacter;
-					// 	characters.push(image);
-					// 	idxCharacter++;
-					// }
-
-					// Fetch elements
-					if (obj.meta?.role === 'element') {
-						image.id = idxElement;
-						elements.push(image);
-						idxElement++;
+		if (collage.objects) {
+			collage.objects.forEach((obj) => {
+				// Fetch image info
+				const image = {
+					url: obj.src,
+					placement: {
+						index: idxObject,
+						left: obj.left,
+						top: obj.top,
+						width: obj.width,
+						height: obj.height,
+						scaleX: obj.scaleX,
+						scaleY: obj.scaleY,
+						angle: obj.angle
 					}
+				};
 
-					idxObject++;
-				});
-			}
+				// Fetch elements
+				if (obj.meta?.role === 'element') {
+					image.id = idxElement;
+					elements.push(image);
+					idxElement++;
+				}
 
-			definition = {
-				backgroundColor,
-				background,
-				elements
-			};
+				idxObject++;
+			});
+		}
 
-			// console.log("Canvas object definition", definition);
-		};	
+		definition = {
+			backgroundColor,
+			background,
+			elements
+		};
+	};
 
 	onMount(() => {
 		const wrapper: HTMLElement | null = document.getElementById('canvas-wrapper');
@@ -134,12 +133,12 @@
 		canvas = new fabric.Canvas('collage-canvas', {
 			width: 1920,
 			height: 1080,
-			backgroundColor: FABRIC_BACKGROUND_COLOR
+			backgroundColor: FABRIC_BACKGROUND_COLOR,
+			hoverCursor: 'pointer'
 		});
 
 		if (collage) {
 			canvas.loadFromJSON(collage, () => {
-				// canvas?.renderAll();
 				canvas.setBackgroundColor(FABRIC_BACKGROUND_COLOR, () => {
 					canvas?.renderAll();
 					serializeCanvasHandler();
@@ -176,17 +175,83 @@
 			}
 		};
 
-		const handleObjectSelected = (e) => {
-			console.log('Object selected', e.target);
+		const handleObjectSelected = (obj) => {
+			selectedObject = canvas.getActiveObject();
+			console.log('selectedObject', selectedObject);
+		};
+
+		const handleObjectDeselected = () => {
+			selectedObject = undefined;
+			console.log('selectedObject', selectedObject);
 		};
 
 		wrapper?.addEventListener('keyup', handleKeyUp);
 		window.addEventListener('resize', handleResize);
-		canvas.on('object:selected', handleObjectSelected);
 		canvas.on('object:modified', serializeCanvasHandler);
+		canvas.on('selection:updated', handleObjectSelected);
+		canvas.on('selection:created', handleObjectSelected);
+		canvas.on('selection:cleared', handleObjectDeselected);
 
 		handleResize();
 	});
+
+	const updatedSelectedObjectIntervention = (e) => {
+		const checked = e.srcElement.checked;
+		var obj = canvas.getActiveObject();
+
+		if (obj) {
+			if (!obj.meta) {
+				obj.meta = {};
+			}
+
+			obj.meta['intervention'] = checked;
+		}
+
+		serializeCanvasHandler();
+	};
+
+	const updatedSelectedObjectInteractable = (e) => {
+		const checked = e.srcElement.checked;
+		var obj = canvas.getActiveObject();
+
+		if (obj) {
+			if (!obj.meta) {
+				obj.meta = {};
+			}
+
+			obj.meta['interactable'] = checked;
+		}
+
+		serializeCanvasHandler();
+	};
+
+	const updatedSelectedObjectName = (e) => {
+		var obj = canvas.getActiveObject();
+
+		if (obj) {
+			if (!obj.meta) {
+				obj.meta = {};
+			}
+
+			obj.meta['name'] = e.target.value;
+		}
+
+		serializeCanvasHandler();
+	};
+
+	const updatedSelectedObjectStatement = (e) => {
+		var obj = canvas.getActiveObject();
+
+		if (obj) {
+			if (!obj.meta) {
+				obj.meta = {};
+			}
+
+			obj.meta['statement'] = e.target.value;
+		}
+
+		serializeCanvasHandler();
+	};
 
 	const addBackground = (background) => {
 		const url = `/api/scenarios/${scenario}/background/${background}`;
@@ -205,30 +270,6 @@
 		);
 	};
 
-	// const addCharacter = (character: String) => {
-	// 	const url = `/api/scenarios/${scenario}/character/${character}`;
-
-	// 	fabric.Image.fromURL(
-	// 		url,
-	// 		function (img) {
-	// 			// scale image down, and flip it, before adding it onto canvas
-	// 			img.meta = {
-	// 				image: character,
-	// 				role: 'character'
-	// 			};
-
-	// 			img.scale(FABRIC_SCALE_NEW_OBJECT);
-	// 			img.setControlsVisibility(FABRIC_CONTROL_VISIBILITY);
-	// 			canvas?.add(img);
-	// 			canvas?.setActiveObject(img);
-	// 			canvas?.viewportCenterObject(img);
-	// 			canvas?.renderAll();
-	// 			serializeCanvasHandler();
-	// 		},
-	// 		{ crossOrigin: 'anonymous', perPixelTargetFind: true }
-	// 	);
-	// };
-
 	const addElement = (element) => {
 		const url = `/api/scenarios/${scenario}/element/${element}`;
 		fabric.Image.fromURL(
@@ -236,15 +277,9 @@
 			(img) => {
 				img.meta = {
 					image: element,
-					role: 'element'
+					role: 'element',
+					uuid: uuidv4()
 				};
-
-				// If it was a character, then use 
-				// img.meta = {
-				// 	image: character,
-				// 	role: 'character'
-				// };
-
 
 				// scale image down, and flip it, before adding it onto canvas
 				img.scale(FABRIC_SCALE_NEW_OBJECT);
@@ -263,7 +298,10 @@
 </script>
 
 <div class="container sm">
-	<section class="grid grid-rows-1 md:grid-cols-4 grid-cols-1 gap-2 h-[{canvasSectionHeight}px]" id="collage-wrapper">
+	<section
+		class="grid grid-rows-1 md:grid-cols-4 grid-cols-1 gap-2 h-[{canvasSectionHeight}px]"
+		id="collage-wrapper"
+	>
 		<div class="card variant-ghost-tertiary">
 			<section class="p-4 overflow-auto max-h-[500px]">
 				<Accordion autocollapse class="h-fit">
@@ -281,7 +319,6 @@
 											alt=""
 											src="/api/scenarios/{scenario}/background/{background}"
 										/>
-										<!-- on:dragstart={dragElement} -->
 									</div>
 								{/each}
 							</section>
@@ -311,9 +348,58 @@
 		</div>
 		<div class="card md:col-span-3 variant-ghost-tertiary" id="canvas-wrapper" tabindex="1">
 			<section class="p-4">
-				<!-- on:dragover={allowDrop} on:drop={dropElement} -->
 				<canvas width="1920" height="1080" id="collage-canvas"></canvas>
 			</section>
 		</div>
+		{#if selectedObject}
+			<div class="md:col-span-1"></div>
+			<div class="card md:col-span-3 variant-ghost-tertiary" id="object-controls" tabindex="2">
+				<section class="grid grid-cols-6 gap-2">
+					<div class="col-span-1 p-10">
+						<img src={selectedObject.src} width="75" />
+					</div>					
+					<div class="col-span-5 p-4 space-y-4">
+						{#if includeInterventions}
+						<label class="flex items-center space-x-2">
+							<SlideToggle name="slider-label" 
+							 	size="sm"
+								bind:checked={selectedObject.meta['intervention']}
+								on:change={updatedSelectedObjectIntervention}>
+								Is this element part of the intervention?</SlideToggle>
+						</label>
+						{/if}
+						<label class="flex items-center space-x-2">
+							<SlideToggle name="slider-label" size="sm"
+								bind:checked={selectedObject.meta['interactable']}
+								on:change={updatedSelectedObjectInteractable}
+								>Is this element an interviewable human/non-human character?</SlideToggle>
+						</label>
+						{#if selectedObject.meta['interactable']}						
+							<label class="label space-y-4">
+								<span>What's the name of this character?</span>
+								<input								
+									bind:value={selectedObject.meta['name']}
+									on:change={updatedSelectedObjectName}
+									class="input"
+									title="Name"
+									type="text"
+								/>
+							</label>
+
+							<label class="label">
+								<span>What does this character say, think, feel?</span>
+								<textarea
+									bind:value={selectedObject.meta['statement']}
+									on:change={updatedSelectedObjectStatement}
+									class="textarea"
+									title="Statement"
+									rows="3"
+								/>
+							</label>					
+						{/if}
+					</div>
+				</section>
+			</div>
+		{/if}		
 	</section>
 </div>

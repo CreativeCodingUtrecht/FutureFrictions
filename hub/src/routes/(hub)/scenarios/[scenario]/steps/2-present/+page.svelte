@@ -51,53 +51,10 @@
 
 		</div>
 		<br />		
-		<Collage {scenario} {backgrounds} {elements} {characters} bind:collage={values.collage} bind:definition={values.definition} bind:file={values.file}/>
+		<Collage includeInterventions={false} {backgrounds} {elements} {scenario} bind:collage={values.collage} bind:definition={values.definition} bind:file={values.file}/>
 		<input type="hidden" name="collage" value={stringifiedCollage()} />
 		<input type="hidden" name="definition" value={stringifiedDefinition()} />
 		<input id="file" type="file" name="collageFile" bind:value={values.file} />
-		<br />
-		<div class="space-y-4">
-			<h4 class="h4">Characters</h4>
-			<p>
-				What do you think the characters might say about the friction?
-			</p>
-
-			{#each (values.definition.characters || []) as character, i}
-				<div class="card variant-ghost-tertiary">
-					<!-- <header class="card-header">
-						<img src={character.url} alt={`Character ${i}`} width="100" />
-					</header> -->
-					<section class="grid grid-cols-6 gap-2">
-						<div class="col-span-1 p-10">
-							<img src={character.url} alt={`Character ${i}`} width="75" />
-						</div>
-						<div class="col-span-5 p-4 space-y-4">
-							<label class="label space-y-4">
-								<span>What's the name of this character?</span>
-								<input
-									bind:value={character.name}
-									class="input"
-									title="Name of the actor"
-									type="text"
-									name="actor1name"
-								/>
-							</label>
-
-							<label class="label">
-								<span>What does this character say, think, feel?</span>
-								<textarea
-									bind:value={character.statement}
-									class="textarea"
-									title="Actor statement"
-									rows="3"
-									name="actor1statement"
-								/>
-							</label>
-						</div>
-					</section>
-				</div>
-			{/each}
-		</div>
 
 		<br />
 
