@@ -103,7 +103,13 @@
 						scaleX: obj.scaleX,
 						scaleY: obj.scaleY,
 						angle: obj.angle
-					}
+					},
+					intervention: obj.meta?.intervention,
+					interactable: obj.meta?.interactable,
+					...(obj.meta?.interactable == true ) && { interaction: {
+						name: obj.meta?.name,
+						statement: obj.meta?.statement
+					}}
 				};
 
 				// Fetch elements
