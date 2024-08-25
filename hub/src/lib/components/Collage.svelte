@@ -10,7 +10,7 @@
 	export let collage: any;
 	export let definition: any = {};
 	export let file: File | undefined = undefined;
-	export let includeInterventions: Boolean = false;
+	export let includeFriction: Boolean = false;
 
 	const FABRIC_CONTROL_VISIBILITY = { mtr: true, mb: false, mt: false, ml: false, mr: false };
 	const FABRIC_SCALE_NEW_OBJECT = 0.5;
@@ -104,7 +104,7 @@
 						scaleY: obj.scaleY,
 						angle: obj.angle
 					},
-					...(obj.meta?.intervention == true ) ? { intervention: true } : {intervention: false},
+					...(obj.meta?.friction == true ) ? { friction: true } : {friction: false},
 					...(obj.meta?.interactable == true ) ? { interactable: true,
 						...(obj.meta?.interactable == true ) && { interaction: {
 							name: obj.meta?.name,
@@ -195,6 +195,7 @@
 		wrapper?.addEventListener('keyup', handleKeyUp);
 		window.addEventListener('resize', handleResize);
 		canvas.on('object:modified', serializeCanvasHandler);
+		canvas.on('object:selected', handleObjectSelected);
 		canvas.on('selection:updated', handleObjectSelected);
 		canvas.on('selection:created', handleObjectSelected);
 		canvas.on('selection:cleared', handleObjectDeselected);
@@ -202,7 +203,7 @@
 		handleResize();
 	});
 
-	const updatedSelectedObjectIntervention = (e) => {
+	const updatedSelectedObjectFriction = (e) => {
 		const checked = e.srcElement.checked;
 		var obj = canvas.getActiveObject();
 
@@ -211,7 +212,7 @@
 				obj.meta = {};
 			}
 
-			obj.meta['intervention'] = checked;
+			obj.meta['friction'] = checked;
 		}
 
 		serializeCanvasHandler();
@@ -363,23 +364,23 @@
 			<div class="card md:col-span-3 variant-ghost-tertiary" id="object-controls" tabindex="2">
 				<section class="grid grid-cols-6 gap-2">
 					<div class="col-span-1 p-10">
-						<img src={selectedObject.src} width="75" />
+						<img src={selectedObject._element?.src} />
 					</div>					
 					<div class="col-span-5 p-4 space-y-4">
-						{#if includeInterventions}
+						{#if includeFriction}
 						<label class="flex items-center space-x-2">
 							<SlideToggle name="slider-label" 
 							 	size="sm"
-								bind:checked={selectedObject.meta['intervention']}
-								on:change={updatedSelectedObjectIntervention}>
-								Is this element part of the intervention?</SlideToggle>
+								bind:checked={selectedObject.meta['friction']}
+								on:change={updatedSelectedObjectFriction}>
+								Does this object represent the intervention/catalyst of the future friction?</SlideToggle>
 						</label>
 						{/if}
 						<label class="flex items-center space-x-2">
 							<SlideToggle name="slider-label" size="sm"
 								bind:checked={selectedObject.meta['interactable']}
 								on:change={updatedSelectedObjectInteractable}
-								>Is this element an interviewable human/non-human character?</SlideToggle>
+								>Is this an interviewable human/non-human character?</SlideToggle>
 						</label>
 						{#if selectedObject.meta['interactable']}						
 							<label class="label space-y-4">

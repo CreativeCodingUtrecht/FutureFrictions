@@ -235,7 +235,7 @@
                             "scaleY": 0.2,
                             "angle": 0
                         },
-                        "intervention": false,
+                        "friction": false,
                         "interactable": true,
                         "interaction": {
                             "name": "Tina",
@@ -255,7 +255,7 @@
                             "scaleY": 0.16,
                             "angle": 0
                         },
-                        "intervention": false,
+                        "friction": false,
                         "interactable": true,
                         "interaction": {
                             "name": "Elderly woman",
@@ -275,7 +275,7 @@
                             "scaleY": 0.19,
                             "angle": 0
                         },
-                        "intervention": false,
+                        "friction": false,
                         "interactable": true,
                         "interaction": {
                             "name": "Street artist",
@@ -331,8 +331,7 @@
                             "uuid": "69eaaf89-c855-482d-81e0-9e8fb3e57256",
                             "interactable": true,
                             "name": "Tina",
-                            "statement": "This makes me feel safe. I feel it is like my guardian angel drone. We don't need to ask each other 'are you home safe?' after a night out anymore, because the police know about our whereabouts at all times.",
-                            "intervention": false
+                            "statement": "This makes me feel safe. I feel it is like my guardian angel drone. We don't need to ask each other 'are you home safe?' after a night out anymore, because the police know about our whereabouts at all times."
                         },
                         "_controlsVisibility": {
                             "mtr": true,
@@ -387,7 +386,8 @@
                             "uuid": "0e718abd-0f0b-4c7f-b6ab-75ddaf5df849",
                             "interactable": true,
                             "name": "Elderly woman",
-                            "statement": "I'm old and living by myself, so I am now part of a programme that helps people in need. The government has enrolled me there based on the information they get from this drone. The thing is: I don't really feel I need help. I am doing great!"
+                            "statement": "I'm old and living by myself, so I am now part of a programme that helps people in need. The government has enrolled me there based on the information they get from this drone. The thing is: I don't really feel I need help. I am doing great!",
+                            "friction": false
                         },
                         "_controlsVisibility": {
                             "mtr": true,
@@ -496,7 +496,7 @@
                             "role": "element",
                             "uuid": "23762db2-d5f9-41b0-bc8c-8a14857b114b",
                             "interactable": false,
-                            "intervention": true
+                            "friction": true
                         },
                         "_controlsVisibility": {
                             "mtr": true,
@@ -549,8 +549,7 @@
                             "image": "ipad_guy_31_5_2021_00_48.png",
                             "role": "element",
                             "uuid": "fe455af0-96f9-408d-8592-e08338d97b2a",
-                            "interactable": false,
-                            "intervention": false
+                            "interactable": false
                         },
                         "_controlsVisibility": {
                             "mtr": true,
@@ -603,8 +602,7 @@
                             "image": "ipad_group_31_5_2021_00_48.png",
                             "role": "element",
                             "uuid": "615cbf57-2177-47a5-8b07-16e8c70525f1",
-                            "interactable": false,
-                            "intervention": false
+                            "interactable": false
                         },
                         "_controlsVisibility": {
                             "mtr": true,
@@ -657,8 +655,7 @@
                             "image": "policemen_31_5_2021_01_04.png",
                             "role": "element",
                             "uuid": "c6d9b2b0-7359-4d1a-b84e-6f2d99e7892a",
-                            "interactable": false,
-                            "intervention": false
+                            "interactable": false
                         },
                         "_controlsVisibility": {
                             "mtr": true,
@@ -711,8 +708,7 @@
                             "image": "Billboard option C.png",
                             "role": "element",
                             "uuid": "a4b2158e-81cb-4cfe-b364-f5fadd05d492",
-                            "interactable": false,
-                            "intervention": false
+                            "interactable": false
                         },
                         "_controlsVisibility": {
                             "mtr": true,
@@ -786,7 +782,7 @@
                             "scaleY": 0.2,
                             "angle": 0
                         },
-                        "intervention": false,
+                        "friction": false,
                         "interactable": true,
                         "interaction": {
                             "name": "Tina",
@@ -806,7 +802,7 @@
                             "scaleY": 0.16,
                             "angle": 0
                         },
-                        "intervention": false,
+                        "friction": false,
                         "interactable": true,
                         "interaction": {
                             "name": "Elderly woman",
@@ -826,7 +822,7 @@
                             "scaleY": 0.19,
                             "angle": 0
                         },
-                        "intervention": false,
+                        "friction": false,
                         "interactable": true,
                         "interaction": {
                             "name": "Street artist",
@@ -846,7 +842,7 @@
                             "scaleY": 0.19,
                             "angle": 0
                         },
-                        "intervention": true,
+                        "friction": true,
                         "interactable": false,
                         "id": 3
                     },
@@ -862,7 +858,7 @@
                             "scaleY": 0.18,
                             "angle": 0
                         },
-                        "intervention": false,
+                        "friction": false,
                         "interactable": false,
                         "id": 4
                     },
@@ -878,7 +874,7 @@
                             "scaleY": 0.24,
                             "angle": 0
                         },
-                        "intervention": false,
+                        "friction": false,
                         "interactable": false,
                         "id": 5
                     },
@@ -894,7 +890,7 @@
                             "scaleY": 0.18,
                             "angle": 0
                         },
-                        "intervention": false,
+                        "friction": false,
                         "interactable": false,
                         "id": 6
                     },
@@ -910,7 +906,7 @@
                             "scaleY": 0.5,
                             "angle": 0
                         },
-                        "intervention": false,
+                        "friction": false,
                         "interactable": false,
                         "id": 7
                     }

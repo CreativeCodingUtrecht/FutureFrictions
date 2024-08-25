@@ -61,7 +61,7 @@
 				</ul>								
 			</span>
 			<br />
-			<Collage includeInterventions={true} {scenario} {backgrounds} {elements} bind:collage={values.collage} bind:definition={values.definition} bind:file={values.file} />
+			<Collage includeFriction={true} {scenario} {backgrounds} {elements} bind:collage={values.collage} bind:definition={values.definition} bind:file={values.file} />
 			<input type="hidden" name="collage" value={stringifiedCollage()} />
 			<input type="hidden" name="definition" value={stringifiedDefinition()} />
 			<input id="file" type="file" name="collageFile" bind:value={values.file} />
