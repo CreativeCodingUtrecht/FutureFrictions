@@ -141,7 +141,8 @@
 			width: 1920,
 			height: 1080,
 			backgroundColor: FABRIC_BACKGROUND_COLOR,
-			hoverCursor: 'pointer'
+			hoverCursor: 'pointer',
+			preserveObjectStacking: true
 		});
 
 		if (collage) {
@@ -261,6 +262,28 @@
 		serializeCanvasHandler();
 	};
 
+	const updateSelectedObjectBringToFront = () => {
+		var obj = canvas.getActiveObject();
+
+		if (obj) {
+			canvas?.bringToFront(obj);
+			canvas?.renderAll();
+		}
+
+		serializeCanvasHandler();
+	}
+
+	const updateSelectedObjectBringForward = () => {
+		var obj = canvas.getActiveObject();
+
+		if (obj) {
+			canvas?.bringForward(obj, true);
+			canvas?.renderAll();
+		}
+
+		serializeCanvasHandler();
+	}		
+
 	const addBackground = (background) => {
 		const url = `/api/scenarios/${scenario}/background/${background}`;
 		fabric.Image.fromURL(
@@ -362,11 +385,13 @@
 		{#if selectedObject}
 			<div class="md:col-span-1"></div>
 			<div class="card md:col-span-3 variant-ghost-tertiary" id="object-controls" tabindex="2">
-				<section class="grid grid-cols-6 gap-2">
+				
+				<section class="grid grid-cols-6 gap-2">					
 					<div class="col-span-1 p-10">
 						<img src={selectedObject._element?.src} />
 					</div>					
 					<div class="col-span-5 p-4 space-y-4">
+						<h6 class="h6">Turn this object into a character!</h6>
 						{#if includeFriction}
 						<label class="flex items-center space-x-2">
 							<SlideToggle name="slider-label" 
@@ -405,6 +430,9 @@
 								/>
 							</label>					
 						{/if}
+						<h6 class="h6">If needed, change placement</h6>
+						<a class="btn variant-ghost-primary" on:click={updateSelectedObjectBringToFront}>Bring to front</a>
+						<a class="btn variant-ghost-primary" on:click={updateSelectedObjectBringForward}>Bring foreward</a>
 					</div>
 				</section>
 			</div>
