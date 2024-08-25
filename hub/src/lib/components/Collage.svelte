@@ -430,7 +430,7 @@
 								/>
 							</label>					
 						{/if}
-						<h6 class="h6">If needed, change placement</h6>
+						<h6 class="h6">If needed, bring the object forward in the collage</h6>
 						<a class="btn variant-ghost-primary" on:click={updateSelectedObjectBringToFront}>Bring to front</a>
 						<a class="btn variant-ghost-primary" on:click={updateSelectedObjectBringForward}>Bring foreward</a>
 					</div>
