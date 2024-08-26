@@ -28,7 +28,6 @@ namespace UI
         private List<GameObject> _characters = new();
         private List<GameObject> _elements = new();
         
-        // Canvas is 960 x 540 -> 1920 1080
         private const float XScale = 960f / 1920f;
         private const float YScale = 540f / 1080f;
 
@@ -47,16 +46,17 @@ namespace UI
 
             _scenarioData = scenarioData;
             _currentTimeFrame = timeFrame;
-            
-            if (timeFrame == TimeFrame.Present)
+
+            switch (timeFrame)
             {
-                SpawnCharacters(scenarioData.collage.present.definition.characters);
-                SpawnElements(scenarioData.collage.present.definition.elements);
-            } 
-            else if (timeFrame == TimeFrame.Future)
-            {
-                SpawnCharacters(scenarioData.collage.future.definition.characters);
-                SpawnElements(scenarioData.collage.future.definition.elements);
+                case TimeFrame.Present:
+                    // SpawnCharacters(scenarioData.collage.present.definition.characters);
+                    SpawnElements(scenarioData.collage.present.definition.elements);
+                    break;
+                case TimeFrame.Future:
+                    // SpawnCharacters(scenarioData.collage.future.definition.characters);
+                    SpawnElements(scenarioData.collage.future.definition.elements);
+                    break;
             }
             
             Open();
@@ -101,42 +101,66 @@ namespace UI
             friction.Initialize(_scenarioData);
         }
 
-        private void SpawnCharacters(Character[] characters)
-        {
-            foreach (var character in characters)
-            {
-                var newCharacter = Instantiate(characterUIPrefab, transform);
-                
-                var characterTransform = newCharacter.transform;
-                
-                ((RectTransform) characterTransform).pivot = new Vector2(0.5f, 0.5f);
-                
-                ((RectTransform) characterTransform).rotation = Quaternion.Euler(0, 0, -character.placement.angle);
-
-                ((RectTransform) characterTransform).pivot = new Vector2(0, 1);
-                
-                ((RectTransform) characterTransform).anchoredPosition =
-                    new Vector2(character.placement.left * XScale, -character.placement.top * YScale);
-                
-                ((RectTransform) characterTransform).sizeDelta =
-                    new Vector2((character.placement.width * XScale) * character.placement.scaleX, (character.placement.height * YScale) * character.placement.scaleY);
-
-                newCharacter.Initialize(character, this, dialogScreen, downloadHandler);
-                
-                _characters.Add(newCharacter.gameObject);
-            }
-        }
-
         private void SpawnElements(Element[] elements)
         {
             foreach (var element in elements)
             {
-                var newElement = Instantiate(elementPrefab, transform);
+                if (element.interactable)
+                {
+                    SpawnActor(element);
+                }
+                else
+                {
+                    SpawnElement(element);
+                }
+            }
+        }
+
+        private void SpawnElement(Element element)
+        {
+            var newElement = Instantiate(elementPrefab, transform);
+            
+            downloadHandler.GetImage(element.url, (sprite, error) =>
+            {
+                if (error)
+                {
+                    newElement.gameObject.SetActive(false);
+                }
+                else
+                {
+                    newElement.sprite = sprite;
+                    newElement.gameObject.SetActive(true);
+                }
+            });
+
+            SetPlacement(newElement.transform, element);
+
+            _elements.Add(newElement.gameObject);
+        }
+
+        private void SpawnActor(Element actor)
+        {
+            var newActor = Instantiate(characterUIPrefab, transform);
+
+            SetPlacement(newActor.transform, actor);
+            
+            newActor.Initialize(actor, this, dialogScreen, downloadHandler);
+
+            _characters.Add(newActor.gameObject);
+        }
+
+        private void SpawnFrictionalObjects(Element[] elements)
+        {
+            foreach (var element in elements)
+            {
+                if (!element.friction) continue;
                 
+                var newElement = Instantiate(elementPrefab, transform);
+
                 downloadHandler.GetImage(element.url, (sprite, error) =>
                 {
                     var el = newElement;
-                    
+
                     if (error)
                     {
                         el.gameObject.SetActive(false);
@@ -148,60 +172,26 @@ namespace UI
                     }
                 });
                 
-                var elementTransform = newElement.transform;
-                
-                ((RectTransform) elementTransform).pivot = new Vector2(0.5f, 0.5f);
-                
-                ((RectTransform) elementTransform).rotation = Quaternion.Euler(0, 0, -element.placement.angle);
-                
-                ((RectTransform) elementTransform).pivot = new Vector2(0, 1);
-                
-                ((RectTransform) elementTransform).anchoredPosition =
-                    new Vector2(element.placement.left * XScale, -element.placement.top * YScale);
-                
-                ((RectTransform) elementTransform).sizeDelta =
-                    new Vector2((element.placement.width * XScale) * element.placement.scaleX, (element.placement.height * YScale) * element.placement.scaleY);
-                
+                SetPlacement(newElement.transform, element);
+
                 _elements.Add(newElement.gameObject);
             }
         }
 
-        private void SpawnFrictionalObjects(Element[] elements)
+        private void SetPlacement(Transform elementTransform, Element element)
         {
-            var element = elements[0];
-
-            var newElement = Instantiate(elementPrefab, transform);
-                
-            downloadHandler.GetImage(element.url, (sprite, error) =>
-            {
-                var el = newElement;
-                    
-                if (error)
-                {
-                    el.gameObject.SetActive(false);
-                }
-                else
-                {
-                    el.sprite = sprite;
-                    el.gameObject.SetActive(true);
-                }
-            });
-                
-            var elementTransform = newElement.transform;
-                
             ((RectTransform) elementTransform).pivot = new Vector2(0.5f, 0.5f);
-                
+
             ((RectTransform) elementTransform).rotation = Quaternion.Euler(0, 0, -element.placement.angle);
-                
+
             ((RectTransform) elementTransform).pivot = new Vector2(0, 1);
-                
+
             ((RectTransform) elementTransform).anchoredPosition =
                 new Vector2(element.placement.left * XScale, -element.placement.top * YScale);
-                
+
             ((RectTransform) elementTransform).sizeDelta =
-                new Vector2((element.placement.width * XScale) * element.placement.scaleX, (element.placement.height * YScale) * element.placement.scaleY);
-                
-            _elements.Add(newElement.gameObject);
+                new Vector2((element.placement.width * XScale) * element.placement.scaleX,
+                    (element.placement.height * YScale) * element.placement.scaleY);
         }
         
         private void Clean()

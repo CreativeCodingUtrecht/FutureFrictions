@@ -17,20 +17,20 @@ public class Actor : MonoBehaviour
     private int _actorId;
     private string _currentStateText;
     private Sprite _avatar;
-    private Character _characterData;
+    private Element _elementData;
     
-    public void Initialize(Character characterData, ScenarioScreen scenarioScreen, DialogScreen dialogScreen, DownloadHandler downloadHandler)
+    public void Initialize(Element elementData, ScenarioScreen scenarioScreen, DialogScreen dialogScreen, DownloadHandler downloadHandler)
     {
         _scenarioScreen = scenarioScreen;
         _dialogScreen = dialogScreen;
-        _characterData = characterData;
+        _elementData = elementData;
 
-        _actorId = characterData.id;
-        _currentStateText = _characterData.statement;
+        _actorId = elementData.id;
+        _currentStateText = _elementData.interaction.statement;
 
         if (_avatar == null)
         {
-            downloadHandler.GetImage(characterData.url, (sprite, error) =>
+            downloadHandler.GetImage(elementData.url, (sprite, error) =>
             {
                 if (error || !image) return;
                 
@@ -45,7 +45,7 @@ public class Actor : MonoBehaviour
             gameObject.SetActive(true);
         }
         
-        _currentStateText = characterData.statement;
+        _currentStateText = elementData.interaction.statement;
         marker.SetActive(true);
     }
 
@@ -57,15 +57,15 @@ public class Actor : MonoBehaviour
         
         if (_avatar == null)
         {
-            _downloadHandler.GetImage(_characterData.url, (avatarSprite, hasError) =>
+            _downloadHandler.GetImage(_elementData.url, (avatarSprite, hasError) =>
             {
                 _avatar = avatarSprite;
-                _dialogScreen.InitializeScreen(avatarSprite, _currentStateText, _characterData.name);
+                _dialogScreen.InitializeScreen(avatarSprite, _currentStateText, _elementData.interaction.name);
             });
         }
         else
         {
-            _dialogScreen.InitializeScreen(_avatar, _currentStateText, _characterData.name);
+            _dialogScreen.InitializeScreen(_avatar, _currentStateText, _elementData.interaction.name);
         }
     }
 }

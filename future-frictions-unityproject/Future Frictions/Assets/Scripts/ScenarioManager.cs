@@ -22,9 +22,7 @@ public class ScenarioManager : MonoBehaviour
 
     [SerializeField]
     private TitleScreen titleScreen;
-
-    private ApplicationState _currentState;
-
+    
     private ScenarioData _scenarioData;
     private Scenario _scenario;
 
@@ -48,7 +46,6 @@ public class ScenarioManager : MonoBehaviour
         {
             introScreen.OnClose += OnIntroClosed;
             introScreen.InitializeScreen(sprite, _scenarioData.friction.frictionalstatement);
-            _currentState = ApplicationState.Intro;
         });
     }
 
@@ -77,7 +74,6 @@ public class ScenarioManager : MonoBehaviour
     private void OnIntroClosed()
     {
         scenarioScreen.InitializeScenario(_scenarioData, TimeFrame.Present);
-        _currentState = ApplicationState.BeforeInteractions;
     }
 
     private void OnDestroy()
@@ -87,17 +83,7 @@ public class ScenarioManager : MonoBehaviour
 
     private void ResetScenarios()
     {
-        _currentState = ApplicationState.Intro;
-        
         friction.ResetFriction();
         scenarioScreen.Close();
     }
-}
-
-public enum ApplicationState {
-    Intro,
-    BeforeInteractions,
-    Question,
-    Results,
-    End
 }
