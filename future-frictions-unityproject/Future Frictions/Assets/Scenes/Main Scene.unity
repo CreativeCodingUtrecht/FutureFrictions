@@ -7617,6 +7617,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   downloadHandler: {fileID: 1572234206}
+  scenarioManager: {fileID: 7917555719561631480}
   questionAvatar: {fileID: 1379421711725174989}
   questionText: {fileID: 1379421713103200898}
   answerButton: {fileID: 1379421713112912337}

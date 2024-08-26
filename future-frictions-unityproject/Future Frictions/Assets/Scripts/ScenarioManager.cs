@@ -52,6 +52,11 @@ public class ScenarioManager : MonoBehaviour
         });
     }
 
+    public void PopulateFrictionalObjects()
+    {
+        scenarioScreen.InitializeFrictionalObjects(_scenarioData);
+    }
+    
     public void PopulateTheFuture()
     {
         UpdateBackground(_scenarioData.collage.future.definition.background);

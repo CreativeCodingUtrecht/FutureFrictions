@@ -31,6 +31,15 @@ namespace UI
         // Canvas is 960 x 540 -> 1920 1080
         private const float XScale = 960f / 1920f;
         private const float YScale = 540f / 1080f;
+
+        public void InitializeFrictionalObjects(ScenarioData scenarioData)
+        {
+            Clean();
+            
+            _scenarioData = scenarioData;
+
+            SpawnFrictionalObjects(_scenarioData.collage.future.definition.elements);
+        }
         
         public void InitializeScenario(ScenarioData scenarioData, TimeFrame timeFrame)
         {
@@ -155,6 +164,44 @@ namespace UI
                 
                 _elements.Add(newElement.gameObject);
             }
+        }
+
+        private void SpawnFrictionalObjects(Element[] elements)
+        {
+            var element = elements[0];
+
+            var newElement = Instantiate(elementPrefab, transform);
+                
+            downloadHandler.GetImage(element.url, (sprite, error) =>
+            {
+                var el = newElement;
+                    
+                if (error)
+                {
+                    el.gameObject.SetActive(false);
+                }
+                else
+                {
+                    el.sprite = sprite;
+                    el.gameObject.SetActive(true);
+                }
+            });
+                
+            var elementTransform = newElement.transform;
+                
+            ((RectTransform) elementTransform).pivot = new Vector2(0.5f, 0.5f);
+                
+            ((RectTransform) elementTransform).rotation = Quaternion.Euler(0, 0, -element.placement.angle);
+                
+            ((RectTransform) elementTransform).pivot = new Vector2(0, 1);
+                
+            ((RectTransform) elementTransform).anchoredPosition =
+                new Vector2(element.placement.left * XScale, -element.placement.top * YScale);
+                
+            ((RectTransform) elementTransform).sizeDelta =
+                new Vector2((element.placement.width * XScale) * element.placement.scaleX, (element.placement.height * YScale) * element.placement.scaleY);
+                
+            _elements.Add(newElement.gameObject);
         }
         
         private void Clean()

@@ -7,6 +7,7 @@ public class QuestionScreen : BaseScreen
 {
     [Header("References")]
     [SerializeField] private DownloadHandler downloadHandler;
+    [SerializeField] private ScenarioManager scenarioManager;
     
     [Header("UI Items")]
     [SerializeField] private Image questionAvatar;
@@ -30,9 +31,6 @@ public class QuestionScreen : BaseScreen
             }
         });
 
-        answerButton.interactable = true;
-        answerButton.onClick.AddListener(AnswerQuestion);
-        
         NextButton.Instance.SetInteraction(AnswerQuestion);
         NextButton.Instance.Show();
         
@@ -41,6 +39,8 @@ public class QuestionScreen : BaseScreen
     
     private void AnswerQuestion()
     {
+        scenarioManager.PopulateTheFuture();
+        
         Close();
         NextButton.Instance.Hide();
     }
