@@ -29,6 +29,12 @@
 				name="title"
 				required
 			/>
+			
+			<span class="italic">
+				<br />	
+				In the next steps you will further define and visualise this scenario by formulating a story around it, with a context, plot and characters. 
+			</span>
+			
 		</label>
 
 		<br />

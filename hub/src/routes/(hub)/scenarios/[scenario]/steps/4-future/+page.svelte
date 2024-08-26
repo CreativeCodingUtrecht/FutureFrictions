@@ -5,11 +5,9 @@
 	export let form: ActionData;
 	export let data: PageData;
 
-	const images = data?.images;
 	const scenario = data?.scenario;
 	const backgrounds = data?.backgrounds;
 	const elements = data?.elements;
-	const characters = data?.characters;
 
 	const values = {
 		collage: data?.json.collage?.future?.canvas || data?.json.collage?.present?.canvas || {},
@@ -26,8 +24,11 @@
 	}
 
 	const resetCollage = () => {
+		console.log('Resetting collage');
+		console.log('Before',values.definition)
 		values.collage = data?.json.collage?.present?.canvas || {};
 		values.definition = data?.json?.collage?.present?.definition || {};
+		console.log('After',values.definition)
 	}
 
 	const handleSubmit = async () => {
@@ -58,58 +59,15 @@
 					<li><span>🤔</span><span class="flex-auto">How might that future look like?</span></li>
 					<li><span>🤖</span><span class="flex-auto">What are elements that emerge? Think of new characters, conversations, activities, and interactions.</span></li>
 				</ul>								
-				<!-- <ImageSelector scenario={scenario} images={images} values={values} input="collage" field="collage" upload="collageFile" extraClass="" /> -->
 			</span>
 			<br />
-			<Collage {scenario} {backgrounds} {elements} {characters} bind:collage={values.collage} bind:definition={values.definition} bind:file={values.file} />
+			<Collage includeFriction={true} {scenario} {backgrounds} {elements} bind:collage={values.collage} bind:definition={values.definition} bind:file={values.file} />
 			<input type="hidden" name="collage" value={stringifiedCollage()} />
 			<input type="hidden" name="definition" value={stringifiedDefinition()} />
 			<input id="file" type="file" name="collageFile" bind:value={values.file} />
-			<br />
-			<a class="btn variant-ghost-warning" on:click={resetCollage}>Reset collage</a>			
+			<!-- <br />
+			<a class="btn variant-ghost-warning" on:click={resetCollage}>Reset collage</a>			 -->
 		</div> 
-
-		<div class="space-y-4">
-			<br />
-			<h4 class="h4">Characters</h4>			
-
-			{#each (values.definition.characters || []) as character, i}
-				<div class="card variant-ghost-tertiary">
-					<!-- <header class="card-header">
-						<img src={character.url} alt={`Character ${i}`} width="100" />
-					</header> -->
-					<section class="grid grid-cols-6 gap-2">
-						<div class="col-span-1 p-10">
-							<img src={character.url} alt={`Character ${i}`} width="75" />
-						</div>
-						<div class="col-span-5 p-4 space-y-4">
-							<label class="label space-y-4">
-								<span>What's the name of this character?</span>
-								<input
-									bind:value={character.name}
-									class="input"
-									title="Name of the actor"
-									type="text"
-									name="actor1name"
-								/>
-							</label>
-
-							<label class="label">
-								<span>What does this character say, think, feel?</span>
-								<textarea
-									bind:value={character.statement}
-									class="textarea"
-									title="Actor statement"
-									rows="3"
-									name="actor1statement"
-								/>
-							</label>
-						</div>
-					</section>
-				</div>
-			{/each}
-
-		</div>
 
 		<br />
 		<button class="btn variant-filled-primary">Save</button>
