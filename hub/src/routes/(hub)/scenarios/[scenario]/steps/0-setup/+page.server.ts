@@ -36,7 +36,9 @@ const save = async (params, request) => {
 
     const data = await request.formData();
     const title = data.get('title')
+    const author = data.get('author')
 
     json.name = title;
+    json.author = author;
     scenarios.save(scenario, json);
 }
