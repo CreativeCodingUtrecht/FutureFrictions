@@ -33,14 +33,14 @@ public class TitleScreen : BaseScreen
 
         titleText.text = _scenarioData.name;
 
-        if (!string.IsNullOrEmpty(_scenarioData.provocativestatement))
-        {
-            frictionalStatementText.text = _scenarioData.provocativestatement;
-        }
-        else
-        {
-            frictionalStatementText.transform.parent.gameObject.SetActive(false);
-        }
+        // if (!string.IsNullOrEmpty(_scenarioData.provocativestatement))
+        // {
+        //     frictionalStatementText.text = _scenarioData.provocativestatement;
+        // }
+        // else
+        // {
+        frictionalStatementText.transform.parent.gameObject.SetActive(false);
+        // }
         
         startButton.onClick.AddListener(Close);
 
