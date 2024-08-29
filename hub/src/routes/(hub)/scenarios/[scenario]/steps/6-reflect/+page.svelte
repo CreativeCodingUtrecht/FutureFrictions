@@ -38,6 +38,7 @@
 				title="Provocative Statement"
 				rows="4"
 				name="provocativestatement"
+				maxlength="2048"
 			/>
 		</label>
 

@@ -30,6 +30,7 @@
 					title="What if question"
 					rows="4"
 					name="whatif"
+					maxlength="2048"
 				/>
 				<br />
 				<i>For example: what if local municipalities

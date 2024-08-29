@@ -33,6 +33,7 @@
 					title="Emerging friction"
 					rows="4"
 					name="emergingfrictions"
+					maxlength="2048"
 				/>
 			</label> 
 		</div>

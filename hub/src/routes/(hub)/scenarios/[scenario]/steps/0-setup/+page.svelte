@@ -29,6 +29,7 @@
 				type="text"
 				name="author"
 				required
+				maxlength="255"
 			/>
 		</label>
 		<br />
@@ -43,6 +44,7 @@
 				type="text"
 				name="title"
 				required
+				maxlength="255"
 			/>
 		</label>		
 
