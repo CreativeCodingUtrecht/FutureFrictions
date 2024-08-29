@@ -419,8 +419,8 @@
 								/>
 							</label>
 
-							<label class="label">
-								<span>What does this character say, think, feel?</span>
+							<label class="label space-y-4">
+								<span>What do you think this character might say about the situation?</span>
 								<textarea
 									bind:value={selectedObject.meta['statement']}
 									on:change={updatedSelectedObjectStatement}
@@ -430,7 +430,7 @@
 								/>
 							</label>					
 						{/if}
-						<h6 class="h6">If needed, bring the object forward in the collage</h6>
+						<h6 class="h6">Use the following buttons the bring the object forward in the collage</h6>
 						<a class="btn variant-ghost-primary" on:click={updateSelectedObjectBringToFront}>Bring to front</a>
 						<a class="btn variant-ghost-primary" on:click={updateSelectedObjectBringForward}>Bring foreward</a>
 					</div>

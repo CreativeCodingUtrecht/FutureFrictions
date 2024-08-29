@@ -20,7 +20,7 @@
 
 		<label class="label space-y-4">
 			<span>		
-				What name can I call you?  
+				As the creator(s) of this scenario, what can I call you?
 			</span>
 			<input
 				value={values.author}
@@ -29,6 +29,7 @@
 				type="text"
 				name="author"
 				required
+				maxlength="255"
 			/>
 		</label>
 		<br />
@@ -43,14 +44,16 @@
 				type="text"
 				name="title"
 				required
+				maxlength="255"
 			/>
 		</label>		
 
 		<br />
 
 		<span class="italic">
-			<br />	
-			In the next steps you will further define and visualise this scenario by formulating a story around it, with a context, plot and characters. 
+			<p>	
+				In the next steps you will further define and visualise this scenario by formulating a story around it, with a context, plot and characters. 
+			</p>
 		</span>
 
 		<br />

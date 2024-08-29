@@ -8,8 +8,6 @@
 
 	const scenario = data.scenario;
 
-	const url = `${FF_WEBGL_URL}?scenario=${scenario}`;
-
 	const values = {
 		provocativestatement : form?.provocativestatement || data?.json.provocativestatement || ''
 	};
@@ -17,7 +15,7 @@
 
 <div>
 	<form method="POST" action="?/save">
-		<h4 class="h4">Let's see the outcome of our future!</h4>				
+		<h4 class="h4">Now, let's see the outcome of our future!</h4>				
 		<br />
 		<p>
 			Press the <b>Explore</b> button to see the outcome of the future and a sequence of what you have created.
@@ -40,6 +38,7 @@
 				title="Provocative Statement"
 				rows="4"
 				name="provocativestatement"
+				maxlength="2048"
 			/>
 		</label>
 

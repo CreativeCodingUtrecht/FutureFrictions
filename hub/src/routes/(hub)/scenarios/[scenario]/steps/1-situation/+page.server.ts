@@ -22,7 +22,7 @@ export const actions = {
     },
     next: async ({params, request}) => {
         save(params, request);
-        redirect(303, `/scenarios/${params.scenario}/steps/2-present`);
+        redirect(303, `/scenarios/${params.scenario}/steps/2-collage`);
     },
     previous: async ({params, request}) => {
         save(params, request);
@@ -31,7 +31,6 @@ export const actions = {
 } satisfies Actions;
 
 const save = async (params, request) => {
-    console.log("Saving step 1")
     const scenario = params.scenario;
     const json = scenarios.json(scenario);
 

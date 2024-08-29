@@ -49,7 +49,7 @@
 			</form>
 			<article class="space-y-5">
 				{#if frictionalstatement}
-					<h5 class="h5">Frictional statement</h5>
+					<h5 class="h5">Situation</h5>
 					<p>
 						{frictionalstatement}
 					</p>

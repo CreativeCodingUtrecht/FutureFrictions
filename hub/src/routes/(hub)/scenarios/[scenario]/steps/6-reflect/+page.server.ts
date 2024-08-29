@@ -19,29 +19,28 @@ export const actions = {
     save: async ({params, request}) => {
         return save(params, request);
     },
-    next: async ({params, request}) => {
+    complete: async ({params, request}) => {
         save(params, request);
-        redirect(303, `/scenarios/${params.scenario}/steps/4-future`);
+        redirect(303, `/scenarios/${params.scenario}`);
     },
     previous: async ({params, request}) => {
         save(params, request);
-        redirect(303, `/scenarios/${params.scenario}/steps/2-present`);
+        redirect(303, `/scenarios/${params.scenario}/steps/5-future`);
     },
 } satisfies Actions;
 
 const save = async (params, request) => {
-    console.log("Saving step 3")
     const scenario = params.scenario;
     const json = scenarios.json(scenario);
 
     const data = await request.formData();
 
-    if (!json.whatif) {
-        json.whatif = {};
-    }
-
-    const whatif = data.get('whatif')  
-    json.whatif.question = whatif;
+    const provocativestatement = data.get('provocativestatement')
+    json.provocativestatement = provocativestatement;
 
     scenarios.save(scenario, json);
+
+    return {
+        provocativestatement
+    }
 }

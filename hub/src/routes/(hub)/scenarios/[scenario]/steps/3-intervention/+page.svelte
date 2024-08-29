@@ -1,29 +1,26 @@
 <script lang="ts">
 	import type { PageData, ActionData } from './$types';
-	import ImageSelector from '$lib/components/ImageSelector.svelte';
+
 	export let form: ActionData;
 	export let data: PageData;
-
-	const images = data?.images;
-	const scenario = data?.scenario;
-
+	
 	const values = {
-		whatif: form?.whatif || data?.json.whatif?.question || '',
-		avatar: form?.avatar || data?.json.whatif?.avatar || '',
+		whatif: form?.whatif || data?.json.whatif?.question || ''
 	};
 </script>
 
 <div>
 	<form method="POST" action="?/save" enctype="multipart/form-data">
 		<div class="space-y-4">
-			<h4 class="h4">What if .. </h4>			
+			<h4 class="h4">Intervention / catalyst</h4>			
 			<label class="label space-y-4">
 				<p>
 					<span>
-						Think of a near future (10 years for now) and transform your thought-provoking friction
-						into a <b>What If question</b>. To formulate it, consider the friction in its context, and the
-						relationship with the characters you defined. (for example: what if local municipalities
-						allocate robots in each neighborhood to help reduce street litter?) .
+						Think of an intervention / catalyst that will change the initial situation.
+						<!-- Be this catalyst and choose an image that illustrates it. -->
+						Think of a thought-provoking <b>what if?</b> question or statement that describes how the catalyst 
+						might change the world. You may also think about who might introduce this intervention to resolve 
+						the situation you defined earlier. 
 					</span>
 				</p>
 
@@ -33,8 +30,13 @@
 					title="What if question"
 					rows="4"
 					name="whatif"
+					maxlength="2048"
 				/>
 				<br />
+				<i>For example: what if local municipalities
+				allocate robots in each neighborhood to help reduce street litter?</i>
+				<br />
+
 			</label>
 
 		</div>
