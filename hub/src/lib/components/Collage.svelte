@@ -398,7 +398,7 @@
 							 	size="sm"
 								bind:checked={selectedObject.meta['friction']}
 								on:change={updatedSelectedObjectFriction}>
-								Does this object represent the intervention/catalyst of the future friction?</SlideToggle>
+								Does this object represent the intervention / catalyst of these future frictions?</SlideToggle>
 						</label>
 						{/if}
 						<label class="flex items-center space-x-2">

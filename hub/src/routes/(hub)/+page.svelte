@@ -19,7 +19,7 @@
 	<div class="card card-hover p-4 space-y-4">
 		<h4 class="h4">Create your own scenario</h4>
 		<p>
-			Start exploring a new frictional statement by <b>creating a new scenario</b>,
+			Start exploring a new situation by <b>creating a new scenario</b>,
 			or by opening and <b>duplicating an existing scenario</b> to experiment with different outcomes.
 		</p>
 		<form method="POST" action="?/create">
@@ -39,7 +39,7 @@
 		<header>
 			<a href="/scenarios/{scenario}">
 			<img
-                src={data.scenarios[scenario].collage?.present?.url || ''}
+                src={data.scenarios[scenario].collage?.future?.url || ''}
                 />
 			</a>
 		</header>
