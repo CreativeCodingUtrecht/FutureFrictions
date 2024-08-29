@@ -19,7 +19,7 @@ public class QuestionScreen : BaseScreen
     {
         questionText.text = scenarioData.whatIf.question;
         
-        downloadHandler.GetImage(scenarioData.friction.avatar, (avatarSprite, hasError) =>
+        downloadHandler.GetImage(scenarioData.friction.avatarSrc, (avatarSprite, hasError) =>
         {
             if (avatarSprite == null)
             {

@@ -63,6 +63,7 @@ public class DataManager : MonoBehaviour
 public class ScenarioData
 {
     public string name;
+    public string author;
     public FrictionData friction;
     public Collage collage;
     public WhatIf whatIf;
@@ -74,6 +75,7 @@ public class FrictionData
 {
     public string frictionalstatement;
     public string avatar;
+    public string avatarSrc;
     public string emergingfrictions;
 }
 

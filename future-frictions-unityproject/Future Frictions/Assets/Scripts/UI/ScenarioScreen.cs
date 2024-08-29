@@ -13,6 +13,9 @@ namespace UI
         private DialogScreen dialogScreen;
 
         [SerializeField]
+        private EndScreen endScreen;
+        
+        [SerializeField]
         private Friction friction;
         
         [SerializeField] 
@@ -89,9 +92,10 @@ namespace UI
                 }
                 else
                 {
-                    // END   
                     NextButton.Instance.Hide();
-                    Debug.Log("The game is done!");
+
+                    endScreen.Initialize(_scenarioData);
+                    // Debug.Log("The game is done!");
                 }
             }
         }

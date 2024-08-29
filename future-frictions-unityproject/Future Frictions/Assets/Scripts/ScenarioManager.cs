@@ -42,7 +42,7 @@ public class ScenarioManager : MonoBehaviour
         UpdateBackground(_scenarioData.collage.present.definition.background);
         
         // Set the friction on the intro screen with the avatar
-        downloadHandler.GetImage(_scenarioData.friction.avatar, (sprite, hasError) =>
+        downloadHandler.GetImage(_scenarioData.friction.avatarSrc, (sprite, hasError) =>
         {
             introScreen.OnClose += OnIntroClosed;
             introScreen.InitializeScreen(sprite, _scenarioData.friction.frictionalstatement);
