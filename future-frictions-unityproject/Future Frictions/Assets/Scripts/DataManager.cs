@@ -74,6 +74,7 @@ public class FrictionData
 {
     public string frictionalstatement;
     public string avatar;
+    public string avatarSrc;
     public string emergingfrictions;
 }
 
