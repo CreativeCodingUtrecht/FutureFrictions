@@ -28,10 +28,12 @@ public class DownloadHandler : MonoBehaviour
         {
             if (!url.StartsWith("/api/scenarios"))
             {
-                url = Path.Join("api/scenarios", $"{_scenarioName}", url);
+                url = Path.Combine("api/scenarios", $"{_scenarioName}", url);
             }
+
+            url = url.TrimStart(Path.DirectorySeparatorChar);
             
-            var uri = Path.Join(endpoint, url);
+            var uri = Path.Combine(endpoint, url);
             StartCoroutine(GetImageRequest(uri, onComplete));
         }
     }

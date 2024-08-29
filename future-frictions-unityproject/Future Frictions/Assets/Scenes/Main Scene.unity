@@ -4544,7 +4544,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1e5ea72d11ae4ec2ac67f135c295ec0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  endpoint: http://localhost:5173
+  endpoint: /
 --- !u!114 &1572234207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4557,7 +4557,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abe2918751cb4cffbab6fe9bcdf01382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultScenarioName: drone-database
+  defaultScenarioName: drone-upload
   downloadHandler: {fileID: 1572234206}
 --- !u!114 &1572234208
 MonoBehaviour:
