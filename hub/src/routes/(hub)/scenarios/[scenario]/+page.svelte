@@ -11,6 +11,7 @@
 	const json = data.json;
 
 	const name = json.name || '';
+	const author = json.author || '';
 	const frictionalstatement = json.friction?.frictionalstatement;
 	const emergingfrictions = json.friction?.emergingfrictions;
 	const whatif = json.whatif?.question;
@@ -40,6 +41,7 @@
 		</header>
 		<div class="p-4 space-y-4">
 			<h3 class="h3" data-toc-ignore>{name}</h3>
+			<span class="text-xs">Created by <b>{author}</b></span>
 			<form method="POST" action="?/remove">
 				<Play {scenario} />
 				<a href="/scenarios/{scenario}/steps/0-setup" class="btn variant-ghost-primary">Edit</a>

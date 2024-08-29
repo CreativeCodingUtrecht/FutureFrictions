@@ -1,10 +1,8 @@
 <script lang="ts">
 	import type { ModalSettings, ModalStore } from '@skeletonlabs/skeleton';
 	import { getModalStore } from '@skeletonlabs/skeleton';
-    import { page } from '$app/stores'
 
-	import { FF_WEBGL_PATH, FF_WEBGL_URL } from '$lib/constants';
-	import { onMount } from 'svelte';
+	import { FF_WEBGL_URL } from '$lib/constants';
 
 	export let scenario: string;
 	export let button: boolean = true;
@@ -21,16 +19,6 @@
             `
 		};
 		modalStore.trigger(modal);
-		// modal.onOpen = () => {
-		// 	console.log('Modal opened');
-		// 	var frame = document.getElementById("iframe"); 
-		// 	console.log("Frame:", frame)
-		// 	frame.onload = function() {
-		// 		frame.style.height = frame.contentWindow.document.body.scrollHeight + 'px'; 
-		// 		frame.style.width = frame.contentWindow.document.body.scrollWidth+'px'; 						
-		// 	}
-
-		// };
     }
 </script>
 

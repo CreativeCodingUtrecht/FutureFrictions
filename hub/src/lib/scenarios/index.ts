@@ -207,7 +207,6 @@ export default {
 	backgrounds, 
 	elements,
 	characters,
-	// usedImages,
     addImage,
 	getImage,
 	getBackgroundImage,
