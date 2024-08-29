@@ -12,8 +12,7 @@
 
 	const values = {
 		collage: data?.json?.collage?.present?.canvas || {},
-		definition: data?.json?.collage?.present?.definition || {},
-		emergingfrictions: form?.emergingfrictions || data?.json.friction?.emergingfrictions || '',
+		definition: data?.json?.collage?.present?.definition || {},		
 		file: undefined
 	};
 
@@ -42,40 +41,21 @@
 		<div class="">
 			<h4 class="h4">Collage</h4>
 			<br />
-			<span
-				>Explore this frictional statement further. In what context do you think it is most useful
-				to explore the friction? Think of places and/or activities.<br />
-				Also think of 3 relevant human/non-human 'characters' in the story that may be affected or play a
-				role in connection to this friction. 
+			<span>
+				Explore this situation further by visualising a context and defining main characters. 
+				When creating the context, think of places and/or activities.
+				Think of at least 2 relevant human/non-human 'characters' in the story that may be affected or play a
+				role in connection to the situation you are exploring.
+				You may choose and add to the context also other secondary characters and ambient elements that allow you to depict a more complete picture. 
 			</span>			
 
 		</div>
-		<br />		
+		<br />
+				
 		<Collage includeFriction={false} {backgrounds} {elements} {scenario} bind:collage={values.collage} bind:definition={values.definition} bind:file={values.file}/>
 		<input type="hidden" name="collage" value={stringifiedCollage()} />
 		<input type="hidden" name="definition" value={stringifiedDefinition()} />
 		<input id="file" type="file" name="collageFile" bind:value={values.file} />
-
-		<br />
-
-		<label class="label space-y-4">
-			<h4 class="h4">Emerging frictions</h4>
-			<p>
-				<span>
-					After expressing the background and characters related to the initial statement, do you
-					see any emerging frictions? Select the most thought-provoking friction you want to
-					explore in the next steps.
-				</span>
-			</p>
-
-			<textarea
-				value={values.emergingfrictions}
-				class="textarea"
-				title="Emerging friction"
-				rows="4"
-				name="emergingfrictions"
-			/>
-		</label>
 
 		<br />
 		<button class="btn variant-filled-primary">Save</button>

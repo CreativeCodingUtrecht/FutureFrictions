@@ -21,11 +21,11 @@ export const actions = {
     },
     next: async ({params, request}) => {
         save(params, request);
-        redirect(303, `/scenarios/${params.scenario}/steps/1-situation`);
+        redirect(303, `/scenarios/${params.scenario}/steps/4-frictions`);
     },
     previous: async ({params, request}) => {
         save(params, request);
-        redirect(303, `/scenarios/${params.scenario}`);
+        redirect(303, `/scenarios/${params.scenario}/steps/2-collage`);
     },
 } satisfies Actions;
 
@@ -34,10 +34,17 @@ const save = async (params, request) => {
     const json = scenarios.json(scenario);
 
     const data = await request.formData();
-    const title = data.get('title')
-    const author = data.get('author')
 
-    json.name = title;
-    json.author = author;
+    if (!json.whatif) {
+        json.whatif = {};
+    }
+
+    const whatif = data.get('whatif')  
+    json.whatif.question = whatif;
+
     scenarios.save(scenario, json);
+
+    return {
+        whatif
+    }    
 }

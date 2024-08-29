@@ -1,6 +1,7 @@
 import type { Actions, PageServerLoad } from './$types';
 import scenarios from '$lib/scenarios';
 import { redirect } from '@sveltejs/kit';
+import { backIn } from 'svelte/easing';
 
 export const load: PageServerLoad = ({ params }) => {
 
@@ -28,11 +29,11 @@ export const actions = {
     },
     next: async ({params, request}) => {
         save(params, request);
-        redirect(303, `/scenarios/${params.scenario}/steps/3-whatif`);
+        redirect(303, `/scenarios/${params.scenario}/steps/6-reflect`);
     },
     previous: async ({params, request}) => {
         save(params, request);
-        redirect(303, `/scenarios/${params.scenario}/steps/1-situation`);
+        redirect(303, `/scenarios/${params.scenario}/steps/4-frictions`);
     },
 } satisfies Actions;
 
@@ -47,56 +48,44 @@ const saveImage = async (scenario, data, name) => {
 }
 
 const save = async (params, request) => {
-    console.log("Saving step 2")
-
     const scenario = params.scenario;
     const json = scenarios.json(scenario);
+
     const data = await request.formData();
-        
+    
     // Collage (fabric.js)
     const collagejson = data.get('collage')
     const collage = JSON.parse(collagejson);
-
     if (!json.collage) {
         json.collage = {}
     }
-    if (!json.collage.present) {
-        json.collage.present = {}
+    if (!json.collage.future) {
+        json.collage.future = {}
     }
-    json.collage.present.canvas = collage;
+    json.collage.future.canvas = collage;
 
     // Definition of the collage used for visualisations
     const definitionjson = data.get('definition');
     const definition = JSON.parse(definitionjson);
-    
-    json.collage.present.definition = definition;
+    json.collage.future.definition = definition;
 
-    if (!json.friction) {
-        json.friction = {}
-    }
-
-    // Emerging friction
-    const emergingfrictions = data.get('emergingfrictions')
-    json.friction.emergingfrictions = emergingfrictions;
-    
     // Collage PNG
     const collageFile = data.get('collageFile');
     
     console.log("CollageFile:", collageFile.name, collageFile.type);
 
     if (collageFile.name && collageFile.name.length > 0 && collageFile?.name !== "undefined") {
-        const filename = `${scenarios.SCENARIOROOT}/${scenario}/collage/present.png`;  
-        console.log("Saving collage PNG as", filename)                
+        const filename = `${scenarios.SCENARIOROOT}/${scenario}/collage/future.png`;  
+        console.log("Saving collage PNG as", filename)        
         const buffer = Buffer.from(await collageFile?.arrayBuffer());
         scenarios.addImage(scenario, filename, buffer);
-        json.collage.present.url = `/api/scenarios/${scenario}/collage/present.png`;
+        json.collage.future.url = `/api/scenarios/${scenario}/collage/future.png`;
     }
 
     scenarios.save(scenario, json);
 
     return {
         collage,
-        definition,
-        emergingfrictions
+        definition
     }
 }
