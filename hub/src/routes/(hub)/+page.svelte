@@ -43,7 +43,7 @@
 			</a>
 		</header>
 		<div class="p-4 space-y-4">
-			<h4 class="h4" data-toc-ignore>{data.scenarios[scenario].name} xx</h4>
+			<h4 class="h4" data-toc-ignore>{data.scenarios[scenario].name}</h4>
 			<span class="text-xs">Created by <b>{data.scenarios[scenario].author}</b></span>
 			<article>
 				<p>
