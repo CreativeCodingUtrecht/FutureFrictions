@@ -37,7 +37,7 @@
 <div class="w-full text-token grid grid-cols-1 md:grid-cols-1 gap-4">
 	<div class="card overflow-hidden">
 		<header>
-			<img src={future} />
+			<img src={future || present} />
 		</header>
 		<div class="p-4 space-y-4">
 			<h3 class="h3" data-toc-ignore>{name}</h3>

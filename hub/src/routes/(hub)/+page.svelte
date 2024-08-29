@@ -38,7 +38,7 @@
 		<header>
 			<a href="/scenarios/{scenario}">
 			<img
-                src={data.scenarios[scenario].collage?.future?.url || ''}
+                src={data.scenarios[scenario].collage?.future?.url || data.scenarios[scenario].collage?.present?.url || ''}
                 />
 			</a>
 		</header>
