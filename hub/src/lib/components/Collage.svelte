@@ -335,7 +335,7 @@
 	>
 		<div class="card variant-ghost-tertiary">
 			<section class="p-4 overflow-auto max-h-[500px]">
-				<Accordion autocollapse class="h-fit">
+				<Accordion class="h-fit">
 					<AccordionItem open>
 						<svelte:fragment slot="lead">🚞</svelte:fragment>
 						<svelte:fragment slot="summary">Backgrounds</svelte:fragment>
@@ -355,7 +355,7 @@
 							</section>
 						</svelte:fragment>
 					</AccordionItem>
-					<AccordionItem>
+					<AccordionItem open>
 						<svelte:fragment slot="lead">🌳</svelte:fragment>
 						<svelte:fragment slot="summary">Elements</svelte:fragment>
 						<svelte:fragment slot="content">
@@ -398,7 +398,7 @@
 							 	size="sm"
 								bind:checked={selectedObject.meta['friction']}
 								on:change={updatedSelectedObjectFriction}>
-								Does this object represent the intervention/catalyst of the future friction?</SlideToggle>
+								Does this object represent the intervention / catalyst of these future frictions?</SlideToggle>
 						</label>
 						{/if}
 						<label class="flex items-center space-x-2">
