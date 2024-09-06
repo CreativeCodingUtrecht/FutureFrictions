@@ -56,16 +56,16 @@
 						{frictionalstatement}
 					</p>
 				{/if}
-				{#if emergingfrictions}
-					<h5 class="h5">Emerging frictions</h5>
-					<p>
-						{emergingfrictions}
-					</p>
-				{/if}
 				{#if whatif}
 					<h5 class="h5">What If ..</h5>
 					<p>
 						{whatif}
+					</p>
+				{/if}
+				{#if emergingfrictions}
+					<h5 class="h5">Emerging frictions</h5>
+					<p>
+						{emergingfrictions}
 					</p>
 				{/if}
 				{#if provocativestatement}
