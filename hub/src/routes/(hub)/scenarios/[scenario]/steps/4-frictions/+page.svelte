@@ -20,10 +20,10 @@
 			<label class="label space-y-4">
 				<p>
 					<span>
-						Contextualise the catalyst and the changes it introduces. 
-						Think about changes to the background and characters related to the initial statement. 
-						Do you see any emerging frictions? 
-						Describe the most thought-provoking friction you want to visualise in the next step.
+						Contextualise the intervention and the changes it introduces to your scenario. 
+						Brainstorm about changes to the context (place/neighbourhood) and characters you visualised earlier. 
+						Can you imagine any issues that might arise?
+						Describe the most thought-provoking issue/friction you want to visualise in the next step.
 					</span>
 				</p>
 	

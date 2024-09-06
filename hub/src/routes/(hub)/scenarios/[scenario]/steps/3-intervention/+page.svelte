@@ -12,13 +12,14 @@
 <div>
 	<form method="POST" action="?/save" enctype="multipart/form-data">
 		<div class="space-y-4">
-			<h4 class="h4">Intervention / catalyst</h4>			
+			<h4 class="h4">Intervention</h4>			
 			<label class="label space-y-4">
 				<p>
 					<span>
-						Think of an intervention / catalyst that will change the initial situation.
-						<!-- Be this catalyst and choose an image that illustrates it. -->
-						Think of a thought-provoking <b>what if?</b> question or statement that describes how the catalyst 
+						Think of an intervention that will change the initial situation.
+						This could be an actual intervention you are aware of or a speculative/imaginative one.
+						<br /><br />
+						Think of a thought-provoking <b>what if?</b> question or statement that describes how this intervention 
 						might change the world. You may also think about who might introduce this intervention to resolve 
 						the situation you defined earlier. 
 					</span>
@@ -33,8 +34,8 @@
 					maxlength="2048"
 				/>
 				<br />
-				<i>For example: what if local municipalities
-				allocate robots in each neighborhood to help reduce street litter?</i>
+				<i>For example: "What if local municipalities
+				allocate robots in each neighborhood to help reduce street litter?"</i>
 				<br />
 
 			</label>

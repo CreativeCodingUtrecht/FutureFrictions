@@ -41,14 +41,17 @@
 		<div class="">
 			<h4 class="h4">Collage</h4>
 			<br />
-			<span>
-				Explore this situation further by visualising a context and defining main characters. 
-				When creating the context, think of places and/or activities.
-				Think of at least 2 relevant human/non-human 'characters' in the story that may be affected or play a
-				role in connection to the situation you are exploring.
-				You may choose and add to the context also other secondary characters and ambient elements that allow you to depict a more complete picture. 
-			</span>			
-
+			<p>
+				Explore this situation further by visualising a context and defining main characters. <br />
+			</p>
+			<br />
+			<ul class="list">
+				<li><span>🏞️</span><span class="flex-auto">When creating the context, think of places and/or activities.</span></li>
+				<li><span>👭</span><span class="flex-auto">Think of at least 2 relevant human/non-human 'characters' in the story that may be affected or play a
+					role in connection to the situation you are exploring.</span></li>
+				<li><span>🏕️</span><span class="flex-auto">You may choose and add to the context also other secondary characters and ambient elements that allow you to depict a more complete picture.</span></li>
+			</ul>
+			
 		</div>
 		<br />
 				

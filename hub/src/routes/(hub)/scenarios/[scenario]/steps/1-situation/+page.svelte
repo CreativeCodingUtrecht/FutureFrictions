@@ -21,7 +21,7 @@
 			<label class="label space-y-4">
 				<p>
 					<span>
-						Fill out this text box with a description of the situation you would like to explore further through your scenario.
+						Fill out this text box with a description of a problematic situation you would like to explore further through your scenario.
 						<!-- Feel free to copy an example from this list, or come up with yours. -->
 					</span>
 				</p>
