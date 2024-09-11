@@ -7,6 +7,6 @@ Mount point k8s => /app/data/
 
 
 production:
-docker build --platform linux/amd64 -t registry.gitlab.com/katpatat/future-frictions:hub-v1.0 .
+docker build --platform linux/amd64 -t registry.gitlab.com/katpatat/future-frictions:hub-v1.0.1 .
 
-docker push registry.gitlab.com/katpatat/future-frictions:hub-v1.0
+docker push registry.gitlab.com/katpatat/future-frictions:hub-v1.0.1
