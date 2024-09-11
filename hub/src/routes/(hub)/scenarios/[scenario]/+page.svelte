@@ -11,6 +11,7 @@
 	const json = data.json;
 
 	const name = json.name || '';
+	const author = json.author || '';
 	const frictionalstatement = json.friction?.frictionalstatement;
 	const emergingfrictions = json.friction?.emergingfrictions;
 	const whatif = json.whatif?.question;
@@ -36,10 +37,11 @@
 <div class="w-full text-token grid grid-cols-1 md:grid-cols-1 gap-4">
 	<div class="card overflow-hidden">
 		<header>
-			<img src={present} />
+			<img src={future || present} />
 		</header>
 		<div class="p-4 space-y-4">
 			<h3 class="h3" data-toc-ignore>{name}</h3>
+			<span class="text-xs">Created by <b>{author}</b></span>
 			<form method="POST" action="?/remove">
 				<Play {scenario} />
 				<a href="/scenarios/{scenario}/steps/0-setup" class="btn variant-ghost-primary">Edit</a>
@@ -49,21 +51,21 @@
 			</form>
 			<article class="space-y-5">
 				{#if frictionalstatement}
-					<h5 class="h5">Frictional statement</h5>
+					<h5 class="h5">Situation</h5>
 					<p>
 						{frictionalstatement}
-					</p>
-				{/if}
-				{#if emergingfrictions}
-					<h5 class="h5">Emerging frictions</h5>
-					<p>
-						{emergingfrictions}
 					</p>
 				{/if}
 				{#if whatif}
 					<h5 class="h5">What If ..</h5>
 					<p>
 						{whatif}
+					</p>
+				{/if}
+				{#if emergingfrictions}
+					<h5 class="h5">Emerging frictions</h5>
+					<p>
+						{emergingfrictions}
 					</p>
 				{/if}
 				{#if provocativestatement}

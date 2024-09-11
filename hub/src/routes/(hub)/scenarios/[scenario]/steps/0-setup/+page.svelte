@@ -5,7 +5,8 @@
 	export let data: PageData;
 
 	const values = {
-		title : form?.title || data?.json.name || ""
+		title : form?.title || data?.json.name || "",
+		author : form?.author || data?.json.author || ""
 	}
 </script>
 
@@ -14,11 +15,26 @@
 		method="POST"
 		action="?/save">
 
-		<label class="label space-y-4">
+		<h4 class="h4">Let's setup our scenario!</h4>				
+		<br />
 
-			<span>
-				<h4 class="h4">Let's setup our scenario!</h4>				
-				<br />
+		<label class="label space-y-4">
+			<span>		
+				As the creator(s) of this scenario, what can I call you?
+			</span>
+			<input
+				value={values.author}
+				class="input"
+				title="Author"
+				type="text"
+				name="author"
+				required
+				maxlength="255"
+			/>
+		</label>
+		<br />
+		<label class="label space-y-4">
+			<span>		
 				Think of a name for this scenario. What do you want to explore?
 			</span>
 			<input
@@ -28,8 +44,17 @@
 				type="text"
 				name="title"
 				required
+				maxlength="255"
 			/>
-		</label>
+		</label>		
+
+		<br />
+
+		<span class="italic">
+			<p>	
+				In the next steps you will further define and visualise this scenario by formulating a story around it, with a context, plot and characters. 
+			</p>
+		</span>
 
 		<br />
 		<button class="btn variant-filled-primary">Save</button>

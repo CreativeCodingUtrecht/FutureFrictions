@@ -10,7 +10,7 @@ namespace UI
         public void Initialize(ScenarioData scenarioData)
         {
             questionScreen.Initialize(scenarioData);
-            scenarioManager.PopulateTheFuture();
+            scenarioManager.PopulateFrictionalObjects();
         }
 
         public void ResetFriction()

@@ -1,4 +1,6 @@
+using System;
 using TMPro;
+using UI;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,6 +21,11 @@ public class TitleScreen : BaseScreen
     private ScenarioData _scenarioData;
     private ScenarioManager _scenarioManager;
 
+    private void Awake()
+    {
+        NextButton.Instance.Hide();
+    }
+
     public void Initialize(ScenarioData scenarioData, ScenarioManager scenarioManager)
     {
         _scenarioData = scenarioData;
@@ -26,17 +33,17 @@ public class TitleScreen : BaseScreen
 
         titleText.text = _scenarioData.name;
 
-        if (!string.IsNullOrEmpty(_scenarioData.provocativestatement))
-        {
-            frictionalStatementText.text = _scenarioData.provocativestatement;
-        }
-        else
-        {
-            frictionalStatementText.transform.parent.gameObject.SetActive(false);
-        }
+        // if (!string.IsNullOrEmpty(_scenarioData.provocativestatement))
+        // {
+        //     frictionalStatementText.text = _scenarioData.provocativestatement;
+        // }
+        // else
+        // {
+        frictionalStatementText.transform.parent.gameObject.SetActive(false);
+        // }
         
         startButton.onClick.AddListener(Close);
-        
+
         restartButton.SetActive(false);
         Open();
     }

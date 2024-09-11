@@ -22,9 +22,7 @@ public class ScenarioManager : MonoBehaviour
 
     [SerializeField]
     private TitleScreen titleScreen;
-
-    private ApplicationState _currentState;
-
+    
     private ScenarioData _scenarioData;
     private Scenario _scenario;
 
@@ -44,14 +42,18 @@ public class ScenarioManager : MonoBehaviour
         UpdateBackground(_scenarioData.collage.present.definition.background);
         
         // Set the friction on the intro screen with the avatar
-        downloadHandler.GetImage(_scenarioData.friction.avatar, (sprite, hasError) =>
+        downloadHandler.GetImage(_scenarioData.friction.avatarSrc, (sprite, hasError) =>
         {
             introScreen.OnClose += OnIntroClosed;
             introScreen.InitializeScreen(sprite, _scenarioData.friction.frictionalstatement);
-            _currentState = ApplicationState.Intro;
         });
     }
 
+    public void PopulateFrictionalObjects()
+    {
+        scenarioScreen.InitializeFrictionalObjects(_scenarioData);
+    }
+    
     public void PopulateTheFuture()
     {
         UpdateBackground(_scenarioData.collage.future.definition.background);
@@ -72,7 +74,6 @@ public class ScenarioManager : MonoBehaviour
     private void OnIntroClosed()
     {
         scenarioScreen.InitializeScenario(_scenarioData, TimeFrame.Present);
-        _currentState = ApplicationState.BeforeInteractions;
     }
 
     private void OnDestroy()
@@ -82,17 +83,7 @@ public class ScenarioManager : MonoBehaviour
 
     private void ResetScenarios()
     {
-        _currentState = ApplicationState.Intro;
-        
         friction.ResetFriction();
         scenarioScreen.Close();
     }
-}
-
-public enum ApplicationState {
-    Intro,
-    BeforeInteractions,
-    Question,
-    Results,
-    End
 }

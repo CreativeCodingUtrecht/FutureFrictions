@@ -63,6 +63,7 @@ public class DataManager : MonoBehaviour
 public class ScenarioData
 {
     public string name;
+    public string author;
     public FrictionData friction;
     public Collage collage;
     public WhatIf whatIf;
@@ -74,6 +75,7 @@ public class FrictionData
 {
     public string frictionalstatement;
     public string avatar;
+    public string avatarSrc;
     public string emergingfrictions;
 }
 
@@ -96,18 +98,7 @@ public class Definition
 {
     public string backgroundColor;
     public string background;
-    public Character[] characters;
     public Element[] elements;
-}
-
-[Serializable]
-public class Character
-{
-    public int id;
-    public string name;
-    public string statement;
-    public Placement placement;
-    public string url;
 }
 
 [Serializable]
@@ -116,6 +107,16 @@ public class Element
     public int id;
     public Placement placement;
     public string url;
+    public bool friction;
+    public bool interactable;
+    public Interaction interaction;
+}
+
+[Serializable]
+public class Interaction
+{
+    public string name;
+    public string statement;
 }
 
 [Serializable]
@@ -137,81 +138,3 @@ public class WhatIf
     public string question;
     public string avatar;
 }
-
-// [Serializable]
-// public class ScenarioSceneData
-// {
-//     public ScenarioContentData content;
-//     public string background;
-//     public string avatar;
-// }
-//
-// [Serializable]
-// public class ScenarioContentData
-// {
-//     public string welcome;
-// }
-//
-// [Serializable]
-// public class ActorData
-// {
-//     public string description;
-//     public string sprite;
-//     public string avatar;
-//     public ActorContentData content;
-// }
-//
-// [Serializable]
-// public class ActorContentData
-// {
-//     public string before;
-//     public ActorContentOptionsData after;
-// }
-//
-// [Serializable]
-// public class ActorContentOptionsData
-// {
-//     public string a;
-//     public string b;
-//     public string c;
-// }
-//
-// [Serializable]
-// public class FrictionData
-// {
-//     public string description;
-//     public string avatar;
-//     public FrictionContentData content;
-//     public FrictionOptionsData options;
-// }
-//
-// [Serializable]
-// public class FrictionContentData
-// {
-//     public string before;
-// }
-//
-// [Serializable]
-// public class FrictionOptionsData
-// {
-//     public FrictionOptionData a;
-//     public FrictionOptionData b;
-//     public FrictionOptionData c;
-// }
-//
-// [Serializable]
-// public class FrictionOptionData
-// {
-//     public string avatar;
-//     public string content;
-//     public string alternativeBackground;
-//     public FrictionOptionSpriteData sprites;
-// }
-//
-// [Serializable]
-// public class FrictionOptionSpriteData
-// {
-//     public string[] foreground;
-//     public string[] background;
-//     public string[] floating;
-// }

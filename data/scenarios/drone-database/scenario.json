@@ -1,9 +1,11 @@
 {
-    "name": "Smart city ideas | Guardian angel drone uploads photos to government database",
+    "name": "Guardian angel drone uploads photos to government database",
+    "author": "Designing for Controversies in Responsible Smart Cities",
     "friction": {
         "frictionalstatement": "The mayor of this fictional neighbourhood wants to implement new smart city ideas. Experience how these ideas might impact the neighbourhood by exploring your surroundings and listening to your neighbours. If you find a person with a question mark on top of their heads... feel free to interact with them.",
         "avatar": "duif.png",
-        "emergingfrictions": ""
+        "emergingfrictions": "",
+        "avatarSrc": "/api/scenarios/drone-database/element/duif.png"
     },
     "collage": {
         "present": {
@@ -15,8 +17,8 @@
                         "version": "5.3.0",
                         "originX": "left",
                         "originY": "top",
-                        "left": -88.36,
-                        "top": 385.27,
+                        "left": -66.07,
+                        "top": 393.99,
                         "width": 2048,
                         "height": 2048,
                         "fill": "rgb(0,0,0)",
@@ -28,8 +30,8 @@
                         "strokeLineJoin": "miter",
                         "strokeUniform": false,
                         "strokeMiterLimit": 4,
-                        "scaleX": 0.22,
-                        "scaleY": 0.22,
+                        "scaleX": 0.2,
+                        "scaleY": 0.2,
                         "angle": 0,
                         "flipX": false,
                         "flipY": false,
@@ -46,9 +48,22 @@
                         "cropY": 0,
                         "meta": {
                             "image": "telefoon.png",
-                            "role": "character"
+                            "role": "element",
+                            "uuid": "69eaaf89-c855-482d-81e0-9e8fb3e57256",
+                            "interactable": true,
+                            "name": "Tina",
+                            "statement": "Hi, my name is Tina. Nice to meet you! After school, I usually meet up with some of my friends in this square. I'm going to meet them there later, but I need to do my homework first."
                         },
-                        "src": "https://futurefrictions.creativecodingutrecht.nl/api/scenarios/drone-database/character/telefoon.png",
+                        "_controlsVisibility": {
+                            "mtr": true,
+                            "mb": false,
+                            "mt": false,
+                            "ml": false,
+                            "mr": false
+                        },
+                        "minScaleLimit": 0.034090909090909095,
+                        "lockScalingFlip": true,
+                        "src": "/api/scenarios/drone-database/element/telefoon.png",
                         "crossOrigin": "anonymous",
                         "filters": []
                     },
@@ -57,8 +72,8 @@
                         "version": "5.3.0",
                         "originX": "left",
                         "originY": "top",
-                        "left": 452.73,
-                        "top": 410.18,
+                        "left": 450.33,
+                        "top": 411.2,
                         "width": 2048,
                         "height": 2048,
                         "fill": "rgb(0,0,0)",
@@ -88,9 +103,22 @@
                         "cropY": 0,
                         "meta": {
                             "image": "elderly_on_bench_17_5_2021_21_14.png",
-                            "role": "character"
+                            "role": "element",
+                            "uuid": "0e718abd-0f0b-4c7f-b6ab-75ddaf5df849",
+                            "interactable": true,
+                            "name": "Elderly woman",
+                            "statement": "Hello dear, how nice to see you! I've always liked sitting here, in the square, and seeing if any of my neighbours want to stop for a chat."
                         },
-                        "src": "https://futurefrictions.creativecodingutrecht.nl/api/scenarios/drone-database/character/elderly_on_bench_17_5_2021_21_14.png",
+                        "_controlsVisibility": {
+                            "mtr": true,
+                            "mb": false,
+                            "mt": false,
+                            "ml": false,
+                            "mr": false
+                        },
+                        "minScaleLimit": 0.034090909090909095,
+                        "lockScalingFlip": true,
+                        "src": "/api/scenarios/drone-database/element/elderly_on_bench_17_5_2021_21_14.png",
                         "crossOrigin": "anonymous",
                         "filters": []
                     },
@@ -99,8 +127,8 @@
                         "version": "5.3.0",
                         "originX": "left",
                         "originY": "top",
-                        "left": 1489.5,
-                        "top": 438.09,
+                        "left": 1495.55,
+                        "top": 427.77,
                         "width": 2048,
                         "height": 2048,
                         "fill": "rgb(0,0,0)",
@@ -112,8 +140,8 @@
                         "strokeLineJoin": "miter",
                         "strokeUniform": false,
                         "strokeMiterLimit": 4,
-                        "scaleX": 0.21,
-                        "scaleY": 0.21,
+                        "scaleX": 0.19,
+                        "scaleY": 0.19,
                         "angle": 0,
                         "flipX": false,
                         "flipY": false,
@@ -130,9 +158,22 @@
                         "cropY": 0,
                         "meta": {
                             "image": "artist_17_5_2021_21_50.png",
-                            "role": "character"
+                            "role": "element",
+                            "uuid": "2c212f2c-b669-41bd-b9ba-8ec8f2a24a1c",
+                            "interactable": true,
+                            "name": "Street artist",
+                            "statement": "Hello! I often come to this square to observe people passing by, think about life, and paint."
                         },
-                        "src": "https://futurefrictions.creativecodingutrecht.nl/api/scenarios/drone-database/character/artist_17_5_2021_21_50.png",
+                        "_controlsVisibility": {
+                            "mtr": true,
+                            "mb": false,
+                            "mt": false,
+                            "ml": false,
+                            "mr": false
+                        },
+                        "minScaleLimit": 0.034090909090909095,
+                        "lockScalingFlip": true,
+                        "src": "/api/scenarios/drone-database/element/artist_17_5_2021_21_50.png",
                         "crossOrigin": "anonymous",
                         "filters": []
                     }
@@ -172,7 +213,9 @@
                     "skewY": 0,
                     "cropX": 0,
                     "cropY": 0,
-                    "src": "https://futurefrictions.creativecodingutrecht.nl/api/scenarios/drone-database/background/screen_1920x1080_2021-11-22_16-30-57.png",
+                    "minScaleLimit": 0,
+                    "lockScalingFlip": false,
+                    "src": "/api/scenarios/drone-database/background/screen_1920x1080_2021-11-22_16-30-57.png",
                     "crossOrigin": "anonymous",
                     "filters": []
                 }
@@ -180,57 +223,68 @@
             "definition": {
                 "backgroundColor": "#ddddee",
                 "background": "/api/scenarios/drone-database/background/screen_1920x1080_2021-11-22_16-30-57.png",
-                "characters": [
+                "elements": [
                     {
-                        "url": "/api/scenarios/drone-database/character/telefoon.png",
+                        "url": "/api/scenarios/drone-database/element/telefoon.png",
                         "placement": {
                             "index": 0,
-                            "left": -88.36,
-                            "top": 385.27,
+                            "left": -66.07,
+                            "top": 393.99,
                             "width": 2048,
                             "height": 2048,
-                            "scaleX": 0.22,
-                            "scaleY": 0.22,
+                            "scaleX": 0.2,
+                            "scaleY": 0.2,
                             "angle": 0
                         },
-                        "name": "Tina",
-                        "statement": "Hi, my name is Tina. Nice to meet you! After school, I usually meet up with some of my friends in this square. I'm going to meet them there later, but I need to do my homework first.",
+                        "friction": false,
+                        "interactable": true,
+                        "interaction": {
+                            "name": "Tina",
+                            "statement": "Hi, my name is Tina. Nice to meet you! After school, I usually meet up with some of my friends in this square. I'm going to meet them there later, but I need to do my homework first."
+                        },
                         "id": 0
                     },
                     {
-                        "url": "/api/scenarios/drone-database/character/elderly_on_bench_17_5_2021_21_14.png",
+                        "url": "/api/scenarios/drone-database/element/elderly_on_bench_17_5_2021_21_14.png",
                         "placement": {
                             "index": 1,
-                            "left": 452.73,
-                            "top": 410.18,
+                            "left": 450.33,
+                            "top": 411.2,
                             "width": 2048,
                             "height": 2048,
                             "scaleX": 0.16,
                             "scaleY": 0.16,
                             "angle": 0
                         },
-                        "name": "Elderly woman",
-                        "statement": "Hello dear, how nice to see you! I've always liked sitting here, in the square, and seeing if any of my neighbours want to stop for a chat.",
+                        "friction": false,
+                        "interactable": true,
+                        "interaction": {
+                            "name": "Elderly woman",
+                            "statement": "Hello dear, how nice to see you! I've always liked sitting here, in the square, and seeing if any of my neighbours want to stop for a chat."
+                        },
                         "id": 1
                     },
                     {
-                        "url": "/api/scenarios/drone-database/character/artist_17_5_2021_21_50.png",
+                        "url": "/api/scenarios/drone-database/element/artist_17_5_2021_21_50.png",
                         "placement": {
                             "index": 2,
-                            "left": 1489.5,
-                            "top": 438.09,
+                            "left": 1495.55,
+                            "top": 427.77,
                             "width": 2048,
                             "height": 2048,
-                            "scaleX": 0.21,
-                            "scaleY": 0.21,
+                            "scaleX": 0.19,
+                            "scaleY": 0.19,
                             "angle": 0
                         },
-                        "name": "Street artist",
-                        "statement": "Hello! I often come to this square to observe people passing by, think about life, and paint.",
+                        "friction": false,
+                        "interactable": true,
+                        "interaction": {
+                            "name": "Street artist",
+                            "statement": "Hello! I often come to this square to observe people passing by, think about life, and paint."
+                        },
                         "id": 2
                     }
-                ],
-                "elements": []
+                ]
             },
             "url": "/api/scenarios/drone-database/collage/present.png"
         },
@@ -243,8 +297,8 @@
                         "version": "5.3.0",
                         "originX": "left",
                         "originY": "top",
-                        "left": -88.36,
-                        "top": 385.27,
+                        "left": -66.07,
+                        "top": 393.99,
                         "width": 2048,
                         "height": 2048,
                         "fill": "rgb(0,0,0)",
@@ -256,8 +310,8 @@
                         "strokeLineJoin": "miter",
                         "strokeUniform": false,
                         "strokeMiterLimit": 4,
-                        "scaleX": 0.22,
-                        "scaleY": 0.22,
+                        "scaleX": 0.2,
+                        "scaleY": 0.2,
                         "angle": 0,
                         "flipX": false,
                         "flipY": false,
@@ -274,9 +328,22 @@
                         "cropY": 0,
                         "meta": {
                             "image": "telefoon.png",
-                            "role": "character"
+                            "role": "element",
+                            "uuid": "69eaaf89-c855-482d-81e0-9e8fb3e57256",
+                            "interactable": true,
+                            "name": "Tina",
+                            "statement": "This makes me feel safe. I feel it is like my guardian angel drone. We don't need to ask each other 'are you home safe?' after a night out anymore, because the police know about our whereabouts at all times."
                         },
-                        "src": "https://futurefrictions.creativecodingutrecht.nl/api/scenarios/drone-database/character/telefoon.png",
+                        "_controlsVisibility": {
+                            "mtr": true,
+                            "mb": false,
+                            "mt": false,
+                            "ml": false,
+                            "mr": false
+                        },
+                        "minScaleLimit": 0.034090909090909095,
+                        "lockScalingFlip": true,
+                        "src": "/api/scenarios/drone-database/element/telefoon.png",
                         "crossOrigin": "anonymous",
                         "filters": []
                     },
@@ -285,8 +352,8 @@
                         "version": "5.3.0",
                         "originX": "left",
                         "originY": "top",
-                        "left": 452.73,
-                        "top": 410.18,
+                        "left": 450.33,
+                        "top": 411.2,
                         "width": 2048,
                         "height": 2048,
                         "fill": "rgb(0,0,0)",
@@ -316,9 +383,23 @@
                         "cropY": 0,
                         "meta": {
                             "image": "elderly_on_bench_17_5_2021_21_14.png",
-                            "role": "character"
+                            "role": "element",
+                            "uuid": "0e718abd-0f0b-4c7f-b6ab-75ddaf5df849",
+                            "interactable": true,
+                            "name": "Elderly woman",
+                            "statement": "I'm old and living by myself, so I am now part of a programme that helps people in need. The government has enrolled me there based on the information they get from this drone. The thing is: I don't really feel I need help. I am doing great!",
+                            "friction": false
                         },
-                        "src": "https://futurefrictions.creativecodingutrecht.nl/api/scenarios/drone-database/character/elderly_on_bench_17_5_2021_21_14.png",
+                        "_controlsVisibility": {
+                            "mtr": true,
+                            "mb": false,
+                            "mt": false,
+                            "ml": false,
+                            "mr": false
+                        },
+                        "minScaleLimit": 0.034090909090909095,
+                        "lockScalingFlip": true,
+                        "src": "/api/scenarios/drone-database/element/elderly_on_bench_17_5_2021_21_14.png",
                         "crossOrigin": "anonymous",
                         "filters": []
                     },
@@ -327,8 +408,8 @@
                         "version": "5.3.0",
                         "originX": "left",
                         "originY": "top",
-                        "left": 1489.5,
-                        "top": 438.09,
+                        "left": 1495.55,
+                        "top": 427.77,
                         "width": 2048,
                         "height": 2048,
                         "fill": "rgb(0,0,0)",
@@ -340,8 +421,8 @@
                         "strokeLineJoin": "miter",
                         "strokeUniform": false,
                         "strokeMiterLimit": 4,
-                        "scaleX": 0.21,
-                        "scaleY": 0.21,
+                        "scaleX": 0.19,
+                        "scaleY": 0.19,
                         "angle": 0,
                         "flipX": false,
                         "flipY": false,
@@ -358,9 +439,22 @@
                         "cropY": 0,
                         "meta": {
                             "image": "artist_17_5_2021_21_50.png",
-                            "role": "character"
+                            "role": "element",
+                            "uuid": "2c212f2c-b669-41bd-b9ba-8ec8f2a24a1c",
+                            "interactable": true,
+                            "name": "Street artist",
+                            "statement": "It is nice that thanks to the new drone I don't need to worry about protecting my paintings anymore. However, I am a bit worried as sometimes I make activist art. I hope the government won't monitor me for that!"
                         },
-                        "src": "https://futurefrictions.creativecodingutrecht.nl/api/scenarios/drone-database/character/artist_17_5_2021_21_50.png",
+                        "_controlsVisibility": {
+                            "mtr": true,
+                            "mb": false,
+                            "mt": false,
+                            "ml": false,
+                            "mr": false
+                        },
+                        "minScaleLimit": 0.034090909090909095,
+                        "lockScalingFlip": true,
+                        "src": "/api/scenarios/drone-database/element/artist_17_5_2021_21_50.png",
                         "crossOrigin": "anonymous",
                         "filters": []
                     },
@@ -369,8 +463,8 @@
                         "version": "5.3.0",
                         "originX": "left",
                         "originY": "top",
-                        "left": 744.59,
-                        "top": 135.77,
+                        "left": 755.34,
+                        "top": 139.52,
                         "width": 2000,
                         "height": 764,
                         "fill": "rgb(0,0,0)",
@@ -382,8 +476,8 @@
                         "strokeLineJoin": "miter",
                         "strokeUniform": false,
                         "strokeMiterLimit": 4,
-                        "scaleX": 0.2,
-                        "scaleY": 0.2,
+                        "scaleX": 0.19,
+                        "scaleY": 0.19,
                         "angle": 0,
                         "flipX": false,
                         "flipY": false,
@@ -400,9 +494,21 @@
                         "cropY": 0,
                         "meta": {
                             "image": "drone_1.png",
-                            "role": "element"
+                            "role": "element",
+                            "uuid": "23762db2-d5f9-41b0-bc8c-8a14857b114b",
+                            "interactable": false,
+                            "friction": true
                         },
-                        "src": "https://futurefrictions.creativecodingutrecht.nl/api/scenarios/drone-database/element/drone_1.png",
+                        "_controlsVisibility": {
+                            "mtr": true,
+                            "mb": false,
+                            "mt": false,
+                            "ml": false,
+                            "mr": false
+                        },
+                        "minScaleLimit": 0.056263736263736264,
+                        "lockScalingFlip": true,
+                        "src": "/api/scenarios/drone-database/element/drone_1.png",
                         "crossOrigin": "anonymous",
                         "filters": []
                     },
@@ -411,8 +517,8 @@
                         "version": "5.3.0",
                         "originX": "left",
                         "originY": "top",
-                        "left": 70.55,
-                        "top": 329.07,
+                        "left": 74.18,
+                        "top": 337.64,
                         "width": 2048,
                         "height": 2048,
                         "fill": "rgb(0,0,0)",
@@ -442,9 +548,20 @@
                         "cropY": 0,
                         "meta": {
                             "image": "ipad_guy_31_5_2021_00_48.png",
-                            "role": "element"
+                            "role": "element",
+                            "uuid": "fe455af0-96f9-408d-8592-e08338d97b2a",
+                            "interactable": false
                         },
-                        "src": "https://futurefrictions.creativecodingutrecht.nl/api/scenarios/drone-database/element/ipad_guy_31_5_2021_00_48.png",
+                        "_controlsVisibility": {
+                            "mtr": true,
+                            "mb": false,
+                            "mt": false,
+                            "ml": false,
+                            "mr": false
+                        },
+                        "minScaleLimit": 0.034090909090909095,
+                        "lockScalingFlip": true,
+                        "src": "/api/scenarios/drone-database/element/ipad_guy_31_5_2021_00_48.png",
                         "crossOrigin": "anonymous",
                         "filters": []
                     },
@@ -453,8 +570,8 @@
                         "version": "5.3.0",
                         "originX": "left",
                         "originY": "top",
-                        "left": 725.09,
-                        "top": 507.98,
+                        "left": 732.93,
+                        "top": 536.29,
                         "width": 2048,
                         "height": 2048,
                         "fill": "rgb(0,0,0)",
@@ -466,8 +583,8 @@
                         "strokeLineJoin": "miter",
                         "strokeUniform": false,
                         "strokeMiterLimit": 4,
-                        "scaleX": 0.25,
-                        "scaleY": 0.25,
+                        "scaleX": 0.24,
+                        "scaleY": 0.24,
                         "angle": 0,
                         "flipX": false,
                         "flipY": false,
@@ -484,9 +601,20 @@
                         "cropY": 0,
                         "meta": {
                             "image": "ipad_group_31_5_2021_00_48.png",
-                            "role": "element"
+                            "role": "element",
+                            "uuid": "615cbf57-2177-47a5-8b07-16e8c70525f1",
+                            "interactable": false
                         },
-                        "src": "https://futurefrictions.creativecodingutrecht.nl/api/scenarios/drone-database/element/ipad_group_31_5_2021_00_48.png",
+                        "_controlsVisibility": {
+                            "mtr": true,
+                            "mb": false,
+                            "mt": false,
+                            "ml": false,
+                            "mr": false
+                        },
+                        "minScaleLimit": 0.034090909090909095,
+                        "lockScalingFlip": true,
+                        "src": "/api/scenarios/drone-database/element/ipad_group_31_5_2021_00_48.png",
                         "crossOrigin": "anonymous",
                         "filters": []
                     },
@@ -495,8 +623,8 @@
                         "version": "5.3.0",
                         "originX": "left",
                         "originY": "top",
-                        "left": 1192,
-                        "top": 330.16,
+                        "left": 1201.25,
+                        "top": 331.81,
                         "width": 2048,
                         "height": 2048,
                         "fill": "rgb(0,0,0)",
@@ -526,9 +654,20 @@
                         "cropY": 0,
                         "meta": {
                             "image": "policemen_31_5_2021_01_04.png",
-                            "role": "element"
+                            "role": "element",
+                            "uuid": "c6d9b2b0-7359-4d1a-b84e-6f2d99e7892a",
+                            "interactable": false
                         },
-                        "src": "https://futurefrictions.creativecodingutrecht.nl/api/scenarios/drone-database/element/policemen_31_5_2021_01_04.png",
+                        "_controlsVisibility": {
+                            "mtr": true,
+                            "mb": false,
+                            "mt": false,
+                            "ml": false,
+                            "mr": false
+                        },
+                        "minScaleLimit": 0.034090909090909095,
+                        "lockScalingFlip": true,
+                        "src": "/api/scenarios/drone-database/element/policemen_31_5_2021_01_04.png",
                         "crossOrigin": "anonymous",
                         "filters": []
                     },
@@ -537,8 +676,8 @@
                         "version": "5.3.0",
                         "originX": "left",
                         "originY": "top",
-                        "left": 139.5,
-                        "top": -113.14,
+                        "left": 144.97,
+                        "top": -109.74,
                         "width": 1458,
                         "height": 1094,
                         "fill": "rgb(0,0,0)",
@@ -568,9 +707,20 @@
                         "cropY": 0,
                         "meta": {
                             "image": "Billboard option C.png",
-                            "role": "element"
+                            "role": "element",
+                            "uuid": "a4b2158e-81cb-4cfe-b364-f5fadd05d492",
+                            "interactable": false
                         },
-                        "src": "https://futurefrictions.creativecodingutrecht.nl/api/scenarios/drone-database/element/Billboard%20option%20C.png",
+                        "_controlsVisibility": {
+                            "mtr": true,
+                            "mb": false,
+                            "mt": false,
+                            "ml": false,
+                            "mr": false
+                        },
+                        "minScaleLimit": 0.047886270108492335,
+                        "lockScalingFlip": true,
+                        "src": "/api/scenarios/drone-database/element/Billboard%20option%20C.png",
                         "crossOrigin": "anonymous",
                         "filters": []
                     }
@@ -610,7 +760,9 @@
                     "skewY": 0,
                     "cropX": 0,
                     "cropY": 0,
-                    "src": "https://futurefrictions.creativecodingutrecht.nl/api/scenarios/drone-database/background/screen_1920x1080_2021-11-22_16-30-57.png",
+                    "minScaleLimit": 0,
+                    "lockScalingFlip": false,
+                    "src": "/api/scenarios/drone-database/background/screen_1920x1080_2021-11-22_16-30-57.png",
                     "crossOrigin": "anonymous",
                     "filters": []
                 }
@@ -618,126 +770,146 @@
             "definition": {
                 "backgroundColor": "#ddddee",
                 "background": "/api/scenarios/drone-database/background/screen_1920x1080_2021-11-22_16-30-57.png",
-                "characters": [
+                "elements": [
                     {
-                        "url": "/api/scenarios/drone-database/character/telefoon.png",
+                        "url": "/api/scenarios/drone-database/element/telefoon.png",
                         "placement": {
                             "index": 0,
-                            "left": -88.36,
-                            "top": 385.27,
+                            "left": -66.07,
+                            "top": 393.99,
                             "width": 2048,
                             "height": 2048,
-                            "scaleX": 0.22,
-                            "scaleY": 0.22,
+                            "scaleX": 0.2,
+                            "scaleY": 0.2,
                             "angle": 0
                         },
-                        "name": "Tina",
-                        "statement": "This makes me feel safe. I feel it is like my guardian angel drone. We don't need to ask each other 'are you home safe?' after a night out anymore, because the police know about our whereabouts at all times.",
+                        "friction": false,
+                        "interactable": true,
+                        "interaction": {
+                            "name": "Tina",
+                            "statement": "This makes me feel safe. I feel it is like my guardian angel drone. We don't need to ask each other 'are you home safe?' after a night out anymore, because the police know about our whereabouts at all times."
+                        },
                         "id": 0
                     },
                     {
-                        "url": "/api/scenarios/drone-database/character/elderly_on_bench_17_5_2021_21_14.png",
+                        "url": "/api/scenarios/drone-database/element/elderly_on_bench_17_5_2021_21_14.png",
                         "placement": {
                             "index": 1,
-                            "left": 452.73,
-                            "top": 410.18,
+                            "left": 450.33,
+                            "top": 411.2,
                             "width": 2048,
                             "height": 2048,
                             "scaleX": 0.16,
                             "scaleY": 0.16,
                             "angle": 0
                         },
-                        "name": "Elderly woman",
-                        "statement": "I'm old and living by myself, so I am now part of a programme that helps people in need. The government has enrolled me there based on the information they get from this drone. The thing is: I don't really feel I need help. I am doing great!",
+                        "friction": false,
+                        "interactable": true,
+                        "interaction": {
+                            "name": "Elderly woman",
+                            "statement": "I'm old and living by myself, so I am now part of a programme that helps people in need. The government has enrolled me there based on the information they get from this drone. The thing is: I don't really feel I need help. I am doing great!"
+                        },
                         "id": 1
                     },
                     {
-                        "url": "/api/scenarios/drone-database/character/artist_17_5_2021_21_50.png",
+                        "url": "/api/scenarios/drone-database/element/artist_17_5_2021_21_50.png",
                         "placement": {
                             "index": 2,
-                            "left": 1489.5,
-                            "top": 438.09,
+                            "left": 1495.55,
+                            "top": 427.77,
                             "width": 2048,
                             "height": 2048,
-                            "scaleX": 0.21,
-                            "scaleY": 0.21,
+                            "scaleX": 0.19,
+                            "scaleY": 0.19,
                             "angle": 0
                         },
-                        "name": "Street artist",
-                        "statement": "It is nice that thanks to the new drone I don't need to worry about protecting my paintings anymore. However, I am a bit worried as sometimes I make activist art. I hope the government won't monitor me for that!",
+                        "friction": false,
+                        "interactable": true,
+                        "interaction": {
+                            "name": "Street artist",
+                            "statement": "It is nice that thanks to the new drone I don't need to worry about protecting my paintings anymore. However, I am a bit worried as sometimes I make activist art. I hope the government won't monitor me for that!"
+                        },
                         "id": 2
-                    }
-                ],
-                "elements": [
+                    },
                     {
                         "url": "/api/scenarios/drone-database/element/drone_1.png",
                         "placement": {
                             "index": 3,
-                            "left": 744.59,
-                            "top": 135.77,
+                            "left": 755.34,
+                            "top": 139.52,
                             "width": 2000,
                             "height": 764,
-                            "scaleX": 0.2,
-                            "scaleY": 0.2,
+                            "scaleX": 0.19,
+                            "scaleY": 0.19,
                             "angle": 0
                         },
-                        "id": 0
+                        "friction": true,
+                        "interactable": false,
+                        "id": 3
                     },
                     {
                         "url": "/api/scenarios/drone-database/element/ipad_guy_31_5_2021_00_48.png",
                         "placement": {
                             "index": 4,
-                            "left": 70.55,
-                            "top": 329.07,
+                            "left": 74.18,
+                            "top": 337.64,
                             "width": 2048,
                             "height": 2048,
                             "scaleX": 0.18,
                             "scaleY": 0.18,
                             "angle": 0
                         },
-                        "id": 1
+                        "friction": false,
+                        "interactable": false,
+                        "id": 4
                     },
                     {
                         "url": "/api/scenarios/drone-database/element/ipad_group_31_5_2021_00_48.png",
                         "placement": {
                             "index": 5,
-                            "left": 725.09,
-                            "top": 507.98,
+                            "left": 732.93,
+                            "top": 536.29,
                             "width": 2048,
                             "height": 2048,
-                            "scaleX": 0.25,
-                            "scaleY": 0.25,
+                            "scaleX": 0.24,
+                            "scaleY": 0.24,
                             "angle": 0
                         },
-                        "id": 2
+                        "friction": false,
+                        "interactable": false,
+                        "id": 5
                     },
                     {
                         "url": "/api/scenarios/drone-database/element/policemen_31_5_2021_01_04.png",
                         "placement": {
                             "index": 6,
-                            "left": 1192,
-                            "top": 330.16,
+                            "left": 1201.25,
+                            "top": 331.81,
                             "width": 2048,
                             "height": 2048,
                             "scaleX": 0.18,
                             "scaleY": 0.18,
                             "angle": 0
                         },
-                        "id": 3
+                        "friction": false,
+                        "interactable": false,
+                        "id": 6
                     },
                     {
                         "url": "/api/scenarios/drone-database/element/Billboard%20option%20C.png",
                         "placement": {
                             "index": 7,
-                            "left": 139.5,
-                            "top": -113.14,
+                            "left": 144.97,
+                            "top": -109.74,
                             "width": 1458,
                             "height": 1094,
                             "scaleX": 0.5,
                             "scaleY": 0.5,
                             "angle": 0
                         },
-                        "id": 4
+                        "friction": false,
+                        "interactable": false,
+                        "id": 7
                     }
                 ]
             },
@@ -748,5 +920,5 @@
         "question": "A new guardian angel drone has been introduced. \r\n\r\nThe images are directly uploaded to a government database so that public authorities can improve their services.",
         "avatar": "drone_1.png"
     },
-    "provocativestatement": ""
+    "provocativestatement": "What is the question you would like to ask others while presenting this future, what is your provocative statement? Press the Explore button to see the outcome of the future and a sequence of what you have created. What is the question you would like to ask others while presenting this future, what is your provocative statement?"
 }

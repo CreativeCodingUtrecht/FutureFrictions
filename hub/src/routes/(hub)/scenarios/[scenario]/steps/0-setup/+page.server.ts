@@ -21,7 +21,7 @@ export const actions = {
     },
     next: async ({params, request}) => {
         save(params, request);
-        redirect(303, `/scenarios/${params.scenario}/steps/1-friction`);
+        redirect(303, `/scenarios/${params.scenario}/steps/1-situation`);
     },
     previous: async ({params, request}) => {
         save(params, request);
@@ -30,13 +30,14 @@ export const actions = {
 } satisfies Actions;
 
 const save = async (params, request) => {
-    console.log("Saving step 0")
     const scenario = params.scenario;
     const json = scenarios.json(scenario);
 
     const data = await request.formData();
     const title = data.get('title')
+    const author = data.get('author')
 
     json.name = title;
+    json.author = author;
     scenarios.save(scenario, json);
 }
